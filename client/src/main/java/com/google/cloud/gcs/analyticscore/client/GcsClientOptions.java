@@ -27,6 +27,13 @@ public abstract class GcsClientOptions {
   private static final String SERVICE_HOST_KEY = "service.host";
   private static final String USER_AGENT_KEY = "user-agent";
   static final String PROJECT_ID_KEY = "project-id";
+  private static final String CLIENT_TYPE_KEY = "client.type";
+
+  /** Cloud Storage client to use. */
+  public enum ClientType {
+    HTTP_CLIENT,
+    GRPC_CLIENT,
+  }
 
   public abstract Optional<String> getProjectId();
 
@@ -36,10 +43,13 @@ public abstract class GcsClientOptions {
 
   public abstract Optional<String> getUserAgent();
 
+  public abstract ClientType getClientType();
+
   public abstract GcsReadOptions getGcsReadOptions();
 
   public static Builder builder() {
     return new AutoValue_GcsClientOptions.Builder()
+        .setClientType(ClientType.HTTP_CLIENT)
         .setGcsReadOptions(GcsReadOptions.builder().build());
   }
 
@@ -58,6 +68,10 @@ public abstract class GcsClientOptions {
     if (analyticsCoreOptions.containsKey(prefix + USER_AGENT_KEY)) {
       optionsBuilder.setUserAgent(analyticsCoreOptions.get(prefix + USER_AGENT_KEY));
     }
+    if (analyticsCoreOptions.containsKey(prefix + CLIENT_TYPE_KEY)) {
+      optionsBuilder.setClientType(
+          ClientType.valueOf(analyticsCoreOptions.get(prefix + CLIENT_TYPE_KEY)));
+    }
     optionsBuilder.setGcsReadOptions(
         GcsReadOptions.createFromOptions(analyticsCoreOptions, prefix));
 
@@ -75,6 +89,8 @@ public abstract class GcsClientOptions {
     public abstract Builder setServiceHost(String serviceHost);
 
     public abstract Builder setUserAgent(String userAgent);
+
+    public abstract Builder setClientType(ClientType clientType);
 
     public abstract Builder setGcsReadOptions(GcsReadOptions readOptions);
 

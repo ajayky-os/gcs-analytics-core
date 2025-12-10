@@ -219,6 +219,29 @@ class GcsClientImplTest {
     assertThat(client.storage.getOptions().getCredentials()).isEqualTo(NoCredentials.getInstance());
   }
 
+  @Test
+  void createStorage_clientTypeGrpc_usesGrpcStorageOptions() {
+    GcsClientOptions grpcOptions =  TEST_GCS_CLIENT_OPTIONS.builder()
+        .setClientType(GcsClientOptions.ClientType.GRPC_CLIENT)
+        .build();
+    GcsClientImpl client =
+        new GcsClientImpl(NoCredentials.getInstance(), grpcOptions, executorServiceSupplier);
+
+    assertThat(client.storage.getOptions()).isInstanceOf(GrpcStorageOptions.class);
+  }
+
+  @Test
+  void createStorage_clientTypeHttp_usesStorageOptions() {
+    GcsClientOptions httpOptions =  TEST_GCS_CLIENT_OPTIONS.builder()
+        .setClientType(GcsClientOptions.ClientType.HTTP_CLIENT)
+        .build();
+    GcsClientImpl client =
+        new GcsClientImpl(NoCredentials.getInstance(), httpOptions, executorServiceSupplier);
+
+    assertThat(client.storage.getOptions()).isInstanceOf(StorageOptions.class);
+    assertThat(client.storage.getOptions()).isNotInstanceOf(GrpcStorageOptions.class);
+  }
+
   private void createBlobInStorage(BlobId blobId, String blobContent) {
     BlobInfo blobInfo = BlobInfo.newBuilder(blobId).build();
     storage.create(blobInfo, blobContent.getBytes(StandardCharsets.UTF_8));
