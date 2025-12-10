@@ -28,6 +28,7 @@ public abstract class GcsClientOptions {
   private static final String USER_AGENT_KEY = "user-agent";
   static final String PROJECT_ID_KEY = "project-id";
   private static final String CLIENT_TYPE_KEY = "client.type";
+  private static final String DIRECT_PATH_ENABLED_KEY = "client.grpc.direct-path-enabled";
 
   /** Cloud Storage client to use. */
   public enum ClientType {
@@ -45,11 +46,14 @@ public abstract class GcsClientOptions {
 
   public abstract ClientType getClientType();
 
+  public abstract boolean isDirectPathEnabled();
+
   public abstract GcsReadOptions getGcsReadOptions();
 
   public static Builder builder() {
     return new AutoValue_GcsClientOptions.Builder()
         .setClientType(ClientType.HTTP_CLIENT)
+        .setDirectPathEnabled(true)
         .setGcsReadOptions(GcsReadOptions.builder().build());
   }
 
@@ -70,7 +74,12 @@ public abstract class GcsClientOptions {
     }
     if (analyticsCoreOptions.containsKey(prefix + CLIENT_TYPE_KEY)) {
       optionsBuilder.setClientType(
-          ClientType.valueOf(analyticsCoreOptions.get(prefix + CLIENT_TYPE_KEY)));
+          ClientType.valueOf(
+              analyticsCoreOptions.get(prefix + CLIENT_TYPE_KEY).trim().toUpperCase()));
+    }
+    if (analyticsCoreOptions.containsKey(prefix + DIRECT_PATH_ENABLED_KEY)) {
+      optionsBuilder.setDirectPathEnabled(
+          Boolean.parseBoolean(analyticsCoreOptions.get(prefix + DIRECT_PATH_ENABLED_KEY)));
     }
     optionsBuilder.setGcsReadOptions(
         GcsReadOptions.createFromOptions(analyticsCoreOptions, prefix));
@@ -91,6 +100,8 @@ public abstract class GcsClientOptions {
     public abstract Builder setUserAgent(String userAgent);
 
     public abstract Builder setClientType(ClientType clientType);
+
+    public abstract Builder setDirectPathEnabled(boolean directPathEnabled);
 
     public abstract Builder setGcsReadOptions(GcsReadOptions readOptions);
 

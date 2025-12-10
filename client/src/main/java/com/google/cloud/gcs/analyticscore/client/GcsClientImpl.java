@@ -108,7 +108,7 @@ class GcsClientImpl implements GcsClient {
   protected Storage createStorage(Optional<Credentials> credentials) {
     StorageOptions.Builder builder;
     if (clientOptions.getClientType() == GcsClientOptions.ClientType.GRPC_CLIENT) {
-      builder = StorageOptions.grpc();
+      builder = StorageOptions.grpc().setAttemptDirectPath(clientOptions.isDirectPathEnabled());
     } else {
       builder = StorageOptions.newBuilder();
     }
