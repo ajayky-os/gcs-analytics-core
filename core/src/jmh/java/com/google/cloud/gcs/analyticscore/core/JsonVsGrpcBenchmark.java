@@ -38,6 +38,10 @@ public class JsonVsGrpcBenchmark {
     grpcFileSystem = new GcsFileSystemImpl(GcsFileSystemOptions.createFromOptions(
             Map.of("gcs.client.type", "GRPC_CLIENT"), "gcs."));
     jsonFileSystem = new GcsFileSystemImpl(GcsFileSystemOptions.builder().build());
+
+    URI uri = IntegrationTestHelper.getGcsObjectUriForFile(IntegrationTestHelper.TPCDS_CUSTOMER_SMALL_FILE);
+    ParquetHelper.readParquetObjectRecords(uri, /* readVectoredEnabled= */ true, grpcFileSystem);
+    ParquetHelper.readParquetObjectRecords(uri, /* readVectoredEnabled= */ true, jsonFileSystem);
   }
 
   @Benchmark
