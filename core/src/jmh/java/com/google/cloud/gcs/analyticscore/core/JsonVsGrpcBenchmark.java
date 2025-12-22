@@ -74,4 +74,19 @@ public class JsonVsGrpcBenchmark {
 
     blackhole.consume(recordCount);
   }
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+    @Warmup(iterations = 1, time = 1)
+    @Measurement(iterations = 2, time = 1)
+    @Fork(value = 2, warmups = 1)
+    public void readParquetRecordsReusingFileSystemDisabledVectoredRead(JsonVsGrpcState state, Blackhole blackhole) throws IOException {
+        GcsFileSystem fileSystem = state.clientType.equals("GRPC_CLIENT") ? grpcFileSystem : jsonFileSystem;
+        URI uri = IntegrationTestHelper.getGcsObjectUriForFile(state.fileSize);
+
+        long recordCount = ParquetHelper.readParquetObjectRecords(uri, /* readVectoredEnabled= */ false, fileSystem);
+
+        blackhole.consume(recordCount);
+    }
 }

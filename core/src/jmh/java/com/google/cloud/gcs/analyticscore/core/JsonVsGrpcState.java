@@ -21,7 +21,7 @@ import org.openjdk.jmh.annotations.State;
 
 @State(Scope.Benchmark)
 public class JsonVsGrpcState {
-  @Param({"HTTP_CLIENT", "GRPC_CLIENT"})
+  @Param({"GRPC_CLIENT", "HTTP_CLIENT"})
   public String clientType;
 
   @Param({
