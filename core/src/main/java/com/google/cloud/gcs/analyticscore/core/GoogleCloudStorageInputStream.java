@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.ByteBuffer;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.IntFunction;
 import javax.annotation.Nonnull;
 import org.slf4j.Logger;
@@ -33,7 +34,7 @@ import org.slf4j.LoggerFactory;
 public class GoogleCloudStorageInputStream extends SeekableInputStream {
   private static final Logger LOG = LoggerFactory.getLogger(GoogleCloudStorageInputStream.class);
 
-  private static final int LARGE_FILE_SIZE_THRESHOLD = 1024 * 1024 * 1024; // 1 GB.
+  private ParquetMetadataCache parquetMetadataCache;
   // Used for single-byte reads to avoid repeated allocation.
   private final ByteBuffer singleByteBuffer = ByteBuffer.wrap(new byte[1]);
 
@@ -45,10 +46,7 @@ public class GoogleCloudStorageInputStream extends SeekableInputStream {
 
   private volatile boolean closed;
 
-  // Unified cache for small objects or footers.
-  private long prefetchSize;
   private long fileSize;
-  private volatile ByteBuffer prefetchBuffer;
 
   private GcsFileInfo gcsFileInfo;
 
@@ -92,6 +90,10 @@ public class GoogleCloudStorageInputStream extends SeekableInputStream {
         URI.create(BlobId.of(itemId.getBucketName(), itemId.getObjectName().get()).toGsUtilUri());
     this.gcsItemId = itemId;
     this.position = 0;
+    // TODO: Get baseGcsPath and localCacheDirPrefix from options
+    String baseGcsPath = "gs://" + itemId.getBucketName();
+    String localCacheDirPrefix = "gcsio";
+    this.parquetMetadataCache = ParquetMetadataCache.getInstance(baseGcsPath, localCacheDirPrefix);
   }
 
   @Override
@@ -121,12 +123,6 @@ public class GoogleCloudStorageInputStream extends SeekableInputStream {
   @Override
   public int read(ByteBuffer byteBuffer) throws IOException {
     checkNotClosed("Cannot read: already closed");
-    if (isMetadataInitialized() && prefetchBuffer == null && position >= fileSize - prefetchSize) {
-      cacheObjectOrFooter();
-    }
-    if (prefetchBuffer != null && (position >= fileSize - prefetchSize)) {
-      return serveFromCache(byteBuffer);
-    }
     long channelPosition = channel.position();
     checkState(
         channelPosition == position,
@@ -190,6 +186,42 @@ public class GoogleCloudStorageInputStream extends SeekableInputStream {
     if (!isMetadataInitialized()) {
       initializeMetadata();
     }
+
+    if (parquetMetadataCache != null) {
+      Optional<ParquetMetadataCache.ParquetObjectMetadata> metadataOpt =
+          parquetMetadataCache.getMetadata(gcsPath.toString());
+      if (metadataOpt.isPresent()) {
+        ParquetMetadataCache.ParquetObjectMetadata metadata = metadataOpt.get();
+        byte[] rawMetadata = metadata.getRawMetadata();
+        int footerLength = metadata.getFooterLength();
+        long fileSize = metadata.getFileSize();
+
+        if (rawMetadata != null && rawMetadata.length >= length) {
+          // Ensure we don't read beyond the actual footer size
+          int readLength = Math.min(length, footerLength);
+          int srcPos = Math.max(0, rawMetadata.length - readLength);
+          int destPos = offset + Math.max(0, length - readLength);
+          int numBytesToCopy = Math.min(readLength, length);
+
+          if (length > footerLength) {
+            System.arraycopy(rawMetadata, 0, buffer, offset + length - footerLength, footerLength);
+            // fill the rest of the buffer with 0s
+            java.util.Arrays.fill(buffer, offset, offset + length - footerLength, (byte) 0);
+            return length;
+          } else {
+            System.arraycopy(rawMetadata, rawMetadata.length - length, buffer, offset, length);
+            return length;
+          }
+        } else {
+          LOG.warn(
+              "Metadata found in cache, but rawMetadata is smaller than requested length or null.");
+        }
+      } else {
+        LOG.debug("Metadata not found in cache for {}. Falling back to GCS read.", gcsPath);
+      }
+    }
+
+    // Fallback to reading directly from GCS
     try (VectoredSeekableByteChannel byteChannel = openReadChannel()) {
       long size = gcsFileInfo.getItemInfo().getSize();
       long startPosition = Math.max(0, size - length);
@@ -201,25 +233,7 @@ public class GoogleCloudStorageInputStream extends SeekableInputStream {
   @Override
   public void readVectored(List<GcsObjectRange> fileRanges, IntFunction<ByteBuffer> alloc)
       throws IOException {
-    if (prefetchBuffer != null && prefetchSize == fileSize) {
-      // Entire object is cached, serve from prefetchBuffer
-      for (GcsObjectRange range : fileRanges) {
-        ByteBuffer dest = alloc.apply(range.getLength());
-        int bytesRead = serveFromCacheWithoutSeek(range.getOffset(), dest);
-        if (bytesRead < range.getLength()) {
-          range
-              .getByteBufferFuture()
-              .completeExceptionally(
-                  new EOFException(
-                      String.format("Error while populating range: %s, unexpected EOF", range)));
-        } else {
-          dest.flip();
-          range.getByteBufferFuture().complete(dest);
-        }
-      }
-    } else {
-      channel.readVectored(fileRanges, alloc);
-    }
+    channel.readVectored(fileRanges, alloc);
   }
 
   private VectoredSeekableByteChannel openReadChannel() throws IOException {
@@ -244,73 +258,5 @@ public class GoogleCloudStorageInputStream extends SeekableInputStream {
     this.gcsFileInfo = fileInfo;
     this.gcsItemId = fileInfo.getItemInfo().getItemId();
     this.fileSize = fileInfo.getItemInfo().getSize();
-    GcsReadOptions readOptions =
-        gcsFileSystem.getFileSystemOptions().getGcsClientOptions().getGcsReadOptions();
-    this.prefetchSize = calculatePrefetchSize(fileSize, readOptions);
-  }
-
-  private void cacheObjectOrFooter() throws IOException {
-    long originalPosition = getPos();
-    long startPosition = fileSize - prefetchSize;
-    int bufferSize = (int) (fileSize - startPosition);
-    LOG.debug(
-        "Caching GCS object {} from position: {} size: {}", gcsPath, startPosition, bufferSize);
-    try {
-      ByteBuffer cacheBuffer = ByteBuffer.allocate(bufferSize);
-      channel.position(startPosition);
-      while (cacheBuffer.hasRemaining()) {
-        if (channel.read(cacheBuffer) == -1) {
-          throw new IOException("Unexpected EOF encountered.");
-        }
-      }
-      cacheBuffer.flip();
-      this.prefetchBuffer = cacheBuffer;
-    } catch (IOException e) {
-      LOG.warn(
-          "Error while caching object {} from position: {} length: {}. Error : {}",
-          gcsPath,
-          startPosition,
-          bufferSize,
-          e.getMessage());
-    } finally {
-      seek(originalPosition);
-    }
-  }
-
-  private int serveFromCache(ByteBuffer buffer) throws IOException {
-    int bytesToRead = serveFromCacheWithoutSeek(position, buffer);
-    if (bytesToRead != -1) {
-      seek(position + bytesToRead);
-    }
-    return bytesToRead;
-  }
-
-  private int serveFromCacheWithoutSeek(long currPosition, ByteBuffer buffer) throws IOException {
-    ByteBuffer cacheView = prefetchBuffer.duplicate();
-    int readStartPosition = (int) (currPosition - (fileSize - prefetchSize));
-    cacheView.position(readStartPosition);
-    if (cacheView.remaining() == 0) {
-      return -1;
-    }
-    int bytesToRead = Math.min(buffer.remaining(), cacheView.remaining());
-    cacheView.limit(cacheView.position() + bytesToRead);
-    buffer.put(cacheView);
-    return bytesToRead;
-  }
-
-  private static long calculatePrefetchSize(long fileSize, GcsReadOptions readOptions) {
-    if (!readOptions.isFooterPrefetchEnabled()
-        && readOptions.getSmallObjectCacheSize() < fileSize) {
-      // Both footer prefetch and small object cache are disabled.
-      return 0;
-    }
-    if (readOptions.getSmallObjectCacheSize() >= fileSize) {
-      // Small object cache is enabled and file size is <= the cache size.
-      return fileSize;
-    }
-    // Footer prefetch.
-    return fileSize > LARGE_FILE_SIZE_THRESHOLD
-        ? Math.min(readOptions.getFooterPrefetchSizeLargeFile(), fileSize)
-        : Math.min(readOptions.getFooterPrefetchSizeSmallFile(), fileSize);
   }
 }
