@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.ByteBuffer;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.IntFunction;
 import javax.annotation.Nonnull;
 import org.slf4j.Logger;
