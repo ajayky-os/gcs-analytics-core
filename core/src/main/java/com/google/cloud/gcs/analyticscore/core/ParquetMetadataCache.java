@@ -101,7 +101,6 @@ public class ParquetMetadataCache {
   }
 
   private List<String> loadIndexFiles() {
-    long startTime = System.currentTimeMillis();
     String bucketName = getBucketName(baseGcsPath);
     String prefix = getPathWithoutBucket(baseGcsPath + "**" + INDEX_DB_NAME);
 
@@ -119,8 +118,6 @@ public class ParquetMetadataCache {
     } catch (Exception e) {
       LOG.error("Error listing index files in {}: {}", baseGcsPath, e.getMessage(), e);
     }
-    long endTime = System.currentTimeMillis();
-    System.out.println("loadIndexFiles took " + (endTime - startTime) + " ms");
     return ImmutableList.copyOf(indices);
   }
 
@@ -153,7 +150,6 @@ public class ParquetMetadataCache {
   }
 
   private Path downloadIndex(String indexGcsPath) throws IOException {
-    long startTime = System.currentTimeMillis();
     String bucketName = getBucketName(indexGcsPath);
     String blobName = getPathWithoutBucket(indexGcsPath);
 
@@ -172,57 +168,46 @@ public class ParquetMetadataCache {
     } else {
       LOG.debug("Index file already cached: {}", localPath);
     }
-    long endTime = System.currentTimeMillis();
-    System.out.println(
-        "downloadIndex for " + indexGcsPath + " took " + (endTime - startTime) + " ms");
     return localPath;
   }
 
   public Optional<ParquetObjectMetadata> getMetadata(String objectGcsPath) {
-    long startTime = System.currentTimeMillis();
     Optional<ParquetObjectMetadata> result = Optional.empty();
+    Optional<String> indexGcsPathOpt = findNearestIndex(objectGcsPath);
+    if (!indexGcsPathOpt.isPresent()) {
+      LOG.warn("No index file found for {}", objectGcsPath);
+      return Optional.empty();
+    }
+
+    String indexGcsPath = indexGcsPathOpt.get();
     try {
-      Optional<String> indexGcsPathOpt = findNearestIndex(objectGcsPath);
-      if (!indexGcsPathOpt.isPresent()) {
-        LOG.warn("No index file found for {}", objectGcsPath);
-        return Optional.empty();
-      }
+      Path localIndexPatn = downloadIndex(indexGcsPath);
+      Connection conn = connectionCache.get(localIndexPatn.toString());
 
-      String indexGcsPath = indexGcsPathOpt.get();
-      try {
-        Path localIndexPatn = downloadIndex(indexGcsPath);
-        Connection conn = connectionCache.get(localIndexPatn.toString());
+      String objectName = BlobId.fromGsUtilUri(objectGcsPath).getName();
 
-        String objectName = BlobId.fromGsUtilUri(objectGcsPath).getName();
-
-        String query =
-            "SELECT file_size, footer_length, raw_metadata FROM metadata_index WHERE object_name = ?";
-        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-          pstmt.setString(1, objectName);
-          ResultSet rs = pstmt.executeQuery();
-          if (rs.next()) {
-            long fileSize = rs.getLong("file_size");
-            int footerLength = rs.getInt("footer_length");
-            byte[] rawMetadata = rs.getBytes("raw_metadata");
-            result =
-                Optional.of(
-                    new ParquetObjectMetadata(objectName, fileSize, footerLength, rawMetadata));
-          } else {
-            LOG.info("Metadata not found for {} in {}", objectName, indexGcsPath);
-          }
+      String query =
+          "SELECT file_size, footer_length, raw_metadata FROM metadata_index WHERE object_name = ?";
+      try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+        pstmt.setString(1, objectName);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+          long fileSize = rs.getLong("file_size");
+          int footerLength = rs.getInt("footer_length");
+          byte[] rawMetadata = rs.getBytes("raw_metadata");
+          result =
+              Optional.of(
+                  new ParquetObjectMetadata(objectName, fileSize, footerLength, rawMetadata));
+        } else {
+          LOG.info("Metadata not found for {} in {}", objectName, indexGcsPath);
         }
-      } catch (IOException e) {
-        LOG.error("Error downloading index file {}: {}", indexGcsPath, e.getMessage(), e);
-      } catch (SQLException e) {
-        LOG.error("SQLite error accessing {}: {}", indexGcsPath, e.getMessage(), e);
-      } catch (ExecutionException e) {
-        LOG.error(
-            "Error getting connection from cache for {}: {}", indexGcsPath, e.getMessage(), e);
       }
-    } finally {
-      long endTime = System.currentTimeMillis();
-      System.out.println(
-          "getMetadata for " + objectGcsPath + " took " + (endTime - startTime) + " ms");
+    } catch (IOException e) {
+      LOG.error("Error downloading index file {}: {}", indexGcsPath, e.getMessage(), e);
+    } catch (SQLException e) {
+      LOG.error("SQLite error accessing {}: {}", indexGcsPath, e.getMessage(), e);
+    } catch (ExecutionException e) {
+      LOG.error("Error getting connection from cache for {}: {}", indexGcsPath, e.getMessage(), e);
     }
     return result;
   }
@@ -279,12 +264,6 @@ public class ParquetMetadataCache {
 
     if (metadata.isPresent()) {
       ParquetObjectMetadata meta = metadata.get();
-      System.out.println("Metadata for " + testObject);
-      System.out.println("  File Size: " + meta.getFileSize());
-      System.out.println("  Footer Length: " + meta.getFooterLength());
-      System.out.println(
-          "  Raw Metadata Length: "
-              + (meta.getRawMetadata() != null ? meta.getRawMetadata().length : 0));
     } else {
       System.out.println("Could not retrieve metadata for " + testObject);
     }

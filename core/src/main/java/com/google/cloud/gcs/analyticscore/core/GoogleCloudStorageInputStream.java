@@ -133,7 +133,7 @@ public class GoogleCloudStorageInputStream extends SeekableInputStream {
         ParquetMetadataCache.ParquetObjectMetadata metadata = metadataOpt.get();
         byte[] rawMetadata = metadata.getRawMetadata();
         long cachedFileSize = metadata.getFileSize();
-        int footerLength = metadata.getFooterLength();
+        int footerLength = rawMetadata.length; // metadata.getFooterLength();
 
         if (rawMetadata != null && position >= cachedFileSize - footerLength) {
           int offsetInFooter = (int) (position - (cachedFileSize - footerLength));
@@ -248,7 +248,5 @@ public class GoogleCloudStorageInputStream extends SeekableInputStream {
     this.gcsFileInfo = fileInfo;
     this.gcsItemId = fileInfo.getItemInfo().getItemId();
     this.fileSize = fileInfo.getItemInfo().getSize();
-
   }
-
 }
