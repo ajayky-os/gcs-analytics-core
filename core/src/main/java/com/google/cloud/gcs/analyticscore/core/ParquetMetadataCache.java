@@ -82,6 +82,40 @@ public class ParquetMetadataCache {
                     return DriverManager.getConnection("jdbc:sqlite:" + localDbPath);
                   }
                 });
+
+    // Add a shutdown hook to delete the cache directory on exit
+    Runtime.getRuntime()
+        .addShutdownHook(
+            new Thread(
+                () -> {
+                  try {
+                    LOG.info("Deleting cache directory: {}", localCacheDir);
+                    deleteDirectory(localCacheDir.toFile());
+                  } catch (IOException e) {
+                    LOG.error("Failed to delete cache directory: {}", localCacheDir, e);
+                  }
+                }));
+  }
+
+  private void deleteDirectory(java.io.File directory) throws IOException {
+    if (!directory.exists()) {
+      return;
+    }
+    java.io.File[] files = directory.listFiles();
+    if (files != null) {
+      for (java.io.File file : files) {
+        if (file.isDirectory()) {
+          deleteDirectory(file);
+        } else {
+          if (!file.delete()) {
+            LOG.warn("Failed to delete file: {}", file);
+          }
+        }
+      }
+    }
+    if (!directory.delete()) {
+      LOG.warn("Failed to delete directory: {}", directory);
+    }
   }
 
   public static synchronized ParquetMetadataCache getInstance(
