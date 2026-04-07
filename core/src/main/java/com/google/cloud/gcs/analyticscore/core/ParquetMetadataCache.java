@@ -16,6 +16,7 @@
 
 package com.google.cloud.gcs.analyticscore.core;
 
+import com.google.cloud.gcs.analyticscore.client.GcsItemId;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.Storage;
@@ -82,19 +83,6 @@ public class ParquetMetadataCache {
                     return DriverManager.getConnection("jdbc:sqlite:" + localDbPath);
                   }
                 });
-
-    // Add a shutdown hook to delete the cache directory on exit
-    Runtime.getRuntime()
-        .addShutdownHook(
-            new Thread(
-                () -> {
-                  try {
-                    LOG.info("Deleting cache directory: {}", localCacheDir);
-                    deleteDirectory(localCacheDir.toFile());
-                  } catch (IOException e) {
-                    LOG.error("Failed to delete cache directory: {}", localCacheDir, e);
-                  }
-                }));
   }
 
   private void deleteDirectory(java.io.File directory) throws IOException {
@@ -119,19 +107,51 @@ public class ParquetMetadataCache {
   }
 
   public static synchronized ParquetMetadataCache getInstance(
-      String baseGcsPath, String localCacheDirPrefix) {
+      GcsItemId itemId, String localCacheDirPrefix) {
+    String baseGcsPath = "gs://" + itemId.getBucketName();
+    if (itemId.getBucketName().equals("gcs-hyd-iceberg-benchmark-warehouse")) {
+      baseGcsPath =
+          "gs://"
+              + itemId.getBucketName()
+              + "/"
+              + getBaseWarehousePath(itemId.getObjectName().orElse(""));
+    }
     if (instance == null) {
       instance = new ParquetMetadataCache(baseGcsPath, localCacheDirPrefix);
     } else {
       if (!instance.baseGcsPath.equals(
           baseGcsPath.endsWith("/") ? baseGcsPath : baseGcsPath + "/")) {
         LOG.warn(
-            "ParquetMetadataCache already initialized with baseGcsPath: {}, ignoring new path: {}",
+            "ParquetMetadataCache already initialized with baseGcsPath: {}, initializing with new path: {}",
             instance.baseGcsPath,
             baseGcsPath);
+        instance = new ParquetMetadataCache(baseGcsPath, localCacheDirPrefix);
       }
     }
     return instance;
+  }
+
+  private static String getBaseWarehousePath(String gcsPath) {
+    if (gcsPath == null || gcsPath.isEmpty()) {
+      return gcsPath;
+    }
+
+    // Find the first '/'
+    int firstSlash = gcsPath.indexOf('/');
+    if (firstSlash == -1) {
+      // Path has no slashes, return as-is
+      return gcsPath;
+    }
+
+    // Find the second '/' starting right after the first one
+    int secondSlash = gcsPath.indexOf('/', firstSlash + 1);
+    if (secondSlash == -1) {
+      // Path has only one slash, return as-is
+      return gcsPath;
+    }
+
+    // Return the substring up to, but not including, the second slash
+    return gcsPath.substring(0, secondSlash);
   }
 
   private List<String> loadIndexFiles() {
@@ -190,14 +210,18 @@ public class ParquetMetadataCache {
     Path localPath = localCacheDir.resolve(bucketName).resolve(blobName);
 
     if (!Files.exists(localPath)) {
-      LOG.info("Downloading {} to {}", indexGcsPath, localPath);
-      Files.createDirectories(localPath.getParent());
-      Blob blob = storage.get(bucketName, blobName);
-      if (blob != null && blob.exists()) {
-        blob.downloadTo(localPath);
-        LOG.info("Successfully downloaded {} to {}", indexGcsPath, localPath);
-      } else {
-        throw new IOException("Index file not found in GCS: " + indexGcsPath);
+      synchronized (this) {
+          if(!Files.exists(localPath)) {
+              LOG.info("Downloading {} to {}", indexGcsPath, localPath);
+              Files.createDirectories(localPath.getParent());
+              Blob blob = storage.get(bucketName, blobName);
+              if (blob != null && blob.exists()) {
+                  blob.downloadTo(localPath);
+                  LOG.info("Successfully downloaded {} to {}", indexGcsPath, localPath);
+              } else {
+                  throw new IOException("Index file not found in GCS: " + indexGcsPath);
+              }
+          }
       }
     } else {
       LOG.debug("Index file already cached: {}", localPath);
@@ -283,29 +307,6 @@ public class ParquetMetadataCache {
 
     public byte[] getRawMetadata() {
       return rawMetadata;
-    }
-  }
-
-  // Example Usage
-  public static void main(String[] args) {
-    String basePath = "gs://gcs-hyd-iceberg-benchmark-warehouse/partitioned_warehouse/tpcds_sf1000";
-    ParquetMetadataCache cache = ParquetMetadataCache.getInstance(basePath, "gcsio");
-
-    String testObject =
-        basePath
-            + "/catalog_sales/data/cs_sold_date_sk=2450818/00000-37100-ac344383-7b67-478a-9b3f-da8e0ce699a4-0-00001.parquet";
-    Optional<ParquetObjectMetadata> metadata = cache.getMetadata(testObject);
-
-    if (metadata.isPresent()) {
-      ParquetObjectMetadata meta = metadata.get();
-    } else {
-      System.out.println("Could not retrieve metadata for " + testObject);
-    }
-    metadata = cache.getMetadata(testObject);
-    String testObjectNoIndex = basePath + "/non_existent_table/data.parquet";
-    metadata = cache.getMetadata(testObjectNoIndex);
-    if (!metadata.isPresent()) {
-      System.out.println("As expected, could not retrieve metadata for " + testObjectNoIndex);
     }
   }
 }

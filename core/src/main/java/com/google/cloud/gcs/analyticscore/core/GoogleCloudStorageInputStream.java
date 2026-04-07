@@ -91,8 +91,7 @@ public class GoogleCloudStorageInputStream extends SeekableInputStream {
         URI.create(BlobId.of(itemId.getBucketName(), itemId.getObjectName().get()).toGsUtilUri());
     this.gcsItemId = itemId;
     this.position = 0;
-    String baseGcsPath = "gs://" + itemId.getBucketName();
-    this.parquetMetadataCache = ParquetMetadataCache.getInstance(baseGcsPath, "gcsio");
+    this.parquetMetadataCache = ParquetMetadataCache.getInstance(itemId, "gcsio");
   }
 
   @Override
@@ -123,7 +122,7 @@ public class GoogleCloudStorageInputStream extends SeekableInputStream {
   public int read(ByteBuffer byteBuffer) throws IOException {
     checkNotClosed("Cannot read: already closed");
 
-    if (parquetMetadataCache != null) {
+    if (isParquetFile() && parquetMetadataCache != null) {
       if (!isMetadataInitialized()) {
         initializeMetadata();
       }
@@ -161,6 +160,10 @@ public class GoogleCloudStorageInputStream extends SeekableInputStream {
       position += bytesRead;
     }
     return bytesRead;
+  }
+
+  private boolean isParquetFile() {
+      return this.gcsPath.toString().endsWith(".parquet") || this.gcsPath.toString().endsWith(".pq");
   }
 
   @Override
