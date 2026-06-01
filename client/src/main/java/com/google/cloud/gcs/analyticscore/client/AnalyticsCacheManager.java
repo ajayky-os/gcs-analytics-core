@@ -23,20 +23,18 @@ import com.google.cloud.gcs.analyticscore.common.cache.AnalyticsCacheCaffeineImp
 import com.google.cloud.gcs.analyticscore.common.cache.AnalyticsCacheNoOpImpl;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import javax.annotation.Nullable;
 
 /**
- * Manages the caching layer for GCS objects. This class is thread-safe and acts as a registry for
- * various specialized caches (e.g., Parquet footer cache).
+ * Manages the caching layer for GCS objects. This class acts as a registry for format-specific
+ * promises (e.g., Parquet footer prefetch).
  */
 public class AnalyticsCacheManager {
 
-  private final AnalyticsCache<GcsItemId, ByteBuffer> footerCache;
+  private final AnalyticsCache<GcsItemId, CompletableFuture<ByteBuffer>> footerCache;
 
-  /**
-   * Creates a new {@link AnalyticsCacheManager} with the specified options.
-   *
-   * @param options The configuration options for the caching layer.
-   */
   public AnalyticsCacheManager(GcsCacheOptions options) {
     checkNotNull(options, "options cannot be null");
     this.footerCache =
@@ -46,22 +44,21 @@ public class AnalyticsCacheManager {
   }
 
   /**
-   * Returns the cached footer for the given {@code itemId}, obtaining it from the {@code
-   * footerLoader} if necessary. This method is atomic; the {@code footerLoader} will be applied at
-   * most once per itemId during concurrent access.
-   *
-   * <p>If the {@code footerLoader} throws an exception, it will be propagated to the caller and the
-   * result will not be cached.
-   *
-   * @throws IOException if the loader throws an {@link IOException}.
+   * Returns the future for the cached footer of the given {@code itemId}, obtaining it from the
+   * {@code footerLoader} if necessary. This method is atomic.
    */
-  public ByteBuffer getFooter(GcsItemId itemId, FooterLoader footerLoader) throws IOException {
+  public CompletableFuture<ByteBuffer> getFooterFuture(
+      GcsItemId itemId, FooterLoader footerLoader) {
     checkNotNull(itemId, "itemId cannot be null");
     checkNotNull(footerLoader, "footerLoader cannot be null");
+    return footerCache.get(itemId, footerLoader::load);
+  }
 
-    return footerCache
-        .get(itemId, cachedItemId -> footerLoader.load(cachedItemId))
-        .asReadOnlyBuffer();
+  /** Returns the future for the cached footer if it exists, otherwise returns {@code null}. */
+  @Nullable
+  public CompletableFuture<ByteBuffer> getFooterFutureIfPresent(GcsItemId itemId) {
+    checkNotNull(itemId, "itemId cannot be null");
+    return footerCache.get(itemId).orElse(null);
   }
 
   /** Invalidates the cached footer for the given {@code itemId}. */
@@ -75,10 +72,31 @@ public class AnalyticsCacheManager {
     footerCache.invalidateAll();
   }
 
-  /** A loader for GCS object footers. */
+  /**
+   * Joins the given future and returns its result as a read-only buffer, unwrapping any {@link
+   * CompletionException} into its cause.
+   *
+   * @throws IOException if the future completed exceptionally with an {@link IOException}.
+   */
+  public static ByteBuffer join(CompletableFuture<ByteBuffer> future) throws IOException {
+    try {
+      return future.join().asReadOnlyBuffer();
+    } catch (CompletionException e) {
+      Throwable cause = e.getCause();
+      if (cause instanceof IOException) {
+        throw (IOException) cause;
+      }
+      if (cause instanceof RuntimeException) {
+        throw (RuntimeException) cause;
+      }
+      throw new IOException(cause);
+    }
+  }
+
+  /** A loader for GCS object footers that returns a promise. */
   @FunctionalInterface
   public interface FooterLoader {
-    /** Loads the footer for the given {@code itemId}. */
-    ByteBuffer load(GcsItemId itemId) throws IOException;
+    /** Returns a future that will be completed with the footer data. */
+    CompletableFuture<ByteBuffer> load(GcsItemId itemId);
   }
 }

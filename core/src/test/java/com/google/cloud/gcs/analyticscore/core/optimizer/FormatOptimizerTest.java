@@ -23,10 +23,13 @@ import com.google.cloud.gcs.analyticscore.client.AnalyticsCacheManager;
 import com.google.cloud.gcs.analyticscore.client.GcsFileInfo;
 import com.google.cloud.gcs.analyticscore.client.GcsItemId;
 import com.google.cloud.gcs.analyticscore.client.GcsItemInfo;
+import com.google.cloud.gcs.analyticscore.client.GcsObjectRange;
 import com.google.cloud.gcs.analyticscore.client.VectoredSeekableByteChannel;
 import com.google.common.collect.ImmutableMap;
+import java.io.IOException;
 import java.net.URI;
 import java.nio.ByteBuffer;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class FormatOptimizerTest {
@@ -87,6 +90,29 @@ class FormatOptimizerTest {
     optimizer.onOpen(FILE_INFO, mockCacheManager);
 
     assertThat(capturedId[0]).isEqualTo(ITEM_ID);
+  }
+
+  @Test
+  void readVectored_defaultReturnsOriginalRanges() throws IOException {
+    FormatOptimizer optimizer =
+        new FormatOptimizer() {
+          @Override
+          public boolean isApplicable(GcsItemId itemId) {
+            return true;
+          }
+
+          @Override
+          public void onOpen(GcsItemId itemId, AnalyticsCacheManager cacheManager) {}
+
+          @Override
+          public int read(long position, ByteBuffer dst, VectoredSeekableByteChannel source) {
+            return 0;
+          }
+        };
+    List<GcsObjectRange> ranges = List.of();
+
+    assertThat(optimizer.readVectored(ranges, (i) -> ByteBuffer.allocate(i)))
+        .isSameInstanceAs(ranges);
   }
 
   @Test

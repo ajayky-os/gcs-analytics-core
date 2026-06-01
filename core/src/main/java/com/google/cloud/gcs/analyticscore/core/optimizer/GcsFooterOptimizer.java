@@ -20,14 +20,22 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.cloud.gcs.analyticscore.client.AnalyticsCacheManager;
 import com.google.cloud.gcs.analyticscore.client.GcsFileInfo;
+import com.google.cloud.gcs.analyticscore.client.GcsFileSystem;
 import com.google.cloud.gcs.analyticscore.client.GcsItemId;
+import com.google.cloud.gcs.analyticscore.client.GcsObjectRange;
 import com.google.cloud.gcs.analyticscore.client.GcsReadOptions;
 import com.google.cloud.gcs.analyticscore.client.VectoredSeekableByteChannel;
 import com.google.cloud.gcs.analyticscore.common.GcsAnalyticsCoreTelemetryConstants.Metric;
 import com.google.cloud.gcs.analyticscore.common.telemetry.Telemetry;
+import com.google.common.collect.ImmutableList;
+import java.io.EOFException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.function.IntFunction;
 
 /** A {@link FormatOptimizer} that caches and serves GCS object footers (e.g., for Parquet). */
 public class GcsFooterOptimizer implements FormatOptimizer {
@@ -36,15 +44,20 @@ public class GcsFooterOptimizer implements FormatOptimizer {
 
   private final GcsReadOptions readOptions;
   private final Telemetry telemetry;
+  private final GcsFileSystem gcsFileSystem;
 
   private AnalyticsCacheManager cacheManager;
   private GcsItemId gcsItemId;
   private long fileSize = -1;
   private long prefetchSize = -1;
 
-  public GcsFooterOptimizer(GcsReadOptions readOptions, Telemetry telemetry) {
+  private volatile CompletableFuture<ByteBuffer> footerFuture;
+
+  public GcsFooterOptimizer(
+      GcsReadOptions readOptions, Telemetry telemetry, GcsFileSystem gcsFileSystem) {
     this.readOptions = checkNotNull(readOptions, "readOptions cannot be null");
     this.telemetry = checkNotNull(telemetry, "telemetry cannot be null");
+    this.gcsFileSystem = checkNotNull(gcsFileSystem, "gcsFileSystem cannot be null");
   }
 
   @Override
@@ -64,6 +77,23 @@ public class GcsFooterOptimizer implements FormatOptimizer {
     this.cacheManager = cacheManager;
     this.fileSize = fileInfo.getItemInfo().getSize();
     this.prefetchSize = calculatePrefetchSize(fileSize, readOptions);
+
+    if (prefetchSize > 0) {
+      this.footerFuture =
+          cacheManager.getFooterFuture(
+              gcsItemId,
+              itemId ->
+                  CompletableFuture.supplyAsync(
+                      () -> {
+                        try (VectoredSeekableByteChannel channel =
+                            gcsFileSystem.open(itemId, readOptions)) {
+                          return loadFooter(channel, fileSize, (int) prefetchSize);
+                        } catch (IOException e) {
+                          throw new CompletionException(e);
+                        }
+                      },
+                      gcsFileSystem.getExecutorService()));
+    }
   }
 
   @Override
@@ -82,33 +112,133 @@ public class GcsFooterOptimizer implements FormatOptimizer {
       return -1;
     }
 
-    ByteBuffer footer =
-        cacheManager.getFooter(
-            gcsItemId,
-            itemId -> {
-              telemetry.recordMetric(Metric.FOOTER_CACHE_MISS, 1L, Collections.emptyMap());
-              long startPosition = fileSize - prefetchSize;
-              int bufferSize = (int) (fileSize - startPosition);
-              ByteBuffer cacheBuffer = ByteBuffer.allocate(bufferSize);
-              long originalPosition = source.position();
-              try {
-                source.position(startPosition);
-                while (cacheBuffer.hasRemaining()) {
-                  if (source.read(cacheBuffer) == -1) {
-                    throw new IOException("Unexpected EOF encountered while reading footer.");
-                  }
-                }
-                cacheBuffer.flip();
-                return cacheBuffer;
-              } finally {
-                source.position(originalPosition);
-              }
-            });
-
+    ByteBuffer footer = AnalyticsCacheManager.join(getOrInitFooterFuture(source));
     telemetry.recordMetric(Metric.FOOTER_CACHE_HIT, 1L, Collections.emptyMap());
 
+    return serveFromFooter(footer, position, dst);
+  }
+
+  @Override
+  public List<GcsObjectRange> readVectored(
+      List<GcsObjectRange> ranges, IntFunction<ByteBuffer> allocate) throws IOException {
+    if (prefetchSize <= 0 || fileSize == -1) {
+      return ranges;
+    }
+
+    CompletableFuture<ByteBuffer> future = footerFuture;
+    if (future == null) {
+      future = cacheManager.getFooterFutureIfPresent(gcsItemId);
+      if (future == null) {
+        return ranges;
+      }
+    }
+
+    ByteBuffer footer;
+    try {
+      footer = future.join();
+    } catch (CompletionException e) {
+      return ranges;
+    }
+
+    if (footer == null) {
+      return ranges;
+    }
+
+    ImmutableList.Builder<GcsObjectRange> remaining = ImmutableList.builder();
+    for (GcsObjectRange range : ranges) {
+      long offset = range.getOffset();
+
+      if (offset >= fileSize) {
+        range
+            .getByteBufferFuture()
+            .completeExceptionally(
+                new EOFException(
+                    String.format(
+                        "Offset %d is beyond file size %d for range: %s",
+                        offset, fileSize, range)));
+        continue;
+      }
+
+      if (offset >= (fileSize - prefetchSize)) {
+        telemetry.recordMetric(Metric.FOOTER_CACHE_HIT, 1L, Collections.emptyMap());
+        ByteBuffer dest = allocate.apply(range.getLength());
+        int bytesRead = serveFromFooter(footer, offset, dest);
+        if (bytesRead < range.getLength()) {
+          range
+              .getByteBufferFuture()
+              .completeExceptionally(
+                  new EOFException(
+                      String.format("Error while populating range: %s, unexpected EOF", range)));
+        } else {
+          dest.flip();
+          range.getByteBufferFuture().complete(dest);
+        }
+      } else {
+        remaining.add(range);
+      }
+    }
+
+    return remaining.build();
+  }
+
+  private CompletableFuture<ByteBuffer> getOrInitFooterFuture(VectoredSeekableByteChannel source) {
+    CompletableFuture<ByteBuffer> future = footerFuture;
+    if (future == null) {
+      synchronized (this) {
+        future = footerFuture;
+        if (future == null) {
+          this.footerFuture =
+              future =
+                  cacheManager.getFooterFuture(
+                      gcsItemId,
+                      itemId -> {
+                        telemetry.recordMetric(
+                            Metric.FOOTER_CACHE_MISS, 1L, Collections.emptyMap());
+                        try {
+                          return CompletableFuture.completedFuture(
+                              loadFooter(source, fileSize, (int) prefetchSize));
+                        } catch (IOException e) {
+                          CompletableFuture<ByteBuffer> failed = new CompletableFuture<>();
+                          failed.completeExceptionally(e);
+                          return failed;
+                        }
+                      });
+        }
+      }
+    }
+    return future;
+  }
+
+  private static ByteBuffer loadFooter(
+      VectoredSeekableByteChannel channel, long fileSize, int prefetchSize) throws IOException {
+    long startPosition = fileSize - prefetchSize;
+    int bufferSize = (int) (fileSize - startPosition);
+    ByteBuffer cacheBuffer = ByteBuffer.allocate(bufferSize);
+    long originalPosition = channel.position();
+    try {
+      channel.position(startPosition);
+      while (cacheBuffer.hasRemaining()) {
+        int read = channel.read(cacheBuffer);
+        if (read == -1) {
+          throw new EOFException("Unexpected EOF encountered while reading footer.");
+        }
+        if (read == 0) {
+          throw new IOException("Infinite loop detected: channel.read() returned 0 bytes.");
+        }
+      }
+      cacheBuffer.flip();
+      return cacheBuffer;
+    } finally {
+      channel.position(originalPosition);
+    }
+  }
+
+  private int serveFromFooter(ByteBuffer footer, long position, ByteBuffer dst) {
     ByteBuffer footerLean = footer.duplicate();
     int readStartPosition = (int) (position - (fileSize - prefetchSize));
+    if (readStartPosition < 0 || readStartPosition >= footerLean.capacity()) {
+      return 0;
+    }
     footerLean.position(readStartPosition);
 
     if (footerLean.remaining() == 0) {

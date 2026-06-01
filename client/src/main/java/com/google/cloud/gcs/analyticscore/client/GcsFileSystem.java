@@ -65,6 +65,9 @@ public interface GcsFileSystem extends AutoCloseable {
   /** Retrieve the telemetry instance used by this file system. */
   Telemetry getTelemetry();
 
+  /** Returns the executor service used by this file system for async operations. */
+  java.util.concurrent.ExecutorService getExecutorService();
+
   /** Returns the cache manager used by this file system. */
   AnalyticsCacheManager getCacheManager();
 

@@ -158,6 +158,11 @@ public class GcsFileSystemImpl implements GcsFileSystem {
   }
 
   @Override
+  public ExecutorService getExecutorService() {
+    return executorServiceSupplier.get();
+  }
+
+  @Override
   public AnalyticsCacheManager getCacheManager() {
     return cacheManager;
   }
