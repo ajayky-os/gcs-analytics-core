@@ -72,7 +72,7 @@ public class AnalyticsCacheFileSystemImpl<K> implements AnalyticsCache<K, ByteBu
                   .setDaemon(true)
                   .build())
           .scheduleWithFixedDelay(
-              AnalyticsCacheFileSystemImpl::performGlobalCleanup, 1, 5, TimeUnit.MINUTES);
+              AnalyticsCacheFileSystemImpl::performGlobalCleanup, 10, 30, TimeUnit.SECONDS);
     }
   }
 
@@ -262,16 +262,22 @@ public class AnalyticsCacheFileSystemImpl<K> implements AnalyticsCache<K, ByteBu
       for (Path entry : stream) {
         String fileName = entry.getFileName().toString();
 
-        if (fileName.endsWith(CACHE_SUFFIX)) {
-          cacheFiles.add(entry);
-          totalSize += Files.size(entry);
-        } else if (fileName.contains(TMP_SUFFIX)) {
-          // Garbage collect orphaned .tmp files older than 1 hour
-          BasicFileAttributes attr = Files.readAttributes(entry, BasicFileAttributes.class);
-          Instant lastModified = attr.lastModifiedTime().toInstant();
-          if (Duration.between(lastModified, now).toHours() >= 1) {
-            Files.deleteIfExists(entry);
+        try {
+          if (fileName.endsWith(CACHE_SUFFIX)) {
+            long size = Files.size(entry);
+            cacheFiles.add(entry);
+            totalSize += size;
+          } else if (fileName.contains(TMP_SUFFIX)) {
+            // Garbage collect orphaned .tmp files older than 1 hour
+            BasicFileAttributes attr = Files.readAttributes(entry, BasicFileAttributes.class);
+            Instant lastModified = attr.lastModifiedTime().toInstant();
+            if (Duration.between(lastModified, now).toHours() >= 1) {
+              Files.deleteIfExists(entry);
+            }
           }
+        } catch (IOException e) {
+          // File might have been deleted or modified concurrently by another process.
+          // Ignore and continue scanning.
         }
       }
 
@@ -293,9 +299,13 @@ public class AnalyticsCacheFileSystemImpl<K> implements AnalyticsCache<K, ByteBu
           if (totalSize <= maxBytes) {
             break;
           }
-          long fileSize = Files.size(cacheFile);
-          if (Files.deleteIfExists(cacheFile)) {
-            totalSize -= fileSize;
+          try {
+            long fileSize = Files.size(cacheFile);
+            if (Files.deleteIfExists(cacheFile)) {
+              totalSize -= fileSize;
+            }
+          } catch (IOException e) {
+            // File already deleted or inaccessible. Just continue.
           }
         }
       }
