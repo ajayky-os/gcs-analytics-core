@@ -45,7 +45,8 @@ public abstract class GcsCacheOptions {
   private static final long DEFAULT_FOOTER_CACHE_MAX_SIZE_BYTES = 100 * 1024 * 1024L; // 100 MB
   private static final CacheType DEFAULT_SMALL_OBJECT_CACHE_TYPE = CacheType.IN_MEMORY;
   private static final long DEFAULT_SMALL_OBJECT_CACHE_MAX_SIZE_BYTES = 0; // Disabled by default
-  private static final String DEFAULT_CACHE_FILESYSTEM_BASE_DIR = "/tmp/gcs-analytics-core-cache";
+  private static final String DEFAULT_CACHE_FILESYSTEM_BASE_DIR =
+      "/tmp/gcs-analytics-core-cache-" + System.getProperty("user.name");
 
   /** Returns whether the Parquet footer cache is enabled. */
   public abstract boolean isFooterCacheEnabled();
