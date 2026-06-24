@@ -174,6 +174,20 @@ class GoogleCloudStorageInputStreamIntegrationTest {
 
   @ParameterizedTest
   @ValueSource(
+          strings = {IntegrationTestHelper.TPCDS_CUSTOMER_SMALL_FILE,
+                  IntegrationTestHelper.TPCDS_CUSTOMER_MEDIUM_FILE,
+                  IntegrationTestHelper.TPCDS_CUSTOMER_LARGE_FILE})
+  void forSampleParquetFiles_fileSystemCacheEnabled_readsFileSuccessfully(String fileName) {
+    GcsFileSystemOptions gcsFileSystemOptions = GcsFileSystemOptions.createFromOptions(
+            Map.of("gcs.analytics-core.footer.cache.type", "FILE_SYSTEM",
+                   "gcs.analytics-core.small-object.cache.type", "FILE_SYSTEM",
+                   "gcs.analytics-core.small-object.cache.max-size-bytes", "1048576"), "gcs.");
+    URI uri = IntegrationTestHelper.getGcsObjectUriForFile(fileName);
+    ParquetHelper.readParquetObjectRecords(uri, /* readVectoredEnabled= */ true, gcsFileSystemOptions);
+  }
+
+  @ParameterizedTest
+  @ValueSource(
       strings = {
         IntegrationTestHelper.TPCDS_CUSTOMER_SMALL_FILE,
       })
@@ -222,7 +236,7 @@ class GoogleCloudStorageInputStreamIntegrationTest {
 
       googleCloudStorageInputStream.read(buffer);
     }
-    
+
     MetricKey bytesReadKey =
         capturedReadMetrics.get().keySet().stream()
             .filter(k -> k.getMetric().getName().equals(GcsAnalyticsCoreTelemetryConstants.Metric.READ_BYTES.getName()))
