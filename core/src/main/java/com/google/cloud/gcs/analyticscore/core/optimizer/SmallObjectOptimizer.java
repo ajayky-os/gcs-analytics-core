@@ -76,6 +76,8 @@ public class SmallObjectOptimizer implements FormatOptimizer {
 
   @Override
   public void onOpen(GcsFileInfo fileInfo, AnalyticsCacheManager cacheManager) {
+    this.currentItemId = fileInfo.getItemInfo().getItemId();
+    this.cacheManager = cacheManager;
     this.fileSize = fileInfo.getItemInfo().getSize();
   }
 
