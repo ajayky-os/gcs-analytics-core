@@ -31,6 +31,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.PosixFilePermissions;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -38,10 +39,12 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
@@ -65,9 +68,14 @@ public class AnalyticsCacheFileSystemImpl<K> implements AnalyticsCache<K, ByteBu
   private static final ConcurrentMap<Path, Long> registeredDirs = new ConcurrentHashMap<>();
   private static final AtomicBoolean isCleanerScheduled = new AtomicBoolean(false);
   private static final ExecutorService ASYNC_WRITE_EXECUTOR =
-      Executors.newFixedThreadPool(
+      new ThreadPoolExecutor(
           Math.max(2, Runtime.getRuntime().availableProcessors() / 2),
-          new ThreadFactoryBuilder().setNameFormat("fs-cache-writer-%d").setDaemon(true).build());
+          Math.max(2, Runtime.getRuntime().availableProcessors() / 2),
+          60L,
+          TimeUnit.SECONDS,
+          new ArrayBlockingQueue<>(100),
+          new ThreadFactoryBuilder().setNameFormat("fs-cache-writer-%d").setDaemon(true).build(),
+          new ThreadPoolExecutor.DiscardPolicy());
 
   private static void ensureCleanerScheduled() {
     if (isCleanerScheduled.compareAndSet(false, true)) {
@@ -94,6 +102,11 @@ public class AnalyticsCacheFileSystemImpl<K> implements AnalyticsCache<K, ByteBu
 
     try {
       Files.createDirectories(this.baseDir);
+      try {
+        Files.setPosixFilePermissions(this.baseDir, PosixFilePermissions.fromString("rwx------"));
+      } catch (UnsupportedOperationException e) {
+        // Ignored on non-POSIX file systems
+      }
     } catch (IOException e) {
       logger.log(Level.WARNING, "Failed to create cache directory: " + baseDir, e);
     }
@@ -158,13 +171,16 @@ public class AnalyticsCacheFileSystemImpl<K> implements AnalyticsCache<K, ByteBu
     Path finalPath = getCachePath(key);
     Path tmpPath = getTmpPath(key);
 
-    byte[] data = new byte[value.remaining()];
-    value.get(data);
+    // Duplicate the buffer to capture position/limit without copying data
+    ByteBuffer valueToCache = value.duplicate();
 
-    ASYNC_WRITE_EXECUTOR.submit(
+    ASYNC_WRITE_EXECUTOR.execute(
         () -> {
           try {
-            Files.write(tmpPath, data, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+            try (FileChannel channel =
+                FileChannel.open(tmpPath, StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
+              channel.write(valueToCache);
+            }
             // Atomic move ensures readers never see a partially written file
             Files.move(
                 tmpPath,
