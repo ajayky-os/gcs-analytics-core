@@ -40,6 +40,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -63,6 +64,10 @@ public class AnalyticsCacheFileSystemImpl<K> implements AnalyticsCache<K, ByteBu
 
   private static final ConcurrentMap<Path, Long> registeredDirs = new ConcurrentHashMap<>();
   private static final AtomicBoolean isCleanerScheduled = new AtomicBoolean(false);
+  private static final ExecutorService ASYNC_WRITE_EXECUTOR =
+      Executors.newFixedThreadPool(
+          Math.max(2, Runtime.getRuntime().availableProcessors() / 2),
+          new ThreadFactoryBuilder().setNameFormat("fs-cache-writer-%d").setDaemon(true).build());
 
   private static void ensureCleanerScheduled() {
     if (isCleanerScheduled.compareAndSet(false, true)) {
@@ -153,16 +158,23 @@ public class AnalyticsCacheFileSystemImpl<K> implements AnalyticsCache<K, ByteBu
     Path finalPath = getCachePath(key);
     Path tmpPath = getTmpPath(key);
 
-    try {
-      byte[] data = new byte[value.remaining()];
-      value.get(data);
-      Files.write(tmpPath, data, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-      // Atomic move ensures readers never see a partially written file
-      Files.move(
-          tmpPath, finalPath, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
-    } catch (IOException e) {
-      logger.log(Level.WARNING, "Failed to write cache file: " + finalPath, e);
-    }
+    byte[] data = new byte[value.remaining()];
+    value.get(data);
+
+    ASYNC_WRITE_EXECUTOR.submit(
+        () -> {
+          try {
+            Files.write(tmpPath, data, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+            // Atomic move ensures readers never see a partially written file
+            Files.move(
+                tmpPath,
+                finalPath,
+                StandardCopyOption.ATOMIC_MOVE,
+                StandardCopyOption.REPLACE_EXISTING);
+          } catch (IOException e) {
+            logger.log(Level.WARNING, "Failed to write cache file: " + finalPath, e);
+          }
+        });
   }
 
   @Override

@@ -44,10 +44,11 @@ class AnalyticsCacheFileSystemImplTest {
   }
 
   @Test
-  void putAndGet_storesAndRetrievesDataSuccessfully() {
+  void putAndGet_storesAndRetrievesDataSuccessfully() throws InterruptedException {
     ByteBuffer data = ByteBuffer.wrap(new byte[] {1, 2, 3});
 
     cache.put("key1", data);
+    Thread.sleep(500); // wait for async write
 
     assertThat(cache.get("key1").isPresent()).isTrue();
     assertThat(cache.get("key1").get().array()).isEqualTo(new byte[] {1, 2, 3});
@@ -59,8 +60,9 @@ class AnalyticsCacheFileSystemImplTest {
   }
 
   @Test
-  void invalidate_removesItem() {
+  void invalidate_removesItem() throws InterruptedException {
     cache.put("key1", ByteBuffer.wrap(new byte[] {1, 2}));
+    Thread.sleep(500); // wait for async write
     assertThat(cache.get("key1").isPresent()).isTrue();
 
     cache.invalidate("key1");
@@ -69,9 +71,10 @@ class AnalyticsCacheFileSystemImplTest {
   }
 
   @Test
-  void invalidateAll_removesAllItems() {
+  void invalidateAll_removesAllItems() throws InterruptedException {
     cache.put("key1", ByteBuffer.wrap(new byte[] {1}));
     cache.put("key2", ByteBuffer.wrap(new byte[] {2}));
+    Thread.sleep(500); // wait for async write
 
     cache.invalidateAll();
 
@@ -82,6 +85,7 @@ class AnalyticsCacheFileSystemImplTest {
   @Test
   void getWithLoader_loadsAndStores() throws Exception {
     ByteBuffer loaded = cache.get("key1", key -> ByteBuffer.wrap(new byte[] {5, 6}));
+    Thread.sleep(500); // wait for async write
 
     assertThat(loaded.array()).isEqualTo(new byte[] {5, 6});
     assertThat(cache.get("key1").isPresent()).isTrue();
@@ -89,9 +93,10 @@ class AnalyticsCacheFileSystemImplTest {
   }
 
   @Test
-  void size_returnsApproximateDirectorySize() {
+  void size_returnsApproximateDirectorySize() throws InterruptedException {
     cache.put("key1", ByteBuffer.wrap(new byte[] {1, 2, 3, 4, 5}));
     cache.put("key2", ByteBuffer.wrap(new byte[] {1, 2, 3, 4, 5}));
+    Thread.sleep(500); // wait for async write
 
     assertThat(cache.size()).isEqualTo(10);
   }
