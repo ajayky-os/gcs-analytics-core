@@ -42,14 +42,16 @@ class GcsFileSystemOptionsTest {
   void createFromOptions_cacheProperties_createsCorrectOptions() {
     ImmutableMap<String, String> properties =
         ImmutableMap.of(
-            "fs.gs.analytics-core.footer.cache.enabled", "false",
-            "fs.gs.analytics-core.footer.cache.max-entries", "500");
+            "fs.gs.analytics-core.footer.cache.enabled",
+            "false",
+            "fs.gs.analytics-core.footer.cache.max-size-bytes",
+            String.valueOf(500 * 1024 * 1024L));
 
     GcsFileSystemOptions options = GcsFileSystemOptions.createFromOptions(properties, "fs.gs.");
 
     GcsCacheOptions cacheOptions = options.getGcsCacheOptions();
     assertThat(cacheOptions.isFooterCacheEnabled()).isFalse();
-    assertThat(cacheOptions.getFooterCacheMaxEntries()).isEqualTo(500);
+    assertThat(cacheOptions.getFooterCacheMaxSizeBytes()).isEqualTo(500 * 1024 * 1024L);
   }
 
   @Test
@@ -64,6 +66,6 @@ class GcsFileSystemOptionsTest {
 
     GcsCacheOptions cacheOptions = options.getGcsCacheOptions();
     assertThat(cacheOptions.isFooterCacheEnabled()).isTrue();
-    assertThat(cacheOptions.getFooterCacheMaxEntries()).isEqualTo(100);
+    assertThat(cacheOptions.getFooterCacheMaxSizeBytes()).isEqualTo(100 * 1024 * 1024L);
   }
 }

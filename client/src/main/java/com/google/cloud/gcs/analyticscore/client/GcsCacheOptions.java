@@ -24,19 +24,41 @@ import java.util.Map;
 /** Configuration options for the GCS caching layer. */
 @AutoValue
 public abstract class GcsCacheOptions {
+  public enum CacheType {
+    IN_MEMORY,
+    FILE_SYSTEM
+  }
 
   private static final String FOOTER_CACHE_ENABLED_KEY = "analytics-core.footer.cache.enabled";
-  private static final String FOOTER_CACHE_MAX_ENTRIES_KEY =
-      "analytics-core.footer.cache.max-entries";
+  private static final String FOOTER_CACHE_TYPE_KEY = "analytics-core.footer.cache.type";
+  private static final String FOOTER_CACHE_MAX_SIZE_BYTES_KEY =
+      "analytics-core.footer.cache.max-size-bytes";
+  private static final String SMALL_OBJECT_CACHE_TYPE_KEY =
+      "analytics-core.small-object.cache.type";
+  private static final String SMALL_OBJECT_CACHE_MAX_SIZE_BYTES_KEY =
+      "analytics-core.small-object.cache.max-size-bytes";
+  private static final String CACHE_FILESYSTEM_BASE_DIR_KEY =
+      "analytics-core.cache.filesystem.base-dir";
 
   private static final boolean DEFAULT_FOOTER_CACHE_ENABLED = true;
-  private static final int DEFAULT_FOOTER_CACHE_MAX_ENTRIES = 100;
+  private static final CacheType DEFAULT_FOOTER_CACHE_TYPE = CacheType.IN_MEMORY;
+  private static final long DEFAULT_FOOTER_CACHE_MAX_SIZE_BYTES = 100 * 1024 * 1024L; // 100 MB
+  private static final CacheType DEFAULT_SMALL_OBJECT_CACHE_TYPE = CacheType.IN_MEMORY;
+  private static final long DEFAULT_SMALL_OBJECT_CACHE_MAX_SIZE_BYTES = 0; // Disabled by default
+  private static final String DEFAULT_CACHE_FILESYSTEM_BASE_DIR = "/tmp/gcs-analytics-core-cache";
 
   /** Returns whether the Parquet footer cache is enabled. */
   public abstract boolean isFooterCacheEnabled();
 
-  /** Returns the maximum number of entries to hold in the Parquet footer cache. */
-  public abstract int getFooterCacheMaxEntries();
+  public abstract CacheType getFooterCacheType();
+
+  public abstract long getFooterCacheMaxSizeBytes();
+
+  public abstract CacheType getSmallObjectCacheType();
+
+  public abstract long getSmallObjectCacheMaxSizeBytes();
+
+  public abstract String getCacheFileSystemBaseDir();
 
   /**
    * Returns a builder for {@link GcsCacheOptions} with the same property values as this instance.
@@ -47,7 +69,11 @@ public abstract class GcsCacheOptions {
   public static Builder builder() {
     return new AutoValue_GcsCacheOptions.Builder()
         .setFooterCacheEnabled(DEFAULT_FOOTER_CACHE_ENABLED)
-        .setFooterCacheMaxEntries(DEFAULT_FOOTER_CACHE_MAX_ENTRIES);
+        .setFooterCacheType(DEFAULT_FOOTER_CACHE_TYPE)
+        .setFooterCacheMaxSizeBytes(DEFAULT_FOOTER_CACHE_MAX_SIZE_BYTES)
+        .setSmallObjectCacheType(DEFAULT_SMALL_OBJECT_CACHE_TYPE)
+        .setSmallObjectCacheMaxSizeBytes(DEFAULT_SMALL_OBJECT_CACHE_MAX_SIZE_BYTES)
+        .setCacheFileSystemBaseDir(DEFAULT_CACHE_FILESYSTEM_BASE_DIR);
   }
 
   /** Creates a {@link GcsCacheOptions} instance from a map of configuration options. */
@@ -58,10 +84,30 @@ public abstract class GcsCacheOptions {
       optionsBuilder.setFooterCacheEnabled(
           Boolean.parseBoolean(analyticsCoreOptions.get(prefix + FOOTER_CACHE_ENABLED_KEY)));
     }
-    if (analyticsCoreOptions.containsKey(prefix + FOOTER_CACHE_MAX_ENTRIES_KEY)) {
-      optionsBuilder.setFooterCacheMaxEntries(
-          Integer.parseInt(analyticsCoreOptions.get(prefix + FOOTER_CACHE_MAX_ENTRIES_KEY)));
+
+    if (analyticsCoreOptions.containsKey(prefix + FOOTER_CACHE_TYPE_KEY)) {
+      optionsBuilder.setFooterCacheType(
+          CacheType.valueOf(
+              analyticsCoreOptions.get(prefix + FOOTER_CACHE_TYPE_KEY).toUpperCase()));
     }
+    if (analyticsCoreOptions.containsKey(prefix + FOOTER_CACHE_MAX_SIZE_BYTES_KEY)) {
+      optionsBuilder.setFooterCacheMaxSizeBytes(
+          Long.parseLong(analyticsCoreOptions.get(prefix + FOOTER_CACHE_MAX_SIZE_BYTES_KEY)));
+    }
+    if (analyticsCoreOptions.containsKey(prefix + SMALL_OBJECT_CACHE_TYPE_KEY)) {
+      optionsBuilder.setSmallObjectCacheType(
+          CacheType.valueOf(
+              analyticsCoreOptions.get(prefix + SMALL_OBJECT_CACHE_TYPE_KEY).toUpperCase()));
+    }
+    if (analyticsCoreOptions.containsKey(prefix + SMALL_OBJECT_CACHE_MAX_SIZE_BYTES_KEY)) {
+      optionsBuilder.setSmallObjectCacheMaxSizeBytes(
+          Long.parseLong(analyticsCoreOptions.get(prefix + SMALL_OBJECT_CACHE_MAX_SIZE_BYTES_KEY)));
+    }
+    if (analyticsCoreOptions.containsKey(prefix + CACHE_FILESYSTEM_BASE_DIR_KEY)) {
+      optionsBuilder.setCacheFileSystemBaseDir(
+          analyticsCoreOptions.get(prefix + CACHE_FILESYSTEM_BASE_DIR_KEY));
+    }
+
     return optionsBuilder.build();
   }
 
@@ -71,8 +117,15 @@ public abstract class GcsCacheOptions {
     /** Sets whether the Parquet footer cache is enabled. */
     public abstract Builder setFooterCacheEnabled(boolean footerCacheEnabled);
 
-    /** Sets the maximum number of entries to hold in the Parquet footer cache. */
-    public abstract Builder setFooterCacheMaxEntries(int footerCacheMaxEntries);
+    public abstract Builder setFooterCacheType(CacheType type);
+
+    public abstract Builder setFooterCacheMaxSizeBytes(long maxSizeBytes);
+
+    public abstract Builder setSmallObjectCacheType(CacheType type);
+
+    public abstract Builder setSmallObjectCacheMaxSizeBytes(long maxSizeBytes);
+
+    public abstract Builder setCacheFileSystemBaseDir(String dir);
 
     abstract GcsCacheOptions autoBuild();
 
@@ -86,8 +139,8 @@ public abstract class GcsCacheOptions {
       GcsCacheOptions options = autoBuild();
       if (options.isFooterCacheEnabled()) {
         checkArgument(
-            options.getFooterCacheMaxEntries() > 0,
-            "footerCacheMaxEntries must be positive when footerCacheEnabled is true");
+            options.getFooterCacheMaxSizeBytes() > 0,
+            "footerCacheMaxSizeBytes must be positive when footerCacheEnabled is true");
       }
       return options;
     }

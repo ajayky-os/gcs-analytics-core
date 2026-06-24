@@ -19,10 +19,10 @@ package com.google.cloud.gcs.analyticscore.core.optimizer;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.cloud.gcs.analyticscore.client.AnalyticsCacheManager;
+import com.google.cloud.gcs.analyticscore.client.GcsCacheOptions;
 import com.google.cloud.gcs.analyticscore.client.GcsFileInfo;
 import com.google.cloud.gcs.analyticscore.client.GcsItemId;
 import com.google.cloud.gcs.analyticscore.client.GcsObjectRange;
-import com.google.cloud.gcs.analyticscore.client.GcsReadOptions;
 import com.google.cloud.gcs.analyticscore.client.VectoredSeekableByteChannel;
 import com.google.cloud.gcs.analyticscore.common.GcsAnalyticsCoreTelemetryConstants.Metric;
 import com.google.cloud.gcs.analyticscore.common.telemetry.Telemetry;
@@ -39,20 +39,21 @@ public class SmallObjectOptimizer implements FormatOptimizer {
 
   private static final Set<String> DATA_FILE_EXTENSIONS = Set.of(".parquet", ".orc");
 
-  private final GcsReadOptions readOptions;
+  private final GcsCacheOptions cacheOptions;
   private final Telemetry telemetry;
 
+  private AnalyticsCacheManager cacheManager;
   private long fileSize = -1;
-  private ByteBuffer prefetchBuffer;
+  private GcsItemId currentItemId;
 
-  public SmallObjectOptimizer(GcsReadOptions readOptions, Telemetry telemetry) {
-    this.readOptions = checkNotNull(readOptions, "readOptions cannot be null");
+  public SmallObjectOptimizer(GcsCacheOptions cacheOptions, Telemetry telemetry) {
+    this.cacheOptions = checkNotNull(cacheOptions, "cacheOptions cannot be null");
     this.telemetry = checkNotNull(telemetry, "telemetry cannot be null");
   }
 
   @Override
   public boolean isApplicable(GcsItemId itemId) {
-    return readOptions.getSmallObjectCacheSize() > 0
+    return cacheOptions.getSmallObjectCacheMaxSizeBytes() > 0
         && itemId
             .getObjectName()
             .map(
@@ -64,12 +65,13 @@ public class SmallObjectOptimizer implements FormatOptimizer {
   @Override
   public boolean isApplicable(GcsFileInfo fileInfo) {
     return isApplicable(fileInfo.getItemInfo().getItemId())
-        && fileInfo.getItemInfo().getSize() <= readOptions.getSmallObjectCacheSize();
+        && fileInfo.getItemInfo().getSize() <= cacheOptions.getSmallObjectCacheMaxSizeBytes();
   }
 
   @Override
   public void onOpen(GcsItemId itemId, AnalyticsCacheManager cacheManager) {
-    // No-op
+    this.currentItemId = itemId;
+    this.cacheManager = cacheManager;
   }
 
   @Override
@@ -84,7 +86,7 @@ public class SmallObjectOptimizer implements FormatOptimizer {
       fileSize = source.size();
     }
 
-    if (fileSize > readOptions.getSmallObjectCacheSize()) {
+    if (fileSize > cacheOptions.getSmallObjectCacheMaxSizeBytes()) {
       return 0;
     }
 
@@ -92,31 +94,45 @@ public class SmallObjectOptimizer implements FormatOptimizer {
       return -1;
     }
 
-    if (prefetchBuffer == null) {
+    ByteBuffer prefetchBuffer;
+    try {
+      prefetchBuffer = cacheManager.getSmallObject(currentItemId, id -> ensurePrefetched(source));
+    } catch (IOException e) {
       telemetry.recordMetric(Metric.SMALL_OBJECT_CACHE_MISS, 1L, Collections.emptyMap());
-      ensurePrefetched(source);
-    } else {
-      telemetry.recordMetric(Metric.SMALL_OBJECT_CACHE_HIT, 1L, Collections.emptyMap());
+      throw e;
     }
 
-    return serveFromCache(position, dst);
+    telemetry.recordMetric(Metric.SMALL_OBJECT_CACHE_HIT, 1L, Collections.emptyMap());
+    return serveFromCache(position, dst, prefetchBuffer);
   }
 
   @Override
   public List<GcsObjectRange> readVectored(
       List<GcsObjectRange> ranges, IntFunction<ByteBuffer> allocate) throws IOException {
-    if (fileSize == -1 || fileSize > readOptions.getSmallObjectCacheSize()) {
+    if (fileSize == -1 || fileSize > cacheOptions.getSmallObjectCacheMaxSizeBytes()) {
       return ranges;
     }
 
-    if (prefetchBuffer == null) {
+    ByteBuffer prefetchBuffer;
+    try {
+      // Don't force a load if it isn't cached during vectored read, just fail fast and return
+      // ranges
+      // Since vectored read is async, forcing a sequential read here might defeat the purpose
+      // For now, let's trigger it.
+      prefetchBuffer =
+          cacheManager.getSmallObject(
+              currentItemId,
+              id -> {
+                throw new IOException("Cache miss during vectored read");
+              });
+    } catch (IOException e) {
       return ranges; // Cannot satisfy yet
     }
 
     telemetry.recordMetric(Metric.SMALL_OBJECT_CACHE_HIT, ranges.size(), Collections.emptyMap());
     for (GcsObjectRange range : ranges) {
       ByteBuffer dest = allocate.apply(range.getLength());
-      int bytesRead = serveFromCache(range.getOffset(), dest);
+      int bytesRead = serveFromCache(range.getOffset(), dest, prefetchBuffer);
       if (bytesRead < range.getLength()) {
         range
             .getByteBufferFuture()
@@ -131,31 +147,35 @@ public class SmallObjectOptimizer implements FormatOptimizer {
     return Collections.emptyList();
   }
 
-  private void ensurePrefetched(VectoredSeekableByteChannel source) throws IOException {
-    prefetchBuffer = ByteBuffer.allocate((int) fileSize);
+  private ByteBuffer ensurePrefetched(VectoredSeekableByteChannel source) throws IOException {
+    ByteBuffer buffer = ByteBuffer.allocate((int) fileSize);
     long originalPosition = source.position();
     try {
       source.position(0);
-      while (prefetchBuffer.hasRemaining()) {
-        if (source.read(prefetchBuffer) == -1) {
+      while (buffer.hasRemaining()) {
+        if (source.read(buffer) == -1) {
           throw new IOException("Unexpected EOF encountered while reading small object.");
         }
       }
-      prefetchBuffer.flip();
+      buffer.flip();
+      return buffer;
     } finally {
       source.position(originalPosition);
     }
   }
 
-  private int serveFromCache(long currPosition, ByteBuffer buffer) {
+  private int serveFromCache(long currPosition, ByteBuffer dst, ByteBuffer prefetchBuffer) {
     if (currPosition >= fileSize) {
       return -1;
     }
-    ByteBuffer cacheView = prefetchBuffer.duplicate();
-    cacheView.position((int) currPosition);
-    int bytesToRead = Math.min(buffer.remaining(), cacheView.remaining());
-    cacheView.limit(cacheView.position() + bytesToRead);
-    buffer.put(cacheView);
+
+    ByteBuffer view = prefetchBuffer.duplicate();
+    view.position((int) currPosition);
+
+    int bytesToRead = Math.min(dst.remaining(), view.remaining());
+    view.limit(view.position() + bytesToRead);
+    dst.put(view);
+
     return bytesToRead;
   }
 }

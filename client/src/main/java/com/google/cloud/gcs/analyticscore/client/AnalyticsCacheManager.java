@@ -18,8 +18,11 @@ package com.google.cloud.gcs.analyticscore.client;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import com.github.benmanes.caffeine.cache.Weigher;
+import com.google.cloud.gcs.analyticscore.client.GcsCacheOptions.CacheType;
 import com.google.cloud.gcs.analyticscore.common.cache.AnalyticsCache;
 import com.google.cloud.gcs.analyticscore.common.cache.AnalyticsCacheCaffeineImpl;
+import com.google.cloud.gcs.analyticscore.common.cache.AnalyticsCacheFileSystemImpl;
 import com.google.cloud.gcs.analyticscore.common.cache.AnalyticsCacheNoOpImpl;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -31,18 +34,57 @@ import java.nio.ByteBuffer;
 public class AnalyticsCacheManager {
 
   private final AnalyticsCache<GcsItemId, ByteBuffer> footerCache;
+  private final AnalyticsCache<GcsItemId, ByteBuffer> smallObjectCache;
+  private final GcsCacheOptions cacheOptions;
 
   /**
-   * Creates a new {@link AnalyticsCacheManager} with the specified options.
+   * Initializes the cache manager with the provided options.
    *
    * @param options The configuration options for the caching layer.
    */
   public AnalyticsCacheManager(GcsCacheOptions options) {
     checkNotNull(options, "options cannot be null");
-    this.footerCache =
-        options.isFooterCacheEnabled()
-            ? AnalyticsCacheCaffeineImpl.create(options.getFooterCacheMaxEntries())
-            : AnalyticsCacheNoOpImpl.getInstance();
+    this.cacheOptions = options;
+    Weigher<GcsItemId, ByteBuffer> weigher = (key, value) -> value.remaining();
+
+    if (options.isFooterCacheEnabled()) {
+      if (options.getFooterCacheType() == CacheType.FILE_SYSTEM) {
+        this.footerCache =
+            AnalyticsCacheFileSystemImpl.create(
+                options.getCacheFileSystemBaseDir() + "/footer",
+                options.getFooterCacheMaxSizeBytes(),
+                this::encodeItemId);
+      } else {
+        this.footerCache =
+            AnalyticsCacheCaffeineImpl.create(options.getFooterCacheMaxSizeBytes(), weigher);
+      }
+    } else {
+      this.footerCache = AnalyticsCacheNoOpImpl.getInstance();
+    }
+
+    if (options.getSmallObjectCacheMaxSizeBytes() > 0) {
+      if (options.getSmallObjectCacheType() == CacheType.FILE_SYSTEM) {
+        this.smallObjectCache =
+            AnalyticsCacheFileSystemImpl.create(
+                options.getCacheFileSystemBaseDir() + "/small-object",
+                options.getSmallObjectCacheMaxSizeBytes(),
+                this::encodeItemId);
+      } else {
+        this.smallObjectCache =
+            AnalyticsCacheCaffeineImpl.create(options.getSmallObjectCacheMaxSizeBytes(), weigher);
+      }
+    } else {
+      this.smallObjectCache = AnalyticsCacheNoOpImpl.getInstance();
+    }
+  }
+
+  private String encodeItemId(GcsItemId itemId) {
+    return String.format(
+            "%s-%s-%d",
+            itemId.getBucketName(),
+            itemId.getObjectName().orElse(""),
+            itemId.getContentGeneration().orElse(0L))
+        .replaceAll("[^a-zA-Z0-9.-]", "_");
   }
 
   /**
@@ -64,21 +106,50 @@ public class AnalyticsCacheManager {
         .asReadOnlyBuffer();
   }
 
+  /**
+   * Returns the cached small object for the given {@code itemId}, obtaining it from the {@code
+   * smallObjectLoader} if necessary. This method is atomic.
+   *
+   * @throws IOException if the loader throws an {@link IOException}.
+   */
+  public ByteBuffer getSmallObject(GcsItemId itemId, SmallObjectLoader smallObjectLoader)
+      throws IOException {
+    checkNotNull(itemId, "itemId cannot be null");
+    checkNotNull(smallObjectLoader, "smallObjectLoader cannot be null");
+
+    return smallObjectCache
+        .get(itemId, cachedItemId -> smallObjectLoader.load(cachedItemId))
+        .asReadOnlyBuffer();
+  }
+
   /** Invalidates the cached footer for the given {@code itemId}. */
   public void invalidateFooter(GcsItemId itemId) {
     checkNotNull(itemId, "itemId cannot be null");
     footerCache.invalidate(itemId);
+    smallObjectCache.invalidate(itemId);
   }
 
   /** Invalidates all cached entries. */
   public void invalidateAll() {
     footerCache.invalidateAll();
+    smallObjectCache.invalidateAll();
+  }
+
+  public GcsCacheOptions getCacheOptions() {
+    return cacheOptions;
   }
 
   /** A loader for GCS object footers. */
   @FunctionalInterface
   public interface FooterLoader {
     /** Loads the footer for the given {@code itemId}. */
+    ByteBuffer load(GcsItemId itemId) throws IOException;
+  }
+
+  /** A loader for small GCS objects. */
+  @FunctionalInterface
+  public interface SmallObjectLoader {
+    /** Loads the small object for the given {@code itemId}. */
     ByteBuffer load(GcsItemId itemId) throws IOException;
   }
 }

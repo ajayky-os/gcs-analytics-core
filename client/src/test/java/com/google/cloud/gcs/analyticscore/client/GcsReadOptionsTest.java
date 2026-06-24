@@ -60,7 +60,6 @@ class GcsReadOptionsTest {
     assertThat(readOptions.isFooterPrefetchEnabled()).isEqualTo(false);
     assertThat(readOptions.getFooterPrefetchSizeSmallFile()).isEqualTo(41943);
     assertThat(readOptions.getFooterPrefetchSizeLargeFile()).isEqualTo(4194304);
-    assertThat(readOptions.getSmallObjectCacheSize()).isEqualTo(102400);
     assertThat(readOptions.getInplaceSeekLimit()).isEqualTo(16777216);
     assertThat(readOptions.getFileAccessPattern()).isEqualTo(FileAccessPattern.RANDOM);
     assertThat(readOptions.getAdaptiveReadSequentialReadThreshold()).isEqualTo(5);
@@ -90,7 +89,6 @@ class GcsReadOptionsTest {
     assertThat(readOptions.isFooterPrefetchEnabled()).isEqualTo(true);
     assertThat(readOptions.getFooterPrefetchSizeSmallFile()).isEqualTo(100 * KB);
     assertThat(readOptions.getFooterPrefetchSizeLargeFile()).isEqualTo(MB);
-    assertThat(readOptions.getSmallObjectCacheSize()).isEqualTo(0);
     assertThat(readOptions.getInplaceSeekLimit()).isEqualTo(128 * KB);
     assertThat(readOptions.getFileAccessPattern()).isEqualTo(FileAccessPattern.AUTO_SEQUENTIAL);
     assertThat(readOptions.getAdaptiveReadSequentialReadThreshold()).isEqualTo(3);
@@ -103,7 +101,6 @@ class GcsReadOptionsTest {
   @ValueSource(
       strings = {
         "gcs.analytics-core.small-file.footer.prefetch.size-bytes",
-        "gcs.analytics-core.small-file.cache.threshold-bytes",
         "gcs.analytics-core.large-file.footer.prefetch.size-bytes",
         "gcs.analytics-core.read.inplace-seek-limit-bytes",
         "gcs.analytics-core.adaptive-read.sequential-read-threshold",

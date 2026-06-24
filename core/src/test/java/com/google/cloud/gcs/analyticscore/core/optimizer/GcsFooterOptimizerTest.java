@@ -75,7 +75,6 @@ class GcsFooterOptimizerTest {
             .setFooterPrefetchEnabled(true)
             .setFooterPrefetchSizeSmallFile(100)
             .setFooterPrefetchSizeLargeFile(500)
-            .setSmallObjectCacheSize(0)
             .build();
 
     telemetry = new Telemetry(ImmutableList.of());

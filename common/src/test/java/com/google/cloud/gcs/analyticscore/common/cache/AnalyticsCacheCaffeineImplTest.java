@@ -19,6 +19,7 @@ package com.google.cloud.gcs.analyticscore.common.cache;
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.github.benmanes.caffeine.cache.Weigher;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,7 +31,8 @@ class AnalyticsCacheCaffeineImplTest {
 
   @BeforeEach
   void setUp() {
-    cache = AnalyticsCacheCaffeineImpl.create(10);
+    Weigher<String, String> weigher = (key, value) -> 1;
+    cache = AnalyticsCacheCaffeineImpl.create(10, weigher);
   }
 
   @Test

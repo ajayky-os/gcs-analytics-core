@@ -28,22 +28,25 @@ class GcsCacheOptionsTest {
     GcsCacheOptions options = GcsCacheOptions.builder().build();
 
     assertThat(options.isFooterCacheEnabled()).isTrue();
-    assertThat(options.getFooterCacheMaxEntries()).isEqualTo(100);
+    assertThat(options.getFooterCacheMaxSizeBytes()).isEqualTo(100 * 1024 * 1024L);
   }
 
   @Test
   void build_disabledCacheNonPositiveEntries_succeeds() {
     GcsCacheOptions options =
-        GcsCacheOptions.builder().setFooterCacheEnabled(false).setFooterCacheMaxEntries(0).build();
+        GcsCacheOptions.builder()
+            .setFooterCacheEnabled(false)
+            .setFooterCacheMaxSizeBytes(0)
+            .build();
 
     assertThat(options.isFooterCacheEnabled()).isFalse();
-    assertThat(options.getFooterCacheMaxEntries()).isEqualTo(0);
+    assertThat(options.getFooterCacheMaxSizeBytes()).isEqualTo(0);
   }
 
   @Test
   void build_enabledCacheZeroEntries_throwsException() {
     GcsCacheOptions.Builder builder =
-        GcsCacheOptions.builder().setFooterCacheEnabled(true).setFooterCacheMaxEntries(0);
+        GcsCacheOptions.builder().setFooterCacheEnabled(true).setFooterCacheMaxSizeBytes(0);
 
     assertThrows(IllegalArgumentException.class, builder::build);
   }
@@ -51,7 +54,7 @@ class GcsCacheOptionsTest {
   @Test
   void build_enabledCacheNegativeEntries_throwsException() {
     GcsCacheOptions.Builder builder =
-        GcsCacheOptions.builder().setFooterCacheEnabled(true).setFooterCacheMaxEntries(-1);
+        GcsCacheOptions.builder().setFooterCacheEnabled(true).setFooterCacheMaxSizeBytes(-1);
 
     assertThrows(IllegalArgumentException.class, builder::build);
   }
