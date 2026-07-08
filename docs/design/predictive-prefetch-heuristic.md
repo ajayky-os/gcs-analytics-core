@@ -44,6 +44,7 @@ We explicitly reject Option 2 (Format-Aware Parser) because of the **"Map vs. Jo
 
 ### Phase 1: Global Read Pattern Registry
 Create a thread-safe singleton, `GlobalReadPatternRegistry`. It operates outside the `GcsFileSystem` boundary and holds **no credentials and no byte data**. It simply maps `GcsItemId` to a graph of historical `(offset, length)` access frequencies.
+*   **Local SSD Persistence:** To ensure learned heuristics survive JVM restarts or container recycling, the registry will be periodically serialized and persisted to a local SSD (if available on the worker node). Upon initialization, the registry will attempt to load its warmed-up state from this local disk cache.
 
 ### Phase 2: The PredictiveReadOptimizer
 Implement `PredictiveReadOptimizer` (extending `FormatOptimizer`).
