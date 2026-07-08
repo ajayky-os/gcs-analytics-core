@@ -66,6 +66,12 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
   }
 
   @Override
+  public void onClose() {
+    prefetchBuffer.values().forEach(future -> future.cancel(true));
+    prefetchBuffer.clear();
+  }
+
+  @Override
   public int read(long position, ByteBuffer dst, VectoredSeekableByteChannel delegate)
       throws IOException {
     // 1. Phase 4: Cache Interception (Zero-Latency Hit or wait for in-progress fetch)
@@ -74,12 +80,14 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
       try {
         ByteBuffer cached = futureCached.join();
         int size = Math.min(dst.remaining(), cached.remaining());
-        byte[] slice = new byte[size];
-        cached.get(slice);
-        dst.put(slice);
-        lastOpIdentifier = position;
-        telemetry.recordMetric(Metric.PREDICTIVE_PREFETCH_HIT, 1L, Collections.emptyMap());
-        return size;
+        if (size > 0) {
+          byte[] slice = new byte[size];
+          cached.get(slice);
+          dst.put(slice);
+          lastOpIdentifier = position;
+          telemetry.recordMetric(Metric.PREDICTIVE_PREFETCH_HIT, 1L, Collections.emptyMap());
+          return size;
+        }
       } catch (Exception e) {
         // Fallback to network read if prefetch failed
       }
@@ -134,14 +142,18 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
                 Metric.PREDICTIVE_PREFETCH_BYTES, totalPrefetchBytes, Collections.emptyMap());
           }
           // Launch safely in the background
-          CompletableFuture.runAsync(
-              () -> {
-                try {
-                  delegate.readVectored(unfulfilled, ByteBuffer::allocate);
-                } catch (Exception e) {
-                  // Ignore background fetch failure
-                }
-              });
+          try {
+            CompletableFuture.runAsync(
+                () -> {
+                  try {
+                    delegate.readVectored(unfulfilled, ByteBuffer::allocate);
+                  } catch (Exception e) {
+                    unfulfilled.forEach(r -> r.getByteBufferFuture().completeExceptionally(e));
+                  }
+                });
+          } catch (Exception e) {
+            unfulfilled.forEach(r -> r.getByteBufferFuture().completeExceptionally(e));
+          }
         }
       }
     }
