@@ -33,8 +33,20 @@ public class GlobalReadPatternRegistry {
   // Using /tmp/ to represent a local SSD mount for the POC
   private static final String CACHE_FILE = "/tmp/gcs_analytics_heuristic.dat";
 
-  // Maps Object Name -> (Previous Offset -> Next Offset)
-  private Map<String, Map<Long, Long>> transitions = new ConcurrentHashMap<>();
+  public static class PredictedRange implements Serializable {
+    private static final long serialVersionUID = 1L;
+    public final long offset;
+    public final int length;
+
+    public PredictedRange(long offset, int length) {
+      this.offset = offset;
+      this.length = length;
+    }
+  }
+
+  private Map<String, Map<Long, PredictedRange>> transitions = new ConcurrentHashMap<>();
+  private final java.util.concurrent.atomic.AtomicBoolean isPersisting =
+      new java.util.concurrent.atomic.AtomicBoolean(false);
 
   private GlobalReadPatternRegistry() {
     load();
@@ -44,31 +56,47 @@ public class GlobalReadPatternRegistry {
     return INSTANCE;
   }
 
-  public void recordTransition(GcsItemId itemId, long previousOffset, long nextOffset) {
+  public void recordTransition(
+      GcsItemId itemId, long previousOffset, long nextOffset, int nextLength) {
     String objectName = itemId.getObjectName().orElse("");
     if (objectName.isEmpty()) return;
 
     transitions
         .computeIfAbsent(objectName, k -> new ConcurrentHashMap<>())
-        .put(previousOffset, nextOffset);
+        .put(previousOffset, new PredictedRange(nextOffset, nextLength));
 
     persist();
   }
 
-  public Long predictNext(GcsItemId itemId, long currentOffset) {
+  public PredictedRange predictNext(GcsItemId itemId, long currentOffset) {
     String objectName = itemId.getObjectName().orElse("");
-    Map<Long, Long> fileTransitions = transitions.get(objectName);
+    Map<Long, PredictedRange> fileTransitions = transitions.get(objectName);
     if (fileTransitions != null) {
       return fileTransitions.get(currentOffset);
     }
     return null;
   }
 
-  private synchronized void persist() {
-    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(CACHE_FILE))) {
-      oos.writeObject(transitions);
-    } catch (Exception e) {
-      // Ignore for POC
+  private void persist() {
+    // Debounce the persistence to avoid blocking the hot read path and thrashing the disk
+    if (isPersisting.compareAndSet(false, true)) {
+      @SuppressWarnings("FutureReturnValueIgnored")
+      var unused =
+          java.util.concurrent.CompletableFuture.runAsync(
+              () -> {
+                try {
+                  synchronized (this) { // Keep the actual I/O operation atomic
+                    try (ObjectOutputStream oos =
+                        new ObjectOutputStream(new FileOutputStream(CACHE_FILE))) {
+                      oos.writeObject(transitions);
+                    }
+                  }
+                } catch (Exception e) {
+                  // Ignore for POC
+                } finally {
+                  isPersisting.set(false);
+                }
+              });
     }
   }
 
@@ -77,7 +105,7 @@ public class GlobalReadPatternRegistry {
     Path path = Paths.get(CACHE_FILE);
     if (Files.exists(path)) {
       try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(CACHE_FILE))) {
-        transitions = (Map<String, Map<Long, Long>>) ois.readObject();
+        transitions = (Map<String, Map<Long, PredictedRange>>) ois.readObject();
       } catch (Exception e) {
         // Ignore for POC
       }
