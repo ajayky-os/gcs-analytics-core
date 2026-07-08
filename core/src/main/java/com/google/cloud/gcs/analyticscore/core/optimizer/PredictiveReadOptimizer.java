@@ -30,12 +30,23 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * An optimizer that observes read patterns, updates the global heuristic registry, and performs
  * asynchronous predictive prefetching to eliminate network latency.
  */
 public class PredictiveReadOptimizer implements FormatOptimizer {
+
+  // Dedicated executor to avoid starving the common ForkJoinPool during blocking network I/O
+  private static final ExecutorService PREFETCH_EXECUTOR =
+      Executors.newCachedThreadPool(
+          r -> {
+            Thread t = new Thread(r, "predictive-prefetch");
+            t.setDaemon(true);
+            return t;
+          });
 
   private final GlobalReadPatternRegistry registry = GlobalReadPatternRegistry.getInstance();
   private final Telemetry telemetry;
@@ -81,9 +92,9 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
         ByteBuffer cached = futureCached.join();
         int size = Math.min(dst.remaining(), cached.remaining());
         if (size > 0) {
-          byte[] slice = new byte[size];
-          cached.get(slice);
-          dst.put(slice);
+          ByteBuffer cachedDuplicate = cached.duplicate();
+          cachedDuplicate.limit(cachedDuplicate.position() + size);
+          dst.put(cachedDuplicate);
           lastOpIdentifier = position;
           telemetry.recordMetric(Metric.PREDICTIVE_PREFETCH_HIT, 1L, Collections.emptyMap());
           return size;
@@ -141,7 +152,7 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
             telemetry.recordMetric(
                 Metric.PREDICTIVE_PREFETCH_BYTES, totalPrefetchBytes, Collections.emptyMap());
           }
-          // Launch safely in the background
+          // Launch safely in the background using dedicated thread pool
           try {
             CompletableFuture.runAsync(
                 () -> {
@@ -150,7 +161,8 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
                   } catch (Exception e) {
                     unfulfilled.forEach(r -> r.getByteBufferFuture().completeExceptionally(e));
                   }
-                });
+                },
+                PREFETCH_EXECUTOR);
           } catch (Exception e) {
             unfulfilled.forEach(r -> r.getByteBufferFuture().completeExceptionally(e));
           }
@@ -182,12 +194,9 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
         try {
           ByteBuffer cached = futureCached.join();
           if (cached.remaining() >= range.getLength()) {
-            ByteBuffer resultBuf = allocate.apply(range.getLength());
-            byte[] slice = new byte[range.getLength()];
-            cached.get(slice);
-            resultBuf.put(slice);
-            resultBuf.flip();
-            range.getByteBufferFuture().complete(resultBuf);
+            ByteBuffer cachedDuplicate = cached.duplicate();
+            cachedDuplicate.limit(cachedDuplicate.position() + range.getLength());
+            range.getByteBufferFuture().complete(cachedDuplicate);
             telemetry.recordMetric(Metric.PREDICTIVE_PREFETCH_HIT, 1L, Collections.emptyMap());
           } else {
             telemetry.recordMetric(Metric.PREDICTIVE_PREFETCH_MISS, 1L, Collections.emptyMap());
