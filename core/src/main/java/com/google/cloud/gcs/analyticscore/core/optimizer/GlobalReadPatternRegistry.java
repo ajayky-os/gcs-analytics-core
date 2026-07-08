@@ -61,9 +61,21 @@ public class GlobalReadPatternRegistry {
 
   private GlobalReadPatternRegistry() {
     load();
-    // Persist periodically to avoid hot-path blocking
+    // Persist periodically with random jitter to avoid hot-path blocking and thundering herds
+    scheduleNextPersist();
+  }
+
+  private void scheduleNextPersist() {
+    long delaySeconds = 55L + java.util.concurrent.ThreadLocalRandom.current().nextInt(11);
     @SuppressWarnings("FutureReturnValueIgnored")
-    var unused = scheduler.scheduleAtFixedRate(this::persist, 60, 60, TimeUnit.SECONDS);
+    var unused =
+        scheduler.schedule(
+            () -> {
+              persist();
+              scheduleNextPersist();
+            },
+            delaySeconds,
+            TimeUnit.SECONDS);
   }
 
   public static GlobalReadPatternRegistry getInstance() {
