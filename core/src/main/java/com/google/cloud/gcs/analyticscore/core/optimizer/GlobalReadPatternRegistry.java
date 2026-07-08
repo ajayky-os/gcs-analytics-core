@@ -22,6 +22,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -49,7 +50,8 @@ public class GlobalReadPatternRegistry {
     }
   }
 
-  private Map<String, Map<Long, PredictedRange>> transitions = new ConcurrentHashMap<>();
+  // Maps Object Name -> (Previous Op Identifier -> List of Next Predicted Ranges)
+  private Map<String, Map<Long, List<PredictedRange>>> transitions = new ConcurrentHashMap<>();
 
   private final ScheduledExecutorService scheduler =
       Executors.newSingleThreadScheduledExecutor(
@@ -82,21 +84,21 @@ public class GlobalReadPatternRegistry {
     return INSTANCE;
   }
 
-  public void recordTransition(
-      GcsItemId itemId, long previousOffset, long nextOffset, int nextLength) {
+  public void recordVectorTransition(
+      GcsItemId itemId, long previousOpIdentifier, List<PredictedRange> nextRanges) {
     String objectName = itemId.getObjectName().orElse("");
-    if (objectName.isEmpty()) return;
+    if (objectName.isEmpty() || nextRanges.isEmpty()) return;
 
     transitions
         .computeIfAbsent(objectName, k -> new ConcurrentHashMap<>())
-        .put(previousOffset, new PredictedRange(nextOffset, nextLength));
+        .put(previousOpIdentifier, nextRanges);
   }
 
-  public PredictedRange predictNext(GcsItemId itemId, long currentOffset) {
+  public List<PredictedRange> predictNextVector(GcsItemId itemId, long currentOpIdentifier) {
     String objectName = itemId.getObjectName().orElse("");
-    Map<Long, PredictedRange> fileTransitions = transitions.get(objectName);
+    Map<Long, List<PredictedRange>> fileTransitions = transitions.get(objectName);
     if (fileTransitions != null) {
-      return fileTransitions.get(currentOffset);
+      return fileTransitions.get(currentOpIdentifier);
     }
     return null;
   }
@@ -105,12 +107,10 @@ public class GlobalReadPatternRegistry {
     try {
       synchronized (this) {
         // 1. Load the absolute latest state from disk (what other processes learned)
-        Map<String, Map<Long, PredictedRange>> diskState = loadFromDisk();
+        Map<String, Map<Long, List<PredictedRange>>> diskState = loadFromDisk();
 
         // 2. Merge our in-memory learnings into the disk state.
-        // Using putAll() ensures we overwrite with the latest observed transition for an offset,
-        // rather than amplifying or duplicating entries.
-        for (Map.Entry<String, Map<Long, PredictedRange>> entry : transitions.entrySet()) {
+        for (Map.Entry<String, Map<Long, List<PredictedRange>>> entry : transitions.entrySet()) {
           diskState
               .computeIfAbsent(entry.getKey(), k -> new ConcurrentHashMap<>())
               .putAll(entry.getValue());
@@ -143,11 +143,11 @@ public class GlobalReadPatternRegistry {
   }
 
   @SuppressWarnings("unchecked")
-  private Map<String, Map<Long, PredictedRange>> loadFromDisk() {
+  private Map<String, Map<Long, List<PredictedRange>>> loadFromDisk() {
     Path path = Paths.get(CACHE_FILE);
     if (Files.exists(path)) {
       try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(CACHE_FILE))) {
-        return (Map<String, Map<Long, PredictedRange>>) ois.readObject();
+        return (Map<String, Map<Long, List<PredictedRange>>>) ois.readObject();
       } catch (Exception e) {
         // Ignore for POC and return new map
       }

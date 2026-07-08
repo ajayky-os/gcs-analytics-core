@@ -19,12 +19,15 @@ package com.google.cloud.gcs.analyticscore.core.optimizer;
 import com.google.cloud.gcs.analyticscore.client.AnalyticsCacheManager;
 import com.google.cloud.gcs.analyticscore.client.GcsFileInfo;
 import com.google.cloud.gcs.analyticscore.client.GcsItemId;
+import com.google.cloud.gcs.analyticscore.client.GcsObjectRange;
 import com.google.cloud.gcs.analyticscore.client.VectoredSeekableByteChannel;
 import com.google.cloud.gcs.analyticscore.common.GcsAnalyticsCoreTelemetryConstants.Metric;
 import com.google.cloud.gcs.analyticscore.common.telemetry.Telemetry;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -36,7 +39,7 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
 
   private final GlobalReadPatternRegistry registry = GlobalReadPatternRegistry.getInstance();
   private final Telemetry telemetry;
-  private long lastOffset = -1;
+  private long lastOpIdentifier = -1;
   private GcsItemId currentItemId;
 
   // Stream-local buffer to hold async prefetched data futures
@@ -74,7 +77,7 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
         byte[] slice = new byte[size];
         cached.get(slice);
         dst.put(slice);
-        lastOffset = position;
+        lastOpIdentifier = position;
         telemetry.recordMetric(Metric.PREDICTIVE_PREFETCH_HIT, 1L, Collections.emptyMap());
         return size;
       } catch (Exception e) {
@@ -85,10 +88,14 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
     telemetry.recordMetric(Metric.PREDICTIVE_PREFETCH_MISS, 1L, Collections.emptyMap());
 
     // 2. Phase 2: Observation (Record what we are about to read)
-    if (lastOffset != -1) {
-      registry.recordTransition(currentItemId, lastOffset, position, dst.remaining());
+    if (lastOpIdentifier != -1) {
+      registry.recordVectorTransition(
+          currentItemId,
+          lastOpIdentifier,
+          Collections.singletonList(
+              new GlobalReadPatternRegistry.PredictedRange(position, dst.remaining())));
     }
-    lastOffset = position;
+    lastOpIdentifier = position;
 
     // Note: We skip background fetching in scalar read() to avoid corrupting the channel state.
     // Predictive prefetching is safely executed via readVectored() piggybacking.
@@ -96,15 +103,18 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
   }
 
   @Override
-  public java.util.List<com.google.cloud.gcs.analyticscore.client.GcsObjectRange> readVectored(
-      java.util.List<com.google.cloud.gcs.analyticscore.client.GcsObjectRange> ranges,
-      java.util.function.IntFunction<ByteBuffer> allocate)
+  public List<GcsObjectRange> readVectored(
+      List<GcsObjectRange> ranges, java.util.function.IntFunction<ByteBuffer> allocate)
       throws IOException {
 
-    java.util.List<com.google.cloud.gcs.analyticscore.client.GcsObjectRange> unfulfilled =
-        new java.util.ArrayList<>();
+    if (ranges.isEmpty()) {
+      return ranges;
+    }
 
-    for (com.google.cloud.gcs.analyticscore.client.GcsObjectRange range : ranges) {
+    List<GcsObjectRange> unfulfilled = new ArrayList<>();
+    long currentOpIdentifier = ranges.get(0).getOffset();
+
+    for (GcsObjectRange range : ranges) {
       long position = range.getOffset();
 
       // 1. Cache Interception (Zero-Latency Hit or wait for in-progress fetch)
@@ -132,28 +142,36 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
         telemetry.recordMetric(Metric.PREDICTIVE_PREFETCH_MISS, 1L, Collections.emptyMap());
         unfulfilled.add(range);
       }
-
-      // 2. Observation (Update global heuristic for vectored reads)
-      if (lastOffset != -1) {
-        registry.recordTransition(currentItemId, lastOffset, position, range.getLength());
-      }
-      lastOffset = position;
     }
 
+    // 2. Observation (Update global heuristic for vectored reads)
+    if (lastOpIdentifier != -1) {
+      List<GlobalReadPatternRegistry.PredictedRange> observedRanges = new ArrayList<>();
+      for (GcsObjectRange range : ranges) {
+        observedRanges.add(
+            new GlobalReadPatternRegistry.PredictedRange(range.getOffset(), range.getLength()));
+      }
+      registry.recordVectorTransition(currentItemId, lastOpIdentifier, observedRanges);
+    }
+    lastOpIdentifier = currentOpIdentifier;
+
     // 3. Prediction & Piggyback Prefetching
-    if (lastOffset != -1) {
-      GlobalReadPatternRegistry.PredictedRange predictedNext =
-          registry.predictNext(currentItemId, lastOffset);
-      if (predictedNext != null && !prefetchBuffer.containsKey(predictedNext.offset)) {
-        CompletableFuture<ByteBuffer> future = new CompletableFuture<>();
-        prefetchBuffer.put(predictedNext.offset, future);
-        com.google.cloud.gcs.analyticscore.client.GcsObjectRange predictedRange =
-            com.google.cloud.gcs.analyticscore.client.GcsObjectRange.builder()
-                .setOffset(predictedNext.offset)
-                .setLength(predictedNext.length)
-                .setByteBufferFuture(future)
-                .build();
-        unfulfilled.add(predictedRange);
+    List<GlobalReadPatternRegistry.PredictedRange> predictedNextVector =
+        registry.predictNextVector(currentItemId, lastOpIdentifier);
+
+    if (predictedNextVector != null) {
+      for (GlobalReadPatternRegistry.PredictedRange p : predictedNextVector) {
+        if (!prefetchBuffer.containsKey(p.offset)) {
+          CompletableFuture<ByteBuffer> future = new CompletableFuture<>();
+          prefetchBuffer.put(p.offset, future);
+          GcsObjectRange predictedRange =
+              GcsObjectRange.builder()
+                  .setOffset(p.offset)
+                  .setLength(p.length)
+                  .setByteBufferFuture(future)
+                  .build();
+          unfulfilled.add(predictedRange);
+        }
       }
     }
 
