@@ -160,6 +160,8 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
         registry.predictNextVector(currentItemId, lastOpIdentifier);
 
     if (predictedNextVector != null) {
+      long totalPrefetchBytes = 0;
+      long prefetchRangesCount = 0;
       for (GlobalReadPatternRegistry.PredictedRange p : predictedNextVector) {
         if (!prefetchBuffer.containsKey(p.offset)) {
           CompletableFuture<ByteBuffer> future = new CompletableFuture<>();
@@ -171,7 +173,15 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
                   .setByteBufferFuture(future)
                   .build();
           unfulfilled.add(predictedRange);
+          totalPrefetchBytes += p.length;
+          prefetchRangesCount++;
         }
+      }
+      if (prefetchRangesCount > 0) {
+        telemetry.recordMetric(
+            Metric.PREDICTIVE_PREFETCH_RANGES_COUNT, prefetchRangesCount, Collections.emptyMap());
+        telemetry.recordMetric(
+            Metric.PREDICTIVE_PREFETCH_BYTES, totalPrefetchBytes, Collections.emptyMap());
       }
     }
 

@@ -35,6 +35,10 @@ public class GcsAnalyticsCoreTelemetryConstants {
         "gcs.analytics-core.client.predictive.prefetch.hits", MetricType.COUNTER),
     PREDICTIVE_PREFETCH_MISS(
         "gcs.analytics-core.client.predictive.prefetch.misses", MetricType.COUNTER),
+    PREDICTIVE_PREFETCH_RANGES_COUNT(
+        "gcs.analytics-core.client.predictive.prefetch.ranges", MetricType.COUNTER),
+    PREDICTIVE_PREFETCH_BYTES(
+        "gcs.analytics-core.client.predictive.prefetch.bytes", MetricType.COUNTER),
     SMALL_OBJECT_CACHE_HIT("gcs.analytics-core.client.small.object.cache.hits", MetricType.COUNTER),
     SMALL_OBJECT_CACHE_MISS(
         "gcs.analytics-core.client.small.object.cache.misses", MetricType.COUNTER),
