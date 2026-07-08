@@ -19,7 +19,6 @@ package com.google.cloud.gcs.analyticscore.core;
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -487,6 +486,7 @@ class GoogleCloudStorageInputStreamTest {
   }
 
   @Test
+  @SuppressWarnings("unchecked")
   void readVectored_delegatesToChannel() throws IOException {
     VectoredSeekableByteChannel mockChannel = mock(VectoredSeekableByteChannel.class);
     GcsFileSystem mockFileSystem = mock(GcsFileSystem.class);
@@ -501,7 +501,13 @@ class GoogleCloudStorageInputStreamTest {
     List<GcsObjectRange> ranges = List.of(range);
     googleCloudStorageInputStream.readVectored(ranges, (size) -> ByteBuffer.allocate(size));
 
-    verify(mockChannel).readVectored(eq(ranges), any());
+    org.mockito.ArgumentCaptor<List<GcsObjectRange>> captor =
+        org.mockito.ArgumentCaptor.forClass(List.class);
+    verify(mockChannel).readVectored(captor.capture(), any());
+
+    // The predictive optimizer may piggyback additional predicted ranges onto the request.
+    // We just verify that our original requested range was passed down to the channel.
+    assertThat(captor.getValue()).contains(range);
   }
 
   @Test
