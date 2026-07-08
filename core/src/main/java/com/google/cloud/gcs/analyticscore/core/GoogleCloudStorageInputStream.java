@@ -269,8 +269,8 @@ public class GoogleCloudStorageInputStream extends SeekableInputStream {
                   .setFileInfo(gcsFileInfo)
                   .setCacheManager(gcsFileSystem.getCacheManager())
                   .addOptimizer(
-                      new com.google.cloud.gcs.analyticscore.core.optimizer
-                          .PredictiveReadOptimizer())
+                      new com.google.cloud.gcs.analyticscore.core.optimizer.PredictiveReadOptimizer(
+                          gcsFileSystem.getTelemetry()))
                   .addOptimizer(
                       new SmallObjectOptimizer(
                           gcsFileSystem.getFileSystemOptions().getGcsCacheOptions(),

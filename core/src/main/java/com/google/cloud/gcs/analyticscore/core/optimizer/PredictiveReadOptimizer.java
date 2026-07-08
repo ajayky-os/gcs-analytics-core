@@ -19,8 +19,11 @@ package com.google.cloud.gcs.analyticscore.core.optimizer;
 import com.google.cloud.gcs.analyticscore.client.AnalyticsCacheManager;
 import com.google.cloud.gcs.analyticscore.client.GcsItemId;
 import com.google.cloud.gcs.analyticscore.client.VectoredSeekableByteChannel;
+import com.google.cloud.gcs.analyticscore.common.GcsAnalyticsCoreTelemetryConstants.Metric;
+import com.google.cloud.gcs.analyticscore.common.telemetry.Telemetry;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -31,12 +34,17 @@ import java.util.concurrent.ConcurrentHashMap;
 public class PredictiveReadOptimizer implements FormatOptimizer {
 
   private final GlobalReadPatternRegistry registry = GlobalReadPatternRegistry.getInstance();
+  private final Telemetry telemetry;
   private long lastOffset = -1;
   private GcsItemId currentItemId;
 
   // Stream-local buffer to hold async prefetched data futures
   private final ConcurrentHashMap<Long, CompletableFuture<ByteBuffer>> prefetchBuffer =
       new ConcurrentHashMap<>();
+
+  public PredictiveReadOptimizer(Telemetry telemetry) {
+    this.telemetry = telemetry;
+  }
 
   @Override
   public boolean isApplicable(GcsItemId itemId) {
@@ -61,11 +69,14 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
         cached.get(slice);
         dst.put(slice);
         lastOffset = position;
+        telemetry.recordMetric(Metric.PREDICTIVE_PREFETCH_HIT, 1L, Collections.emptyMap());
         return size;
       } catch (Exception e) {
         // Fallback to network read if prefetch failed
       }
     }
+
+    telemetry.recordMetric(Metric.PREDICTIVE_PREFETCH_MISS, 1L, Collections.emptyMap());
 
     // 2. Phase 2: Observation (Record what we are about to read)
     if (lastOffset != -1) {
@@ -123,13 +134,17 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
             resultBuf.put(slice);
             resultBuf.flip();
             range.getByteBufferFuture().complete(resultBuf);
+            telemetry.recordMetric(Metric.PREDICTIVE_PREFETCH_HIT, 1L, Collections.emptyMap());
           } else {
+            telemetry.recordMetric(Metric.PREDICTIVE_PREFETCH_MISS, 1L, Collections.emptyMap());
             unfulfilled.add(range);
           }
         } catch (Exception e) {
+          telemetry.recordMetric(Metric.PREDICTIVE_PREFETCH_MISS, 1L, Collections.emptyMap());
           unfulfilled.add(range);
         }
       } else {
+        telemetry.recordMetric(Metric.PREDICTIVE_PREFETCH_MISS, 1L, Collections.emptyMap());
         unfulfilled.add(range);
       }
 
