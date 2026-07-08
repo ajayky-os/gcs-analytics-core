@@ -17,6 +17,7 @@
 package com.google.cloud.gcs.analyticscore.core.optimizer;
 
 import com.google.cloud.gcs.analyticscore.client.AnalyticsCacheManager;
+import com.google.cloud.gcs.analyticscore.client.GcsFileInfo;
 import com.google.cloud.gcs.analyticscore.client.GcsItemId;
 import com.google.cloud.gcs.analyticscore.client.VectoredSeekableByteChannel;
 import com.google.cloud.gcs.analyticscore.common.GcsAnalyticsCoreTelemetryConstants.Metric;
@@ -57,6 +58,11 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
   }
 
   @Override
+  public void onOpen(GcsFileInfo fileInfo, AnalyticsCacheManager cacheManager) {
+    this.currentItemId = fileInfo.getItemInfo().getItemId();
+  }
+
+  @Override
   public int read(long position, ByteBuffer dst, VectoredSeekableByteChannel delegate)
       throws IOException {
     // 1. Phase 4: Cache Interception (Zero-Latency Hit or wait for in-progress fetch)
@@ -80,33 +86,12 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
 
     // 2. Phase 2: Observation (Record what we are about to read)
     if (lastOffset != -1) {
-      registry.recordTransition(currentItemId, lastOffset, position);
+      registry.recordTransition(currentItemId, lastOffset, position, dst.remaining());
     }
     lastOffset = position;
 
-    // 3. Phase 3: Prediction & Asynchronous Prefetching
-    Long predictedNext = registry.predictNext(currentItemId, position);
-    if (predictedNext != null) {
-      // Use computeIfAbsent to avoid duplicate prefetches for the same offset
-      prefetchBuffer.computeIfAbsent(
-          predictedNext,
-          key ->
-              CompletableFuture.supplyAsync(
-                  () -> {
-                    try {
-                      // POC: Allocate 1MB for the prefetch
-                      ByteBuffer buf = ByteBuffer.allocate(1024 * 1024);
-                      delegate.position(key);
-                      delegate.read(buf);
-                      buf.flip();
-                      return buf;
-                    } catch (Exception e) {
-                      throw new RuntimeException(e);
-                    }
-                  }));
-    }
-
-    // 4. Return 0 to let the delegate perform the actual network read for the current request
+    // Note: We skip background fetching in scalar read() to avoid corrupting the channel state.
+    // Predictive prefetching is safely executed via readVectored() piggybacking.
     return 0;
   }
 
@@ -150,9 +135,26 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
 
       // 2. Observation (Update global heuristic for vectored reads)
       if (lastOffset != -1) {
-        registry.recordTransition(currentItemId, lastOffset, position);
+        registry.recordTransition(currentItemId, lastOffset, position, range.getLength());
       }
       lastOffset = position;
+    }
+
+    // 3. Prediction & Piggyback Prefetching
+    if (lastOffset != -1) {
+      GlobalReadPatternRegistry.PredictedRange predictedNext =
+          registry.predictNext(currentItemId, lastOffset);
+      if (predictedNext != null && !prefetchBuffer.containsKey(predictedNext.offset)) {
+        CompletableFuture<ByteBuffer> future = new CompletableFuture<>();
+        prefetchBuffer.put(predictedNext.offset, future);
+        com.google.cloud.gcs.analyticscore.client.GcsObjectRange predictedRange =
+            com.google.cloud.gcs.analyticscore.client.GcsObjectRange.builder()
+                .setOffset(predictedNext.offset)
+                .setLength(predictedNext.length)
+                .setByteBufferFuture(future)
+                .build();
+        unfulfilled.add(predictedRange);
+      }
     }
 
     return unfulfilled;
