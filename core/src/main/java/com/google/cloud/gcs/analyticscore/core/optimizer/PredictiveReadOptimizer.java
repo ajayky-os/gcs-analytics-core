@@ -97,8 +97,55 @@ public class PredictiveReadOptimizer implements FormatOptimizer {
     }
     lastOpIdentifier = position;
 
-    // Note: We skip background fetching in scalar read() to avoid corrupting the channel state.
-    // Predictive prefetching is safely executed via readVectored() piggybacking.
+    // Note: We safely execute predictive prefetching in the background during scalar reads
+    // by using delegate.readVectored(), which does not corrupt the channel's position state.
+    if (lastOpIdentifier != -1) {
+      List<GlobalReadPatternRegistry.PredictedRange> predictedNextVector =
+          registry.predictNextVector(currentItemId, lastOpIdentifier);
+
+      if (predictedNextVector != null) {
+        List<GcsObjectRange> unfulfilled = new ArrayList<>();
+        long totalPrefetchBytes = 0;
+        long prefetchRangesCount = 0;
+
+        for (GlobalReadPatternRegistry.PredictedRange p : predictedNextVector) {
+          if (!prefetchBuffer.containsKey(p.offset)) {
+            CompletableFuture<ByteBuffer> future = new CompletableFuture<>();
+            prefetchBuffer.put(p.offset, future);
+            GcsObjectRange predictedRange =
+                GcsObjectRange.builder()
+                    .setOffset(p.offset)
+                    .setLength(p.length)
+                    .setByteBufferFuture(future)
+                    .build();
+            unfulfilled.add(predictedRange);
+            totalPrefetchBytes += p.length;
+            prefetchRangesCount++;
+          }
+        }
+
+        if (!unfulfilled.isEmpty()) {
+          if (prefetchRangesCount > 0) {
+            telemetry.recordMetric(
+                Metric.PREDICTIVE_PREFETCH_RANGES_COUNT,
+                prefetchRangesCount,
+                Collections.emptyMap());
+            telemetry.recordMetric(
+                Metric.PREDICTIVE_PREFETCH_BYTES, totalPrefetchBytes, Collections.emptyMap());
+          }
+          // Launch safely in the background
+          CompletableFuture.runAsync(
+              () -> {
+                try {
+                  delegate.readVectored(unfulfilled, ByteBuffer::allocate);
+                } catch (Exception e) {
+                  // Ignore background fetch failure
+                }
+              });
+        }
+      }
+    }
+
     return 0;
   }
 
