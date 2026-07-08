@@ -21,8 +21,13 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A global, thread-safe registry that maps files to their historical read access patterns. This
@@ -45,11 +50,20 @@ public class GlobalReadPatternRegistry {
   }
 
   private Map<String, Map<Long, PredictedRange>> transitions = new ConcurrentHashMap<>();
-  private final java.util.concurrent.atomic.AtomicBoolean isPersisting =
-      new java.util.concurrent.atomic.AtomicBoolean(false);
+
+  private final ScheduledExecutorService scheduler =
+      Executors.newSingleThreadScheduledExecutor(
+          r -> {
+            Thread t = new Thread(r, "gcs-heuristic-persister");
+            t.setDaemon(true);
+            return t;
+          });
 
   private GlobalReadPatternRegistry() {
     load();
+    // Persist periodically to avoid hot-path blocking
+    @SuppressWarnings("FutureReturnValueIgnored")
+    var unused = scheduler.scheduleAtFixedRate(this::persist, 60, 60, TimeUnit.SECONDS);
   }
 
   public static GlobalReadPatternRegistry getInstance() {
@@ -64,8 +78,6 @@ public class GlobalReadPatternRegistry {
     transitions
         .computeIfAbsent(objectName, k -> new ConcurrentHashMap<>())
         .put(previousOffset, new PredictedRange(nextOffset, nextLength));
-
-    persist();
   }
 
   public PredictedRange predictNext(GcsItemId itemId, long currentOffset) {
@@ -78,37 +90,56 @@ public class GlobalReadPatternRegistry {
   }
 
   private void persist() {
-    // Debounce the persistence to avoid blocking the hot read path and thrashing the disk
-    if (isPersisting.compareAndSet(false, true)) {
-      @SuppressWarnings("FutureReturnValueIgnored")
-      var unused =
-          java.util.concurrent.CompletableFuture.runAsync(
-              () -> {
-                try {
-                  synchronized (this) { // Keep the actual I/O operation atomic
-                    try (ObjectOutputStream oos =
-                        new ObjectOutputStream(new FileOutputStream(CACHE_FILE))) {
-                      oos.writeObject(transitions);
-                    }
-                  }
-                } catch (Exception e) {
-                  // Ignore for POC
-                } finally {
-                  isPersisting.set(false);
-                }
-              });
+    try {
+      synchronized (this) {
+        // 1. Load the absolute latest state from disk (what other processes learned)
+        Map<String, Map<Long, PredictedRange>> diskState = loadFromDisk();
+
+        // 2. Merge our in-memory learnings into the disk state.
+        // Using putAll() ensures we overwrite with the latest observed transition for an offset,
+        // rather than amplifying or duplicating entries.
+        for (Map.Entry<String, Map<Long, PredictedRange>> entry : transitions.entrySet()) {
+          diskState
+              .computeIfAbsent(entry.getKey(), k -> new ConcurrentHashMap<>())
+              .putAll(entry.getValue());
+        }
+
+        // 3. Update our own memory to include what other processes learned
+        this.transitions = diskState;
+
+        // 4. Write to a temporary file first, then atomic move to support multiple JVM processes
+        // reading/writing concurrently on the same VM without file corruption.
+        String tempFileName = CACHE_FILE + ".tmp." + UUID.randomUUID();
+        Path tempPath = Paths.get(tempFileName);
+        try (ObjectOutputStream oos =
+            new ObjectOutputStream(new FileOutputStream(tempPath.toFile()))) {
+          oos.writeObject(diskState);
+        }
+        Files.move(
+            tempPath,
+            Paths.get(CACHE_FILE),
+            StandardCopyOption.ATOMIC_MOVE,
+            StandardCopyOption.REPLACE_EXISTING);
+      }
+    } catch (Exception e) {
+      // Ignore for POC
     }
   }
 
-  @SuppressWarnings("unchecked")
   private void load() {
+    this.transitions = loadFromDisk();
+  }
+
+  @SuppressWarnings("unchecked")
+  private Map<String, Map<Long, PredictedRange>> loadFromDisk() {
     Path path = Paths.get(CACHE_FILE);
     if (Files.exists(path)) {
       try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(CACHE_FILE))) {
-        transitions = (Map<String, Map<Long, PredictedRange>>) ois.readObject();
+        return (Map<String, Map<Long, PredictedRange>>) ois.readObject();
       } catch (Exception e) {
-        // Ignore for POC
+        // Ignore for POC and return new map
       }
     }
+    return new ConcurrentHashMap<>();
   }
 }
