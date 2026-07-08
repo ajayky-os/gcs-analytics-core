@@ -36,8 +36,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class GlobalReadPatternRegistry {
   private static final GlobalReadPatternRegistry INSTANCE = new GlobalReadPatternRegistry();
-  // Using /tmp/ to represent a local SSD mount for the POC
-  private static final String CACHE_FILE = "/tmp/gcs_analytics_heuristic.dat";
+  // Using /tmp/ to represent a local SSD mount for the POC. Versioned to avoid ClassCastExceptions
+  // from older structures.
+  private static final String CACHE_FILE = "/tmp/gcs_analytics_heuristic_v2.dat";
 
   public static class PredictedRange implements Serializable {
     private static final long serialVersionUID = 1L;
