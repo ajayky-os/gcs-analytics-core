@@ -50,7 +50,9 @@ class HermeticBenchmarkSmokeTest {
             new ReadStrategyBenchmark(),
             new FooterPrefetchBenchmark(),
             new SmallObjectCacheBenchmark(),
-            new VectoredRangeCoalescingBenchmark())) {
+            new VectoredRangeCoalescingBenchmark(),
+            new GcsReadChannelOpenBenchmark(),
+            new TelemetryOverheadBenchmark())) {
       try (s) {
         s.setUp();
         runSuite(s);

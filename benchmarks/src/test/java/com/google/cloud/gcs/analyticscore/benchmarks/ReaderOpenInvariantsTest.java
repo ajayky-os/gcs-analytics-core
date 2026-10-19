@@ -80,4 +80,18 @@ class ReaderOpenInvariantsTest {
     bench.setUp();
     assertThat(bench.mergeRanges()).hasSize(16);
   }
+
+  @Test
+  void channelOpen_withFileInfoVsItemId_opensOneReaderAndServesOneByteEach() throws IOException {
+    try (var bench = new GcsReadChannelOpenBenchmark()) {
+      bench.setUp();
+      assertThat(bench.openAndReadOneByte_withFileInfo(new IoCounters())).isEqualTo(0);
+      assertThat(bench.storage.readerOpens()).isEqualTo(1);
+      assertThat(bench.storage.bytesServed()).isEqualTo(1);
+      bench.storage.resetCounters();
+      assertThat(bench.openAndReadOneByte_withItemId(new IoCounters())).isEqualTo(0);
+      assertThat(bench.storage.readerOpens()).isEqualTo(1);
+      assertThat(bench.storage.bytesServed()).isEqualTo(1);
+    }
+  }
 }
