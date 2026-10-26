@@ -34,13 +34,17 @@ public class IoCounters {
   private long lastBytes;
   private boolean primed;
 
-  /** Adds growth since the last call; never resets the storage. The first call only primes. */
+  /**
+   * Records per-invocation growth since the last call; never resets the storage. The first call
+   * only primes. Assigning (rather than summing) keeps {@link AuxCounters.Type#EVENTS} equal to the
+   * per-operation count across a timed JMH iteration instead of scaling with iteration throughput.
+   */
   public void record(InMemoryStorage storage) {
     long opens = storage.readerOpens();
     long bytes = storage.bytesServed();
     if (primed) {
-      readerOpens += opens - lastOpens;
-      bytesServed += bytes - lastBytes;
+      readerOpens = opens - lastOpens;
+      bytesServed = bytes - lastBytes;
     }
     primed = true;
     lastOpens = opens;
