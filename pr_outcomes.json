@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-28T08:04:13Z",
+  "updated_at": "2026-10-28T08:51:03Z",
   "total_prs_raised": 13,
   "merged_count": 8,
   "open_ready_count": 2,
@@ -290,7 +290,7 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 2,
+      "comment_count": 3,
       "review_count": 1,
       "perf_summary": "16/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=4096}` -99.0% lat, -99.8% alloc)",
       "coverage_summary": "1313 tests, 0 skipped; cov line 85.13% -> 85.27% (+0.14), branch 67.37% -> 67.74% (+0.36)"

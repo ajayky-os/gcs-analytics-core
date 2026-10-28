@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-28T08:04:13Z",
+  "generated_at": "2026-10-28T08:51:03Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 19,
@@ -16,7 +16,7 @@
     "total_gate_cpu_hours": 0.94
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-28T08:04:13Z",
+    "updated_at": "2026-10-28T08:51:03Z",
     "total_prs_raised": 13,
     "merged_count": 8,
     "open_ready_count": 2,
@@ -307,7 +307,7 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 2,
+        "comment_count": 3,
         "review_count": 1,
         "perf_summary": "16/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=4096}` -99.0% lat, -99.8% alloc)",
         "coverage_summary": "1313 tests, 0 skipped; cov line 85.13% -> 85.27% (+0.14), branch 67.37% -> 67.74% (+0.36)"
@@ -596,14 +596,14 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 2,
+      "comment_count": 3,
       "review_count": 1,
       "perf_summary": "16/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=4096}` -99.0% lat, -99.8% alloc)",
       "coverage_summary": "1313 tests, 0 skipped; cov line 85.13% -> 85.27% (+0.14), branch 67.37% -> 67.74% (+0.36)"
     }
   ],
   "perf_and_bug_ledger": {
-    "total_identified": 9,
+    "total_identified": 10,
     "fixed_in_prs": 5,
     "queued_in_playbook": 4,
     "items": [
@@ -716,12 +716,25 @@
         "category": "Seek Buffer Allocation",
         "component": "AbstractReadStrategy.skipInPlace",
         "summary": "Allocates & zeroes a 128 KiB skipBuffer per strategy instance on forward seeks within inplaceSeekLimit",
-        "status": "FIXED_IN_PR",
+        "status": "MERGED_UPSTREAM",
         "pr": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/422",
         "metrics": {
           "readerOpens_or_rpcs_per_op": "1 -> 1 (64 -> 64 on positionedReads)",
           "latency_delta": "-63.2% to -73.3% seekAndRead latency (11.5 -> 3.1 us/op); -36.3% positionedReads(1 MiB)",
           "bytesServed_note": "-93.3% GC alloc (140.5 -> 9.4 KiB/op) on seekAndRead; -51.9% alloc on positionedReads(1 MiB)"
+        }
+      },
+      {
+        "id": "SIL-PERF-09",
+        "category": "O(N^2) Vectored Range Coalescing",
+        "component": "VectoredIoUtil.mergeGcsObjectRanges",
+        "summary": "Calls GcsObjectCombinedRange.union() inside merge loop, copying all merged ranges on every step (O(N^2) time & alloc)",
+        "status": "FIXED_IN_PR",
+        "pr": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/426",
+        "metrics": {
+          "readerOpens_or_rpcs_per_op": "N/A (CPU / GC allocation hot path)",
+          "latency_delta": "-99.0% latency at ranges=4096 (2,708 -> 27.2 us/op, 100x faster); -32% to -44% unmerged",
+          "bytesServed_note": "-99.8% GC alloc at ranges=4096 (39.7 MB -> 92.2 KiB/op, 430x less memory)"
         }
       }
     ]
