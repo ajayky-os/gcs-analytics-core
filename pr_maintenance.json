@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-28T08:50:56Z",
+  "checked_at": "2026-10-28T09:10:14Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "6d0749e67e1163ab7138cd8553b594f2dc74fcd9",
   "onduty": {
@@ -12,14 +12,13 @@
     "error": null
   },
   "robot_push_status": {
-    "push_remote": "fork",
-    "push_slug": "ajayky-os/gcs-analytics-core",
+    "push_remote": "robot",
+    "push_slug": "gcs-analytics-core-robot/gcs-analytics-core",
     "ssh_ok": true,
-    "ssh_user": "ajayky-os",
-    "ssh_msg": "Hi ajayky-os! You've successfully authenticated, but GitHub does not provide shell access.",
-    "gh_user": "ajayky-os",
-    "gh_source": "fallback:ajayky-os",
-    "robot_ready": false
+    "ssh_user": "gcs-analytics-core-robot",
+    "gh_user": "gcs-analytics-core-robot",
+    "gh_source": "file:/usr/local/google/home/ajayky/.config/sil/gcs-analytics-core-robot.token",
+    "robot_ready": true
   },
   "total_open_prs": 5,
   "actionable_count": 0,
@@ -41,7 +40,7 @@
       "mergeable": "MERGEABLE",
       "merge_state_status": "BEHIND",
       "review_decision": "PENDING",
-      "hours_since_update": 191.2,
+      "hours_since_update": 191.5,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -66,7 +65,7 @@
       "mergeable": "MERGEABLE",
       "merge_state_status": "BEHIND",
       "review_decision": "PENDING",
-      "hours_since_update": 191.5,
+      "hours_since_update": 191.8,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -91,7 +90,7 @@
       "mergeable": "MERGEABLE",
       "merge_state_status": "BEHIND",
       "review_decision": "PENDING",
-      "hours_since_update": 191.5,
+      "hours_since_update": 191.8,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -100,12 +99,12 @@
       "unaddressed_comments": []
     },
     {
-      "pr_number": 421,
+      "pr_number": 427,
       "title": "perf(client): cache reflective metadata accessors per channel class",
-      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/421",
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/427",
       "is_draft": false,
-      "pr_author": "ajayky-os",
-      "head_owner": "ajayky-os",
+      "pr_author": "gcs-analytics-core-robot",
+      "head_owner": "gcs-analytics-core-robot",
       "assignees": [
         "ajayky-os"
       ],
@@ -118,7 +117,7 @@
       "mergeable": "MERGEABLE",
       "merge_state_status": "BLOCKED",
       "review_decision": "PENDING",
-      "hours_since_update": 0.4,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -127,12 +126,12 @@
       "unaddressed_comments": []
     },
     {
-      "pr_number": 426,
+      "pr_number": 428,
       "title": "perf(client): avoid O(N^2) copying in VectoredIoUtil.mergeGcsObjectRanges",
-      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/426",
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/428",
       "is_draft": false,
-      "pr_author": "ajayky-os",
-      "head_owner": "ajayky-os",
+      "pr_author": "gcs-analytics-core-robot",
+      "head_owner": "gcs-analytics-core-robot",
       "assignees": [
         "ajayky-os"
       ],
@@ -145,7 +144,7 @@
       "mergeable": "MERGEABLE",
       "merge_state_status": "BLOCKED",
       "review_decision": "PENDING",
-      "hours_since_update": 0.6,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
