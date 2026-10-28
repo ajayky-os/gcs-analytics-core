@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-28T12:50:09Z",
+  "generated_at": "2026-10-28T13:20:32Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 19,
@@ -8,22 +8,22 @@
     "error_or_quota_halted_iterations": 0,
     "substantive_iterations": 17,
     "unique_upstream_prs": 13,
-    "merged_upstream_prs": 8,
-    "open_vetted_draft_prs": 5,
+    "merged_upstream_prs": 7,
+    "open_vetted_draft_prs": 6,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 8,
     "total_agent_wall_hours": 15.21,
-    "total_gate_cpu_hours": 0.85
+    "total_gate_cpu_hours": 0.86
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-28T12:50:09Z",
+    "updated_at": "2026-10-28T13:20:32Z",
     "total_prs_raised": 13,
-    "merged_count": 8,
-    "open_ready_count": 2,
+    "merged_count": 7,
+    "open_ready_count": 3,
     "open_draft_count": 3,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.615,
+    "overall_merge_rate_to_date": 0.538,
     "median_hours_to_merge": 21.35,
     "prs": [
       {
@@ -52,21 +52,21 @@
         "pr_number": 408,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/408",
         "title": "test(test-lib): add InMemoryStorage ReadChannel contract test against the SDK channel",
-        "state": "MERGED",
+        "state": "OPEN_READY",
         "change_type": "test",
         "task_class": "benchmark_or_test_infra",
-        "loc": 210,
-        "additions": 210,
+        "loc": 0,
+        "additions": 0,
         "deletions": 0,
         "iter": "20261019-124159-test-lib-contract-test",
-        "created_at": "2026-10-20T07:45:21Z",
-        "merged_at": "2026-10-20T20:29:19Z",
-        "closed_at": "2026-10-20T20:29:19Z",
-        "hours_to_merge": 12.73,
-        "review_decision": "APPROVED",
-        "commit_count": 1,
-        "comment_count": 2,
-        "review_count": 9,
+        "created_at": null,
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 0,
+        "comment_count": 0,
+        "review_count": 0,
         "perf_summary": "\u2014",
         "coverage_summary": "1090 tests, 0 skipped; cov line 84.41% -> 84.41% (+0.00), branch 66.07% -> 66.07% (+0.00)"
       },
@@ -244,7 +244,7 @@
         "comment_count": 3,
         "review_count": 3,
         "perf_summary": "16/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=4096}` -99.0% lat, -99.8% alloc)",
-        "coverage_summary": "1316 tests, 0 skipped"
+        "coverage_summary": "1313 tests, 0 skipped"
       },
       {
         "pr_number": 429,
@@ -341,21 +341,21 @@
       "pr_number": 408,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/408",
       "title": "test(test-lib): add InMemoryStorage ReadChannel contract test against the SDK channel",
-      "state": "MERGED",
+      "state": "OPEN_READY",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
-      "loc": 210,
-      "additions": 210,
+      "loc": 0,
+      "additions": 0,
       "deletions": 0,
       "iter": "20261019-124159-test-lib-contract-test",
-      "created_at": "2026-10-20T07:45:21Z",
-      "merged_at": "2026-10-20T20:29:19Z",
-      "closed_at": "2026-10-20T20:29:19Z",
-      "hours_to_merge": 12.73,
-      "review_decision": "APPROVED",
-      "commit_count": 1,
-      "comment_count": 2,
-      "review_count": 9,
+      "created_at": null,
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 0,
+      "comment_count": 0,
+      "review_count": 0,
       "perf_summary": "\u2014",
       "coverage_summary": "1090 tests, 0 skipped; cov line 84.41% -> 84.41% (+0.00), branch 66.07% -> 66.07% (+0.00)"
     },
@@ -533,7 +533,7 @@
       "comment_count": 3,
       "review_count": 3,
       "perf_summary": "16/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=4096}` -99.0% lat, -99.8% alloc)",
-      "coverage_summary": "1316 tests, 0 skipped"
+      "coverage_summary": "1313 tests, 0 skipped"
     },
     {
       "pr_number": 429,
@@ -813,33 +813,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 8,
+      "merged_pr_count": 7,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 39.67,
-      "gross_counterfactual_hours_p50": 57.52,
-      "net_saved_hours_p25": 35.87,
-      "net_saved_hours_p50": 53.72,
-      "net_saved_swe_days_p25": 4.48,
-      "net_saved_swe_days_p50": 6.71
+      "gross_counterfactual_hours_p25": 35.0,
+      "gross_counterfactual_hours_p50": 50.85,
+      "net_saved_hours_p25": 31.2,
+      "net_saved_hours_p50": 47.05,
+      "net_saved_swe_days_p25": 3.9,
+      "net_saved_swe_days_p50": 5.88
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 5,
-      "raw_counterfactual_hours_p25": 24.66,
-      "raw_counterfactual_hours_p50": 36.67,
+      "open_draft_pr_count": 6,
+      "raw_counterfactual_hours_p25": 29.33,
+      "raw_counterfactual_hours_p50": 43.34,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.615,
-      "risk_adjusted_hours_p25": 18.91,
-      "risk_adjusted_hours_p50": 28.17
+      "empirical_promoted_merge_rate": 0.538,
+      "risk_adjusted_hours_p25": 22.18,
+      "risk_adjusted_hours_p50": 32.84
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 54.78,
-      "net_saved_hours_p50": 81.89,
-      "net_saved_swe_days_p25": 6.85,
-      "net_saved_swe_days_p50": 10.24
+      "net_saved_hours_p25": 53.38,
+      "net_saved_hours_p50": 79.89,
+      "net_saved_swe_days_p25": 6.67,
+      "net_saved_swe_days_p50": 9.99
     }
   }
 }
