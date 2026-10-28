@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-28T11:24:53Z",
+  "generated_at": "2026-10-28T11:28:32Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 19,
@@ -16,7 +16,7 @@
     "total_gate_cpu_hours": 0.86
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-28T11:24:53Z",
+    "updated_at": "2026-10-28T11:28:32Z",
     "total_prs_raised": 13,
     "merged_count": 7,
     "open_ready_count": 3,
@@ -263,10 +263,10 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 1,
+        "comment_count": 2,
         "review_count": 2,
         "perf_summary": "\u2014",
-        "coverage_summary": "1080 tests, 0 skipped; cov line 84.41% -> 84.55% (+0.15), branch 66.07% -> 66.44% (+0.37)"
+        "coverage_summary": "1072 tests, 0 skipped; cov line 84.55% / branch 66.40% (no baseline; run `sil.py baseline`)"
       },
       {
         "pr_number": 430,
@@ -285,7 +285,7 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 1,
+        "comment_count": 2,
         "review_count": 8,
         "perf_summary": "\u2014",
         "coverage_summary": "1078 tests, 0 skipped; cov line 84.41% -> 84.59% (+0.19), branch 66.07% -> 66.84% (+0.77)"
@@ -307,7 +307,7 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 1,
+        "comment_count": 2,
         "review_count": 2,
         "perf_summary": "\u2014",
         "coverage_summary": "1075 tests, 0 skipped; cov line 84.41% -> 84.49% (+0.08), branch 66.07% -> 66.26% (+0.20)"
@@ -552,10 +552,10 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 1,
+      "comment_count": 2,
       "review_count": 2,
       "perf_summary": "\u2014",
-      "coverage_summary": "1080 tests, 0 skipped; cov line 84.41% -> 84.55% (+0.15), branch 66.07% -> 66.44% (+0.37)"
+      "coverage_summary": "1072 tests, 0 skipped; cov line 84.55% / branch 66.40% (no baseline; run `sil.py baseline`)"
     },
     {
       "pr_number": 430,
@@ -574,7 +574,7 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 1,
+      "comment_count": 2,
       "review_count": 8,
       "perf_summary": "\u2014",
       "coverage_summary": "1078 tests, 0 skipped; cov line 84.41% -> 84.59% (+0.19), branch 66.07% -> 66.84% (+0.77)"
@@ -596,7 +596,7 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 1,
+      "comment_count": 2,
       "review_count": 2,
       "perf_summary": "\u2014",
       "coverage_summary": "1075 tests, 0 skipped; cov line 84.41% -> 84.49% (+0.08), branch 66.07% -> 66.26% (+0.20)"
