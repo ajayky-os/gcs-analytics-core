@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-28T09:49:32Z",
+  "checked_at": "2026-10-28T09:58:37Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "2bc962ea94996aafa20bc0685d6a1f795b0645b9",
   "onduty": {
@@ -22,6 +22,7 @@
   },
   "total_open_prs": 5,
   "actionable_count": 0,
+  "newly_recorded_rejections": [],
   "prs": [
     {
       "pr_number": 427,
@@ -75,7 +76,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.0,
+      "hours_since_update": 0.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -105,7 +106,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.4,
+      "hours_since_update": 0.6,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -135,7 +136,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.4,
+      "hours_since_update": 0.5,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -165,7 +166,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.4,
+      "hours_since_update": 0.5,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
