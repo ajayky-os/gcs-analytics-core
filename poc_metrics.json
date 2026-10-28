@@ -1,29 +1,29 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-28T07:15:10Z",
+  "generated_at": "2026-10-28T08:04:13Z",
   "project": "gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 18,
+    "total_iterations_logged": 19,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 0,
-    "substantive_iterations": 16,
-    "unique_upstream_prs": 12,
+    "substantive_iterations": 17,
+    "unique_upstream_prs": 13,
     "merged_upstream_prs": 8,
-    "open_vetted_draft_prs": 4,
+    "open_vetted_draft_prs": 5,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 8,
-    "total_agent_wall_hours": 6.48,
-    "total_gate_cpu_hours": 0.72
+    "total_agent_wall_hours": 7.21,
+    "total_gate_cpu_hours": 0.94
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-28T07:15:10Z",
-    "total_prs_raised": 12,
+    "updated_at": "2026-10-28T08:04:13Z",
+    "total_prs_raised": 13,
     "merged_count": 8,
-    "open_ready_count": 1,
+    "open_ready_count": 2,
     "open_draft_count": 3,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.667,
+    "overall_merge_rate_to_date": 0.615,
     "median_hours_to_merge": 21.35,
     "prs": [
       {
@@ -289,6 +289,28 @@
         "review_count": 2,
         "perf_summary": "9/45 IMPROVED (top: `ReadStrategyBenchmark.seekAndRead{forwardGapBytes=4096,strategy=RANDOM}` -73.3% lat, -93.3% alloc)",
         "coverage_summary": "1310 tests, 0 skipped; cov line 85.11% -> 85.13% (+0.02), branch 67.34% -> 67.37% (+0.03)"
+      },
+      {
+        "pr_number": 426,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/426",
+        "title": "perf(client): avoid O(N^2) copying in VectoredIoUtil.mergeGcsObjectRanges",
+        "state": "OPEN_READY",
+        "change_type": "perf",
+        "task_class": "perf_or_feature_change",
+        "loc": 134,
+        "additions": 113,
+        "deletions": 21,
+        "iter": "20261028-071714-linear-vectored-range-merge",
+        "created_at": "2026-10-28T07:59:43Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 2,
+        "review_count": 1,
+        "perf_summary": "16/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=4096}` -99.0% lat, -99.8% alloc)",
+        "coverage_summary": "1313 tests, 0 skipped; cov line 85.13% -> 85.27% (+0.14), branch 67.37% -> 67.74% (+0.36)"
       }
     ]
   },
@@ -556,6 +578,28 @@
       "review_count": 2,
       "perf_summary": "9/45 IMPROVED (top: `ReadStrategyBenchmark.seekAndRead{forwardGapBytes=4096,strategy=RANDOM}` -73.3% lat, -93.3% alloc)",
       "coverage_summary": "1310 tests, 0 skipped; cov line 85.11% -> 85.13% (+0.02), branch 67.34% -> 67.37% (+0.03)"
+    },
+    {
+      "pr_number": 426,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/426",
+      "title": "perf(client): avoid O(N^2) copying in VectoredIoUtil.mergeGcsObjectRanges",
+      "state": "OPEN_READY",
+      "change_type": "perf",
+      "task_class": "perf_or_feature_change",
+      "loc": 134,
+      "additions": 113,
+      "deletions": 21,
+      "iter": "20261028-071714-linear-vectored-range-merge",
+      "created_at": "2026-10-28T07:59:43Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 2,
+      "review_count": 1,
+      "perf_summary": "16/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=4096}` -99.0% lat, -99.8% alloc)",
+      "coverage_summary": "1313 tests, 0 skipped; cov line 85.13% -> 85.27% (+0.14), branch 67.37% -> 67.74% (+0.36)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -770,19 +814,19 @@
       "net_saved_swe_days_p50": 6.67
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 4,
-      "raw_counterfactual_hours_p25": 19.99,
-      "raw_counterfactual_hours_p50": 30.0,
+      "open_draft_pr_count": 5,
+      "raw_counterfactual_hours_p25": 25.32,
+      "raw_counterfactual_hours_p50": 38.0,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.667,
-      "risk_adjusted_hours_p25": 14.98,
-      "risk_adjusted_hours_p50": 22.5
+      "empirical_promoted_merge_rate": 0.615,
+      "risk_adjusted_hours_p25": 18.71,
+      "risk_adjusted_hours_p50": 28.1
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 50.85,
-      "net_saved_hours_p50": 75.89,
-      "net_saved_swe_days_p25": 6.36,
-      "net_saved_swe_days_p50": 9.49
+      "net_saved_hours_p25": 54.58,
+      "net_saved_hours_p50": 81.49,
+      "net_saved_swe_days_p25": 6.82,
+      "net_saved_swe_days_p50": 10.19
     }
   }
 }
