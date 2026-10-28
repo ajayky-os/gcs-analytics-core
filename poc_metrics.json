@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-28T19:31:20Z",
+  "generated_at": "2026-10-28T20:02:07Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 19,
@@ -13,14 +13,14 @@
     "closed_unmerged_prs": 0,
     "critic_major_catches": 8,
     "total_agent_wall_hours": 15.21,
-    "total_gate_cpu_hours": 0.85
+    "total_gate_cpu_hours": 0.88
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-28T19:31:20Z",
+    "updated_at": "2026-10-28T20:02:07Z",
     "total_prs_raised": 13,
     "merged_count": 3,
-    "open_ready_count": 7,
-    "open_draft_count": 3,
+    "open_ready_count": 10,
+    "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
     "overall_merge_rate_to_date": 0.231,
@@ -250,7 +250,7 @@
         "pr_number": 429,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/429",
         "title": "feat(client): coalesce adjacent ranges in GcsBidiReadChannel.readVectored()",
-        "state": "OPEN_DRAFT",
+        "state": "OPEN_READY",
         "change_type": "feature",
         "task_class": "perf_or_feature_change",
         "loc": 231,
@@ -263,16 +263,16 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 2,
+        "comment_count": 3,
         "review_count": 2,
         "perf_summary": "\u2014",
-        "coverage_summary": "1072 tests, 0 skipped; cov line 84.55% / branch 66.40% (no baseline; run `sil.py baseline`)"
+        "coverage_summary": "1318 tests, 0 skipped"
       },
       {
         "pr_number": 430,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/430",
         "title": "feat(core): serve vectored tail ranges from the cached footer in GcsFooterOptimizer",
-        "state": "OPEN_DRAFT",
+        "state": "OPEN_READY",
         "change_type": "feature",
         "task_class": "perf_or_feature_change",
         "loc": 401,
@@ -288,13 +288,13 @@
         "comment_count": 2,
         "review_count": 8,
         "perf_summary": "\u2014",
-        "coverage_summary": "1078 tests, 0 skipped; cov line 84.41% -> 84.59% (+0.19), branch 66.07% -> 66.84% (+0.77)"
+        "coverage_summary": "1328 tests, 0 skipped"
       },
       {
         "pr_number": 431,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/431",
         "title": "fix(client): short-circuit zero-length vectored ranges and validate offsets up front",
-        "state": "OPEN_DRAFT",
+        "state": "OPEN_READY",
         "change_type": "fix",
         "task_class": "correctness_fix",
         "loc": 294,
@@ -310,7 +310,7 @@
         "comment_count": 2,
         "review_count": 2,
         "perf_summary": "\u2014",
-        "coverage_summary": "1075 tests, 0 skipped; cov line 84.41% -> 84.49% (+0.08), branch 66.07% -> 66.26% (+0.20)"
+        "coverage_summary": "1325 tests, 0 skipped"
       }
     ]
   },
@@ -539,7 +539,7 @@
       "pr_number": 429,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/429",
       "title": "feat(client): coalesce adjacent ranges in GcsBidiReadChannel.readVectored()",
-      "state": "OPEN_DRAFT",
+      "state": "OPEN_READY",
       "change_type": "feature",
       "task_class": "perf_or_feature_change",
       "loc": 231,
@@ -552,16 +552,16 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 2,
+      "comment_count": 3,
       "review_count": 2,
       "perf_summary": "\u2014",
-      "coverage_summary": "1072 tests, 0 skipped; cov line 84.55% / branch 66.40% (no baseline; run `sil.py baseline`)"
+      "coverage_summary": "1318 tests, 0 skipped"
     },
     {
       "pr_number": 430,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/430",
       "title": "feat(core): serve vectored tail ranges from the cached footer in GcsFooterOptimizer",
-      "state": "OPEN_DRAFT",
+      "state": "OPEN_READY",
       "change_type": "feature",
       "task_class": "perf_or_feature_change",
       "loc": 401,
@@ -577,13 +577,13 @@
       "comment_count": 2,
       "review_count": 8,
       "perf_summary": "\u2014",
-      "coverage_summary": "1078 tests, 0 skipped; cov line 84.41% -> 84.59% (+0.19), branch 66.07% -> 66.84% (+0.77)"
+      "coverage_summary": "1328 tests, 0 skipped"
     },
     {
       "pr_number": 431,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/431",
       "title": "fix(client): short-circuit zero-length vectored ranges and validate offsets up front",
-      "state": "OPEN_DRAFT",
+      "state": "OPEN_READY",
       "change_type": "fix",
       "task_class": "correctness_fix",
       "loc": 294,
@@ -599,7 +599,7 @@
       "comment_count": 2,
       "review_count": 2,
       "perf_summary": "\u2014",
-      "coverage_summary": "1075 tests, 0 skipped; cov line 84.41% -> 84.49% (+0.08), branch 66.07% -> 66.26% (+0.20)"
+      "coverage_summary": "1325 tests, 0 skipped"
     }
   ],
   "perf_and_bug_ledger": {
@@ -799,11 +799,43 @@
         "source": "pilot_backfill"
       },
       {
+        "iter": "20261019-121048-footer-vectored-tail-v2",
+        "pr": "#430",
+        "severity": "minor",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/GcsFooterOptimizer.java:238",
+        "finding": "Catching `Throwable` swallows fatal JVM errors like `OutOfMemoryError` or `ThreadDeath`. While completing the future exceptionally is safe, masking such errors can leave the system in an unstable state.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261019-121048-footer-vectored-tail-v2",
+        "pr": "#430",
+        "severity": "nit",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/optimizer/GcsFooterOptimizerTest.java:792",
+        "finding": "Test relies on Mockito's default behavior of returning `Optional.empty()` for unstubbed methods returning `Optional`. This can be fragile across Mockito versions.",
+        "source": "critic_history"
+      },
+      {
         "iter": "20261027-095436-cache-metadata-extractor-reflection",
         "pr": "#427",
         "severity": "blocker",
         "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadChannelMetadataExtractor.java:165",
         "finding": "The cache population method `addMatchingZeroArgMethods` calls `method.setAccessible(true)` without catching `RuntimeException`. On Java 9+, `setAccessible(true)` can throw `InaccessibleObjectException` for public methods of classes in closed modules. In the original code, this was safely caught by `invokeLongGetter`'s `try...catch (ReflectiveOperationException | RuntimeException e)`, allowing graceful fallback to the next getter or returning `-1L`. In this new code, an inaccessible getter will crash `ClassValue.computeValue` and fail the entire `extract()` method. You must catch and ignore `RuntimeException` around `setAccessible` here, just like you did in `ChannelAccessors.forClass`.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261019-121048-footer-vectored-tail-v2",
+        "pr": "#430",
+        "severity": "minor",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/GcsFooterOptimizer.java:238",
+        "finding": "Catching `Throwable` swallows fatal JVM errors like `OutOfMemoryError` or `ThreadDeath`. While completing the future exceptionally is safe, masking such errors can leave the system in an unstable state.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261019-121048-footer-vectored-tail-v2",
+        "pr": "#430",
+        "severity": "nit",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/optimizer/GcsFooterOptimizerTest.java:792",
+        "finding": "Test relies on Mockito's default behavior of returning `Optional.empty()` for unstubbed methods returning `Optional`. This can be fragile across Mockito versions.",
         "source": "critic_history"
       }
     ]
