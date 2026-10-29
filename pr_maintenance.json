@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-29T08:12:14Z",
+  "checked_at": "2026-10-29T08:14:40Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "1f839b067b5b9da36fbb4467e3476bc3e20f6f68",
   "onduty": {
@@ -47,7 +47,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 12.4,
+      "hours_since_update": 12.5,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -187,8 +187,8 @@
       ],
       "iter_id": "20261029-075432-opentelemetry-reporter-coverage",
       "branch": "sil/opentelemetry-reporter-coverage",
-      "head_oid": "82ed3411ddefec0289885f77669a661e19fd85fe",
-      "head_commit_ts": "2026-10-29T08:10:08Z",
+      "head_oid": "372ea6cd2a37c171ed55442df4b67c155767e28a",
+      "head_commit_ts": "2026-10-29T08:11:31Z",
       "main_sha": "1f839b067b5b9da36fbb4467e3476bc3e20f6f68",
       "commits_behind_main": 0,
       "mergeable": "MERGEABLE",

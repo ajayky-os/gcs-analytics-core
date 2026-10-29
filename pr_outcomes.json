@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T08:12:23Z",
+  "updated_at": "2026-10-29T08:14:09Z",
   "total_prs_raised": 15,
   "merged_count": 3,
   "open_ready_count": 12,
@@ -337,7 +337,7 @@
       "comment_count": 3,
       "review_count": 2,
       "perf_summary": "\u2014",
-      "coverage_summary": "1321 tests, 0 skipped; cov line 85.25% -> 85.35% (+0.09), branch 67.44% -> 67.81% (+0.36)"
+      "coverage_summary": "exit 1"
     }
   ]
 }
