@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-29T10:26:17Z",
+  "checked_at": "2026-10-29T10:27:54Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "fd3284a684406a5a93950a08a439205cdaaaaa06",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 6,
-  "actionable_count": 2,
+  "actionable_count": 1,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -137,7 +137,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.4,
+      "hours_since_update": 0.5,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -167,7 +167,7 @@
       "ready_to_merge": true,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.2,
+      "hours_since_update": 0.3,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -197,28 +197,13 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.1,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
-      "needs_comment_fix": true,
-      "action_required": true,
-      "unaddressed_comments": [
-        {
-          "id": "pull_comment:4411085673",
-          "comment_id": 4411085673,
-          "root_comment_id": 4411085673,
-          "thread_id": "PRRT_kwDOPmMU8s6xgREf",
-          "type": "inline_review_comment",
-          "author": "gemini-code-assist[bot]",
-          "path": "common/src/test/java/com/google/cloud/gcs/analyticscore/common/cache/AnalyticsCacheCaffeineImplTest.java",
-          "line": 108,
-          "diff_hunk": "Impl<String, String> ttlCache =\n+        AnalyticsCacheCaffeineImpl.createWithTtlOnly(1, TimeUnit.NANOSECONDS);\n+\n+    ttlCache.put(\"key1\", \"value1\");\n+    long start = System.nanoTime();\n+    while (System.nanoTime() - start < 1_000L) {\n+      Thread.onSpinWait();\n+    }\n+    ttlCache.cleanUp();\n+\n+    assertThat(ttlCache.get(\"key1\")).isEmpty();\n+    assertThat(ttlCache.size()).isEqualTo(0);\n+  }",
-          "body": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nBusy-waiting using a spin loop (`Thread.onSpinWait()`) with a very short duration (1,000 nanoseconds) is highly prone to flakiness in virtualized CI/CD environments due to CPU scheduling, GC pauses, and coarse system timer resolutions.\n\nUsing `TimeUnit.MILLISECONDS` with a short `Thread.sleep(10)` is much more robust, consumes no CPU while waiting, and ensures the entry has expired across all platforms.\n\n```java\n  void createWithTtlOnly_expiredEntry_evictsOnCleanUp() throws InterruptedException {\n    AnalyticsCacheCaffeineImpl<String, String> ttlCache =\n        AnalyticsCacheCaffeineImpl.createWithTtlOnly(1, TimeUnit.MILLISECONDS);\n\n    ttlCache.put(\"key1\", \"value1\");\n    Thread.sleep(10);\n    ttlCache.cleanUp();\n\n    assertThat(ttlCache.get(\"key1\")).isEmpty();\n    assertThat(ttlCache.size()).isEqualTo(0);\n  }\n```",
-          "created_at": "2026-10-29T10:14:09Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/441#discussion_r4411085673"
-        }
-      ]
+      "needs_comment_fix": false,
+      "action_required": false,
+      "unaddressed_comments": []
     }
   ]
 }
