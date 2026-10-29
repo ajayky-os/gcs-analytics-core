@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-10-28T20:02:07Z",
-  "total_prs_raised": 13,
+  "updated_at": "2026-10-29T05:25:25Z",
+  "total_prs_raised": 14,
   "merged_count": 3,
-  "open_ready_count": 10,
+  "open_ready_count": 11,
   "open_draft_count": 0,
   "closed_unmerged_count": 0,
   "acceptance_rate_closed_prs": 1.0,
-  "overall_merge_rate_to_date": 0.231,
+  "overall_merge_rate_to_date": 0.214,
   "median_hours_to_merge": 16.9,
   "prs": [
     {
@@ -268,7 +268,7 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 2,
+      "comment_count": 3,
       "review_count": 8,
       "perf_summary": "\u2014",
       "coverage_summary": "1328 tests, 0 skipped"
@@ -290,10 +290,32 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 2,
+      "comment_count": 3,
       "review_count": 2,
       "perf_summary": "\u2014",
       "coverage_summary": "1325 tests, 0 skipped"
+    },
+    {
+      "pr_number": 439,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/439",
+      "title": "perf(core): use bounded random-access channels for readFully and readTail",
+      "state": "OPEN_READY",
+      "change_type": "perf",
+      "task_class": "perf_or_feature_change",
+      "loc": 176,
+      "additions": 169,
+      "deletions": 7,
+      "iter": "20261029-035829-readfully-random-access-pattern",
+      "created_at": "2026-10-29T05:24:52Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "4/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -14.6% lat, -1.2% alloc)",
+      "coverage_summary": "1316 tests, 0 skipped; cov line 85.25% -> 85.66% (+0.41), branch 67.44% -> 68.28% (+0.84)"
     }
   ]
 }

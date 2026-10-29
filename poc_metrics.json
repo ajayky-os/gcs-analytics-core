@@ -1,29 +1,29 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-28T20:02:07Z",
+  "generated_at": "2026-10-29T05:25:25Z",
   "project": "gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 19,
+    "total_iterations_logged": 20,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 0,
-    "substantive_iterations": 17,
-    "unique_upstream_prs": 13,
+    "substantive_iterations": 18,
+    "unique_upstream_prs": 14,
     "merged_upstream_prs": 3,
-    "open_vetted_draft_prs": 10,
+    "open_vetted_draft_prs": 11,
     "closed_unmerged_prs": 0,
-    "critic_major_catches": 8,
-    "total_agent_wall_hours": 15.21,
-    "total_gate_cpu_hours": 0.88
+    "critic_major_catches": 9,
+    "total_agent_wall_hours": 16.65,
+    "total_gate_cpu_hours": 1.09
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-28T20:02:07Z",
-    "total_prs_raised": 13,
+    "updated_at": "2026-10-29T05:25:25Z",
+    "total_prs_raised": 14,
     "merged_count": 3,
-    "open_ready_count": 10,
+    "open_ready_count": 11,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.231,
+    "overall_merge_rate_to_date": 0.214,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -285,7 +285,7 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 2,
+        "comment_count": 3,
         "review_count": 8,
         "perf_summary": "\u2014",
         "coverage_summary": "1328 tests, 0 skipped"
@@ -307,10 +307,32 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 2,
+        "comment_count": 3,
         "review_count": 2,
         "perf_summary": "\u2014",
         "coverage_summary": "1325 tests, 0 skipped"
+      },
+      {
+        "pr_number": 439,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/439",
+        "title": "perf(core): use bounded random-access channels for readFully and readTail",
+        "state": "OPEN_READY",
+        "change_type": "perf",
+        "task_class": "perf_or_feature_change",
+        "loc": 176,
+        "additions": 169,
+        "deletions": 7,
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "created_at": "2026-10-29T05:24:52Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "4/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -14.6% lat, -1.2% alloc)",
+        "coverage_summary": "1316 tests, 0 skipped; cov line 85.25% -> 85.66% (+0.41), branch 67.44% -> 68.28% (+0.84)"
       }
     ]
   },
@@ -574,7 +596,7 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 2,
+      "comment_count": 3,
       "review_count": 8,
       "perf_summary": "\u2014",
       "coverage_summary": "1328 tests, 0 skipped"
@@ -596,10 +618,32 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 2,
+      "comment_count": 3,
       "review_count": 2,
       "perf_summary": "\u2014",
       "coverage_summary": "1325 tests, 0 skipped"
+    },
+    {
+      "pr_number": 439,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/439",
+      "title": "perf(core): use bounded random-access channels for readFully and readTail",
+      "state": "OPEN_READY",
+      "change_type": "perf",
+      "task_class": "perf_or_feature_change",
+      "loc": 176,
+      "additions": 169,
+      "deletions": 7,
+      "iter": "20261029-035829-readfully-random-access-pattern",
+      "created_at": "2026-10-29T05:24:52Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "4/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -14.6% lat, -1.2% alloc)",
+      "coverage_summary": "1316 tests, 0 skipped; cov line 85.25% -> 85.66% (+0.41), branch 67.44% -> 68.28% (+0.84)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -740,7 +784,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 8,
+    "major_or_blocker_count": 9,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -797,6 +841,14 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "major",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:243",
+        "finding": "The explicit EOF short-circuit block added to `readFully` duplicates channel opening/reading logic and drops `adoptResolvedItemInfo`. Crucially, it assumes `byteChannel.read(...)` returns exactly `available` bytes by ignoring its return value. If a short read occurs, the `EOFException` will incorrectly report `length - available` bytes left instead of the actual missing amount. This complexity is unnecessary. If bounding the request size is desired, calculate a capped `bytesToRead` and pass it to the existing `read(...)` call.",
+        "source": "critic_history"
       },
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -859,19 +911,19 @@
       "net_saved_swe_days_p50": 2.42
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 10,
-      "raw_counterfactual_hours_p25": 48.01,
-      "raw_counterfactual_hours_p50": 70.02,
+      "open_draft_pr_count": 11,
+      "raw_counterfactual_hours_p25": 53.34,
+      "raw_counterfactual_hours_p50": 78.02,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.231,
-      "risk_adjusted_hours_p25": 35.92,
-      "risk_adjusted_hours_p50": 52.51
+      "empirical_promoted_merge_rate": 0.214,
+      "risk_adjusted_hours_p25": 39.98,
+      "risk_adjusted_hours_p50": 58.61
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 47.78,
-      "net_saved_hours_p50": 71.88,
-      "net_saved_swe_days_p25": 5.97,
-      "net_saved_swe_days_p50": 8.98
+      "net_saved_hours_p25": 51.84,
+      "net_saved_hours_p50": 77.98,
+      "net_saved_swe_days_p25": 6.48,
+      "net_saved_swe_days_p50": 9.75
     }
   }
 }
