@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-29T18:38:46Z",
+  "generated_at": "2026-10-29T18:41:36Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 22,
@@ -13,10 +13,10 @@
     "closed_unmerged_prs": 0,
     "critic_major_catches": 13,
     "total_agent_wall_hours": 16.13,
-    "total_gate_cpu_hours": 0.8
+    "total_gate_cpu_hours": 0.81
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-29T18:38:46Z",
+    "updated_at": "2026-10-29T18:41:36Z",
     "total_prs_raised": 16,
     "merged_count": 13,
     "open_ready_count": 3,
@@ -332,7 +332,7 @@
         "comment_count": 3,
         "review_count": 5,
         "perf_summary": "3/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -11.2% lat, +0.3% alloc)",
-        "coverage_summary": "1354 tests, 0 skipped"
+        "coverage_summary": "1366 tests, 0 skipped"
       },
       {
         "pr_number": 440,
@@ -687,7 +687,7 @@
       "comment_count": 3,
       "review_count": 5,
       "perf_summary": "3/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -11.2% lat, +0.3% alloc)",
-      "coverage_summary": "1354 tests, 0 skipped"
+      "coverage_summary": "1366 tests, 0 skipped"
     },
     {
       "pr_number": 440,
