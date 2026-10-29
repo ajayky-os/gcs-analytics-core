@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-29T14:25:01Z",
+  "generated_at": "2026-10-29T14:32:35Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 22,
@@ -8,22 +8,22 @@
     "error_or_quota_halted_iterations": 0,
     "substantive_iterations": 20,
     "unique_upstream_prs": 16,
-    "merged_upstream_prs": 4,
-    "open_vetted_draft_prs": 12,
+    "merged_upstream_prs": 5,
+    "open_vetted_draft_prs": 11,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 18,
     "total_agent_wall_hours": 19.41,
     "total_gate_cpu_hours": 0.96
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-29T14:25:01Z",
+    "updated_at": "2026-10-29T14:32:35Z",
     "total_prs_raised": 16,
-    "merged_count": 4,
-    "open_ready_count": 12,
+    "merged_count": 5,
+    "open_ready_count": 11,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.25,
+    "overall_merge_rate_to_date": 0.312,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -338,7 +338,7 @@
         "pr_number": 440,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/440",
         "title": "test(common): cover unexercised paths in OpenTelemetry providers",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "test",
         "task_class": "benchmark_or_test_infra",
         "loc": 183,
@@ -346,9 +346,9 @@
         "deletions": 0,
         "iter": "20261029-075432-opentelemetry-reporter-coverage",
         "created_at": "2026-10-29T07:59:33Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
+        "merged_at": "2026-10-29T14:32:22Z",
+        "closed_at": "2026-10-29T14:32:22Z",
+        "hours_to_merge": 6.55,
         "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
@@ -693,7 +693,7 @@
       "pr_number": 440,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/440",
       "title": "test(common): cover unexercised paths in OpenTelemetry providers",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
       "loc": 183,
@@ -701,9 +701,9 @@
       "deletions": 0,
       "iter": "20261029-075432-opentelemetry-reporter-coverage",
       "created_at": "2026-10-29T07:59:33Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
+      "merged_at": "2026-10-29T14:32:22Z",
+      "closed_at": "2026-10-29T14:32:22Z",
+      "hours_to_merge": 6.55,
       "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
@@ -1089,33 +1089,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 4,
+      "merged_pr_count": 5,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 20.99,
-      "gross_counterfactual_hours_p50": 31.17,
-      "net_saved_hours_p25": 17.19,
-      "net_saved_hours_p50": 27.37,
-      "net_saved_swe_days_p25": 2.15,
-      "net_saved_swe_days_p50": 3.42
+      "gross_counterfactual_hours_p25": 25.66,
+      "gross_counterfactual_hours_p50": 37.84,
+      "net_saved_hours_p25": 21.86,
+      "net_saved_hours_p50": 34.04,
+      "net_saved_swe_days_p25": 2.73,
+      "net_saved_swe_days_p50": 4.25
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 12,
-      "raw_counterfactual_hours_p25": 57.35,
-      "raw_counterfactual_hours_p50": 83.36,
+      "open_draft_pr_count": 11,
+      "raw_counterfactual_hours_p25": 52.68,
+      "raw_counterfactual_hours_p50": 76.69,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.25,
-      "risk_adjusted_hours_p25": 45.75,
-      "risk_adjusted_hours_p50": 66.85
+      "empirical_promoted_merge_rate": 0.312,
+      "risk_adjusted_hours_p25": 42.49,
+      "risk_adjusted_hours_p50": 62.18
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 62.94,
-      "net_saved_hours_p50": 94.22,
-      "net_saved_swe_days_p25": 7.87,
-      "net_saved_swe_days_p50": 11.78
+      "net_saved_hours_p25": 64.35,
+      "net_saved_hours_p50": 96.22,
+      "net_saved_swe_days_p25": 8.04,
+      "net_saved_swe_days_p50": 12.03
     }
   }
 }
