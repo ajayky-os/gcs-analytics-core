@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-29T17:25:55Z",
+  "checked_at": "2026-10-29T17:27:25Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "6a6d7ae80a4898697d659360a383dc9ae09a3895",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 4,
-  "actionable_count": 3,
+  "actionable_count": 2,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -67,22 +67,22 @@
       ],
       "iter_id": "20261019-121048-footer-vectored-tail-v2",
       "branch": "sil/footer-vectored-tail",
-      "head_oid": "9a9d6591bed6696895f56116240993817e99cdcb",
-      "head_commit_ts": "2026-10-29T16:53:44Z",
+      "head_oid": "38710df960199b8517266e2f7d2b1f168bb5112a",
+      "head_commit_ts": "2026-10-29T17:23:56Z",
       "main_sha": "6a6d7ae80a4898697d659360a383dc9ae09a3895",
-      "commits_behind_main": 1,
+      "commits_behind_main": 0,
       "mergeable": "MERGEABLE",
-      "merge_state_status": "BEHIND",
+      "merge_state_status": "BLOCKED",
       "review_decision": "PENDING",
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.1,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
-      "needs_rebase": true,
+      "needs_rebase": false,
       "needs_comment_fix": false,
-      "action_required": true,
+      "action_required": false,
       "unaddressed_comments": []
     },
     {
