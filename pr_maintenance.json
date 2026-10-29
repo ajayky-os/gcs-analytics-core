@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-29T07:34:45Z",
+  "checked_at": "2026-10-29T07:36:13Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "1f839b067b5b9da36fbb4467e3476bc3e20f6f68",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 5,
-  "actionable_count": 1,
+  "actionable_count": 0,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -157,8 +157,8 @@
       ],
       "iter_id": "20261029-035829-readfully-random-access-pattern",
       "branch": "sil/readfully-random-access-pattern",
-      "head_oid": "bcc1966b6c3a64c17f8bbe1eaacbf8ec4520b017",
-      "head_commit_ts": "2026-10-29T04:28:03Z",
+      "head_oid": "b1b2dac23a0f98be15ba22c63f2c5d15a5eeaf75",
+      "head_commit_ts": "2026-10-29T07:34:17Z",
       "main_sha": "1f839b067b5b9da36fbb4467e3476bc3e20f6f68",
       "commits_behind_main": 0,
       "mergeable": "MERGEABLE",
@@ -167,70 +167,13 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 1.9,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
-      "needs_comment_fix": true,
-      "action_required": true,
-      "unaddressed_comments": [
-        {
-          "id": "pull_comment:4408994359",
-          "comment_id": 4408994359,
-          "root_comment_id": 4408994359,
-          "thread_id": "PRRT_kwDOPmMU8s6xbTXf",
-          "type": "inline_review_comment",
-          "author": "gemini-code-assist[bot]",
-          "path": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java",
-          "line": 264,
-          "diff_hunk": "\n-                int numberOfBytesRead = byteChannel.read(ByteBuffer.wrap(buffer, offset, length));\n+                int numberOfBytesRead = 0;\n+                if (bytesToRead > 0) {\n+                  int read = byteChannel.read(ByteBuffer.wrap(buffer, offset, bytesToRead));\n+                  if (read > 0) {\n+                    numberOfBytesRead = read;\n+                  }\n+                }",
-          "body": "![high](https://www.gstatic.com/codereviewagent/high-priority.svg)\n\nThe `ReadableByteChannel.read(ByteBuffer dst)` method is not guaranteed to read the entire requested length in a single invocation. It may read any number of bytes (at least one, if blocking) and return. In high-concurrency or network-heavy environments (like GCS), a single `read` call frequently returns fewer bytes than requested even if the end of the stream has not been reached. This will cause `numberOfBytesRead` to be less than `length`, resulting in a premature `EOFException`.\n\nTo ensure correctness and robustness, we should read in a loop until the requested `bytesToRead` has been fully read or EOF is encountered. Note that if `read` returns 0, we should continue the loop rather than breaking, as some implementations may return 0 bytes occasionally without indicating an infinite loop or EOF.\n\n```java\n                int numberOfBytesRead = 0;\n                while (numberOfBytesRead < bytesToRead) {\n                  int read = byteChannel.read(\n                      ByteBuffer.wrap(buffer, offset + numberOfBytesRead, bytesToRead - numberOfBytesRead));\n                  if (read < 0) {\n                    break;\n                  }\n                  numberOfBytesRead += read;\n                }\n```\n\n<details>\n<summary>References</summary>\n\n1. When implementing read loops for ReadChannel, it is acceptable to continue the loop if read returns 0, as some implementations may return 0 bytes occasionally without indicating an infinite loop or EOF.\n</details>",
-          "created_at": "2026-10-29T05:26:57Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/439#discussion_r4408994359"
-        },
-        {
-          "id": "pull_comment:4408994365",
-          "comment_id": 4408994365,
-          "root_comment_id": 4408994365,
-          "thread_id": "PRRT_kwDOPmMU8s6xbTXj",
-          "type": "inline_review_comment",
-          "author": "gemini-code-assist[bot]",
-          "path": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java",
-          "line": 309,
-          "diff_hunk": "ystem))) {\n                 byteChannel.position(startPosition);\n-                int bytesRead = byteChannel.read(ByteBuffer.wrap(buffer, offset, length));\n+                int bytesRead = byteChannel.read(ByteBuffer.wrap(buffer, offset, bytesToRead));\n                 if (bytesRead > 0) {\n                   recorder.record(Metric.READ_BYTES, bytesRead, Collections.emptyMap());\n                 }",
-          "body": "![high](https://www.gstatic.com/codereviewagent/high-priority.svg)\n\nSimilar to `readFully`, `byteChannel.read` is not guaranteed to read the entire requested `bytesToRead` in a single call. To ensure we robustly read the full tail of the file up to the requested length, we should perform the read in a loop. Note that if `read` returns 0, we should continue the loop rather than breaking, as some implementations may return 0 bytes occasionally without indicating an infinite loop or EOF.\n\n```java\n                int bytesRead = 0;\n                while (bytesRead < bytesToRead) {\n                  int read = byteChannel.read(\n                      ByteBuffer.wrap(buffer, offset + bytesRead, bytesToRead - bytesRead));\n                  if (read < 0) {\n                    break;\n                  }\n                  bytesRead += read;\n                }\n                if (bytesRead > 0) {\n                  recorder.record(Metric.READ_BYTES, bytesRead, Collections.emptyMap());\n                }\n```\n\n<details>\n<summary>References</summary>\n\n1. When implementing read loops for ReadChannel, it is acceptable to continue the loop if read returns 0, as some implementations may return 0 bytes occasionally without indicating an infinite loop or EOF.\n</details>",
-          "created_at": "2026-10-29T05:26:57Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/439#discussion_r4408994365"
-        },
-        {
-          "id": "pull_comment:4408994370",
-          "comment_id": 4408994370,
-          "root_comment_id": 4408994370,
-          "thread_id": "PRRT_kwDOPmMU8s6xbTXn",
-          "type": "inline_review_comment",
-          "author": "gemini-code-assist[bot]",
-          "path": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java",
-          "line": 250,
-          "diff_hunk": "ptResolvedItemInfo(channel);\n+              int bytesToRead = length;\n+              if (gcsFileInfo != null && gcsFileInfo.getItemInfo().getSize() >= 0) {\n+                bytesToRead =\n+                    (int)\n+                        Math.min(\n+                            (long) length,\n+                            Math.max(0, gcsFileInfo.getItemInfo().getSize() - position));\n+              }",
-          "body": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nIf `gcsFileInfo` is available and we know the file size, we can determine beforehand if the requested range `[position, position + length)` exceeds the file boundary. If it does, `readFully` is guaranteed to throw an `EOFException`.\n\nCurrently, the code still opens a new GCS channel (`openReadChannel`), seeks to the position, and attempts to read before throwing the exception. Opening a GCS channel is an expensive network operation. We should fail fast and throw the `EOFException` immediately before opening the channel to avoid unnecessary network I/O.\n\n```java\n              if (gcsFileInfo != null && gcsFileInfo.getItemInfo().getSize() >= 0) {\n                long size = gcsFileInfo.getItemInfo().getSize();\n                if (position + length > size) {\n                  throw new EOFException(\n                      \"Reached the end of stream with \"\n                          + (position + length - size)\n                          + \" bytes left to read\");\n                }\n              }\n              int bytesToRead = length;\n```\n\n<details>\n<summary>References</summary>\n\n1. Fail-Fast: Validate inputs at the boundary (public methods) immediately. <sup>([link](https://github.com/GoogleCloudPlatform/gcs-analytics-core/blob/main/.gemini/styleguide.md))</sup>\n</details>",
-          "created_at": "2026-10-29T05:26:57Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/439#discussion_r4408994370"
-        },
-        {
-          "id": "pull_comment:4408994377",
-          "comment_id": 4408994377,
-          "root_comment_id": 4408994377,
-          "thread_id": "PRRT_kwDOPmMU8s6xbTXt",
-          "type": "inline_review_comment",
-          "author": "gemini-code-assist[bot]",
-          "path": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java",
-          "line": 370,
-          "diff_hunk": "m.getFileSystemOptions().getGcsClientOptions().getGcsReadOptions();\n+  }\n+\n+  /** Options for one-shot positional reads: bounded RANDOM channel (see RandomReadStrategy). */\n+  private static GcsReadOptions positionalReadOptions(GcsFileSystem gcsFileSystem) {\n+    return configuredReadOptions(gcsFileSystem).toBuilder()\n+        .setFileAccessPattern(FileAccessPattern.RANDOM)\n+        .build();\n+  }",
-          "body": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe `positionalReadOptions` method is called on every invocation of `readFully` and `readTail`. It retrieves the configured read options, calls `toBuilder()`, sets the file access pattern, and builds a new `GcsReadOptions` instance. In high-throughput big data environments, these methods are on the hot path, and repeated builder instantiation and object allocation creates unnecessary GC pressure.\n\nSince the file system options are immutable for the lifetime of the stream, consider instantiating `positionalReadOptions` once during the construction of `GoogleCloudStorageInputStream` and storing it in a `private final` instance field to avoid redundant allocations.\n\n<details>\n<summary>References</summary>\n\n1. GC Pressure: Avoid allocating large objects or buffers inside tight loops (e.g., in read() loops). Reuse buffers where thread safety allows. <sup>([link](https://github.com/GoogleCloudPlatform/gcs-analytics-core/blob/main/.gemini/styleguide.md))</sup>\n2. For frequently called methods (hot paths) that require a default or fallback object, reuse a static final constant instance instead of instantiating a new object or builder on every call to avoid redundant allocations and CPU overhead.\n</details>",
-          "created_at": "2026-10-29T05:26:57Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/439#discussion_r4408994377"
-        }
-      ]
+      "needs_comment_fix": false,
+      "action_required": false,
+      "unaddressed_comments": []
     }
   ]
 }
