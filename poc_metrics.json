@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-29T08:00:20Z",
+  "generated_at": "2026-10-29T08:12:23Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 21,
@@ -12,11 +12,11 @@
     "open_vetted_draft_prs": 12,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 18,
-    "total_agent_wall_hours": 18.74,
-    "total_gate_cpu_hours": 1.24
+    "total_agent_wall_hours": 19.02,
+    "total_gate_cpu_hours": 0.94
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-29T08:00:20Z",
+    "updated_at": "2026-10-29T08:12:23Z",
     "total_prs_raised": 15,
     "merged_count": 3,
     "open_ready_count": 12,
@@ -319,8 +319,8 @@
         "state": "OPEN_READY",
         "change_type": "perf",
         "task_class": "perf_or_feature_change",
-        "loc": 380,
-        "additions": 368,
+        "loc": 331,
+        "additions": 319,
         "deletions": 12,
         "iter": "20261029-035829-readfully-random-access-pattern",
         "created_at": "2026-10-29T05:24:52Z",
@@ -332,7 +332,7 @@
         "comment_count": 3,
         "review_count": 5,
         "perf_summary": "3/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -11.2% lat, +0.3% alloc)",
-        "coverage_summary": "1323 tests, 0 skipped; cov line 85.25% -> 85.71% (+0.46), branch 67.44% -> 68.64% (+1.20)"
+        "coverage_summary": "1323 tests, 0 skipped; cov line 85.25% -> 85.36% (+0.10), branch 67.44% -> 67.77% (+0.33)"
       },
       {
         "pr_number": 440,
@@ -341,8 +341,8 @@
         "state": "OPEN_READY",
         "change_type": "test",
         "task_class": "benchmark_or_test_infra",
-        "loc": 188,
-        "additions": 188,
+        "loc": 183,
+        "additions": 183,
         "deletions": 0,
         "iter": "20261029-075432-opentelemetry-reporter-coverage",
         "created_at": "2026-10-29T07:59:33Z",
@@ -351,10 +351,10 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 1,
-        "review_count": 0,
+        "comment_count": 3,
+        "review_count": 2,
         "perf_summary": "\u2014",
-        "coverage_summary": "1321 tests, 0 skipped; cov line 85.25% -> 85.35% (+0.09), branch 67.44% -> 67.75% (+0.31)"
+        "coverage_summary": "1321 tests, 0 skipped; cov line 85.25% -> 85.35% (+0.09), branch 67.44% -> 67.81% (+0.36)"
       }
     ]
   },
@@ -652,8 +652,8 @@
       "state": "OPEN_READY",
       "change_type": "perf",
       "task_class": "perf_or_feature_change",
-      "loc": 380,
-      "additions": 368,
+      "loc": 331,
+      "additions": 319,
       "deletions": 12,
       "iter": "20261029-035829-readfully-random-access-pattern",
       "created_at": "2026-10-29T05:24:52Z",
@@ -665,7 +665,7 @@
       "comment_count": 3,
       "review_count": 5,
       "perf_summary": "3/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -11.2% lat, +0.3% alloc)",
-      "coverage_summary": "1323 tests, 0 skipped; cov line 85.25% -> 85.71% (+0.46), branch 67.44% -> 68.64% (+1.20)"
+      "coverage_summary": "1323 tests, 0 skipped; cov line 85.25% -> 85.36% (+0.10), branch 67.44% -> 67.77% (+0.33)"
     },
     {
       "pr_number": 440,
@@ -674,8 +674,8 @@
       "state": "OPEN_READY",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
-      "loc": 188,
-      "additions": 188,
+      "loc": 183,
+      "additions": 183,
       "deletions": 0,
       "iter": "20261029-075432-opentelemetry-reporter-coverage",
       "created_at": "2026-10-29T07:59:33Z",
@@ -684,10 +684,10 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 1,
-      "review_count": 0,
+      "comment_count": 3,
+      "review_count": 2,
       "perf_summary": "\u2014",
-      "coverage_summary": "1321 tests, 0 skipped; cov line 85.25% -> 85.35% (+0.09), branch 67.44% -> 67.75% (+0.31)"
+      "coverage_summary": "1321 tests, 0 skipped; cov line 85.25% -> 85.35% (+0.09), branch 67.44% -> 67.81% (+0.36)"
     }
   ],
   "perf_and_bug_ledger": {
