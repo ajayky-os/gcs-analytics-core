@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T14:48:23Z",
+  "updated_at": "2026-10-29T14:52:27Z",
   "total_prs_raised": 16,
   "merged_count": 5,
   "open_ready_count": 11,
@@ -359,7 +359,7 @@
       "comment_count": 3,
       "review_count": 2,
       "perf_summary": "\u2014",
-      "coverage_summary": "exit 1"
+      "coverage_summary": "1331 tests, 0 skipped"
     }
   ]
 }
