@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-29T05:25:25Z",
+  "generated_at": "2026-10-29T07:35:22Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 20,
@@ -11,12 +11,12 @@
     "merged_upstream_prs": 3,
     "open_vetted_draft_prs": 11,
     "closed_unmerged_prs": 0,
-    "critic_major_catches": 9,
-    "total_agent_wall_hours": 16.65,
-    "total_gate_cpu_hours": 1.09
+    "critic_major_catches": 16,
+    "total_agent_wall_hours": 18.65,
+    "total_gate_cpu_hours": 1.08
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-29T05:25:25Z",
+    "updated_at": "2026-10-29T07:35:22Z",
     "total_prs_raised": 14,
     "merged_count": 3,
     "open_ready_count": 11,
@@ -319,9 +319,9 @@
         "state": "OPEN_READY",
         "change_type": "perf",
         "task_class": "perf_or_feature_change",
-        "loc": 176,
-        "additions": 169,
-        "deletions": 7,
+        "loc": 380,
+        "additions": 368,
+        "deletions": 12,
         "iter": "20261029-035829-readfully-random-access-pattern",
         "created_at": "2026-10-29T05:24:52Z",
         "merged_at": null,
@@ -329,10 +329,10 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 1,
-        "review_count": 0,
-        "perf_summary": "4/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -14.6% lat, -1.2% alloc)",
-        "coverage_summary": "1316 tests, 0 skipped; cov line 85.25% -> 85.66% (+0.41), branch 67.44% -> 68.28% (+0.84)"
+        "comment_count": 3,
+        "review_count": 5,
+        "perf_summary": "2/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=16}` -13.5% lat, +0.2% alloc)",
+        "coverage_summary": "1331 tests, 0 skipped; cov line 85.25% -> 85.72% (+0.47), branch 67.44% -> 68.74% (+1.30)"
       }
     ]
   },
@@ -630,9 +630,9 @@
       "state": "OPEN_READY",
       "change_type": "perf",
       "task_class": "perf_or_feature_change",
-      "loc": 176,
-      "additions": 169,
-      "deletions": 7,
+      "loc": 380,
+      "additions": 368,
+      "deletions": 12,
       "iter": "20261029-035829-readfully-random-access-pattern",
       "created_at": "2026-10-29T05:24:52Z",
       "merged_at": null,
@@ -640,10 +640,10 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 1,
-      "review_count": 0,
-      "perf_summary": "4/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -14.6% lat, -1.2% alloc)",
-      "coverage_summary": "1316 tests, 0 skipped; cov line 85.25% -> 85.66% (+0.41), branch 67.44% -> 68.28% (+0.84)"
+      "comment_count": 3,
+      "review_count": 5,
+      "perf_summary": "2/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=16}` -13.5% lat, +0.2% alloc)",
+      "coverage_summary": "1331 tests, 0 skipped; cov line 85.25% -> 85.72% (+0.47), branch 67.44% -> 68.74% (+1.30)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -784,7 +784,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 9,
+    "major_or_blocker_count": 16,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -848,6 +848,78 @@
         "severity": "major",
         "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:243",
         "finding": "The explicit EOF short-circuit block added to `readFully` duplicates channel opening/reading logic and drops `adoptResolvedItemInfo`. Crucially, it assumes `byteChannel.read(...)` returns exactly `available` bytes by ignoring its return value. If a short read occurs, the `EOFException` will incorrectly report `length - available` bytes left instead of the actual missing amount. This complexity is unnecessary. If bounding the request size is desired, calculate a capped `bytesToRead` and pass it to the existing `read(...)` call.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "blocker",
+        "category": "gates.json",
+        "finding": "The evidence chain is broken because the unit gate failed with an ERROR status (build failures, NoClassDefFoundError, and compiler exceptions in the logs). A PR cannot be approved if the tests do not pass.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "minor",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:121",
+        "finding": "The dst.position(...) call in readUpTo is redundant. The ReadableByteChannel.read(dst) contract guarantees that the buffer's position is automatically advanced by the number of bytes read.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "blocker",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:181",
+        "finding": "The caching of `positionalReadOptions` on the stream instance is ineffective for short-lived streams (which is the typical use case for single-shot `readTail` and `readFully`). As a result, `GcsReadOptions.toBuilder().build()` is invoked on every single stream creation + read, causing a 41% allocation rate regression in `FooterPrefetchBenchmark.readTail`. The cache should ideally live at a higher scope (e.g., in `GcsClientOptions`) or be avoided if it requires heavy rebuilding.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "major",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:362",
+        "finding": "The `openReadChannel` lambda now captures `readOptions` from the enclosing method arguments, whereas previously it fetched it from the file system internally. This increased the capture size and likely defeated C2's escape analysis for the lambda, leading to a massive 53% allocation regression (+1612 bytes/op) and latency regression in `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo`.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "major",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:243",
+        "finding": "The explicit EOF short-circuit block added to `readFully` duplicates channel opening/reading logic and drops `adoptResolvedItemInfo`. Crucially, it assumes `byteChannel.read(...)` returns exactly `available` bytes by ignoring its return value. If a short read occurs, the `EOFException` will incorrectly report `length - available` bytes left instead of the actual missing amount. This complexity is unnecessary. If bounding the request size is desired, calculate a capped `bytesToRead` and pass it to the existing `read(...)` call.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "blocker",
+        "category": "gates.json",
+        "finding": "The evidence chain is broken because the unit gate failed with an ERROR status (build failures, NoClassDefFoundError, and compiler exceptions in the logs). A PR cannot be approved if the tests do not pass.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "minor",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:121",
+        "finding": "The dst.position(...) call in readUpTo is redundant. The ReadableByteChannel.read(dst) contract guarantees that the buffer's position is automatically advanced by the number of bytes read.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "blocker",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:181",
+        "finding": "The caching of `positionalReadOptions` on the stream instance is ineffective for short-lived streams (which is the typical use case for single-shot `readTail` and `readFully`). As a result, `GcsReadOptions.toBuilder().build()` is invoked on every single stream creation + read, causing a 41% allocation rate regression in `FooterPrefetchBenchmark.readTail`. The cache should ideally live at a higher scope (e.g., in `GcsClientOptions`) or be avoided if it requires heavy rebuilding.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "major",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:362",
+        "finding": "The `openReadChannel` lambda now captures `readOptions` from the enclosing method arguments, whereas previously it fetched it from the file system internally. This increased the capture size and likely defeated C2's escape analysis for the lambda, leading to a massive 53% allocation regression (+1612 bytes/op) and latency regression in `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo`.",
         "source": "critic_history"
       },
       {
@@ -916,14 +988,14 @@
       "raw_counterfactual_hours_p50": 78.02,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.214,
-      "risk_adjusted_hours_p25": 39.98,
-      "risk_adjusted_hours_p50": 58.61
+      "risk_adjusted_hours_p25": 42.29,
+      "risk_adjusted_hours_p50": 62.11
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 51.84,
-      "net_saved_hours_p50": 77.98,
-      "net_saved_swe_days_p25": 6.48,
-      "net_saved_swe_days_p50": 9.75
+      "net_saved_hours_p25": 54.15,
+      "net_saved_hours_p50": 81.48,
+      "net_saved_swe_days_p25": 6.77,
+      "net_saved_swe_days_p50": 10.19
     }
   }
 }
