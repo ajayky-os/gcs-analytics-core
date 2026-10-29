@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-29T17:47:22Z",
+  "generated_at": "2026-10-29T17:50:05Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 22,
@@ -8,22 +8,22 @@
     "error_or_quota_halted_iterations": 0,
     "substantive_iterations": 20,
     "unique_upstream_prs": 16,
-    "merged_upstream_prs": 12,
-    "open_vetted_draft_prs": 4,
+    "merged_upstream_prs": 13,
+    "open_vetted_draft_prs": 3,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 13,
     "total_agent_wall_hours": 16.13,
     "total_gate_cpu_hours": 0.8
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-29T17:47:22Z",
+    "updated_at": "2026-10-29T17:50:05Z",
     "total_prs_raised": 16,
-    "merged_count": 12,
-    "open_ready_count": 4,
+    "merged_count": 13,
+    "open_ready_count": 3,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.75,
+    "overall_merge_rate_to_date": 0.812,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -272,7 +272,7 @@
         "pr_number": 431,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/431",
         "title": "fix(client): short-circuit zero-length vectored ranges and validate offsets up front",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "fix",
         "task_class": "correctness_fix",
         "loc": 292,
@@ -280,9 +280,9 @@
         "deletions": 4,
         "iter": "20261019-121016-vectored-zero-length-ranges-v2",
         "created_at": "2026-10-28T09:21:30Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
+        "merged_at": "2026-10-29T17:49:47Z",
+        "closed_at": "2026-10-29T17:49:48Z",
+        "hours_to_merge": 32.47,
         "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
@@ -627,7 +627,7 @@
       "pr_number": 431,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/431",
       "title": "fix(client): short-circuit zero-length vectored ranges and validate offsets up front",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "fix",
       "task_class": "correctness_fix",
       "loc": 292,
@@ -635,9 +635,9 @@
       "deletions": 4,
       "iter": "20261019-121016-vectored-zero-length-ranges-v2",
       "created_at": "2026-10-28T09:21:30Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
+      "merged_at": "2026-10-29T17:49:47Z",
+      "closed_at": "2026-10-29T17:49:48Z",
+      "hours_to_merge": 32.47,
       "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
@@ -770,7 +770,7 @@
         "category": "Correctness & Wasted RPC",
         "component": "GcsBidiReadChannel & GcsReadChannel.readVectored",
         "summary": "Zero-length GcsObjectRange maps to RangeSpec.of(offset, 0) ('read to EOF' data corruption); negative offset hangs sibling futures",
-        "status": "OPEN_APPROVED_PR",
+        "status": "MERGED_UPSTREAM",
         "pr": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/431",
         "metrics": {
           "readerOpens_or_rpcs_per_op": "1 -> 0 wasted RPCs on 0-byte range",
@@ -1017,33 +1017,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 12,
+      "merged_pr_count": 13,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 60.0,
-      "gross_counterfactual_hours_p50": 87.03,
-      "net_saved_hours_p25": 56.2,
-      "net_saved_hours_p50": 83.23,
-      "net_saved_swe_days_p25": 7.03,
-      "net_saved_swe_days_p50": 10.4
+      "gross_counterfactual_hours_p25": 64.0,
+      "gross_counterfactual_hours_p50": 93.03,
+      "net_saved_hours_p25": 60.2,
+      "net_saved_hours_p50": 89.23,
+      "net_saved_swe_days_p25": 7.53,
+      "net_saved_swe_days_p50": 11.15
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 4,
-      "raw_counterfactual_hours_p25": 19.99,
-      "raw_counterfactual_hours_p50": 30.0,
+      "open_draft_pr_count": 3,
+      "raw_counterfactual_hours_p25": 15.99,
+      "raw_counterfactual_hours_p50": 24.0,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.75,
-      "risk_adjusted_hours_p25": 16.3,
-      "risk_adjusted_hours_p50": 24.5
+      "empirical_promoted_merge_rate": 0.812,
+      "risk_adjusted_hours_p25": 13.5,
+      "risk_adjusted_hours_p50": 20.3
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 72.5,
-      "net_saved_hours_p50": 107.73,
-      "net_saved_swe_days_p25": 9.06,
-      "net_saved_swe_days_p50": 13.47
+      "net_saved_hours_p25": 73.7,
+      "net_saved_hours_p50": 109.53,
+      "net_saved_swe_days_p25": 9.21,
+      "net_saved_swe_days_p50": 13.69
     }
   }
 }
