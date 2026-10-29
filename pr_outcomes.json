@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T17:32:26Z",
+  "updated_at": "2026-10-29T17:34:36Z",
   "total_prs_raised": 16,
   "merged_count": 12,
   "open_ready_count": 4,
@@ -315,7 +315,7 @@
       "comment_count": 3,
       "review_count": 5,
       "perf_summary": "3/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -11.2% lat, +0.3% alloc)",
-      "coverage_summary": "1341 tests, 0 skipped"
+      "coverage_summary": "1354 tests, 0 skipped"
     },
     {
       "pr_number": 440,
