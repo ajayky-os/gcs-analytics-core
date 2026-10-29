@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-29T18:33:50Z",
+  "generated_at": "2026-10-29T18:34:33Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 22,
@@ -16,7 +16,7 @@
     "total_gate_cpu_hours": 0.91
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-29T18:33:50Z",
+    "updated_at": "2026-10-29T18:34:33Z",
     "total_prs_raised": 16,
     "merged_count": 13,
     "open_ready_count": 3,
@@ -231,9 +231,9 @@
         "state": "OPEN_READY",
         "change_type": "feature",
         "task_class": "perf_or_feature_change",
-        "loc": 231,
-        "additions": 215,
-        "deletions": 16,
+        "loc": 227,
+        "additions": 210,
+        "deletions": 17,
         "iter": "20261019-121241-bidi-vectored-coalesce-v2",
         "created_at": "2026-10-28T09:21:07Z",
         "merged_at": null,
@@ -586,9 +586,9 @@
       "state": "OPEN_READY",
       "change_type": "feature",
       "task_class": "perf_or_feature_change",
-      "loc": 231,
-      "additions": 215,
-      "deletions": 16,
+      "loc": 227,
+      "additions": 210,
+      "deletions": 17,
       "iter": "20261019-121241-bidi-vectored-coalesce-v2",
       "created_at": "2026-10-28T09:21:07Z",
       "merged_at": null,
