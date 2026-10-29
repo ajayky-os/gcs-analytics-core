@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T14:33:26Z",
+  "updated_at": "2026-10-29T14:48:23Z",
   "total_prs_raised": 16,
   "merged_count": 5,
   "open_ready_count": 11,
@@ -249,7 +249,7 @@
       "comment_count": 3,
       "review_count": 2,
       "perf_summary": "\u2014",
-      "coverage_summary": "1321 tests, 0 skipped"
+      "coverage_summary": "1329 tests, 0 skipped"
     },
     {
       "pr_number": 430,
@@ -271,7 +271,7 @@
       "comment_count": 3,
       "review_count": 8,
       "perf_summary": "\u2014",
-      "coverage_summary": "1331 tests, 0 skipped"
+      "coverage_summary": "1339 tests, 0 skipped"
     },
     {
       "pr_number": 431,
@@ -293,7 +293,7 @@
       "comment_count": 3,
       "review_count": 3,
       "perf_summary": "11/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=4096}` -99.0% lat, -99.8% alloc)",
-      "coverage_summary": "1328 tests, 0 skipped; cov line 85.46% / branch 68.05% (no baseline; run `sil.py baseline`)"
+      "coverage_summary": "1336 tests, 0 skipped"
     },
     {
       "pr_number": 439,
@@ -315,7 +315,7 @@
       "comment_count": 3,
       "review_count": 5,
       "perf_summary": "3/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -11.2% lat, +0.3% alloc)",
-      "coverage_summary": "1326 tests, 0 skipped"
+      "coverage_summary": "1334 tests, 0 skipped"
     },
     {
       "pr_number": 440,
@@ -359,7 +359,7 @@
       "comment_count": 3,
       "review_count": 2,
       "perf_summary": "\u2014",
-      "coverage_summary": "1323 tests, 0 skipped; cov line 85.39% -> 85.45% (+0.06), branch 67.75% -> 67.91% (+0.16)"
+      "coverage_summary": "exit 1"
     }
   ]
 }
