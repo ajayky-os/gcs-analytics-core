@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-10-29T10:11:45Z",
-  "total_prs_raised": 15,
+  "updated_at": "2026-10-29T10:13:43Z",
+  "total_prs_raised": 16,
   "merged_count": 4,
-  "open_ready_count": 11,
+  "open_ready_count": 12,
   "open_draft_count": 0,
   "closed_unmerged_count": 0,
   "acceptance_rate_closed_prs": 1.0,
-  "overall_merge_rate_to_date": 0.267,
+  "overall_merge_rate_to_date": 0.25,
   "median_hours_to_merge": 16.9,
   "prs": [
     {
@@ -338,6 +338,28 @@
       "review_count": 3,
       "perf_summary": "\u2014",
       "coverage_summary": "1324 tests, 0 skipped"
+    },
+    {
+      "pr_number": 441,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/441",
+      "title": "test(common): cover unexercised paths in AnalyticsCache implementations",
+      "state": "OPEN_READY",
+      "change_type": "test",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 94,
+      "additions": 94,
+      "deletions": 0,
+      "iter": "20261029-100807-caffeine-cache-test-coverage",
+      "created_at": "2026-10-29T10:13:12Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "\u2014",
+      "coverage_summary": "1323 tests, 0 skipped; cov line 85.39% -> 85.45% (+0.06), branch 67.75% -> 67.91% (+0.16)"
     }
   ]
 }
