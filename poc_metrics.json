@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-29T08:14:52Z",
+  "generated_at": "2026-10-29T09:53:03Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 21,
@@ -8,22 +8,22 @@
     "error_or_quota_halted_iterations": 0,
     "substantive_iterations": 19,
     "unique_upstream_prs": 15,
-    "merged_upstream_prs": 3,
-    "open_vetted_draft_prs": 12,
+    "merged_upstream_prs": 4,
+    "open_vetted_draft_prs": 11,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 18,
     "total_agent_wall_hours": 19.02,
-    "total_gate_cpu_hours": 0.95
+    "total_gate_cpu_hours": 0.9
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-29T08:14:52Z",
+    "updated_at": "2026-10-29T09:53:03Z",
     "total_prs_raised": 15,
-    "merged_count": 3,
-    "open_ready_count": 12,
+    "merged_count": 4,
+    "open_ready_count": 11,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.2,
+    "overall_merge_rate_to_date": 0.267,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -228,7 +228,7 @@
         "pr_number": 428,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/428",
         "title": "perf(client): avoid O(N^2) copying in VectoredIoUtil.mergeGcsObjectRanges",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "perf",
         "task_class": "perf_or_feature_change",
         "loc": 140,
@@ -236,13 +236,13 @@
         "deletions": 23,
         "iter": "20261028-071714-linear-vectored-range-merge",
         "created_at": "2026-10-28T09:08:35Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "merged_at": "2026-10-29T09:11:39Z",
+        "closed_at": "2026-10-29T09:11:39Z",
+        "hours_to_merge": 24.05,
+        "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 3,
+        "review_count": 4,
         "perf_summary": "16/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=4096}` -99.0% lat, -99.8% alloc)",
         "coverage_summary": "1316 tests, 0 skipped"
       },
@@ -266,7 +266,7 @@
         "comment_count": 3,
         "review_count": 2,
         "perf_summary": "\u2014",
-        "coverage_summary": "1318 tests, 0 skipped"
+        "coverage_summary": "1321 tests, 0 skipped"
       },
       {
         "pr_number": 430,
@@ -288,7 +288,7 @@
         "comment_count": 3,
         "review_count": 8,
         "perf_summary": "\u2014",
-        "coverage_summary": "1328 tests, 0 skipped"
+        "coverage_summary": "1331 tests, 0 skipped"
       },
       {
         "pr_number": 431,
@@ -297,8 +297,8 @@
         "state": "OPEN_READY",
         "change_type": "fix",
         "task_class": "correctness_fix",
-        "loc": 294,
-        "additions": 290,
+        "loc": 292,
+        "additions": 288,
         "deletions": 4,
         "iter": "20261019-121016-vectored-zero-length-ranges-v2",
         "created_at": "2026-10-28T09:21:30Z",
@@ -308,9 +308,9 @@
         "review_decision": "PENDING",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 2,
-        "perf_summary": "\u2014",
-        "coverage_summary": "1325 tests, 0 skipped"
+        "review_count": 3,
+        "perf_summary": "11/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=4096}` -99.0% lat, -99.8% alloc)",
+        "coverage_summary": "1328 tests, 0 skipped; cov line 85.46% / branch 68.05% (no baseline; run `sil.py baseline`)"
       },
       {
         "pr_number": 439,
@@ -332,7 +332,7 @@
         "comment_count": 3,
         "review_count": 5,
         "perf_summary": "3/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -11.2% lat, +0.3% alloc)",
-        "coverage_summary": "1323 tests, 0 skipped; cov line 85.25% -> 85.36% (+0.10), branch 67.44% -> 67.77% (+0.33)"
+        "coverage_summary": "1326 tests, 0 skipped"
       },
       {
         "pr_number": 440,
@@ -349,12 +349,12 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 2,
+        "review_count": 3,
         "perf_summary": "\u2014",
-        "coverage_summary": "exit 1"
+        "coverage_summary": "exit 1; 7 failures, 26 errors of 45 tests"
       }
     ]
   },
@@ -561,7 +561,7 @@
       "pr_number": 428,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/428",
       "title": "perf(client): avoid O(N^2) copying in VectoredIoUtil.mergeGcsObjectRanges",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "perf",
       "task_class": "perf_or_feature_change",
       "loc": 140,
@@ -569,13 +569,13 @@
       "deletions": 23,
       "iter": "20261028-071714-linear-vectored-range-merge",
       "created_at": "2026-10-28T09:08:35Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "merged_at": "2026-10-29T09:11:39Z",
+      "closed_at": "2026-10-29T09:11:39Z",
+      "hours_to_merge": 24.05,
+      "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 3,
+      "review_count": 4,
       "perf_summary": "16/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=4096}` -99.0% lat, -99.8% alloc)",
       "coverage_summary": "1316 tests, 0 skipped"
     },
@@ -599,7 +599,7 @@
       "comment_count": 3,
       "review_count": 2,
       "perf_summary": "\u2014",
-      "coverage_summary": "1318 tests, 0 skipped"
+      "coverage_summary": "1321 tests, 0 skipped"
     },
     {
       "pr_number": 430,
@@ -621,7 +621,7 @@
       "comment_count": 3,
       "review_count": 8,
       "perf_summary": "\u2014",
-      "coverage_summary": "1328 tests, 0 skipped"
+      "coverage_summary": "1331 tests, 0 skipped"
     },
     {
       "pr_number": 431,
@@ -630,8 +630,8 @@
       "state": "OPEN_READY",
       "change_type": "fix",
       "task_class": "correctness_fix",
-      "loc": 294,
-      "additions": 290,
+      "loc": 292,
+      "additions": 288,
       "deletions": 4,
       "iter": "20261019-121016-vectored-zero-length-ranges-v2",
       "created_at": "2026-10-28T09:21:30Z",
@@ -641,9 +641,9 @@
       "review_decision": "PENDING",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 2,
-      "perf_summary": "\u2014",
-      "coverage_summary": "1325 tests, 0 skipped"
+      "review_count": 3,
+      "perf_summary": "11/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=4096}` -99.0% lat, -99.8% alloc)",
+      "coverage_summary": "1328 tests, 0 skipped; cov line 85.46% / branch 68.05% (no baseline; run `sil.py baseline`)"
     },
     {
       "pr_number": 439,
@@ -665,7 +665,7 @@
       "comment_count": 3,
       "review_count": 5,
       "perf_summary": "3/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -11.2% lat, +0.3% alloc)",
-      "coverage_summary": "1323 tests, 0 skipped; cov line 85.25% -> 85.36% (+0.10), branch 67.44% -> 67.77% (+0.33)"
+      "coverage_summary": "1326 tests, 0 skipped"
     },
     {
       "pr_number": 440,
@@ -682,12 +682,12 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 2,
+      "review_count": 3,
       "perf_summary": "\u2014",
-      "coverage_summary": "exit 1"
+      "coverage_summary": "exit 1; 7 failures, 26 errors of 45 tests"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1045,33 +1045,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 3,
+      "merged_pr_count": 4,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 15.66,
-      "gross_counterfactual_hours_p50": 23.17,
-      "net_saved_hours_p25": 11.86,
-      "net_saved_hours_p50": 19.37,
-      "net_saved_swe_days_p25": 1.48,
-      "net_saved_swe_days_p50": 2.42
+      "gross_counterfactual_hours_p25": 20.99,
+      "gross_counterfactual_hours_p50": 31.17,
+      "net_saved_hours_p25": 17.19,
+      "net_saved_hours_p50": 27.37,
+      "net_saved_swe_days_p25": 2.15,
+      "net_saved_swe_days_p50": 3.42
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 12,
-      "raw_counterfactual_hours_p25": 58.01,
-      "raw_counterfactual_hours_p50": 84.69,
+      "open_draft_pr_count": 11,
+      "raw_counterfactual_hours_p25": 52.68,
+      "raw_counterfactual_hours_p50": 76.69,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.2,
-      "risk_adjusted_hours_p25": 46.22,
-      "risk_adjusted_hours_p50": 67.78
+      "empirical_promoted_merge_rate": 0.267,
+      "risk_adjusted_hours_p25": 42.49,
+      "risk_adjusted_hours_p50": 62.18
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 58.08,
-      "net_saved_hours_p50": 87.15,
-      "net_saved_swe_days_p25": 7.26,
-      "net_saved_swe_days_p50": 10.89
+      "net_saved_hours_p25": 59.68,
+      "net_saved_hours_p50": 89.55,
+      "net_saved_swe_days_p25": 7.46,
+      "net_saved_swe_days_p50": 11.19
     }
   }
 }
