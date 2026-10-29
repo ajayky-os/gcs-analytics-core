@@ -1,29 +1,29 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-29T07:37:42Z",
+  "generated_at": "2026-10-29T08:00:20Z",
   "project": "gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 20,
+    "total_iterations_logged": 21,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 0,
-    "substantive_iterations": 18,
-    "unique_upstream_prs": 14,
+    "substantive_iterations": 19,
+    "unique_upstream_prs": 15,
     "merged_upstream_prs": 3,
-    "open_vetted_draft_prs": 11,
+    "open_vetted_draft_prs": 12,
     "closed_unmerged_prs": 0,
-    "critic_major_catches": 16,
-    "total_agent_wall_hours": 18.65,
-    "total_gate_cpu_hours": 1.08
+    "critic_major_catches": 18,
+    "total_agent_wall_hours": 18.74,
+    "total_gate_cpu_hours": 1.24
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-29T07:37:42Z",
-    "total_prs_raised": 14,
+    "updated_at": "2026-10-29T08:00:20Z",
+    "total_prs_raised": 15,
     "merged_count": 3,
-    "open_ready_count": 11,
+    "open_ready_count": 12,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.214,
+    "overall_merge_rate_to_date": 0.2,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -161,22 +161,22 @@
       {
         "pr_number": 414,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/414",
-        "title": "test(benchmarks): wire IoCounters into remaining HermeticInputStreamBenchmark methods",
+        "title": "test(benchmarks): record per-op IoCounters delta and wire remaining benchmarks",
         "state": "MERGED",
         "change_type": "test",
         "task_class": "benchmark_or_test_infra",
-        "loc": 16,
-        "additions": 12,
-        "deletions": 4,
+        "loc": 27,
+        "additions": 0,
+        "deletions": 0,
         "iter": "20261026-095754-iocounters-per-op",
-        "created_at": "2026-10-26T10:06:42Z",
-        "merged_at": "2026-10-27T07:27:39Z",
-        "closed_at": "2026-10-27T07:27:39Z",
-        "hours_to_merge": 21.35,
-        "review_decision": "APPROVED",
-        "commit_count": 2,
-        "comment_count": 3,
-        "review_count": 4,
+        "created_at": null,
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "MERGED",
+        "commit_count": 0,
+        "comment_count": 0,
+        "review_count": 0,
         "perf_summary": "\u2014",
         "coverage_summary": "1308 tests, 0 skipped; cov line 85.11% -> 85.11% (+0.00), branch 67.34% -> 67.34% (+0.00)"
       },
@@ -331,8 +331,30 @@
         "commit_count": 1,
         "comment_count": 3,
         "review_count": 5,
-        "perf_summary": "2/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=16}` -13.5% lat, +0.2% alloc)",
-        "coverage_summary": "1331 tests, 0 skipped; cov line 85.25% -> 85.72% (+0.47), branch 67.44% -> 68.74% (+1.30)"
+        "perf_summary": "3/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -11.2% lat, +0.3% alloc)",
+        "coverage_summary": "1323 tests, 0 skipped; cov line 85.25% -> 85.71% (+0.46), branch 67.44% -> 68.64% (+1.20)"
+      },
+      {
+        "pr_number": 440,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/440",
+        "title": "test(common): cover unexercised paths in OpenTelemetry providers",
+        "state": "OPEN_READY",
+        "change_type": "test",
+        "task_class": "benchmark_or_test_infra",
+        "loc": 188,
+        "additions": 188,
+        "deletions": 0,
+        "iter": "20261029-075432-opentelemetry-reporter-coverage",
+        "created_at": "2026-10-29T07:59:33Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "\u2014",
+        "coverage_summary": "1321 tests, 0 skipped; cov line 85.25% -> 85.35% (+0.09), branch 67.44% -> 67.75% (+0.31)"
       }
     ]
   },
@@ -472,22 +494,22 @@
     {
       "pr_number": 414,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/414",
-      "title": "test(benchmarks): wire IoCounters into remaining HermeticInputStreamBenchmark methods",
+      "title": "test(benchmarks): record per-op IoCounters delta and wire remaining benchmarks",
       "state": "MERGED",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
-      "loc": 16,
-      "additions": 12,
-      "deletions": 4,
+      "loc": 27,
+      "additions": 0,
+      "deletions": 0,
       "iter": "20261026-095754-iocounters-per-op",
-      "created_at": "2026-10-26T10:06:42Z",
-      "merged_at": "2026-10-27T07:27:39Z",
-      "closed_at": "2026-10-27T07:27:39Z",
-      "hours_to_merge": 21.35,
-      "review_decision": "APPROVED",
-      "commit_count": 2,
-      "comment_count": 3,
-      "review_count": 4,
+      "created_at": null,
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "MERGED",
+      "commit_count": 0,
+      "comment_count": 0,
+      "review_count": 0,
       "perf_summary": "\u2014",
       "coverage_summary": "1308 tests, 0 skipped; cov line 85.11% -> 85.11% (+0.00), branch 67.34% -> 67.34% (+0.00)"
     },
@@ -642,8 +664,30 @@
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 5,
-      "perf_summary": "2/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=16}` -13.5% lat, +0.2% alloc)",
-      "coverage_summary": "1331 tests, 0 skipped; cov line 85.25% -> 85.72% (+0.47), branch 67.44% -> 68.74% (+1.30)"
+      "perf_summary": "3/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -11.2% lat, +0.3% alloc)",
+      "coverage_summary": "1323 tests, 0 skipped; cov line 85.25% -> 85.71% (+0.46), branch 67.44% -> 68.64% (+1.20)"
+    },
+    {
+      "pr_number": 440,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/440",
+      "title": "test(common): cover unexercised paths in OpenTelemetry providers",
+      "state": "OPEN_READY",
+      "change_type": "test",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 188,
+      "additions": 188,
+      "deletions": 0,
+      "iter": "20261029-075432-opentelemetry-reporter-coverage",
+      "created_at": "2026-10-29T07:59:33Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "\u2014",
+      "coverage_summary": "1321 tests, 0 skipped; cov line 85.25% -> 85.35% (+0.09), branch 67.44% -> 67.75% (+0.31)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -784,7 +828,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 16,
+    "major_or_blocker_count": 18,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -886,6 +930,22 @@
         "iter": "20261029-035829-readfully-random-access-pattern",
         "pr": "#439",
         "severity": "major",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:331",
+        "finding": "The loop prematurely terminates when `read == 0`. This contradicts the PR hypothesis 'avoiding any premature termination on 0-byte yields'. If the channel momentarily yields 0 bytes without reaching EOF, this will incorrectly throw an EOFException in `readFully`.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "minor",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:327",
+        "finding": "The loop allocates a new `ByteBuffer` on each iteration using `ByteBuffer.wrap()`, contradicting the hypothesis' claim of using 'automatic ByteBuffer position advancement'.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "major",
         "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:243",
         "finding": "The explicit EOF short-circuit block added to `readFully` duplicates channel opening/reading logic and drops `adoptResolvedItemInfo`. Crucially, it assumes `byteChannel.read(...)` returns exactly `available` bytes by ignoring its return value. If a short read occurs, the `EOFException` will incorrectly report `length - available` bytes left instead of the actual missing amount. This complexity is unnecessary. If bounding the request size is desired, calculate a capped `bytesToRead` and pass it to the existing `read(...)` call.",
         "source": "critic_history"
@@ -920,6 +980,22 @@
         "severity": "major",
         "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:362",
         "finding": "The `openReadChannel` lambda now captures `readOptions` from the enclosing method arguments, whereas previously it fetched it from the file system internally. This increased the capture size and likely defeated C2's escape analysis for the lambda, leading to a massive 53% allocation regression (+1612 bytes/op) and latency regression in `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo`.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "major",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:331",
+        "finding": "The loop prematurely terminates when `read == 0`. This contradicts the PR hypothesis 'avoiding any premature termination on 0-byte yields'. If the channel momentarily yields 0 bytes without reaching EOF, this will incorrectly throw an EOFException in `readFully`.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "minor",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:327",
+        "finding": "The loop allocates a new `ByteBuffer` on each iteration using `ByteBuffer.wrap()`, contradicting the hypothesis' claim of using 'automatic ByteBuffer position advancement'.",
         "source": "critic_history"
       },
       {
@@ -983,19 +1059,19 @@
       "net_saved_swe_days_p50": 2.42
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 11,
-      "raw_counterfactual_hours_p25": 53.34,
-      "raw_counterfactual_hours_p50": 78.02,
+      "open_draft_pr_count": 12,
+      "raw_counterfactual_hours_p25": 58.01,
+      "raw_counterfactual_hours_p50": 84.69,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.214,
-      "risk_adjusted_hours_p25": 42.29,
-      "risk_adjusted_hours_p50": 62.11
+      "empirical_promoted_merge_rate": 0.2,
+      "risk_adjusted_hours_p25": 46.22,
+      "risk_adjusted_hours_p50": 67.78
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 54.15,
-      "net_saved_hours_p50": 81.48,
-      "net_saved_swe_days_p25": 6.77,
-      "net_saved_swe_days_p50": 10.19
+      "net_saved_hours_p25": 58.08,
+      "net_saved_hours_p50": 87.15,
+      "net_saved_swe_days_p25": 7.26,
+      "net_saved_swe_days_p50": 10.89
     }
   }
 }
