@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-30T08:49:04Z",
+  "checked_at": "2026-10-30T08:51:40Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "397e0c42c3942bfd1eb22f9c13a5a293564ddbf0",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 4,
-  "actionable_count": 1,
+  "actionable_count": 0,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -77,7 +77,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.0,
+      "hours_since_update": 0.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -97,35 +97,23 @@
       ],
       "iter_id": "20261029-035829-readfully-random-access-pattern",
       "branch": "sil/readfully-random-access-pattern",
-      "head_oid": "1d91bb04274cd2c8908bc98d48a8a43f3e35f8f7",
-      "head_commit_ts": "2026-10-29T18:39:31Z",
+      "head_oid": "452619384d92ba63e53e392b9c4f614ca4643de2",
+      "head_commit_ts": "2026-10-30T08:49:35Z",
       "main_sha": "397e0c42c3942bfd1eb22f9c13a5a293564ddbf0",
-      "commits_behind_main": 1,
+      "commits_behind_main": 0,
       "mergeable": "MERGEABLE",
-      "merge_state_status": "BEHIND",
+      "merge_state_status": "BLOCKED",
       "review_decision": "PENDING",
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.7,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
-      "needs_rebase": true,
-      "needs_comment_fix": true,
-      "action_required": true,
-      "unaddressed_comments": [
-        {
-          "id": "issue_comment:6517999903",
-          "comment_id": 6517999903,
-          "type": "issue_comment",
-          "author": "ajayky-os",
-          "path": null,
-          "line": null,
-          "body": "builds are failing like integration tests.",
-          "created_at": "2026-10-30T08:04:03Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/439#issuecomment-6517999903"
-        }
-      ]
+      "needs_rebase": false,
+      "needs_comment_fix": false,
+      "action_required": false,
+      "unaddressed_comments": []
     },
     {
       "pr_number": 442,
@@ -149,7 +137,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.0,
+      "hours_since_update": 0.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
