@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-30T10:26:26Z",
+  "checked_at": "2026-10-30T10:29:17Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "397e0c42c3942bfd1eb22f9c13a5a293564ddbf0",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 5,
-  "actionable_count": 1,
+  "actionable_count": 0,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -47,7 +47,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 1.9,
+      "hours_since_update": 2.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -167,42 +167,13 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.1,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
-      "needs_comment_fix": true,
-      "action_required": true,
-      "unaddressed_comments": [
-        {
-          "id": "pull_comment:4422554375",
-          "comment_id": 4422554375,
-          "root_comment_id": 4422554375,
-          "thread_id": "PRRT_kwDOPmMU8s6x7KLp",
-          "type": "inline_review_comment",
-          "author": "gemini-code-assist[bot]",
-          "path": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsBidiWriteChannelTest.java",
-          "line": 323,
-          "diff_hunk": "ssertThat(channel.isOpen()).isFalse();\n+    }\n+  }\n+\n+  @Test\n+  void close_whenAppendChannelIsNull_completesSuccessfully() throws Exception {\n+    when(mockSession.open()).thenReturn(null);\n+    GcsBidiWriteChannel channel = createChannel(GcsWriteOptions.builder().build());\n+\n+    channel.close();\n+\n+    assertThat(channel.isOpen()).isFalse();\n+    verify(mockAppendChannel, never()).close();\n+  }",
-          "body": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe repository style guide mandates that all `AutoCloseable` resources must be managed using try-with-resources to ensure strict resource cleanup, even in unit tests where `close()` is explicitly being tested.\n\n```java\n  void close_whenAppendChannelIsNull_completesSuccessfully() throws Exception {\n    when(mockSession.open()).thenReturn(null);\n    try (GcsBidiWriteChannel channel = createChannel(GcsWriteOptions.builder().build())) {\n      channel.close();\n      assertThat(channel.isOpen()).isFalse();\n    }\n    verify(mockAppendChannel, never()).close();\n  }\n```\n\n<details>\n<summary>References</summary>\n\n1. Strict Resource Cleanup: All AutoCloseable resources (streams, channels, clients) MUST use try-with-resources. Never rely on finalizers. <sup>([link](https://github.com/GoogleCloudPlatform/gcs-analytics-core/blob/main/.gemini/styleguide.md))</sup>\n</details>",
-          "created_at": "2026-10-30T10:13:38Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/446#discussion_r4422554375"
-        },
-        {
-          "id": "pull_comment:4422554384",
-          "comment_id": 4422554384,
-          "root_comment_id": 4422554384,
-          "thread_id": "PRRT_kwDOPmMU8s6x7KLv",
-          "type": "inline_review_comment",
-          "author": "gemini-code-assist[bot]",
-          "path": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsWriteChannelTest.java",
-          "line": 543,
-          "diff_hunk": "hannel, blobInfo, writeOptions)) {\n+      assertThat(channel.isOpen()).isFalse();\n+    }\n+  }\n+\n+  @Test\n+  void close_whenBlobWriteSessionIsNull_closesSdkChannelSuccessfully() throws Exception {\n+    GcsWriteChannel channel = new GcsWriteChannel(null, mockChannel, blobInfo, writeOptions);\n+\n+    channel.close();\n+\n+    verify(mockChannel).close();\n+    assertThat(channel.isOpen()).isFalse();\n+  }",
-          "body": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe repository style guide mandates that all `AutoCloseable` resources must be managed using try-with-resources to ensure strict resource cleanup, even in unit tests where `close()` is explicitly being tested.\n\n```java\n  void close_whenBlobWriteSessionIsNull_closesSdkChannelSuccessfully() throws Exception {\n    try (GcsWriteChannel channel = new GcsWriteChannel(null, mockChannel, blobInfo, writeOptions)) {\n      channel.close();\n      verify(mockChannel).close();\n      assertThat(channel.isOpen()).isFalse();\n    }\n  }\n```\n\n<details>\n<summary>References</summary>\n\n1. Strict Resource Cleanup: All AutoCloseable resources (streams, channels, clients) MUST use try-with-resources. Never rely on finalizers. <sup>([link](https://github.com/GoogleCloudPlatform/gcs-analytics-core/blob/main/.gemini/styleguide.md))</sup>\n</details>",
-          "created_at": "2026-10-30T10:13:38Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/446#discussion_r4422554384"
-        }
-      ]
+      "needs_comment_fix": false,
+      "action_required": false,
+      "unaddressed_comments": []
     }
   ]
 }
