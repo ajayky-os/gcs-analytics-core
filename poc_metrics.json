@@ -1,29 +1,29 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-30T06:02:24Z",
+  "generated_at": "2026-10-30T06:02:43Z",
   "project": "gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 23,
+    "total_iterations_logged": 24,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 0,
-    "substantive_iterations": 21,
-    "unique_upstream_prs": 17,
+    "substantive_iterations": 22,
+    "unique_upstream_prs": 18,
     "merged_upstream_prs": 13,
-    "open_vetted_draft_prs": 4,
+    "open_vetted_draft_prs": 5,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 13,
-    "total_agent_wall_hours": 16.21,
-    "total_gate_cpu_hours": 0.81
+    "total_agent_wall_hours": 16.34,
+    "total_gate_cpu_hours": 0.83
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-30T06:02:24Z",
-    "total_prs_raised": 17,
+    "updated_at": "2026-10-30T06:02:43Z",
+    "total_prs_raised": 18,
     "merged_count": 13,
-    "open_ready_count": 4,
+    "open_ready_count": 5,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.765,
+    "overall_merge_rate_to_date": 0.722,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -399,6 +399,28 @@
         "review_count": 1,
         "perf_summary": "\u2014",
         "coverage_summary": "1364 tests, 0 skipped; cov line 85.60% -> 85.75% (+0.15), branch 68.19% -> 68.39% (+0.21)"
+      },
+      {
+        "pr_number": 444,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/444",
+        "title": "test(client): cover folder IOException rethrow and close paths in GcsClientImpl",
+        "state": "OPEN_READY",
+        "change_type": "test",
+        "task_class": "benchmark_or_test_infra",
+        "loc": 84,
+        "additions": 84,
+        "deletions": 0,
+        "iter": "20261030-055441-gcs-client-error-paths-coverage",
+        "created_at": "2026-10-30T06:02:10Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "\u2014",
+        "coverage_summary": "1361 tests, 0 skipped; cov line 85.60% -> 85.69% (+0.09), branch 68.19% -> 68.34% (+0.16)"
       }
     ]
   },
@@ -776,6 +798,28 @@
       "review_count": 1,
       "perf_summary": "\u2014",
       "coverage_summary": "1364 tests, 0 skipped; cov line 85.60% -> 85.75% (+0.15), branch 68.19% -> 68.39% (+0.21)"
+    },
+    {
+      "pr_number": 444,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/444",
+      "title": "test(client): cover folder IOException rethrow and close paths in GcsClientImpl",
+      "state": "OPEN_READY",
+      "change_type": "test",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 84,
+      "additions": 84,
+      "deletions": 0,
+      "iter": "20261030-055441-gcs-client-error-paths-coverage",
+      "created_at": "2026-10-30T06:02:10Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "\u2014",
+      "coverage_summary": "1361 tests, 0 skipped; cov line 85.60% -> 85.69% (+0.09), branch 68.19% -> 68.34% (+0.16)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1075,19 +1119,19 @@
       "net_saved_swe_days_p50": 11.15
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 4,
-      "raw_counterfactual_hours_p25": 20.66,
-      "raw_counterfactual_hours_p50": 30.67,
+      "open_draft_pr_count": 5,
+      "raw_counterfactual_hours_p25": 25.33,
+      "raw_counterfactual_hours_p50": 37.34,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.765,
-      "risk_adjusted_hours_p25": 16.77,
-      "risk_adjusted_hours_p50": 24.97
+      "empirical_promoted_merge_rate": 0.722,
+      "risk_adjusted_hours_p25": 20.04,
+      "risk_adjusted_hours_p50": 29.64
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 76.97,
-      "net_saved_hours_p50": 114.2,
-      "net_saved_swe_days_p25": 9.62,
-      "net_saved_swe_days_p50": 14.28
+      "net_saved_hours_p25": 80.24,
+      "net_saved_hours_p50": 118.87,
+      "net_saved_swe_days_p25": 10.03,
+      "net_saved_swe_days_p50": 14.86
     }
   }
 }
