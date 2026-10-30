@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T08:54:11Z",
+  "updated_at": "2026-10-30T09:02:26Z",
   "total_prs_raised": 18,
   "merged_count": 14,
   "open_ready_count": 4,
@@ -315,7 +315,7 @@
       "comment_count": 5,
       "review_count": 5,
       "perf_summary": "3/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -11.2% lat, +0.3% alloc)",
-      "coverage_summary": "\u2014"
+      "coverage_summary": "1372 tests, 0 skipped; cov line 85.79% / branch 68.68% (no baseline; run `sil.py baseline`)"
     },
     {
       "pr_number": 440,
