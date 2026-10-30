@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-30T07:47:40Z",
+  "generated_at": "2026-10-30T08:02:37Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 24,
@@ -8,22 +8,22 @@
     "error_or_quota_halted_iterations": 0,
     "substantive_iterations": 22,
     "unique_upstream_prs": 18,
-    "merged_upstream_prs": 13,
-    "open_vetted_draft_prs": 5,
+    "merged_upstream_prs": 14,
+    "open_vetted_draft_prs": 4,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 13,
     "total_agent_wall_hours": 16.34,
     "total_gate_cpu_hours": 0.83
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-30T07:47:40Z",
+    "updated_at": "2026-10-30T08:02:37Z",
     "total_prs_raised": 18,
-    "merged_count": 13,
-    "open_ready_count": 5,
+    "merged_count": 14,
+    "open_ready_count": 4,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.722,
+    "overall_merge_rate_to_date": 0.778,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -396,7 +396,7 @@
         "review_decision": "PENDING",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
+        "review_count": 2,
         "perf_summary": "\u2014",
         "coverage_summary": "1364 tests, 0 skipped; cov line 85.60% -> 85.75% (+0.15), branch 68.19% -> 68.39% (+0.21)"
       },
@@ -404,7 +404,7 @@
         "pr_number": 444,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/444",
         "title": "test(client): cover folder IOException rethrow and close paths in GcsClientImpl",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "test",
         "task_class": "benchmark_or_test_infra",
         "loc": 84,
@@ -412,13 +412,13 @@
         "deletions": 0,
         "iter": "20261030-055441-gcs-client-error-paths-coverage",
         "created_at": "2026-10-30T06:02:10Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "merged_at": "2026-10-30T08:02:21Z",
+        "closed_at": "2026-10-30T08:02:21Z",
+        "hours_to_merge": 2.0,
+        "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
+        "review_count": 2,
         "perf_summary": "\u2014",
         "coverage_summary": "1361 tests, 0 skipped; cov line 85.60% -> 85.69% (+0.09), branch 68.19% -> 68.34% (+0.16)"
       }
@@ -795,7 +795,7 @@
       "review_decision": "PENDING",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
+      "review_count": 2,
       "perf_summary": "\u2014",
       "coverage_summary": "1364 tests, 0 skipped; cov line 85.60% -> 85.75% (+0.15), branch 68.19% -> 68.39% (+0.21)"
     },
@@ -803,7 +803,7 @@
       "pr_number": 444,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/444",
       "title": "test(client): cover folder IOException rethrow and close paths in GcsClientImpl",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
       "loc": 84,
@@ -811,13 +811,13 @@
       "deletions": 0,
       "iter": "20261030-055441-gcs-client-error-paths-coverage",
       "created_at": "2026-10-30T06:02:10Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "merged_at": "2026-10-30T08:02:21Z",
+      "closed_at": "2026-10-30T08:02:21Z",
+      "hours_to_merge": 2.0,
+      "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
+      "review_count": 2,
       "perf_summary": "\u2014",
       "coverage_summary": "1361 tests, 0 skipped; cov line 85.60% -> 85.69% (+0.09), branch 68.19% -> 68.34% (+0.16)"
     }
@@ -1105,33 +1105,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 13,
+      "merged_pr_count": 14,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 64.0,
-      "gross_counterfactual_hours_p50": 93.03,
-      "net_saved_hours_p25": 60.2,
-      "net_saved_hours_p50": 89.23,
-      "net_saved_swe_days_p25": 7.53,
-      "net_saved_swe_days_p50": 11.15
+      "gross_counterfactual_hours_p25": 68.67,
+      "gross_counterfactual_hours_p50": 99.7,
+      "net_saved_hours_p25": 64.87,
+      "net_saved_hours_p50": 95.9,
+      "net_saved_swe_days_p25": 8.11,
+      "net_saved_swe_days_p50": 11.99
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 5,
-      "raw_counterfactual_hours_p25": 25.33,
-      "raw_counterfactual_hours_p50": 37.34,
+      "open_draft_pr_count": 4,
+      "raw_counterfactual_hours_p25": 20.66,
+      "raw_counterfactual_hours_p50": 30.67,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.722,
-      "risk_adjusted_hours_p25": 20.04,
-      "risk_adjusted_hours_p50": 29.64
+      "empirical_promoted_merge_rate": 0.778,
+      "risk_adjusted_hours_p25": 16.77,
+      "risk_adjusted_hours_p50": 24.97
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 80.24,
-      "net_saved_hours_p50": 118.87,
-      "net_saved_swe_days_p25": 10.03,
-      "net_saved_swe_days_p50": 14.86
+      "net_saved_hours_p25": 81.64,
+      "net_saved_hours_p50": 120.87,
+      "net_saved_swe_days_p25": 10.21,
+      "net_saved_swe_days_p50": 15.11
     }
   }
 }
