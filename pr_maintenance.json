@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-30T08:30:55Z",
+  "checked_at": "2026-10-30T08:32:26Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "397e0c42c3942bfd1eb22f9c13a5a293564ddbf0",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 4,
-  "actionable_count": 2,
+  "actionable_count": 1,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -107,7 +107,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.4,
+      "hours_since_update": 0.5,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": true,
@@ -139,22 +139,22 @@
       ],
       "iter_id": "20261030-040317-client-options-and-strategy-coverage",
       "branch": "sil/client-options-and-strategy-coverage",
-      "head_oid": "f367585ecaf31560ae8874d1e363cfb3653846a3",
-      "head_commit_ts": "2026-10-30T04:05:53Z",
+      "head_oid": "b630b88a9b31ddafe57a58ab7b7983b3c747827f",
+      "head_commit_ts": "2026-10-30T08:28:59Z",
       "main_sha": "397e0c42c3942bfd1eb22f9c13a5a293564ddbf0",
-      "commits_behind_main": 1,
+      "commits_behind_main": 0,
       "mergeable": "MERGEABLE",
-      "merge_state_status": "BEHIND",
+      "merge_state_status": "BLOCKED",
       "review_decision": "PENDING",
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.5,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
-      "needs_rebase": true,
+      "needs_rebase": false,
       "needs_comment_fix": false,
-      "action_required": true,
+      "action_required": false,
       "unaddressed_comments": []
     }
   ]
