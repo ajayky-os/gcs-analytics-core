@@ -1,29 +1,29 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-30T04:02:18Z",
+  "generated_at": "2026-10-30T04:08:41Z",
   "project": "gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 22,
+    "total_iterations_logged": 23,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 0,
-    "substantive_iterations": 20,
-    "unique_upstream_prs": 16,
+    "substantive_iterations": 21,
+    "unique_upstream_prs": 17,
     "merged_upstream_prs": 13,
-    "open_vetted_draft_prs": 3,
+    "open_vetted_draft_prs": 4,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 13,
-    "total_agent_wall_hours": 16.13,
-    "total_gate_cpu_hours": 0.79
+    "total_agent_wall_hours": 16.21,
+    "total_gate_cpu_hours": 0.81
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-30T04:02:18Z",
-    "total_prs_raised": 16,
+    "updated_at": "2026-10-30T04:08:41Z",
+    "total_prs_raised": 17,
     "merged_count": 13,
-    "open_ready_count": 3,
+    "open_ready_count": 4,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.812,
+    "overall_merge_rate_to_date": 0.765,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -377,6 +377,28 @@
         "review_count": 3,
         "perf_summary": "\u2014",
         "coverage_summary": "1331 tests, 0 skipped"
+      },
+      {
+        "pr_number": 442,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/442",
+        "title": "test(client): cover unexercised options and strategy paths in client module",
+        "state": "OPEN_READY",
+        "change_type": "test",
+        "task_class": "benchmark_or_test_infra",
+        "loc": 103,
+        "additions": 103,
+        "deletions": 0,
+        "iter": "20261030-040317-client-options-and-strategy-coverage",
+        "created_at": "2026-10-30T04:08:08Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "\u2014",
+        "coverage_summary": "1364 tests, 0 skipped; cov line 85.60% -> 85.75% (+0.15), branch 68.19% -> 68.39% (+0.21)"
       }
     ]
   },
@@ -732,6 +754,28 @@
       "review_count": 3,
       "perf_summary": "\u2014",
       "coverage_summary": "1331 tests, 0 skipped"
+    },
+    {
+      "pr_number": 442,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/442",
+      "title": "test(client): cover unexercised options and strategy paths in client module",
+      "state": "OPEN_READY",
+      "change_type": "test",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 103,
+      "additions": 103,
+      "deletions": 0,
+      "iter": "20261030-040317-client-options-and-strategy-coverage",
+      "created_at": "2026-10-30T04:08:08Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "\u2014",
+      "coverage_summary": "1364 tests, 0 skipped; cov line 85.60% -> 85.75% (+0.15), branch 68.19% -> 68.39% (+0.21)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1031,19 +1075,19 @@
       "net_saved_swe_days_p50": 11.15
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 3,
-      "raw_counterfactual_hours_p25": 15.99,
-      "raw_counterfactual_hours_p50": 24.0,
+      "open_draft_pr_count": 4,
+      "raw_counterfactual_hours_p25": 20.66,
+      "raw_counterfactual_hours_p50": 30.67,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.812,
-      "risk_adjusted_hours_p25": 13.5,
-      "risk_adjusted_hours_p50": 20.3
+      "empirical_promoted_merge_rate": 0.765,
+      "risk_adjusted_hours_p25": 16.77,
+      "risk_adjusted_hours_p50": 24.97
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 73.7,
-      "net_saved_hours_p50": 109.53,
-      "net_saved_swe_days_p25": 9.21,
-      "net_saved_swe_days_p50": 13.69
+      "net_saved_hours_p25": 76.97,
+      "net_saved_hours_p50": 114.2,
+      "net_saved_swe_days_p25": 9.62,
+      "net_saved_swe_days_p50": 14.28
     }
   }
 }
