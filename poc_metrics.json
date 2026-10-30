@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-30T11:23:04Z",
+  "generated_at": "2026-10-30T11:25:14Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 25,
@@ -16,7 +16,7 @@
     "total_gate_cpu_hours": 0.85
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-30T11:23:04Z",
+    "updated_at": "2026-10-30T11:25:14Z",
     "total_prs_raised": 19,
     "merged_count": 14,
     "open_ready_count": 5,
@@ -442,7 +442,7 @@
         "comment_count": 3,
         "review_count": 3,
         "perf_summary": "\u2014",
-        "coverage_summary": "1374 tests, 0 skipped; cov line 85.69% -> 85.69% (+0.00), branch 68.34% -> 68.91% (+0.57)"
+        "coverage_summary": "1438 tests, 0 skipped"
       }
     ]
   },
@@ -863,7 +863,7 @@
       "comment_count": 3,
       "review_count": 3,
       "perf_summary": "\u2014",
-      "coverage_summary": "1374 tests, 0 skipped; cov line 85.69% -> 85.69% (+0.00), branch 68.34% -> 68.91% (+0.57)"
+      "coverage_summary": "1438 tests, 0 skipped"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1061,6 +1061,22 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261030-100334-write-channel-and-retry-options-coverage",
+        "pr": "#446",
+        "severity": "minor",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsWriteChannelTest.java:537",
+        "finding": "The project style guide mandates always using try-with-resources for AutoCloseable types (like GcsWriteChannel), even when explicitly testing the close() method. Using try-with-resources guarantees cleanup if the constructor or assertions fail prematurely.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261030-100334-write-channel-and-retry-options-coverage",
+        "pr": "#446",
+        "severity": "minor",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsBidiWriteChannelTest.java:315",
+        "finding": "The project style guide mandates always using try-with-resources for AutoCloseable types (like GcsBidiWriteChannel), even when explicitly testing the close() method. Using try-with-resources guarantees cleanup if the constructor or assertions fail prematurely.",
+        "source": "critic_history"
       },
       {
         "iter": "20261029-035829-readfully-random-access-pattern",
