@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-31T10:25:30Z",
+  "checked_at": "2026-10-31T10:27:21Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "17b28f2aa5d70f2fe4b4ad61bd95bc72742f646e",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 6,
-  "actionable_count": 2,
+  "actionable_count": 1,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -137,7 +137,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.1,
+      "hours_since_update": 0.2,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -197,42 +197,13 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.1,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
-      "needs_comment_fix": true,
-      "action_required": true,
-      "unaddressed_comments": [
-        {
-          "id": "pull_comment:4431365684",
-          "comment_id": 4431365684,
-          "root_comment_id": 4431365684,
-          "thread_id": "PRRT_kwDOPmMU8s6yP8oz",
-          "type": "inline_review_comment",
-          "author": "gemini-code-assist[bot]",
-          "path": "common/src/test/java/com/google/cloud/gcs/analyticscore/common/telemetry/LoggingOpenTelemetryProviderTest.java",
-          "line": 66,
-          "diff_hunk": "nTelemetry).isNotNull();\n     }\n   }\n+\n+  @Test\n+  void close_whenUninitialized_allowsSubsequentInitialization() {\n+    try (LoggingOpenTelemetryProvider provider =\n+        new LoggingOpenTelemetryProvider(OpenTelemetryOptions.builder().build())) {\n+      provider.close();\n+      OpenTelemetry openTelemetry = provider.getOpenTelemetry();\n+\n+      assertThat(openTelemetry).isNotNull();\n+    }\n+  }",
-          "body": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nIn Java unit tests where the explicit action under test is calling `close()` on an `AutoCloseable` resource, do not wrap the resource in a try-with-resources block. Wrapping it executes `close()` twice, which violates the Arrange-Act-Assert structure and is unnecessary.\n\n```java\n  void close_whenUninitialized_allowsSubsequentInitialization() {\n    LoggingOpenTelemetryProvider provider =\n        new LoggingOpenTelemetryProvider(OpenTelemetryOptions.builder().build());\n    provider.close();\n    OpenTelemetry openTelemetry = provider.getOpenTelemetry();\n\n    assertThat(openTelemetry).isNotNull();\n  }\n```\n\n<details>\n<summary>References</summary>\n\n1. Enforce strict Arrange-Act-Assert structure in tests. <sup>([link](https://github.com/GoogleCloudPlatform/gcs-analytics-core/blob/main/.gemini/styleguide.md))</sup>\n2. In Java unit tests where the explicit action under test is calling close() on an AutoCloseable resource, do not wrap the resource in a try-with-resources block. Wrapping it executes close() twice, which violates the Arrange-Act-Assert structure, can cause assertion ordering anomalies, and is unnecessary when using mocks that do not leak real resources.\n</details>",
-          "created_at": "2026-10-31T10:15:45Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/451#discussion_r4431365684"
-        },
-        {
-          "id": "pull_comment:4431365688",
-          "comment_id": 4431365688,
-          "root_comment_id": 4431365688,
-          "thread_id": "PRRT_kwDOPmMU8s6yP8o1",
-          "type": "inline_review_comment",
-          "author": "gemini-code-assist[bot]",
-          "path": "common/src/test/java/com/google/cloud/gcs/analyticscore/common/telemetry/LoggingOpenTelemetryProviderTest.java",
-          "line": 79,
-          "diff_hunk": "dempotentAndResetsInstance() {\n+    try (LoggingOpenTelemetryProvider provider =\n+        new LoggingOpenTelemetryProvider(OpenTelemetryOptions.builder().build())) {\n+      OpenTelemetry first = provider.getOpenTelemetry();\n+      provider.close();\n+      provider.close();\n+      OpenTelemetry second = provider.getOpenTelemetry();\n+\n+      assertThat(second).isNotSameInstanceAs(first);\n+    }\n+  }",
-          "body": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nIn Java unit tests where the explicit action under test is calling `close()` on an `AutoCloseable` resource, do not wrap the resource in a try-with-resources block. Wrapping it executes `close()` multiple times, which violates the Arrange-Act-Assert structure and is unnecessary.\n\n```java\n  void close_afterInitialization_isIdempotentAndResetsInstance() {\n    LoggingOpenTelemetryProvider provider =\n        new LoggingOpenTelemetryProvider(OpenTelemetryOptions.builder().build());\n    OpenTelemetry first = provider.getOpenTelemetry();\n    provider.close();\n    provider.close();\n    OpenTelemetry second = provider.getOpenTelemetry();\n\n    assertThat(second).isNotSameInstanceAs(first);\n  }\n```\n\n<details>\n<summary>References</summary>\n\n1. Enforce strict Arrange-Act-Assert structure in tests. <sup>([link](https://github.com/GoogleCloudPlatform/gcs-analytics-core/blob/main/.gemini/styleguide.md))</sup>\n2. In Java unit tests where the explicit action under test is calling close() on an AutoCloseable resource, do not wrap the resource in a try-with-resources block. Wrapping it executes close() twice, which violates the Arrange-Act-Assert structure, can cause assertion ordering anomalies, and is unnecessary when using mocks that do not leak real resources.\n</details>",
-          "created_at": "2026-10-31T10:15:45Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/451#discussion_r4431365688"
-        }
-      ]
+      "needs_comment_fix": false,
+      "action_required": false,
+      "unaddressed_comments": []
     }
   ]
 }
