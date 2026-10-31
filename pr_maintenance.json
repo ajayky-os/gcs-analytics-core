@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-31T16:17:17Z",
+  "checked_at": "2026-10-31T16:21:11Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "6e01c953029a1a1228a441a32926df75ddf6d485",
   "onduty": {
@@ -21,8 +21,8 @@
     "robot_ready": true
   },
   "total_open_prs": 5,
-  "actionable_count": 2,
-  "auto_merged_count": 0,
+  "actionable_count": 1,
+  "auto_merged_count": 1,
   "newly_recorded_rejections": [],
   "prs": [
     {
@@ -47,7 +47,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 6.5,
+      "hours_since_update": 6.6,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -141,18 +141,18 @@
       "main_sha": "6e01c953029a1a1228a441a32926df75ddf6d485",
       "commits_behind_main": 0,
       "mergeable": "MERGEABLE",
-      "merge_state_status": "BLOCKED",
+      "merge_state_status": "CLEAN",
       "review_decision": "APPROVED",
       "ready_to_merge": true,
-      "auto_merged": false,
+      "auto_merged": true,
       "merge_error": null,
-      "hours_since_update": 0.0,
+      "hours_since_update": 0.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
       "needs_comment_fix": false,
       "needs_check_fix": false,
-      "action_required": true,
+      "action_required": false,
       "unaddressed_comments": [],
       "failing_checks": [],
       "transient_checks": []
@@ -179,7 +179,7 @@
       "ready_to_merge": true,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.1,
+      "hours_since_update": 0.2,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,

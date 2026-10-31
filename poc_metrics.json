@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-31T16:19:36Z",
+  "generated_at": "2026-10-31T16:21:19Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 28,
@@ -8,23 +8,23 @@
     "error_or_quota_halted_iterations": 0,
     "substantive_iterations": 26,
     "unique_upstream_prs": 22,
-    "merged_upstream_prs": 17,
-    "open_vetted_draft_prs": 5,
+    "merged_upstream_prs": 18,
+    "open_vetted_draft_prs": 4,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 15,
     "total_agent_wall_hours": 20.99,
     "total_gate_cpu_hours": 0.9
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-31T16:19:36Z",
+    "updated_at": "2026-10-31T16:21:19Z",
     "total_prs_raised": 22,
-    "merged_count": 17,
-    "open_ready_count": 5,
+    "merged_count": 18,
+    "open_ready_count": 4,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.773,
-    "median_hours_to_merge": 14.61,
+    "overall_merge_rate_to_date": 0.818,
+    "median_hours_to_merge": 16.9,
     "prs": [
       {
         "pr_number": 407,
@@ -382,7 +382,7 @@
         "pr_number": 442,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/442",
         "title": "test(client): cover unexercised options and strategy paths in client module",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "test",
         "task_class": "benchmark_or_test_infra",
         "loc": 102,
@@ -390,9 +390,9 @@
         "deletions": 0,
         "iter": "20261030-040317-client-options-and-strategy-coverage",
         "created_at": "2026-10-30T04:08:08Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
+        "merged_at": "2026-10-31T16:20:57Z",
+        "closed_at": "2026-10-31T16:20:57Z",
+        "hours_to_merge": 36.21,
         "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 5,
@@ -869,7 +869,7 @@
       "pr_number": 442,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/442",
       "title": "test(client): cover unexercised options and strategy paths in client module",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
       "loc": 102,
@@ -877,9 +877,9 @@
       "deletions": 0,
       "iter": "20261030-040317-client-options-and-strategy-coverage",
       "created_at": "2026-10-30T04:08:08Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
+      "merged_at": "2026-10-31T16:20:57Z",
+      "closed_at": "2026-10-31T16:20:57Z",
+      "hours_to_merge": 36.21,
       "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 5,
@@ -1334,33 +1334,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 17,
+      "merged_pr_count": 18,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 83.34,
-      "gross_counterfactual_hours_p50": 121.04,
-      "net_saved_hours_p25": 79.54,
-      "net_saved_hours_p50": 117.24,
-      "net_saved_swe_days_p25": 9.94,
-      "net_saved_swe_days_p50": 14.65
+      "gross_counterfactual_hours_p25": 88.01,
+      "gross_counterfactual_hours_p50": 127.71,
+      "net_saved_hours_p25": 84.21,
+      "net_saved_hours_p50": 123.91,
+      "net_saved_swe_days_p25": 10.53,
+      "net_saved_swe_days_p50": 15.49
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 5,
-      "raw_counterfactual_hours_p25": 25.33,
-      "raw_counterfactual_hours_p50": 37.34,
+      "open_draft_pr_count": 4,
+      "raw_counterfactual_hours_p25": 20.66,
+      "raw_counterfactual_hours_p50": 30.67,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.773,
-      "risk_adjusted_hours_p25": 20.7,
-      "risk_adjusted_hours_p50": 30.64
+      "empirical_promoted_merge_rate": 0.818,
+      "risk_adjusted_hours_p25": 17.43,
+      "risk_adjusted_hours_p50": 25.97
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 100.24,
-      "net_saved_hours_p50": 147.88,
-      "net_saved_swe_days_p25": 12.53,
-      "net_saved_swe_days_p50": 18.48
+      "net_saved_hours_p25": 101.64,
+      "net_saved_hours_p50": 149.88,
+      "net_saved_swe_days_p25": 12.7,
+      "net_saved_swe_days_p50": 18.73
     }
   }
 }
