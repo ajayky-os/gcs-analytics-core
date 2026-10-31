@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-31T16:26:39Z",
+  "generated_at": "2026-10-31T16:32:23Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 28,
@@ -16,7 +16,7 @@
     "total_gate_cpu_hours": 0.9
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-31T16:26:39Z",
+    "updated_at": "2026-10-31T16:32:23Z",
     "total_prs_raised": 22,
     "merged_count": 18,
     "open_ready_count": 4,
@@ -503,7 +503,7 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
         "review_count": 4,
@@ -990,7 +990,7 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 4,
