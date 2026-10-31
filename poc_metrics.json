@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-31T13:17:27Z",
+  "generated_at": "2026-10-31T13:32:25Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 28,
@@ -11,12 +11,12 @@
     "merged_upstream_prs": 17,
     "open_vetted_draft_prs": 5,
     "closed_unmerged_prs": 0,
-    "critic_major_catches": 13,
+    "critic_major_catches": 15,
     "total_agent_wall_hours": 20.99,
-    "total_gate_cpu_hours": 1.17
+    "total_gate_cpu_hours": 1.03
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-31T13:17:27Z",
+    "updated_at": "2026-10-31T13:32:25Z",
     "total_prs_raised": 22,
     "merged_count": 17,
     "open_ready_count": 5,
@@ -265,8 +265,8 @@
         "commit_count": 1,
         "comment_count": 3,
         "review_count": 8,
-        "perf_summary": "2/45 IMPROVED (top: `TelemetryOverheadBenchmark.caffeineCacheHit` -9.8% lat, -12.0% alloc)",
-        "coverage_summary": "1530 tests, 0 skipped; cov line 85.78% -> 85.96% (+0.18), branch 70.15% -> 71.02% (+0.88)"
+        "perf_summary": "1/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -3.1% lat, -0.0% alloc)",
+        "coverage_summary": "1530 tests, 0 skipped; cov line 85.96% / branch 71.07% (no baseline; run `sil.py baseline`)"
       },
       {
         "pr_number": 431,
@@ -752,8 +752,8 @@
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 8,
-      "perf_summary": "2/45 IMPROVED (top: `TelemetryOverheadBenchmark.caffeineCacheHit` -9.8% lat, -12.0% alloc)",
-      "coverage_summary": "1530 tests, 0 skipped; cov line 85.78% -> 85.96% (+0.18), branch 70.15% -> 71.02% (+0.88)"
+      "perf_summary": "1/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -3.1% lat, -0.0% alloc)",
+      "coverage_summary": "1530 tests, 0 skipped; cov line 85.96% / branch 71.07% (no baseline; run `sil.py baseline`)"
     },
     {
       "pr_number": 431,
@@ -1149,7 +1149,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 13,
+    "major_or_blocker_count": 15,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -1296,6 +1296,22 @@
         "source": "critic_history"
       },
       {
+        "iter": "20261019-121048-footer-vectored-tail-v2",
+        "pr": "#430",
+        "severity": "blocker",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/GcsFooterOptimizer.java:36",
+        "finding": "Unresolved Git merge conflict markers (`<<<<<<< HEAD`, `=======`, `>>>>>>>`) are present in the imports section. This will break a clean build.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261019-121048-footer-vectored-tail-v2",
+        "pr": "#430",
+        "severity": "blocker",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/optimizer/GcsFooterOptimizerTest.java:52",
+        "finding": "Unresolved Git merge conflict markers are present in the imports section.",
+        "source": "critic_history"
+      },
+      {
         "iter": "20261027-095436-cache-metadata-extractor-reflection",
         "pr": "#437",
         "severity": "blocker",
@@ -1329,14 +1345,14 @@
       "raw_counterfactual_hours_p50": 37.34,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.773,
-      "risk_adjusted_hours_p25": 20.04,
-      "risk_adjusted_hours_p50": 29.64
+      "risk_adjusted_hours_p25": 20.7,
+      "risk_adjusted_hours_p50": 30.64
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 99.58,
-      "net_saved_hours_p50": 146.88,
-      "net_saved_swe_days_p25": 12.45,
-      "net_saved_swe_days_p50": 18.36
+      "net_saved_hours_p25": 100.24,
+      "net_saved_hours_p50": 147.88,
+      "net_saved_swe_days_p25": 12.53,
+      "net_saved_swe_days_p50": 18.48
     }
   }
 }
