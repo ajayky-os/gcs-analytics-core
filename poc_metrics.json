@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-31T15:47:26Z",
+  "generated_at": "2026-10-31T16:02:27Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 28,
@@ -16,7 +16,7 @@
     "total_gate_cpu_hours": 0.9
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-31T15:47:26Z",
+    "updated_at": "2026-10-31T16:02:27Z",
     "total_prs_raised": 22,
     "merged_count": 17,
     "open_ready_count": 5,
@@ -393,10 +393,10 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 5,
-        "review_count": 3,
+        "review_count": 4,
         "perf_summary": "\u2014",
         "coverage_summary": "1511 tests, 0 skipped; cov line 85.78% -> 85.92% (+0.14), branch 70.15% -> 70.39% (+0.24)"
       },
@@ -503,10 +503,10 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 3,
+        "review_count": 4,
         "perf_summary": "\u2014",
         "coverage_summary": "1510 tests, 0 skipped; cov line 85.78% -> 85.78% (+0.00), branch 70.15% -> 70.58% (+0.43)"
       }
@@ -880,10 +880,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 5,
-      "review_count": 3,
+      "review_count": 4,
       "perf_summary": "\u2014",
       "coverage_summary": "1511 tests, 0 skipped; cov line 85.78% -> 85.92% (+0.14), branch 70.15% -> 70.39% (+0.24)"
     },
@@ -990,10 +990,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 3,
+      "review_count": 4,
       "perf_summary": "\u2014",
       "coverage_summary": "1510 tests, 0 skipped; cov line 85.78% -> 85.78% (+0.00), branch 70.15% -> 70.58% (+0.43)"
     }
