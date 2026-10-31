@@ -1,29 +1,29 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-31T10:14:28Z",
+  "generated_at": "2026-10-31T10:14:54Z",
   "project": "gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 27,
+    "total_iterations_logged": 28,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 0,
-    "substantive_iterations": 25,
-    "unique_upstream_prs": 21,
+    "substantive_iterations": 26,
+    "unique_upstream_prs": 22,
     "merged_upstream_prs": 16,
-    "open_vetted_draft_prs": 5,
+    "open_vetted_draft_prs": 6,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 13,
-    "total_agent_wall_hours": 20.74,
-    "total_gate_cpu_hours": 0.89
+    "total_agent_wall_hours": 20.81,
+    "total_gate_cpu_hours": 0.91
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-31T10:14:28Z",
-    "total_prs_raised": 21,
+    "updated_at": "2026-10-31T10:14:54Z",
+    "total_prs_raised": 22,
     "merged_count": 16,
-    "open_ready_count": 5,
+    "open_ready_count": 6,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.762,
+    "overall_merge_rate_to_date": 0.727,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -487,6 +487,28 @@
         "review_count": 4,
         "perf_summary": "29/45 IMPROVED (top: `ReadStrategyBenchmark.seekAndRead{forwardGapBytes=0,strategy=SEQUENTIAL}` -11.7% lat, -19.3% alloc)",
         "coverage_summary": "\u2014"
+      },
+      {
+        "pr_number": 451,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/451",
+        "title": "test(common): cover unexercised branches in telemetry options and logging provider",
+        "state": "OPEN_READY",
+        "change_type": "test",
+        "task_class": "benchmark_or_test_infra",
+        "loc": 88,
+        "additions": 88,
+        "deletions": 0,
+        "iter": "20261031-101026-telemetry-options-and-provider-branch-coverage",
+        "created_at": "2026-10-31T10:14:17Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "\u2014",
+        "coverage_summary": "1510 tests, 0 skipped; cov line 85.78% -> 85.78% (+0.00), branch 70.15% -> 70.58% (+0.43)"
       }
     ]
   },
@@ -952,6 +974,28 @@
       "review_count": 4,
       "perf_summary": "29/45 IMPROVED (top: `ReadStrategyBenchmark.seekAndRead{forwardGapBytes=0,strategy=SEQUENTIAL}` -11.7% lat, -19.3% alloc)",
       "coverage_summary": "\u2014"
+    },
+    {
+      "pr_number": 451,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/451",
+      "title": "test(common): cover unexercised branches in telemetry options and logging provider",
+      "state": "OPEN_READY",
+      "change_type": "test",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 88,
+      "additions": 88,
+      "deletions": 0,
+      "iter": "20261031-101026-telemetry-options-and-provider-branch-coverage",
+      "created_at": "2026-10-31T10:14:17Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "\u2014",
+      "coverage_summary": "1510 tests, 0 skipped; cov line 85.78% -> 85.78% (+0.00), branch 70.15% -> 70.58% (+0.43)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1280,19 +1324,19 @@
       "net_saved_swe_days_p50": 13.65
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 5,
-      "raw_counterfactual_hours_p25": 25.99,
-      "raw_counterfactual_hours_p50": 38.67,
+      "open_draft_pr_count": 6,
+      "raw_counterfactual_hours_p25": 30.66,
+      "raw_counterfactual_hours_p50": 45.34,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.762,
-      "risk_adjusted_hours_p25": 20.5,
-      "risk_adjusted_hours_p50": 30.57
+      "empirical_promoted_merge_rate": 0.727,
+      "risk_adjusted_hours_p25": 23.77,
+      "risk_adjusted_hours_p50": 35.24
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 94.71,
-      "net_saved_hours_p50": 139.81,
-      "net_saved_swe_days_p25": 11.84,
-      "net_saved_swe_days_p50": 17.48
+      "net_saved_hours_p25": 97.98,
+      "net_saved_hours_p50": 144.48,
+      "net_saved_swe_days_p25": 12.25,
+      "net_saved_swe_days_p50": 18.06
     }
   }
 }

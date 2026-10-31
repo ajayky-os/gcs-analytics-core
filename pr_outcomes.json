@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-10-31T10:14:28Z",
-  "total_prs_raised": 21,
+  "updated_at": "2026-10-31T10:14:54Z",
+  "total_prs_raised": 22,
   "merged_count": 16,
-  "open_ready_count": 5,
+  "open_ready_count": 6,
   "open_draft_count": 0,
   "closed_unmerged_count": 0,
   "acceptance_rate_closed_prs": 1.0,
-  "overall_merge_rate_to_date": 0.762,
+  "overall_merge_rate_to_date": 0.727,
   "median_hours_to_merge": 16.9,
   "prs": [
     {
@@ -470,6 +470,28 @@
       "review_count": 4,
       "perf_summary": "29/45 IMPROVED (top: `ReadStrategyBenchmark.seekAndRead{forwardGapBytes=0,strategy=SEQUENTIAL}` -11.7% lat, -19.3% alloc)",
       "coverage_summary": "\u2014"
+    },
+    {
+      "pr_number": 451,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/451",
+      "title": "test(common): cover unexercised branches in telemetry options and logging provider",
+      "state": "OPEN_READY",
+      "change_type": "test",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 88,
+      "additions": 88,
+      "deletions": 0,
+      "iter": "20261031-101026-telemetry-options-and-provider-branch-coverage",
+      "created_at": "2026-10-31T10:14:17Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "\u2014",
+      "coverage_summary": "1510 tests, 0 skipped; cov line 85.78% -> 85.78% (+0.00), branch 70.15% -> 70.58% (+0.43)"
     }
   ]
 }
