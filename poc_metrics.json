@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-31T10:15:35Z",
+  "generated_at": "2026-10-31T10:17:26Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 28,
@@ -16,7 +16,7 @@
     "total_gate_cpu_hours": 0.91
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-31T10:15:35Z",
+    "updated_at": "2026-10-31T10:17:26Z",
     "total_prs_raised": 22,
     "merged_count": 16,
     "open_ready_count": 6,
@@ -481,10 +481,10 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 4,
+        "review_count": 5,
         "perf_summary": "29/45 IMPROVED (top: `ReadStrategyBenchmark.seekAndRead{forwardGapBytes=0,strategy=SEQUENTIAL}` -11.7% lat, -19.3% alloc)",
         "coverage_summary": "\u2014"
       },
@@ -505,8 +505,8 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 1,
-        "review_count": 0,
+        "comment_count": 2,
+        "review_count": 1,
         "perf_summary": "\u2014",
         "coverage_summary": "1510 tests, 0 skipped; cov line 85.78% -> 85.78% (+0.00), branch 70.15% -> 70.58% (+0.43)"
       }
@@ -968,10 +968,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 4,
+      "review_count": 5,
       "perf_summary": "29/45 IMPROVED (top: `ReadStrategyBenchmark.seekAndRead{forwardGapBytes=0,strategy=SEQUENTIAL}` -11.7% lat, -19.3% alloc)",
       "coverage_summary": "\u2014"
     },
@@ -992,8 +992,8 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 1,
-      "review_count": 0,
+      "comment_count": 2,
+      "review_count": 1,
       "perf_summary": "\u2014",
       "coverage_summary": "1510 tests, 0 skipped; cov line 85.78% -> 85.78% (+0.00), branch 70.15% -> 70.58% (+0.43)"
     }
@@ -1138,7 +1138,7 @@
         "category": "Channel Open Allocation",
         "component": "SmartReadChannel, GcsFooterOptimizer, SmallObjectOptimizer",
         "summary": "Eliminates stream pipelines, eager builder allocation, and String.toLowerCase allocations on every channel open via lazy builders and regionMatches",
-        "status": "OPEN_READY_PR",
+        "status": "OPEN_APPROVED_PR",
         "pr": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/450",
         "metrics": {
           "readerOpens_or_rpcs_per_op": "N/A (Channel-open hot path)",
