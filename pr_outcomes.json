@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-31T09:51:00Z",
+  "updated_at": "2026-10-31T09:52:41Z",
   "total_prs_raised": 21,
   "merged_count": 16,
   "open_ready_count": 5,
@@ -315,7 +315,7 @@
       "comment_count": 6,
       "review_count": 5,
       "perf_summary": "3/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -11.2% lat, +0.3% alloc)",
-      "coverage_summary": "exit 1"
+      "coverage_summary": "exit 1; 99 failures, 739 errors of 1048 tests"
     },
     {
       "pr_number": 440,
