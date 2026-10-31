@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-10-31T06:02:29Z",
-  "total_prs_raised": 20,
+  "updated_at": "2026-10-31T06:15:55Z",
+  "total_prs_raised": 21,
   "merged_count": 14,
-  "open_ready_count": 6,
+  "open_ready_count": 7,
   "open_draft_count": 0,
   "closed_unmerged_count": 0,
   "acceptance_rate_closed_prs": 1.0,
-  "overall_merge_rate_to_date": 0.7,
+  "overall_merge_rate_to_date": 0.667,
   "median_hours_to_merge": 16.9,
   "prs": [
     {
@@ -448,6 +448,28 @@
       "review_count": 1,
       "perf_summary": "\u2014",
       "coverage_summary": "1490 tests, 0 skipped; cov line 85.76% -> 85.78% (+0.02), branch 69.53% -> 69.62% (+0.10)"
+    },
+    {
+      "pr_number": 450,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/450",
+      "title": "perf(core): avoid stream and case-folding allocations on channel open",
+      "state": "OPEN_READY",
+      "change_type": "perf",
+      "task_class": "perf_or_feature_change",
+      "loc": 330,
+      "additions": 297,
+      "deletions": 33,
+      "iter": "20261031-060034-stream-open-optimizer-allocation",
+      "created_at": "2026-10-31T06:15:24Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "29/45 IMPROVED (top: `ReadStrategyBenchmark.seekAndRead{forwardGapBytes=0,strategy=SEQUENTIAL}` -11.7% lat, -19.3% alloc)",
+      "coverage_summary": "1493 tests, 0 skipped; cov line 85.76% -> 85.79% (+0.03), branch 69.53% -> 69.84% (+0.32)"
     }
   ]
 }
