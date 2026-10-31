@@ -1,29 +1,29 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-31T04:02:27Z",
+  "generated_at": "2026-10-31T04:06:22Z",
   "project": "gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 25,
+    "total_iterations_logged": 26,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 0,
-    "substantive_iterations": 23,
-    "unique_upstream_prs": 19,
+    "substantive_iterations": 24,
+    "unique_upstream_prs": 20,
     "merged_upstream_prs": 14,
-    "open_vetted_draft_prs": 5,
+    "open_vetted_draft_prs": 6,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 13,
-    "total_agent_wall_hours": 16.74,
-    "total_gate_cpu_hours": 0.85
+    "total_agent_wall_hours": 16.82,
+    "total_gate_cpu_hours": 0.87
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-31T04:02:27Z",
-    "total_prs_raised": 19,
+    "updated_at": "2026-10-31T04:06:22Z",
+    "total_prs_raised": 20,
     "merged_count": 14,
-    "open_ready_count": 5,
+    "open_ready_count": 6,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.737,
+    "overall_merge_rate_to_date": 0.7,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -443,6 +443,28 @@
         "review_count": 3,
         "perf_summary": "\u2014",
         "coverage_summary": "1495 tests, 0 skipped"
+      },
+      {
+        "pr_number": 449,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/449",
+        "title": "test(core): cover unexercised branches in Parquet byte-range layout model",
+        "state": "OPEN_READY",
+        "change_type": "test",
+        "task_class": "benchmark_or_test_infra",
+        "loc": 68,
+        "additions": 68,
+        "deletions": 0,
+        "iter": "20261031-040107-parquet-prefetch-layout-coverage",
+        "created_at": "2026-10-31T04:05:45Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "\u2014",
+        "coverage_summary": "1490 tests, 0 skipped; cov line 85.76% -> 85.78% (+0.02), branch 69.53% -> 69.62% (+0.10)"
       }
     ]
   },
@@ -864,6 +886,28 @@
       "review_count": 3,
       "perf_summary": "\u2014",
       "coverage_summary": "1495 tests, 0 skipped"
+    },
+    {
+      "pr_number": 449,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/449",
+      "title": "test(core): cover unexercised branches in Parquet byte-range layout model",
+      "state": "OPEN_READY",
+      "change_type": "test",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 68,
+      "additions": 68,
+      "deletions": 0,
+      "iter": "20261031-040107-parquet-prefetch-layout-coverage",
+      "created_at": "2026-10-31T04:05:45Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "\u2014",
+      "coverage_summary": "1490 tests, 0 skipped; cov line 85.76% -> 85.78% (+0.02), branch 69.53% -> 69.62% (+0.10)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1179,19 +1223,19 @@
       "net_saved_swe_days_p50": 11.99
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 5,
-      "raw_counterfactual_hours_p25": 25.33,
-      "raw_counterfactual_hours_p50": 37.34,
+      "open_draft_pr_count": 6,
+      "raw_counterfactual_hours_p25": 30.0,
+      "raw_counterfactual_hours_p50": 44.01,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.737,
-      "risk_adjusted_hours_p25": 20.04,
-      "risk_adjusted_hours_p50": 29.64
+      "empirical_promoted_merge_rate": 0.7,
+      "risk_adjusted_hours_p25": 23.31,
+      "risk_adjusted_hours_p50": 34.31
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 84.91,
-      "net_saved_hours_p50": 125.54,
-      "net_saved_swe_days_p25": 10.61,
-      "net_saved_swe_days_p50": 15.69
+      "net_saved_hours_p25": 88.18,
+      "net_saved_hours_p50": 130.21,
+      "net_saved_swe_days_p25": 11.02,
+      "net_saved_swe_days_p50": 16.28
     }
   }
 }
