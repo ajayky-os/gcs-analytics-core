@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-31T16:02:27Z",
+  "updated_at": "2026-10-31T16:08:58Z",
   "total_prs_raised": 22,
   "merged_count": 17,
   "open_ready_count": 5,
@@ -381,7 +381,7 @@
       "comment_count": 5,
       "review_count": 4,
       "perf_summary": "\u2014",
-      "coverage_summary": "1511 tests, 0 skipped; cov line 85.78% -> 85.92% (+0.14), branch 70.15% -> 70.39% (+0.24)"
+      "coverage_summary": "1523 tests, 0 skipped"
     },
     {
       "pr_number": 444,
@@ -486,12 +486,12 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "APPROVED",
+      "review_decision": "PENDING",
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 4,
       "perf_summary": "\u2014",
-      "coverage_summary": "1510 tests, 0 skipped; cov line 85.78% -> 85.78% (+0.00), branch 70.15% -> 70.58% (+0.43)"
+      "coverage_summary": "1522 tests, 0 skipped"
     }
   ]
 }
