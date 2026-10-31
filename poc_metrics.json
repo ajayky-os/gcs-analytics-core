@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-31T12:10:18Z",
+  "generated_at": "2026-10-31T12:18:38Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 28,
@@ -8,23 +8,23 @@
     "error_or_quota_halted_iterations": 0,
     "substantive_iterations": 26,
     "unique_upstream_prs": 22,
-    "merged_upstream_prs": 16,
-    "open_vetted_draft_prs": 6,
+    "merged_upstream_prs": 17,
+    "open_vetted_draft_prs": 5,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 13,
     "total_agent_wall_hours": 20.99,
     "total_gate_cpu_hours": 0.91
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-31T12:10:18Z",
+    "updated_at": "2026-10-31T12:18:38Z",
     "total_prs_raised": 22,
-    "merged_count": 16,
-    "open_ready_count": 6,
+    "merged_count": 17,
+    "open_ready_count": 5,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.727,
-    "median_hours_to_merge": 16.9,
+    "overall_merge_rate_to_date": 0.773,
+    "median_hours_to_merge": 14.61,
     "prs": [
       {
         "pr_number": 407,
@@ -470,7 +470,7 @@
         "pr_number": 450,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/450",
         "title": "perf(core): avoid stream and case-folding allocations on channel open",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "perf",
         "task_class": "perf_or_feature_change",
         "loc": 343,
@@ -478,9 +478,9 @@
         "deletions": 33,
         "iter": "20261031-060034-stream-open-optimizer-allocation",
         "created_at": "2026-10-31T06:15:24Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
+        "merged_at": "2026-10-31T12:17:10Z",
+        "closed_at": "2026-10-31T12:17:11Z",
+        "hours_to_merge": 6.03,
         "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
@@ -957,7 +957,7 @@
       "pr_number": 450,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/450",
       "title": "perf(core): avoid stream and case-folding allocations on channel open",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "perf",
       "task_class": "perf_or_feature_change",
       "loc": 343,
@@ -965,9 +965,9 @@
       "deletions": 33,
       "iter": "20261031-060034-stream-open-optimizer-allocation",
       "created_at": "2026-10-31T06:15:24Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
+      "merged_at": "2026-10-31T12:17:10Z",
+      "closed_at": "2026-10-31T12:17:11Z",
+      "hours_to_merge": 6.03,
       "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
@@ -1138,7 +1138,7 @@
         "category": "Channel Open Allocation",
         "component": "SmartReadChannel, GcsFooterOptimizer, SmallObjectOptimizer",
         "summary": "Eliminates stream pipelines, eager builder allocation, and String.toLowerCase allocations on every channel open via lazy builders and regionMatches",
-        "status": "OPEN_APPROVED_PR",
+        "status": "MERGED_UPSTREAM",
         "pr": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/450",
         "metrics": {
           "readerOpens_or_rpcs_per_op": "N/A (Channel-open hot path)",
@@ -1310,33 +1310,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 16,
+      "merged_pr_count": 17,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 78.01,
-      "gross_counterfactual_hours_p50": 113.04,
-      "net_saved_hours_p25": 74.21,
-      "net_saved_hours_p50": 109.24,
-      "net_saved_swe_days_p25": 9.28,
-      "net_saved_swe_days_p50": 13.65
+      "gross_counterfactual_hours_p25": 83.34,
+      "gross_counterfactual_hours_p50": 121.04,
+      "net_saved_hours_p25": 79.54,
+      "net_saved_hours_p50": 117.24,
+      "net_saved_swe_days_p25": 9.94,
+      "net_saved_swe_days_p50": 14.65
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 6,
-      "raw_counterfactual_hours_p25": 30.66,
-      "raw_counterfactual_hours_p50": 45.34,
+      "open_draft_pr_count": 5,
+      "raw_counterfactual_hours_p25": 25.33,
+      "raw_counterfactual_hours_p50": 37.34,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.727,
-      "risk_adjusted_hours_p25": 23.77,
-      "risk_adjusted_hours_p50": 35.24
+      "empirical_promoted_merge_rate": 0.773,
+      "risk_adjusted_hours_p25": 20.04,
+      "risk_adjusted_hours_p50": 29.64
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 97.98,
-      "net_saved_hours_p50": 144.48,
-      "net_saved_swe_days_p25": 12.25,
-      "net_saved_swe_days_p50": 18.06
+      "net_saved_hours_p25": 99.58,
+      "net_saved_hours_p50": 146.88,
+      "net_saved_swe_days_p25": 12.45,
+      "net_saved_swe_days_p50": 18.36
     }
   }
 }
