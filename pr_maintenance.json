@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-31T08:48:54Z",
+  "checked_at": "2026-10-31T08:51:57Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "f385b7f3ab07b95a4639552d13383349e512b313",
   "onduty": {
@@ -77,7 +77,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 16.6,
+      "hours_since_update": 16.7,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": true,
@@ -107,7 +107,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 16.4,
+      "hours_since_update": 16.5,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": true,
@@ -137,13 +137,25 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 16.6,
+      "hours_since_update": 16.7,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": true,
-      "needs_comment_fix": false,
+      "needs_comment_fix": true,
       "action_required": true,
-      "unaddressed_comments": []
+      "unaddressed_comments": [
+        {
+          "id": "issue_comment:6541362948",
+          "comment_id": 6541362948,
+          "type": "issue_comment",
+          "author": "ajayky-os",
+          "path": null,
+          "line": null,
+          "body": "hermetic-benchmark is failing ?",
+          "created_at": "2026-10-31T08:51:43Z",
+          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/442#issuecomment-6541362948"
+        }
+      ]
     },
     {
       "pr_number": 446,
@@ -163,11 +175,11 @@
       "commits_behind_main": 1,
       "mergeable": "MERGEABLE",
       "merge_state_status": "BEHIND",
-      "review_decision": "PENDING",
+      "review_decision": "APPROVED",
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 16.4,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": true,
@@ -197,7 +209,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 2.3,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": true,
