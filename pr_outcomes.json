@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-31T13:32:25Z",
+  "updated_at": "2026-10-31T13:32:57Z",
   "total_prs_raised": 22,
   "merged_count": 17,
   "open_ready_count": 5,
@@ -236,8 +236,8 @@
       "state": "OPEN_READY",
       "change_type": "feature",
       "task_class": "perf_or_feature_change",
-      "loc": 401,
-      "additions": 401,
+      "loc": 400,
+      "additions": 400,
       "deletions": 0,
       "iter": "20261019-121048-footer-vectored-tail-v2",
       "created_at": "2026-10-28T09:21:18Z",
