@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-31T13:02:23Z",
+  "generated_at": "2026-10-31T13:17:27Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 28,
@@ -13,10 +13,10 @@
     "closed_unmerged_prs": 0,
     "critic_major_catches": 13,
     "total_agent_wall_hours": 20.99,
-    "total_gate_cpu_hours": 0.91
+    "total_gate_cpu_hours": 1.17
   },
   "pr_outcomes": {
-    "updated_at": "2026-10-31T13:02:23Z",
+    "updated_at": "2026-10-31T13:17:27Z",
     "total_prs_raised": 22,
     "merged_count": 17,
     "open_ready_count": 5,
@@ -265,8 +265,8 @@
         "commit_count": 1,
         "comment_count": 3,
         "review_count": 8,
-        "perf_summary": "\u2014",
-        "coverage_summary": "1518 tests, 0 skipped"
+        "perf_summary": "2/45 IMPROVED (top: `TelemetryOverheadBenchmark.caffeineCacheHit` -9.8% lat, -12.0% alloc)",
+        "coverage_summary": "1530 tests, 0 skipped; cov line 85.78% -> 85.96% (+0.18), branch 70.15% -> 71.02% (+0.88)"
       },
       {
         "pr_number": 431,
@@ -752,8 +752,8 @@
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 8,
-      "perf_summary": "\u2014",
-      "coverage_summary": "1518 tests, 0 skipped"
+      "perf_summary": "2/45 IMPROVED (top: `TelemetryOverheadBenchmark.caffeineCacheHit` -9.8% lat, -12.0% alloc)",
+      "coverage_summary": "1530 tests, 0 skipped; cov line 85.78% -> 85.96% (+0.18), branch 70.15% -> 71.02% (+0.88)"
     },
     {
       "pr_number": 431,
