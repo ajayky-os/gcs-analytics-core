@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-31T10:08:20Z",
+  "updated_at": "2026-10-31T10:14:28Z",
   "total_prs_raised": 21,
   "merged_count": 16,
   "open_ready_count": 5,
@@ -381,7 +381,7 @@
       "comment_count": 5,
       "review_count": 3,
       "perf_summary": "\u2014",
-      "coverage_summary": "exit 1; 100 failures, 743 errors of 1468 tests"
+      "coverage_summary": "1511 tests, 0 skipped; cov line 85.78% -> 85.92% (+0.14), branch 70.15% -> 70.39% (+0.24)"
     },
     {
       "pr_number": 444,
