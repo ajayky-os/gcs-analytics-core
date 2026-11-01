@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-01T04:55:50Z",
+  "checked_at": "2026-11-01T04:58:07Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "a17ea636ae1101bf4dbff81ba9713f4c3bdd895a",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 4,
-  "actionable_count": 1,
+  "actionable_count": 0,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -80,7 +80,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 15.1,
+      "hours_since_update": 15.2,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -136,8 +136,8 @@
       ],
       "iter_id": "20261101-040353-file-info-open-avoid-uri-reparsing",
       "branch": "sil/file-info-open-avoid-uri-reparsing",
-      "head_oid": "3455b231265c7688581f5d27b92c6e79419a0515",
-      "head_commit_ts": "2026-11-01T04:06:24Z",
+      "head_oid": "44b4ea33b0f8b0aa1e6a533db5f7a62992b2ccae",
+      "head_commit_ts": "2026-11-01T04:55:02Z",
       "main_sha": "a17ea636ae1101bf4dbff81ba9713f4c3bdd895a",
       "commits_behind_main": 0,
       "mergeable": "MERGEABLE",
@@ -146,43 +146,14 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.2,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
-      "needs_comment_fix": true,
+      "needs_comment_fix": false,
       "needs_check_fix": false,
-      "action_required": true,
-      "unaddressed_comments": [
-        {
-          "id": "pull_comment:4434395575",
-          "comment_id": 4434395575,
-          "root_comment_id": 4434395575,
-          "thread_id": "PRRT_kwDOPmMU8s6yXSIS",
-          "type": "inline_review_comment",
-          "author": "gemini-code-assist[bot]",
-          "path": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsFileSystemImplTest.java",
-          "line": 249,
-          "diff_hunk": "ptions_passesMemorizedExecutorServiceAndTelemetryToGc\n   void open_withFileInfo_callsGcsClientOpen() throws IOException {\n     URI testUri = URI.create(\"gs://test-bucket/test-object\");\n     GcsItemInfo mockItemInfo = mock(GcsItemInfo.class);\n+    when(mockItemInfo.getItemId())\n+        .thenReturn(\n+            GcsItemId.builder().setBucketName(\"test-bucket\").setObjectName(\"test-object\").build());",
-          "body": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nMocking value types or data carriers (such as `@AutoValue` classes like `GcsItemInfo`) is a testing anti-pattern. It makes tests fragile and tightly coupled to the internal implementation details of the class under test, as demonstrated by the need to add this stubbing when the production code was updated to call `getItemId()`.\\n\\nInstead of mocking `GcsItemInfo`, instantiate a real instance using its builder (similar to how it is done in the new test `open_withFileInfo_usesItemInfoItemIdWithoutParsingUri` on line 305). This avoids the need for Mockito stubbing entirely and ensures the test remains robust against future refactoring.",
-          "created_at": "2026-11-01T04:28:29Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/452#discussion_r4434395575"
-        },
-        {
-          "id": "pull_comment:4434395576",
-          "comment_id": 4434395576,
-          "root_comment_id": 4434395576,
-          "thread_id": "PRRT_kwDOPmMU8s6yXSIT",
-          "type": "inline_review_comment",
-          "author": "gemini-code-assist[bot]",
-          "path": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsFileSystemImplTest.java",
-          "line": 282,
-          "diff_hunk": "@@ -275,6 +278,8 @@ void open_withNullFileInfo_throwsNullPointerException() {\n   void open_withNonObjectFileInfo_throwsIllegalArgumentException() throws URISyntaxException {\n     URI bucketUri = new URI(\"gs://\" + TEST_BUCKET);\n     GcsItemInfo mockItemInfo = mock(GcsItemInfo.class);\n+    when(mockItemInfo.getItemId())\n+        .thenReturn(GcsItemId.builder().setBucketName(TEST_BUCKET).build());",
-          "body": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nSimilar to the comment above, mocking the `@AutoValue` class `GcsItemInfo` here introduces fragile stubbing. Prefer instantiating a real `GcsItemInfo` using its builder to keep the test robust and decoupled from internal implementation changes.",
-          "created_at": "2026-11-01T04:28:29Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/452#discussion_r4434395576"
-        }
-      ],
+      "action_required": false,
+      "unaddressed_comments": [],
       "failing_checks": [],
       "transient_checks": []
     }
