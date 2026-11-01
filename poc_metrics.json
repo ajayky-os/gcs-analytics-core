@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-01T09:32:22Z",
+  "generated_at": "2026-11-01T09:40:41Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 30,
@@ -8,23 +8,23 @@
     "error_or_quota_halted_iterations": 0,
     "substantive_iterations": 28,
     "unique_upstream_prs": 24,
-    "merged_upstream_prs": 20,
-    "open_vetted_draft_prs": 4,
+    "merged_upstream_prs": 21,
+    "open_vetted_draft_prs": 3,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 17,
     "total_agent_wall_hours": 22.84,
     "total_gate_cpu_hours": 1.13
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-01T09:32:22Z",
+    "updated_at": "2026-11-01T09:40:41Z",
     "total_prs_raised": 24,
-    "merged_count": 20,
-    "open_ready_count": 4,
+    "merged_count": 21,
+    "open_ready_count": 3,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.833,
-    "median_hours_to_merge": 14.61,
+    "overall_merge_rate_to_date": 0.875,
+    "median_hours_to_merge": 12.73,
     "prs": [
       {
         "pr_number": 407,
@@ -536,7 +536,7 @@
         "pr_number": 453,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/453",
         "title": "perf(core): avoid URI parsing and map allocation on stream open",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "perf",
         "task_class": "perf_or_feature_change",
         "loc": 144,
@@ -544,9 +544,9 @@
         "deletions": 20,
         "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
         "created_at": "2026-11-01T06:12:03Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
+        "merged_at": "2026-11-01T09:40:22Z",
+        "closed_at": "2026-11-01T09:40:23Z",
+        "hours_to_merge": 3.47,
         "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
@@ -1067,7 +1067,7 @@
       "pr_number": 453,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/453",
       "title": "perf(core): avoid URI parsing and map allocation on stream open",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "perf",
       "task_class": "perf_or_feature_change",
       "loc": 144,
@@ -1075,9 +1075,9 @@
       "deletions": 20,
       "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
       "created_at": "2026-11-01T06:12:03Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
+      "merged_at": "2026-11-01T09:40:22Z",
+      "closed_at": "2026-11-01T09:40:23Z",
+      "hours_to_merge": 3.47,
       "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
@@ -1446,33 +1446,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 20,
+      "merged_pr_count": 21,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 98.01,
-      "gross_counterfactual_hours_p50": 142.38,
-      "net_saved_hours_p25": 94.21,
-      "net_saved_hours_p50": 138.58,
-      "net_saved_swe_days_p25": 11.78,
-      "net_saved_swe_days_p50": 17.32
+      "gross_counterfactual_hours_p25": 104.0,
+      "gross_counterfactual_hours_p50": 151.38,
+      "net_saved_hours_p25": 100.2,
+      "net_saved_hours_p50": 147.58,
+      "net_saved_swe_days_p25": 12.53,
+      "net_saved_swe_days_p50": 18.45
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 4,
-      "raw_counterfactual_hours_p25": 21.32,
-      "raw_counterfactual_hours_p50": 32.0,
+      "open_draft_pr_count": 3,
+      "raw_counterfactual_hours_p25": 15.99,
+      "raw_counterfactual_hours_p50": 24.0,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.833,
-      "risk_adjusted_hours_p25": 18.55,
-      "risk_adjusted_hours_p50": 27.9
+      "empirical_promoted_merge_rate": 0.875,
+      "risk_adjusted_hours_p25": 14.16,
+      "risk_adjusted_hours_p50": 21.3
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 112.76,
-      "net_saved_hours_p50": 166.48,
-      "net_saved_swe_days_p25": 14.09,
-      "net_saved_swe_days_p50": 20.81
+      "net_saved_hours_p25": 114.36,
+      "net_saved_hours_p50": 168.88,
+      "net_saved_swe_days_p25": 14.29,
+      "net_saved_swe_days_p50": 21.11
     }
   }
 }
