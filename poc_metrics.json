@@ -1,29 +1,29 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-01T04:17:20Z",
+  "generated_at": "2026-11-01T04:27:46Z",
   "project": "gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 28,
+    "total_iterations_logged": 29,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 0,
-    "substantive_iterations": 26,
-    "unique_upstream_prs": 22,
+    "substantive_iterations": 27,
+    "unique_upstream_prs": 23,
     "merged_upstream_prs": 19,
-    "open_vetted_draft_prs": 3,
+    "open_vetted_draft_prs": 4,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 15,
-    "total_agent_wall_hours": 20.99,
-    "total_gate_cpu_hours": 0.9
+    "total_agent_wall_hours": 21.38,
+    "total_gate_cpu_hours": 1.03
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-01T04:17:20Z",
-    "total_prs_raised": 22,
+    "updated_at": "2026-11-01T04:27:46Z",
+    "total_prs_raised": 23,
     "merged_count": 19,
-    "open_ready_count": 3,
+    "open_ready_count": 4,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.864,
+    "overall_merge_rate_to_date": 0.826,
     "median_hours_to_merge": 14.61,
     "prs": [
       {
@@ -509,6 +509,28 @@
         "review_count": 4,
         "perf_summary": "\u2014",
         "coverage_summary": "1530 tests, 0 skipped"
+      },
+      {
+        "pr_number": 452,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/452",
+        "title": "perf(client): avoid URI reparsing and eager formatting on channel open",
+        "state": "OPEN_READY",
+        "change_type": "perf",
+        "task_class": "perf_or_feature_change",
+        "loc": 57,
+        "additions": 44,
+        "deletions": 13,
+        "iter": "20261101-040353-file-info-open-avoid-uri-reparsing",
+        "created_at": "2026-11-01T04:27:12Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "28/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -76.6% lat, -71.5% alloc)",
+        "coverage_summary": "1531 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.08% (-0.05)"
       }
     ]
   },
@@ -996,6 +1018,28 @@
       "review_count": 4,
       "perf_summary": "\u2014",
       "coverage_summary": "1530 tests, 0 skipped"
+    },
+    {
+      "pr_number": 452,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/452",
+      "title": "perf(client): avoid URI reparsing and eager formatting on channel open",
+      "state": "OPEN_READY",
+      "change_type": "perf",
+      "task_class": "perf_or_feature_change",
+      "loc": 57,
+      "additions": 44,
+      "deletions": 13,
+      "iter": "20261101-040353-file-info-open-avoid-uri-reparsing",
+      "created_at": "2026-11-01T04:27:12Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "28/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -76.6% lat, -71.5% alloc)",
+      "coverage_summary": "1531 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.08% (-0.05)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1348,19 +1392,19 @@
       "net_saved_swe_days_p50": 16.32
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 3,
-      "raw_counterfactual_hours_p25": 15.99,
-      "raw_counterfactual_hours_p50": 24.0,
+      "open_draft_pr_count": 4,
+      "raw_counterfactual_hours_p25": 21.32,
+      "raw_counterfactual_hours_p50": 32.0,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.864,
-      "risk_adjusted_hours_p25": 14.16,
-      "risk_adjusted_hours_p50": 21.3
+      "empirical_promoted_merge_rate": 0.826,
+      "risk_adjusted_hours_p25": 17.89,
+      "risk_adjusted_hours_p50": 26.9
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 103.04,
-      "net_saved_hours_p50": 151.88,
-      "net_saved_swe_days_p25": 12.88,
-      "net_saved_swe_days_p50": 18.99
+      "net_saved_hours_p25": 106.77,
+      "net_saved_hours_p50": 157.48,
+      "net_saved_swe_days_p25": 13.35,
+      "net_saved_swe_days_p50": 19.69
     }
   }
 }
