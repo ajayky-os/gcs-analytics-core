@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T10:32:23Z",
+  "updated_at": "2026-11-01T10:47:21Z",
   "total_prs_raised": 25,
   "merged_count": 21,
   "open_ready_count": 4,
@@ -314,8 +314,8 @@
       "commit_count": 1,
       "comment_count": 6,
       "review_count": 5,
-      "perf_summary": "5/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -17.6% lat, -1.9% alloc)",
-      "coverage_summary": "exit 1; 2 failures, 0 errors of 1544 tests"
+      "perf_summary": "5/45 IMPROVED (top: `TelemetryOverheadBenchmark.caffeineCacheHit` -21.4% lat, -21.3% alloc)",
+      "coverage_summary": "exit 1; 1 failures, 9 errors of 1545 tests"
     },
     {
       "pr_number": 440,
