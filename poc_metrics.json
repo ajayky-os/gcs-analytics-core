@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-01T06:47:24Z",
+  "generated_at": "2026-11-01T06:57:17Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 30,
@@ -11,12 +11,12 @@
     "merged_upstream_prs": 19,
     "open_vetted_draft_prs": 5,
     "closed_unmerged_prs": 0,
-    "critic_major_catches": 15,
-    "total_agent_wall_hours": 22.1,
-    "total_gate_cpu_hours": 1.27
+    "critic_major_catches": 17,
+    "total_agent_wall_hours": 22.84,
+    "total_gate_cpu_hours": 1.11
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-01T06:47:24Z",
+    "updated_at": "2026-11-01T06:57:17Z",
     "total_prs_raised": 24,
     "merged_count": 19,
     "open_ready_count": 5,
@@ -539,9 +539,9 @@
         "state": "OPEN_READY",
         "change_type": "perf",
         "task_class": "perf_or_feature_change",
-        "loc": 123,
-        "additions": 106,
-        "deletions": 17,
+        "loc": 144,
+        "additions": 124,
+        "deletions": 20,
         "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
         "created_at": "2026-11-01T06:12:03Z",
         "merged_at": null,
@@ -550,9 +550,9 @@
         "review_decision": "PENDING",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
-        "perf_summary": "16/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -13.8% lat, -10.9% alloc)",
-        "coverage_summary": "1532 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.12% (+0.00)"
+        "review_count": 3,
+        "perf_summary": "9/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -13.4% lat, -10.6% alloc)",
+        "coverage_summary": "exit 1; 44 failures, 37 errors of 395 tests"
       }
     ]
   },
@@ -1070,9 +1070,9 @@
       "state": "OPEN_READY",
       "change_type": "perf",
       "task_class": "perf_or_feature_change",
-      "loc": 123,
-      "additions": 106,
-      "deletions": 17,
+      "loc": 144,
+      "additions": 124,
+      "deletions": 20,
       "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
       "created_at": "2026-11-01T06:12:03Z",
       "merged_at": null,
@@ -1081,9 +1081,9 @@
       "review_decision": "PENDING",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
-      "perf_summary": "16/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -13.8% lat, -10.9% alloc)",
-      "coverage_summary": "1532 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.12% (+0.00)"
+      "review_count": 3,
+      "perf_summary": "9/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -13.4% lat, -10.6% alloc)",
+      "coverage_summary": "exit 1; 44 failures, 37 errors of 395 tests"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1237,7 +1237,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 15,
+    "major_or_blocker_count": 17,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -1294,6 +1294,22 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
+        "pr": "#453",
+        "severity": "major",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:78",
+        "finding": "The coder claimed to have added `@Nonnull` annotations to the parameters of the three private constructors as requested in feedback, but they are completely absent from the method signatures.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
+        "pr": "#453",
+        "severity": "major",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStreamTest.java:32",
+        "finding": "The coder claimed to have removed the redundant explicit import of `HermeticGcsFileSystem` as requested in feedback, but it is still present (and was actually added in the diff) right after the wildcard import `import com.google.cloud.gcs.analyticscore.client.*;`.",
+        "source": "critic_history"
       },
       {
         "iter": "20261030-100334-write-channel-and-retry-options-coverage",
@@ -1441,14 +1457,14 @@
       "raw_counterfactual_hours_p50": 40.0,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.792,
-      "risk_adjusted_hours_p25": 21.62,
-      "risk_adjusted_hours_p50": 32.5
+      "risk_adjusted_hours_p25": 22.28,
+      "risk_adjusted_hours_p50": 33.5
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 110.5,
-      "net_saved_hours_p50": 163.08,
-      "net_saved_swe_days_p25": 13.81,
-      "net_saved_swe_days_p50": 20.39
+      "net_saved_hours_p25": 111.16,
+      "net_saved_hours_p50": 164.08,
+      "net_saved_swe_days_p25": 13.89,
+      "net_saved_swe_days_p50": 20.51
     }
   }
 }

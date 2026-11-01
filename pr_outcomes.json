@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T06:47:24Z",
+  "updated_at": "2026-11-01T06:57:17Z",
   "total_prs_raised": 24,
   "merged_count": 19,
   "open_ready_count": 5,
@@ -522,9 +522,9 @@
       "state": "OPEN_READY",
       "change_type": "perf",
       "task_class": "perf_or_feature_change",
-      "loc": 123,
-      "additions": 106,
-      "deletions": 17,
+      "loc": 144,
+      "additions": 124,
+      "deletions": 20,
       "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
       "created_at": "2026-11-01T06:12:03Z",
       "merged_at": null,
@@ -533,9 +533,9 @@
       "review_decision": "PENDING",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
-      "perf_summary": "16/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -13.8% lat, -10.9% alloc)",
-      "coverage_summary": "1532 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.12% (+0.00)"
+      "review_count": 3,
+      "perf_summary": "9/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -13.4% lat, -10.6% alloc)",
+      "coverage_summary": "exit 1; 44 failures, 37 errors of 395 tests"
     }
   ]
 }
