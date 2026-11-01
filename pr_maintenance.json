@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-01T05:14:33Z",
+  "checked_at": "2026-11-01T05:17:14Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "a17ea636ae1101bf4dbff81ba9713f4c3bdd895a",
   "onduty": {
@@ -80,7 +80,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 15.4,
+      "hours_since_update": 15.5,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -113,7 +113,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 19.3,
+      "hours_since_update": 19.4,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -146,7 +146,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.1,
+      "hours_since_update": 0.2,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
