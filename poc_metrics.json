@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-01T05:02:23Z",
+  "generated_at": "2026-11-01T05:13:14Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 29,
@@ -13,10 +13,10 @@
     "closed_unmerged_prs": 0,
     "critic_major_catches": 15,
     "total_agent_wall_hours": 21.86,
-    "total_gate_cpu_hours": 0.91
+    "total_gate_cpu_hours": 1.1
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-01T05:02:23Z",
+    "updated_at": "2026-11-01T05:13:14Z",
     "total_prs_raised": 23,
     "merged_count": 19,
     "open_ready_count": 4,
@@ -529,7 +529,7 @@
         "commit_count": 1,
         "comment_count": 3,
         "review_count": 3,
-        "perf_summary": "28/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -76.4% lat, -71.5% alloc)",
+        "perf_summary": "28/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -76.8% lat, -72.4% alloc)",
         "coverage_summary": "1531 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.08% (-0.05)"
       }
     ]
@@ -1038,7 +1038,7 @@
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 3,
-      "perf_summary": "28/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -76.4% lat, -71.5% alloc)",
+      "perf_summary": "28/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -76.8% lat, -72.4% alloc)",
       "coverage_summary": "1531 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.08% (-0.05)"
     }
   ],
