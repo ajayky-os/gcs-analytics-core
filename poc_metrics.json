@@ -1,29 +1,29 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-01T06:02:22Z",
+  "generated_at": "2026-11-01T06:12:37Z",
   "project": "gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 29,
+    "total_iterations_logged": 30,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 0,
-    "substantive_iterations": 27,
-    "unique_upstream_prs": 23,
+    "substantive_iterations": 28,
+    "unique_upstream_prs": 24,
     "merged_upstream_prs": 19,
-    "open_vetted_draft_prs": 4,
+    "open_vetted_draft_prs": 5,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 15,
-    "total_agent_wall_hours": 21.86,
-    "total_gate_cpu_hours": 1.1
+    "total_agent_wall_hours": 22.1,
+    "total_gate_cpu_hours": 1.26
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-01T06:02:22Z",
-    "total_prs_raised": 23,
+    "updated_at": "2026-11-01T06:12:37Z",
+    "total_prs_raised": 24,
     "merged_count": 19,
-    "open_ready_count": 4,
+    "open_ready_count": 5,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.826,
+    "overall_merge_rate_to_date": 0.792,
     "median_hours_to_merge": 14.61,
     "prs": [
       {
@@ -531,6 +531,28 @@
         "review_count": 3,
         "perf_summary": "28/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -76.8% lat, -72.4% alloc)",
         "coverage_summary": "1531 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.08% (-0.05)"
+      },
+      {
+        "pr_number": 453,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/453",
+        "title": "perf(core): avoid URI parsing and map allocation on stream open",
+        "state": "OPEN_READY",
+        "change_type": "perf",
+        "task_class": "perf_or_feature_change",
+        "loc": 123,
+        "additions": 106,
+        "deletions": 17,
+        "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
+        "created_at": "2026-11-01T06:12:03Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "16/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -17.3% lat, +4.8% alloc)",
+        "coverage_summary": "1532 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.08% (-0.05)"
       }
     ]
   },
@@ -1040,6 +1062,28 @@
       "review_count": 3,
       "perf_summary": "28/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -76.8% lat, -72.4% alloc)",
       "coverage_summary": "1531 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.08% (-0.05)"
+    },
+    {
+      "pr_number": 453,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/453",
+      "title": "perf(core): avoid URI parsing and map allocation on stream open",
+      "state": "OPEN_READY",
+      "change_type": "perf",
+      "task_class": "perf_or_feature_change",
+      "loc": 123,
+      "additions": 106,
+      "deletions": 17,
+      "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
+      "created_at": "2026-11-01T06:12:03Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "16/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -17.3% lat, +4.8% alloc)",
+      "coverage_summary": "1532 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.08% (-0.05)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1392,19 +1436,19 @@
       "net_saved_swe_days_p50": 16.32
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 4,
-      "raw_counterfactual_hours_p25": 21.32,
-      "raw_counterfactual_hours_p50": 32.0,
+      "open_draft_pr_count": 5,
+      "raw_counterfactual_hours_p25": 26.65,
+      "raw_counterfactual_hours_p50": 40.0,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.826,
-      "risk_adjusted_hours_p25": 17.89,
-      "risk_adjusted_hours_p50": 26.9
+      "empirical_promoted_merge_rate": 0.792,
+      "risk_adjusted_hours_p25": 21.62,
+      "risk_adjusted_hours_p50": 32.5
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 106.77,
-      "net_saved_hours_p50": 157.48,
-      "net_saved_swe_days_p25": 13.35,
-      "net_saved_swe_days_p50": 19.69
+      "net_saved_hours_p25": 110.5,
+      "net_saved_hours_p50": 163.08,
+      "net_saved_swe_days_p25": 13.81,
+      "net_saved_swe_days_p50": 20.39
     }
   }
 }
