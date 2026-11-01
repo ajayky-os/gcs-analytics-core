@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T06:57:58Z",
+  "updated_at": "2026-11-01T06:59:28Z",
   "total_prs_raised": 24,
   "merged_count": 19,
   "open_ready_count": 5,
@@ -535,7 +535,7 @@
       "comment_count": 3,
       "review_count": 3,
       "perf_summary": "9/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -13.4% lat, -10.6% alloc)",
-      "coverage_summary": "exit 1; 44 failures, 37 errors of 395 tests"
+      "coverage_summary": "exit 1; 100 failures, 743 errors of 1055 tests"
     }
   ]
 }
