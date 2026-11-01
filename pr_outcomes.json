@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T06:17:24Z",
+  "updated_at": "2026-11-01T06:32:26Z",
   "total_prs_raised": 24,
   "merged_count": 19,
   "open_ready_count": 5,
@@ -532,7 +532,7 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 2,
+      "comment_count": 3,
       "review_count": 1,
       "perf_summary": "16/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -17.3% lat, +4.8% alloc)",
       "coverage_summary": "1532 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.08% (-0.05)"
