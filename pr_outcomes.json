@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T10:02:23Z",
+  "updated_at": "2026-11-01T10:17:22Z",
   "total_prs_raised": 25,
   "merged_count": 21,
   "open_ready_count": 4,
@@ -314,8 +314,8 @@
       "commit_count": 1,
       "comment_count": 6,
       "review_count": 5,
-      "perf_summary": "3/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -11.2% lat, +0.3% alloc)",
-      "coverage_summary": "exit 1; 99 failures, 739 errors of 1048 tests"
+      "perf_summary": "5/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -17.6% lat, -1.9% alloc)",
+      "coverage_summary": "1544 tests, 0 skipped; cov line 85.96% -> 86.05% (+0.09), branch 71.08% -> 71.45% (+0.37)"
     },
     {
       "pr_number": 440,
@@ -554,8 +554,8 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 0,
-      "review_count": 0,
+      "comment_count": 2,
+      "review_count": 1,
       "perf_summary": "\u2014",
       "coverage_summary": "1539 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.08% -> 71.31% (+0.24)"
     }
