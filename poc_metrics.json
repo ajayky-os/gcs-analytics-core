@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-01T10:17:22Z",
+  "generated_at": "2026-11-01T10:32:23Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 31,
@@ -11,12 +11,12 @@
     "merged_upstream_prs": 21,
     "open_vetted_draft_prs": 4,
     "closed_unmerged_prs": 0,
-    "critic_major_catches": 17,
+    "critic_major_catches": 18,
     "total_agent_wall_hours": 22.91,
-    "total_gate_cpu_hours": 1.26
+    "total_gate_cpu_hours": 1.14
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-01T10:17:22Z",
+    "updated_at": "2026-11-01T10:32:23Z",
     "total_prs_raised": 25,
     "merged_count": 21,
     "open_ready_count": 4,
@@ -332,7 +332,7 @@
         "comment_count": 6,
         "review_count": 5,
         "perf_summary": "5/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -17.6% lat, -1.9% alloc)",
-        "coverage_summary": "1544 tests, 0 skipped; cov line 85.96% -> 86.05% (+0.09), branch 71.08% -> 71.45% (+0.37)"
+        "coverage_summary": "exit 1; 2 failures, 0 errors of 1544 tests"
       },
       {
         "pr_number": 440,
@@ -571,7 +571,7 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 2,
+        "comment_count": 3,
         "review_count": 1,
         "perf_summary": "\u2014",
         "coverage_summary": "1539 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.08% -> 71.31% (+0.24)"
@@ -885,7 +885,7 @@
       "comment_count": 6,
       "review_count": 5,
       "perf_summary": "5/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -17.6% lat, -1.9% alloc)",
-      "coverage_summary": "1544 tests, 0 skipped; cov line 85.96% -> 86.05% (+0.09), branch 71.08% -> 71.45% (+0.37)"
+      "coverage_summary": "exit 1; 2 failures, 0 errors of 1544 tests"
     },
     {
       "pr_number": 440,
@@ -1124,7 +1124,7 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 2,
+      "comment_count": 3,
       "review_count": 1,
       "perf_summary": "\u2014",
       "coverage_summary": "1539 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.08% -> 71.31% (+0.24)"
@@ -1281,7 +1281,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 17,
+    "major_or_blocker_count": 18,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -1436,6 +1436,14 @@
         "source": "critic_history"
       },
       {
+        "iter": "20261029-035829-readfully-random-access-pattern",
+        "pr": "#439",
+        "severity": "major",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:362",
+        "finding": "The perf gate failed with significant regressions in FooterPrefetchBenchmark and GcsReadChannelOpenBenchmark. Moving configuredReadOptions() outside the telemetry lambda in openReadChannel makes it a capturing lambda for readOptions, increasing allocations (1444 to 1536 bytes/op) and regressing channel open latency by 7.2%.",
+        "source": "critic_history"
+      },
+      {
         "iter": "20261019-121048-footer-vectored-tail-v2",
         "pr": "#430",
         "severity": "minor",
@@ -1509,14 +1517,14 @@
       "raw_counterfactual_hours_p50": 30.67,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.84,
-      "risk_adjusted_hours_p25": 17.43,
-      "risk_adjusted_hours_p50": 25.97
+      "risk_adjusted_hours_p25": 17.76,
+      "risk_adjusted_hours_p50": 26.47
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 117.63,
-      "net_saved_hours_p50": 173.55,
-      "net_saved_swe_days_p25": 14.7,
-      "net_saved_swe_days_p50": 21.69
+      "net_saved_hours_p25": 117.96,
+      "net_saved_hours_p50": 174.05,
+      "net_saved_swe_days_p25": 14.75,
+      "net_saved_swe_days_p50": 21.76
     }
   }
 }
