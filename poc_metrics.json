@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-01T06:32:26Z",
+  "generated_at": "2026-11-01T06:47:24Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 30,
@@ -13,10 +13,10 @@
     "closed_unmerged_prs": 0,
     "critic_major_catches": 15,
     "total_agent_wall_hours": 22.1,
-    "total_gate_cpu_hours": 1.26
+    "total_gate_cpu_hours": 1.27
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-01T06:32:26Z",
+    "updated_at": "2026-11-01T06:47:24Z",
     "total_prs_raised": 24,
     "merged_count": 19,
     "open_ready_count": 5,
@@ -551,8 +551,8 @@
         "commit_count": 1,
         "comment_count": 3,
         "review_count": 1,
-        "perf_summary": "16/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -17.3% lat, +4.8% alloc)",
-        "coverage_summary": "1532 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.08% (-0.05)"
+        "perf_summary": "16/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -13.8% lat, -10.9% alloc)",
+        "coverage_summary": "1532 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.12% (+0.00)"
       }
     ]
   },
@@ -1082,8 +1082,8 @@
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 1,
-      "perf_summary": "16/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -17.3% lat, +4.8% alloc)",
-      "coverage_summary": "1532 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.08% (-0.05)"
+      "perf_summary": "16/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -13.8% lat, -10.9% alloc)",
+      "coverage_summary": "1532 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.12% (+0.00)"
     }
   ],
   "perf_and_bug_ledger": {
