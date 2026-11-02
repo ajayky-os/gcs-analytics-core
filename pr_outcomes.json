@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-02T10:21:13Z",
+  "updated_at": "2026-11-02T10:32:28Z",
   "total_prs_raised": 27,
   "merged_count": 22,
   "open_ready_count": 5,
@@ -598,8 +598,8 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 1,
-      "review_count": 0,
+      "comment_count": 3,
+      "review_count": 1,
       "perf_summary": "\u2014",
       "coverage_summary": "1544 tests, 0 skipped; cov line 85.96% -> 86.10% (+0.14), branch 71.31% -> 71.31% (+0.00)"
     }
