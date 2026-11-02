@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-02T07:47:24Z",
+  "generated_at": "2026-11-02T08:02:35Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 33,
@@ -13,10 +13,10 @@
     "closed_unmerged_prs": 0,
     "critic_major_catches": 20,
     "total_agent_wall_hours": 23.77,
-    "total_gate_cpu_hours": 1.45
+    "total_gate_cpu_hours": 1.38
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-02T07:47:24Z",
+    "updated_at": "2026-11-02T08:02:35Z",
     "total_prs_raised": 26,
     "merged_count": 22,
     "open_ready_count": 4,
@@ -332,7 +332,7 @@
         "comment_count": 6,
         "review_count": 6,
         "perf_summary": "7/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -23.6% lat, -1.9% alloc)",
-        "coverage_summary": "1544 tests, 0 skipped; cov line 85.96% -> 86.10% (+0.14), branch 71.08% -> 71.51% (+0.43)"
+        "coverage_summary": "1551 tests, 0 skipped; cov line 86.10% / branch 71.70% (no baseline; run `sil.py baseline`)"
       },
       {
         "pr_number": 440,
@@ -907,7 +907,7 @@
       "comment_count": 6,
       "review_count": 6,
       "perf_summary": "7/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -23.6% lat, -1.9% alloc)",
-      "coverage_summary": "1544 tests, 0 skipped; cov line 85.96% -> 86.10% (+0.14), branch 71.08% -> 71.51% (+0.43)"
+      "coverage_summary": "1551 tests, 0 skipped; cov line 86.10% / branch 71.70% (no baseline; run `sil.py baseline`)"
     },
     {
       "pr_number": 440,
