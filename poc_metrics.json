@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-02T10:02:27Z",
+  "generated_at": "2026-11-02T10:06:16Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 33,
@@ -16,7 +16,7 @@
     "total_gate_cpu_hours": 1.47
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-02T10:02:27Z",
+    "updated_at": "2026-11-02T10:06:16Z",
     "total_prs_raised": 26,
     "merged_count": 22,
     "open_ready_count": 4,
@@ -244,7 +244,7 @@
         "comment_count": 3,
         "review_count": 2,
         "perf_summary": "\u2014",
-        "coverage_summary": "1538 tests, 0 skipped"
+        "coverage_summary": "1544 tests, 0 skipped"
       },
       {
         "pr_number": 430,
@@ -819,7 +819,7 @@
       "comment_count": 3,
       "review_count": 2,
       "perf_summary": "\u2014",
-      "coverage_summary": "1538 tests, 0 skipped"
+      "coverage_summary": "1544 tests, 0 skipped"
     },
     {
       "pr_number": 430,
