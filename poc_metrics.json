@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-02T08:32:25Z",
+  "generated_at": "2026-11-02T08:44:23Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 33,
@@ -13,10 +13,10 @@
     "closed_unmerged_prs": 0,
     "critic_major_catches": 20,
     "total_agent_wall_hours": 23.77,
-    "total_gate_cpu_hours": 1.33
+    "total_gate_cpu_hours": 1.37
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-02T08:32:25Z",
+    "updated_at": "2026-11-02T08:44:23Z",
     "total_prs_raised": 26,
     "merged_count": 22,
     "open_ready_count": 4,
@@ -319,9 +319,9 @@
         "state": "OPEN_READY",
         "change_type": "perf",
         "task_class": "perf_or_feature_change",
-        "loc": 363,
-        "additions": 358,
-        "deletions": 5,
+        "loc": 493,
+        "additions": 464,
+        "deletions": 29,
         "iter": "20261029-035829-readfully-random-access-pattern",
         "created_at": "2026-10-29T05:24:52Z",
         "merged_at": null,
@@ -330,9 +330,9 @@
         "review_decision": "PENDING",
         "commit_count": 1,
         "comment_count": 6,
-        "review_count": 6,
+        "review_count": 7,
         "perf_summary": "7/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -23.6% lat, -1.9% alloc)",
-        "coverage_summary": "\u2014"
+        "coverage_summary": "1555 tests, 0 skipped; cov line 82.55% / branch 68.18% (no baseline; run `sil.py baseline`)"
       },
       {
         "pr_number": 440,
@@ -894,9 +894,9 @@
       "state": "OPEN_READY",
       "change_type": "perf",
       "task_class": "perf_or_feature_change",
-      "loc": 363,
-      "additions": 358,
-      "deletions": 5,
+      "loc": 493,
+      "additions": 464,
+      "deletions": 29,
       "iter": "20261029-035829-readfully-random-access-pattern",
       "created_at": "2026-10-29T05:24:52Z",
       "merged_at": null,
@@ -905,9 +905,9 @@
       "review_decision": "PENDING",
       "commit_count": 1,
       "comment_count": 6,
-      "review_count": 6,
+      "review_count": 7,
       "perf_summary": "7/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -23.6% lat, -1.9% alloc)",
-      "coverage_summary": "\u2014"
+      "coverage_summary": "1555 tests, 0 skipped; cov line 82.55% / branch 68.18% (no baseline; run `sil.py baseline`)"
     },
     {
       "pr_number": 440,
@@ -1384,46 +1384,6 @@
         "source": "pilot_backfill"
       },
       {
-        "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
-        "pr": "#453",
-        "severity": "major",
-        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:78",
-        "finding": "The coder claimed to have added `@Nonnull` annotations to the parameters of the three private constructors as requested in feedback, but they are completely absent from the method signatures.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
-        "pr": "#453",
-        "severity": "major",
-        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStreamTest.java:32",
-        "finding": "The coder claimed to have removed the redundant explicit import of `HermeticGcsFileSystem` as requested in feedback, but it is still present (and was actually added in the diff) right after the wildcard import `import com.google.cloud.gcs.analyticscore.client.*;`.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
-        "pr": "#453",
-        "severity": "nit",
-        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:29",
-        "finding": "The coder report claims it 'Retained unannotated private constructors', but the constructor parameters were actually annotated with `@Nonnull`. This is a positive change that aligns with the style guide's nullability rules, so the code is fine, but the PR/report text hallucinated its own decision.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261030-100334-write-channel-and-retry-options-coverage",
-        "pr": "#446",
-        "severity": "minor",
-        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsWriteChannelTest.java:537",
-        "finding": "The project style guide mandates always using try-with-resources for AutoCloseable types (like GcsWriteChannel), even when explicitly testing the close() method. Using try-with-resources guarantees cleanup if the constructor or assertions fail prematurely.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261030-100334-write-channel-and-retry-options-coverage",
-        "pr": "#446",
-        "severity": "minor",
-        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsBidiWriteChannelTest.java:315",
-        "finding": "The project style guide mandates always using try-with-resources for AutoCloseable types (like GcsBidiWriteChannel), even when explicitly testing the close() method. Using try-with-resources guarantees cleanup if the constructor or assertions fail prematurely.",
-        "source": "critic_history"
-      },
-      {
         "iter": "20261029-035829-readfully-random-access-pattern",
         "pr": "#439",
         "severity": "major",
@@ -1501,6 +1461,46 @@
         "severity": "blocker",
         "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:1",
         "finding": "The git rebase was not cleanly resolved (unmerged paths with conflict markers remained in the worktree during the evaluation). The candidate branch was not successfully rebased onto the base SHA, resulting in a dirty worktree.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
+        "pr": "#453",
+        "severity": "major",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:78",
+        "finding": "The coder claimed to have added `@Nonnull` annotations to the parameters of the three private constructors as requested in feedback, but they are completely absent from the method signatures.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
+        "pr": "#453",
+        "severity": "major",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStreamTest.java:32",
+        "finding": "The coder claimed to have removed the redundant explicit import of `HermeticGcsFileSystem` as requested in feedback, but it is still present (and was actually added in the diff) right after the wildcard import `import com.google.cloud.gcs.analyticscore.client.*;`.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261101-055808-stream-open-avoid-uri-and-common-attributes",
+        "pr": "#453",
+        "severity": "nit",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStream.java:29",
+        "finding": "The coder report claims it 'Retained unannotated private constructors', but the constructor parameters were actually annotated with `@Nonnull`. This is a positive change that aligns with the style guide's nullability rules, so the code is fine, but the PR/report text hallucinated its own decision.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261030-100334-write-channel-and-retry-options-coverage",
+        "pr": "#446",
+        "severity": "minor",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsWriteChannelTest.java:537",
+        "finding": "The project style guide mandates always using try-with-resources for AutoCloseable types (like GcsWriteChannel), even when explicitly testing the close() method. Using try-with-resources guarantees cleanup if the constructor or assertions fail prematurely.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261030-100334-write-channel-and-retry-options-coverage",
+        "pr": "#446",
+        "severity": "minor",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsBidiWriteChannelTest.java:315",
+        "finding": "The project style guide mandates always using try-with-resources for AutoCloseable types (like GcsBidiWriteChannel), even when explicitly testing the close() method. Using try-with-resources guarantees cleanup if the constructor or assertions fail prematurely.",
         "source": "critic_history"
       },
       {
