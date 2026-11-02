@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-02T09:17:26Z",
+  "updated_at": "2026-11-02T09:25:26Z",
   "total_prs_raised": 26,
   "merged_count": 22,
   "open_ready_count": 4,
@@ -302,9 +302,9 @@
       "state": "OPEN_READY",
       "change_type": "perf",
       "task_class": "perf_or_feature_change",
-      "loc": 377,
-      "additions": 366,
-      "deletions": 11,
+      "loc": 381,
+      "additions": 355,
+      "deletions": 26,
       "iter": "20261029-035829-readfully-random-access-pattern",
       "created_at": "2026-10-29T05:24:52Z",
       "merged_at": null,
@@ -315,7 +315,7 @@
       "comment_count": 6,
       "review_count": 7,
       "perf_summary": "7/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -23.6% lat, -1.9% alloc)",
-      "coverage_summary": "1551 tests, 0 skipped; cov line 84.70% / branch 70.52% (no baseline; run `sil.py baseline`)"
+      "coverage_summary": "1550 tests, 0 skipped; cov line 86.00% / branch 71.38% (no baseline; run `sil.py baseline`)"
     },
     {
       "pr_number": 440,
