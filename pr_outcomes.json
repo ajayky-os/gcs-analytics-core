@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-02T14:17:27Z",
+  "updated_at": "2026-11-02T14:21:19Z",
   "total_prs_raised": 27,
   "merged_count": 22,
   "open_ready_count": 5,
@@ -249,7 +249,7 @@
       "comment_count": 3,
       "review_count": 8,
       "perf_summary": "1/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -3.1% lat, -0.0% alloc)",
-      "coverage_summary": "1548 tests, 0 skipped"
+      "coverage_summary": "1554 tests, 0 skipped"
     },
     {
       "pr_number": 431,
