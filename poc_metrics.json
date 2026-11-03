@@ -1,29 +1,29 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-03T04:02:26Z",
+  "generated_at": "2026-11-03T04:09:27Z",
   "project": "gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 34,
+    "total_iterations_logged": 35,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 0,
-    "substantive_iterations": 32,
-    "unique_upstream_prs": 27,
+    "substantive_iterations": 33,
+    "unique_upstream_prs": 28,
     "merged_upstream_prs": 22,
-    "open_vetted_draft_prs": 5,
+    "open_vetted_draft_prs": 6,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 21,
-    "total_agent_wall_hours": 24.28,
-    "total_gate_cpu_hours": 1.51
+    "total_agent_wall_hours": 24.42,
+    "total_gate_cpu_hours": 1.53
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-03T04:02:26Z",
-    "total_prs_raised": 27,
+    "updated_at": "2026-11-03T04:09:27Z",
+    "total_prs_raised": 28,
     "merged_count": 22,
-    "open_ready_count": 5,
+    "open_ready_count": 6,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.815,
+    "overall_merge_rate_to_date": 0.786,
     "median_hours_to_merge": 14.61,
     "prs": [
       {
@@ -619,6 +619,28 @@
         "review_count": 5,
         "perf_summary": "\u2014",
         "coverage_summary": "1544 tests, 0 skipped; cov line 85.96% -> 86.10% (+0.14), branch 71.31% -> 71.31% (+0.00)"
+      },
+      {
+        "pr_number": 459,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/459",
+        "title": "test(client): cover decryption key option in AbstractReadStrategy",
+        "state": "OPEN_READY",
+        "change_type": "test",
+        "task_class": "benchmark_or_test_infra",
+        "loc": 105,
+        "additions": 105,
+        "deletions": 0,
+        "iter": "20261103-040045-read-strategy-decryption-key",
+        "created_at": "2026-11-03T04:08:51Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 0,
+        "review_count": 0,
+        "perf_summary": "\u2014",
+        "coverage_summary": "1542 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.31% -> 71.36% (+0.05)"
       }
     ]
   },
@@ -1216,6 +1238,28 @@
       "review_count": 5,
       "perf_summary": "\u2014",
       "coverage_summary": "1544 tests, 0 skipped; cov line 85.96% -> 86.10% (+0.14), branch 71.31% -> 71.31% (+0.00)"
+    },
+    {
+      "pr_number": 459,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/459",
+      "title": "test(client): cover decryption key option in AbstractReadStrategy",
+      "state": "OPEN_READY",
+      "change_type": "test",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 105,
+      "additions": 105,
+      "deletions": 0,
+      "iter": "20261103-040045-read-strategy-decryption-key",
+      "created_at": "2026-11-03T04:08:51Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 0,
+      "review_count": 0,
+      "perf_summary": "\u2014",
+      "coverage_summary": "1542 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.31% -> 71.36% (+0.05)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1632,19 +1676,19 @@
       "net_saved_swe_days_p50": 19.28
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 5,
-      "raw_counterfactual_hours_p25": 25.33,
-      "raw_counterfactual_hours_p50": 37.34,
+      "open_draft_pr_count": 6,
+      "raw_counterfactual_hours_p25": 30.0,
+      "raw_counterfactual_hours_p50": 44.01,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.815,
-      "risk_adjusted_hours_p25": 22.02,
-      "risk_adjusted_hours_p50": 32.64
+      "empirical_promoted_merge_rate": 0.786,
+      "risk_adjusted_hours_p25": 25.29,
+      "risk_adjusted_hours_p50": 37.31
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 126.89,
-      "net_saved_hours_p50": 186.89,
-      "net_saved_swe_days_p25": 15.86,
-      "net_saved_swe_days_p50": 23.36
+      "net_saved_hours_p25": 130.16,
+      "net_saved_hours_p50": 191.56,
+      "net_saved_swe_days_p25": 16.27,
+      "net_saved_swe_days_p50": 23.95
     }
   }
 }
