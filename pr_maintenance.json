@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-03T11:14:40Z",
+  "checked_at": "2026-11-03T11:16:23Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "c081a1b6b1dbfbf1d903534f857fbd94010afefc",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 3,
-  "actionable_count": 1,
+  "actionable_count": 0,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -41,8 +41,8 @@
       "head_commit_ts": "2026-11-02T14:18:57Z",
       "main_sha": "c081a1b6b1dbfbf1d903534f857fbd94010afefc",
       "commits_behind_main": 6,
-      "mergeable": "UNKNOWN",
-      "merge_state_status": "UNKNOWN",
+      "mergeable": "MERGEABLE",
+      "merge_state_status": "BEHIND",
       "review_decision": "PENDING",
       "ready_to_merge": false,
       "auto_merged": false,
@@ -74,8 +74,8 @@
       "head_commit_ts": "2026-11-03T09:44:07Z",
       "main_sha": "c081a1b6b1dbfbf1d903534f857fbd94010afefc",
       "commits_behind_main": 4,
-      "mergeable": "UNKNOWN",
-      "merge_state_status": "UNKNOWN",
+      "mergeable": "MERGEABLE",
+      "merge_state_status": "BEHIND",
       "review_decision": "PENDING",
       "ready_to_merge": false,
       "auto_merged": false,
@@ -103,8 +103,8 @@
       ],
       "iter_id": "20261103-100531-common-telemetry-operation-coverage",
       "branch": "sil/common-telemetry-operation-coverage",
-      "head_oid": "fef5e1619f03b7fbc9aa8730a38fb47662922495",
-      "head_commit_ts": "2026-11-03T11:06:13Z",
+      "head_oid": "ffd0ba63af055d05699b86ad205d263eaf8d39b1",
+      "head_commit_ts": "2026-11-03T11:11:04Z",
       "main_sha": "c081a1b6b1dbfbf1d903534f857fbd94010afefc",
       "commits_behind_main": 2,
       "mergeable": "MERGEABLE",
@@ -118,19 +118,10 @@
       "is_stale": false,
       "needs_rebase": false,
       "needs_comment_fix": false,
-      "needs_check_fix": true,
-      "action_required": true,
+      "needs_check_fix": false,
+      "action_required": false,
       "unaddressed_comments": [],
-      "failing_checks": [
-        {
-          "name": "presubmits / integration-tests",
-          "state": "ERROR",
-          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/f266ef0b-2914-41cb-9354-124b14589e2f",
-          "build_id": "f266ef0b-2914-41cb-9354-124b14589e2f",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "[03:10:43 PST] The build script log will appear here once it starts executing. The Kokoro infrastructure log is available at https://fusion2.corp.google.com/invocations/f266ef0b-2914-41cb-9354-124b14589e2f/log"
-        }
-      ],
+      "failing_checks": [],
       "transient_checks": []
     }
   ]
