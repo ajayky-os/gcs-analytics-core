@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-03T11:40:44Z",
+  "checked_at": "2026-11-03T11:42:33Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "c081a1b6b1dbfbf1d903534f857fbd94010afefc",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 3,
-  "actionable_count": 1,
+  "actionable_count": 0,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -47,7 +47,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 21.0,
+      "hours_since_update": 21.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -103,54 +103,26 @@
       ],
       "iter_id": "20261103-100531-common-telemetry-operation-coverage",
       "branch": "sil/common-telemetry-operation-coverage",
-      "head_oid": "ffd0ba63af055d05699b86ad205d263eaf8d39b1",
-      "head_commit_ts": "2026-11-03T11:11:04Z",
+      "head_oid": "f2ebb461f13142a7b9031ac1b009179681a1cb94",
+      "head_commit_ts": "2026-11-03T11:36:44Z",
       "main_sha": "c081a1b6b1dbfbf1d903534f857fbd94010afefc",
-      "commits_behind_main": 2,
+      "commits_behind_main": 0,
       "mergeable": "MERGEABLE",
-      "merge_state_status": "BEHIND",
+      "merge_state_status": "BLOCKED",
       "review_decision": "PENDING",
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.3,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
       "needs_comment_fix": false,
-      "needs_check_fix": true,
-      "action_required": true,
+      "needs_check_fix": false,
+      "action_required": false,
       "unaddressed_comments": [],
-      "failing_checks": [
-        {
-          "name": "presubmits / compilation",
-          "state": "FAILURE",
-          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fcompilation/activity/e4694f90-d957-420e-a81b-436ca23f787c",
-          "build_id": "e4694f90-d957-420e-a81b-436ca23f787c",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": ""
-        },
-        {
-          "name": "presubmits / integration-tests",
-          "state": "FAILURE",
-          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/0e545ec9-6fd0-4487-b90c-7edfc710db23",
-          "build_id": "0e545ec9-6fd0-4487-b90c-7edfc710db23",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": ""
-        }
-      ],
-      "transient_checks": [
-        {
-          "name": "presubmits / hermetic-benchmarks",
-          "state": "FAILURE",
-          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fmicrobenchmarks/activity/3bae399f-ca60-4563-9c48-00259db726c4",
-          "build_id": "3bae399f-ca60-4563-9c48-00259db726c4",
-          "classification": "TRANSIENT_INFRA",
-          "rebuilt_as": "ad4ae087-62cd-4b03-8232-8d8af382e6da",
-          "already_rebuilt": true,
-          "log_excerpt": "ching latest main baseline results from gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json...\nCopying gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json to file:///b/f/w/src/results/master_results.json\n  \n\nRunning hermetic benchmarks on PR (#463, commit ffd0ba63af055d05699b86ad205d263eaf8d39b1)...\nBuilding the JMH benchmark JAR...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
-        }
-      ]
+      "failing_checks": [],
+      "transient_checks": []
     }
   ]
 }
