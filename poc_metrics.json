@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-03T09:47:45Z",
+  "generated_at": "2026-11-03T09:55:05Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 36,
@@ -8,22 +8,22 @@
     "error_or_quota_halted_iterations": 1,
     "substantive_iterations": 34,
     "unique_upstream_prs": 28,
-    "merged_upstream_prs": 22,
-    "open_vetted_draft_prs": 6,
+    "merged_upstream_prs": 23,
+    "open_vetted_draft_prs": 5,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 22,
     "total_agent_wall_hours": 25.04,
     "total_gate_cpu_hours": 1.57
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-03T09:47:45Z",
+    "updated_at": "2026-11-03T09:55:05Z",
     "total_prs_raised": 28,
-    "merged_count": 22,
-    "open_ready_count": 6,
+    "merged_count": 23,
+    "open_ready_count": 5,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.786,
+    "overall_merge_rate_to_date": 0.821,
     "median_hours_to_merge": 14.61,
     "prs": [
       {
@@ -228,7 +228,7 @@
         "pr_number": 429,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/429",
         "title": "feat(client): coalesce adjacent ranges in GcsBidiReadChannel.readVectored()",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "feature",
         "task_class": "perf_or_feature_change",
         "loc": 227,
@@ -236,9 +236,9 @@
         "deletions": 17,
         "iter": "20261019-121241-bidi-vectored-coalesce-v2",
         "created_at": "2026-10-28T09:21:07Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
+        "merged_at": "2026-11-03T09:54:36Z",
+        "closed_at": "2026-11-03T09:54:36Z",
+        "hours_to_merge": 144.56,
         "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
@@ -847,7 +847,7 @@
       "pr_number": 429,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/429",
       "title": "feat(client): coalesce adjacent ranges in GcsBidiReadChannel.readVectored()",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "feature",
       "task_class": "perf_or_feature_change",
       "loc": 227,
@@ -855,9 +855,9 @@
       "deletions": 17,
       "iter": "20261019-121241-bidi-vectored-coalesce-v2",
       "created_at": "2026-10-28T09:21:07Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
+      "merged_at": "2026-11-03T09:54:36Z",
+      "closed_at": "2026-11-03T09:54:36Z",
+      "hours_to_merge": 144.56,
       "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
@@ -1272,7 +1272,7 @@
         "category": "RPC Coalescing",
         "component": "GcsBidiReadChannel.readVectored",
         "summary": "Issues 1 BlobReadSession.readAs() RPC per range instead of coalescing nearby ranges within maxMergeGap (4 KiB)",
-        "status": "OPEN_APPROVED_PR",
+        "status": "MERGED_UPSTREAM",
         "pr": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/429",
         "metrics": {
           "readerOpens_or_rpcs_per_op": "16 -> 1 (-93.8%)",
@@ -1670,33 +1670,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 22,
+      "merged_pr_count": 23,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 108.67,
-      "gross_counterfactual_hours_p50": 158.05,
-      "net_saved_hours_p25": 104.87,
-      "net_saved_hours_p50": 154.25,
-      "net_saved_swe_days_p25": 13.11,
-      "net_saved_swe_days_p50": 19.28
+      "gross_counterfactual_hours_p25": 114.0,
+      "gross_counterfactual_hours_p50": 166.05,
+      "net_saved_hours_p25": 110.2,
+      "net_saved_hours_p50": 162.25,
+      "net_saved_swe_days_p25": 13.78,
+      "net_saved_swe_days_p50": 20.28
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 6,
-      "raw_counterfactual_hours_p25": 30.0,
-      "raw_counterfactual_hours_p50": 44.01,
+      "open_draft_pr_count": 5,
+      "raw_counterfactual_hours_p25": 24.67,
+      "raw_counterfactual_hours_p50": 36.01,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.786,
-      "risk_adjusted_hours_p25": 25.62,
-      "risk_adjusted_hours_p50": 37.81
+      "empirical_promoted_merge_rate": 0.821,
+      "risk_adjusted_hours_p25": 21.89,
+      "risk_adjusted_hours_p50": 32.21
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 130.49,
-      "net_saved_hours_p50": 192.06,
-      "net_saved_swe_days_p25": 16.31,
-      "net_saved_swe_days_p50": 24.01
+      "net_saved_hours_p25": 132.09,
+      "net_saved_hours_p50": 194.46,
+      "net_saved_swe_days_p25": 16.51,
+      "net_saved_swe_days_p50": 24.31
     }
   }
 }
