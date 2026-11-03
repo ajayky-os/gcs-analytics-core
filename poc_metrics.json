@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-03T09:17:39Z",
+  "generated_at": "2026-11-03T09:32:47Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 36,
@@ -16,7 +16,7 @@
     "total_gate_cpu_hours": 1.67
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-03T09:17:39Z",
+    "updated_at": "2026-11-03T09:32:47Z",
     "total_prs_raised": 28,
     "merged_count": 22,
     "open_ready_count": 6,
@@ -239,7 +239,7 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
         "review_count": 2,
@@ -858,7 +858,7 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 2,
@@ -1272,7 +1272,7 @@
         "category": "RPC Coalescing",
         "component": "GcsBidiReadChannel.readVectored",
         "summary": "Issues 1 BlobReadSession.readAs() RPC per range instead of coalescing nearby ranges within maxMergeGap (4 KiB)",
-        "status": "OPEN_READY_PR",
+        "status": "OPEN_APPROVED_PR",
         "pr": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/429",
         "metrics": {
           "readerOpens_or_rpcs_per_op": "16 -> 1 (-93.8%)",

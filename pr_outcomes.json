@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03T09:17:39Z",
+  "updated_at": "2026-11-03T09:32:47Z",
   "total_prs_raised": 28,
   "merged_count": 22,
   "open_ready_count": 6,
@@ -222,7 +222,7 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 2,
