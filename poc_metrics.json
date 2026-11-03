@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-03T11:04:19Z",
+  "generated_at": "2026-11-03T11:12:01Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 37,
@@ -8,22 +8,22 @@
     "error_or_quota_halted_iterations": 1,
     "substantive_iterations": 35,
     "unique_upstream_prs": 29,
-    "merged_upstream_prs": 25,
-    "open_vetted_draft_prs": 4,
+    "merged_upstream_prs": 26,
+    "open_vetted_draft_prs": 3,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 22,
     "total_agent_wall_hours": 25.88,
     "total_gate_cpu_hours": 1.61
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-03T11:04:19Z",
+    "updated_at": "2026-11-03T11:12:01Z",
     "total_prs_raised": 29,
-    "merged_count": 25,
-    "open_ready_count": 4,
+    "merged_count": 26,
+    "open_ready_count": 3,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.862,
+    "overall_merge_rate_to_date": 0.897,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -624,7 +624,7 @@
         "pr_number": 459,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/459",
         "title": "test(client): cover decryption key option in AbstractReadStrategy",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "test",
         "task_class": "benchmark_or_test_infra",
         "loc": 105,
@@ -632,9 +632,9 @@
         "deletions": 0,
         "iter": "20261103-040045-read-strategy-decryption-key",
         "created_at": "2026-11-03T04:08:51Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
+        "merged_at": "2026-11-03T11:11:33Z",
+        "closed_at": "2026-11-03T11:11:33Z",
+        "hours_to_merge": 7.04,
         "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
@@ -649,8 +649,8 @@
         "state": "OPEN_READY",
         "change_type": "test",
         "task_class": "benchmark_or_test_infra",
-        "loc": 134,
-        "additions": 134,
+        "loc": 133,
+        "additions": 133,
         "deletions": 0,
         "iter": "20261103-100531-common-telemetry-operation-coverage",
         "created_at": "2026-11-03T10:13:46Z",
@@ -662,7 +662,7 @@
         "comment_count": 3,
         "review_count": 3,
         "perf_summary": "\u2014",
-        "coverage_summary": "1557 tests, 0 skipped; cov line 86.50% / branch 72.30% (no baseline; run `sil.py baseline`)"
+        "coverage_summary": "1469 tests, 0 skipped; cov line 86.48% / branch 72.30% (no baseline; run `sil.py baseline`)"
       }
     ]
   },
@@ -1265,7 +1265,7 @@
       "pr_number": 459,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/459",
       "title": "test(client): cover decryption key option in AbstractReadStrategy",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
       "loc": 105,
@@ -1273,9 +1273,9 @@
       "deletions": 0,
       "iter": "20261103-040045-read-strategy-decryption-key",
       "created_at": "2026-11-03T04:08:51Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
+      "merged_at": "2026-11-03T11:11:33Z",
+      "closed_at": "2026-11-03T11:11:33Z",
+      "hours_to_merge": 7.04,
       "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
@@ -1290,8 +1290,8 @@
       "state": "OPEN_READY",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
-      "loc": 134,
-      "additions": 134,
+      "loc": 133,
+      "additions": 133,
       "deletions": 0,
       "iter": "20261103-100531-common-telemetry-operation-coverage",
       "created_at": "2026-11-03T10:13:46Z",
@@ -1303,7 +1303,7 @@
       "comment_count": 3,
       "review_count": 3,
       "perf_summary": "\u2014",
-      "coverage_summary": "1557 tests, 0 skipped; cov line 86.50% / branch 72.30% (no baseline; run `sil.py baseline`)"
+      "coverage_summary": "1469 tests, 0 skipped; cov line 86.48% / branch 72.30% (no baseline; run `sil.py baseline`)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1722,33 +1722,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 25,
+      "merged_pr_count": 26,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 123.34,
-      "gross_counterfactual_hours_p50": 179.39,
-      "net_saved_hours_p25": 119.54,
-      "net_saved_hours_p50": 175.59,
-      "net_saved_swe_days_p25": 14.94,
-      "net_saved_swe_days_p50": 21.95
+      "gross_counterfactual_hours_p25": 128.01,
+      "gross_counterfactual_hours_p50": 186.06,
+      "net_saved_hours_p25": 124.21,
+      "net_saved_hours_p50": 182.26,
+      "net_saved_swe_days_p25": 15.53,
+      "net_saved_swe_days_p50": 22.78
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 4,
-      "raw_counterfactual_hours_p25": 20.0,
-      "raw_counterfactual_hours_p50": 29.34,
+      "open_draft_pr_count": 3,
+      "raw_counterfactual_hours_p25": 15.33,
+      "raw_counterfactual_hours_p50": 22.67,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.862,
-      "risk_adjusted_hours_p25": 18.62,
-      "risk_adjusted_hours_p50": 27.54
+      "empirical_promoted_merge_rate": 0.897,
+      "risk_adjusted_hours_p25": 15.35,
+      "risk_adjusted_hours_p50": 22.87
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 138.16,
-      "net_saved_hours_p50": 203.13,
-      "net_saved_swe_days_p25": 17.27,
-      "net_saved_swe_days_p50": 25.39
+      "net_saved_hours_p25": 139.56,
+      "net_saved_hours_p50": 205.13,
+      "net_saved_swe_days_p25": 17.45,
+      "net_saved_swe_days_p50": 25.64
     }
   }
 }
