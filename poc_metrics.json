@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-03T11:12:01Z",
+  "generated_at": "2026-11-03T11:12:49Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 37,
@@ -11,12 +11,12 @@
     "merged_upstream_prs": 26,
     "open_vetted_draft_prs": 3,
     "closed_unmerged_prs": 0,
-    "critic_major_catches": 22,
+    "critic_major_catches": 23,
     "total_agent_wall_hours": 25.88,
-    "total_gate_cpu_hours": 1.61
+    "total_gate_cpu_hours": 1.6
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-03T11:12:01Z",
+    "updated_at": "2026-11-03T11:12:49Z",
     "total_prs_raised": 29,
     "merged_count": 26,
     "open_ready_count": 3,
@@ -662,7 +662,7 @@
         "comment_count": 3,
         "review_count": 3,
         "perf_summary": "\u2014",
-        "coverage_summary": "1469 tests, 0 skipped; cov line 86.48% / branch 72.30% (no baseline; run `sil.py baseline`)"
+        "coverage_summary": "1557 tests, 0 skipped; cov line 86.50% / branch 72.35% (no baseline; run `sil.py baseline`)"
       }
     ]
   },
@@ -1303,7 +1303,7 @@
       "comment_count": 3,
       "review_count": 3,
       "perf_summary": "\u2014",
-      "coverage_summary": "1469 tests, 0 skipped; cov line 86.48% / branch 72.30% (no baseline; run `sil.py baseline`)"
+      "coverage_summary": "1557 tests, 0 skipped; cov line 86.50% / branch 72.35% (no baseline; run `sil.py baseline`)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1457,7 +1457,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 22,
+    "major_or_blocker_count": 23,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -1521,6 +1521,22 @@
         "severity": "nit",
         "category": "common/src/test/java/com/google/cloud/gcs/analyticscore/common/telemetry/OperationTest.java",
         "finding": "Using `assertThat(operations).doesNotContain(\"READ\")` to test equals against a different type is indirect. Prefer `assertThat(base).isNotEqualTo(\"READ\")`.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261103-100531-common-telemetry-operation-coverage",
+        "pr": "#463",
+        "severity": "blocker",
+        "category": "common/src/test/java/com/google/cloud/gcs/analyticscore/common/telemetry/OperationTest.java:152",
+        "finding": "The coder failed to implement the explicit review request to add an aliased reflexivity assertion `assertThat(first.equals(sameInstance)).isTrue();`. Because of this omission, JaCoCo reports a missed branch (1/12) and missed instructions (2) in the auto-generated `AutoValue_Operation.equals(Object)` method for the `if (o == this)` check.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261103-100531-common-telemetry-operation-coverage",
+        "pr": "#463",
+        "severity": "minor",
+        "category": "common/src/test/java/com/google/cloud/gcs/analyticscore/common/telemetry/OperationTest.java:152",
+        "finding": "The reviewer specifically requested testing hash collections via `new HashSet<>(Set.of(first))`. The current implementation uses a multi-line HashSet initialization which is functionally equivalent but ignores the reviewer's request for a more concise structure.",
         "source": "critic_history"
       },
       {
@@ -1741,14 +1757,14 @@
       "raw_counterfactual_hours_p50": 22.67,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.897,
-      "risk_adjusted_hours_p25": 15.35,
-      "risk_adjusted_hours_p50": 22.87
+      "risk_adjusted_hours_p25": 15.68,
+      "risk_adjusted_hours_p50": 23.37
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 139.56,
-      "net_saved_hours_p50": 205.13,
-      "net_saved_swe_days_p25": 17.45,
-      "net_saved_swe_days_p50": 25.64
+      "net_saved_hours_p25": 139.89,
+      "net_saved_hours_p50": 205.63,
+      "net_saved_swe_days_p25": 17.49,
+      "net_saved_swe_days_p50": 25.7
     }
   }
 }
