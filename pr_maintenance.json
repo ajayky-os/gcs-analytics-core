@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-03T04:31:06Z",
+  "checked_at": "2026-11-03T04:32:55Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "f425f8883d6d24c479d0d0c806ffd259a0e88db8",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 6,
-  "actionable_count": 1,
+  "actionable_count": 0,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -202,8 +202,8 @@
       ],
       "iter_id": "20261103-040045-read-strategy-decryption-key",
       "branch": "sil/read-strategy-decryption-key",
-      "head_oid": "88053e04ad3b5e82ee88e884860e84516eca6f9e",
-      "head_commit_ts": "2026-11-03T04:04:35Z",
+      "head_oid": "46bae09117208b24fc7d7a07c84c3a1dd779880f",
+      "head_commit_ts": "2026-11-03T04:26:45Z",
       "main_sha": "f425f8883d6d24c479d0d0c806ffd259a0e88db8",
       "commits_behind_main": 0,
       "mergeable": "MERGEABLE",
@@ -212,29 +212,14 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.2,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
-      "needs_comment_fix": true,
+      "needs_comment_fix": false,
       "needs_check_fix": false,
-      "action_required": true,
-      "unaddressed_comments": [
-        {
-          "id": "pull_comment:4450840650",
-          "comment_id": 4450840650,
-          "root_comment_id": 4450840650,
-          "thread_id": "PRRT_kwDOPmMU8s6y-fX7",
-          "type": "inline_review_comment",
-          "author": "gemini-code-assist[bot]",
-          "path": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsReadChannelTest.java",
-          "line": 68,
-          "diff_hunk": "@@ -65,6 +65,9 @@ class GcsReadChannelTest {\n   private static final String TEST_PROJECT_ID = \"test-project-id\";\n   private static final String TEST_BUCKET = \"test-bucket\";\n   private static final String TEST_OBJECT = \"test-object\";\n+  private static final String TEST_DECRYPTION_KEY = \"dGVzdC1lbmNyeXB0aW9uLWtleQ==\";",
-          "body": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe test decryption key \"dGVzdC1lbmNyeXB0aW9uLWtleQ==\" decodes to \"test-encryption-key\", which is only 19 bytes (152 bits). Customer-supplied encryption keys (CSEK) in Google Cloud Storage must be 256-bit (32-byte) AES keys. If client-side validation for key length is introduced or if these tests are run against a real GCS backend/emulator that validates key length, the tests will fail. It is highly recommended to use a valid 256-bit (32-byte) Base64-encoded key.\n\n```suggestion\n  private static final String TEST_DECRYPTION_KEY = \"MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDE=\";\n```",
-          "created_at": "2026-11-03T04:12:09Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/459#discussion_r4450840650"
-        }
-      ],
+      "action_required": false,
+      "unaddressed_comments": [],
       "failing_checks": [],
       "transient_checks": []
     }
