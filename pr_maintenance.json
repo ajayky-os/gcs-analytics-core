@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-03T17:47:24Z",
+  "checked_at": "2026-11-03T17:49:19Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "64dc873a57e475a8547e6a56bd28b1b64902627e",
   "onduty": {
@@ -47,7 +47,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 2.6,
+      "hours_since_update": 2.7,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
