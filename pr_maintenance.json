@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-03T11:33:37Z",
+  "checked_at": "2026-11-03T11:40:44Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "c081a1b6b1dbfbf1d903534f857fbd94010afefc",
   "onduty": {
@@ -47,7 +47,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 20.9,
+      "hours_since_update": 21.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -80,7 +80,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 1.5,
+      "hours_since_update": 1.6,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -113,7 +113,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.2,
+      "hours_since_update": 0.3,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -143,12 +143,12 @@
         {
           "name": "presubmits / hermetic-benchmarks",
           "state": "FAILURE",
-          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fmicrobenchmarks/activity/5a192da6-798b-4f98-8acd-09a141d392de",
-          "build_id": "5a192da6-798b-4f98-8acd-09a141d392de",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fmicrobenchmarks/activity/3bae399f-ca60-4563-9c48-00259db726c4",
+          "build_id": "3bae399f-ca60-4563-9c48-00259db726c4",
           "classification": "TRANSIENT_INFRA",
-          "rebuilt_as": "bfc9a4ba-81b1-417a-9336-d1b0111619fe",
+          "rebuilt_as": "ad4ae087-62cd-4b03-8232-8d8af382e6da",
           "already_rebuilt": true,
-          "log_excerpt": " errors, re-run Maven with the -e switch.\n[ERROR] Re-run Maven using the -X switch to enable full debug logging.\n[ERROR] \n[ERROR] For more information about the errors and possible solutions, please read the following articles:\n[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException\n[ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/PluginManagerException\n[ERROR] [Help 3] http://cwiki.apache.org/confluence/display/MAVEN/UnresolvableModelException"
+          "log_excerpt": "ching latest main baseline results from gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json...\nCopying gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json to file:///b/f/w/src/results/master_results.json\n  \n\nRunning hermetic benchmarks on PR (#463, commit ffd0ba63af055d05699b86ad205d263eaf8d39b1)...\nBuilding the JMH benchmark JAR...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
         }
       ]
     }
