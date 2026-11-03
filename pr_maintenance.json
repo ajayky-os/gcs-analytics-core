@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-03T11:18:19Z",
+  "checked_at": "2026-11-03T11:33:37Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "c081a1b6b1dbfbf1d903534f857fbd94010afefc",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 3,
-  "actionable_count": 0,
+  "actionable_count": 1,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -47,7 +47,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 20.7,
+      "hours_since_update": 20.9,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -80,7 +80,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 1.2,
+      "hours_since_update": 1.5,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -113,16 +113,44 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.0,
+      "hours_since_update": 0.2,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
       "needs_comment_fix": false,
-      "needs_check_fix": false,
-      "action_required": false,
+      "needs_check_fix": true,
+      "action_required": true,
       "unaddressed_comments": [],
-      "failing_checks": [],
-      "transient_checks": []
+      "failing_checks": [
+        {
+          "name": "presubmits / compilation",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fcompilation/activity/e4694f90-d957-420e-a81b-436ca23f787c",
+          "build_id": "e4694f90-d957-420e-a81b-436ca23f787c",
+          "classification": "CODE_FAILURE",
+          "log_excerpt": ""
+        },
+        {
+          "name": "presubmits / integration-tests",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/0e545ec9-6fd0-4487-b90c-7edfc710db23",
+          "build_id": "0e545ec9-6fd0-4487-b90c-7edfc710db23",
+          "classification": "CODE_FAILURE",
+          "log_excerpt": ""
+        }
+      ],
+      "transient_checks": [
+        {
+          "name": "presubmits / hermetic-benchmarks",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fmicrobenchmarks/activity/5a192da6-798b-4f98-8acd-09a141d392de",
+          "build_id": "5a192da6-798b-4f98-8acd-09a141d392de",
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": "bfc9a4ba-81b1-417a-9336-d1b0111619fe",
+          "already_rebuilt": true,
+          "log_excerpt": " errors, re-run Maven with the -e switch.\n[ERROR] Re-run Maven using the -X switch to enable full debug logging.\n[ERROR] \n[ERROR] For more information about the errors and possible solutions, please read the following articles:\n[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException\n[ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/PluginManagerException\n[ERROR] [Help 3] http://cwiki.apache.org/confluence/display/MAVEN/UnresolvableModelException"
+        }
+      ]
     }
   ]
 }
