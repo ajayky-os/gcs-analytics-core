@@ -1,29 +1,29 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-04T05:54:20Z",
+  "generated_at": "2026-11-04T06:08:37Z",
   "project": "gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 38,
+    "total_iterations_logged": 39,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 36,
-    "unique_upstream_prs": 30,
+    "substantive_iterations": 37,
+    "unique_upstream_prs": 31,
     "merged_upstream_prs": 26,
-    "open_vetted_draft_prs": 4,
+    "open_vetted_draft_prs": 5,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 23,
-    "total_agent_wall_hours": 26.4,
-    "total_gate_cpu_hours": 1.64
+    "total_agent_wall_hours": 26.49,
+    "total_gate_cpu_hours": 1.66
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-04T05:54:20Z",
-    "total_prs_raised": 30,
+    "updated_at": "2026-11-04T06:08:37Z",
+    "total_prs_raised": 31,
     "merged_count": 26,
-    "open_ready_count": 4,
+    "open_ready_count": 5,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.867,
+    "overall_merge_rate_to_date": 0.839,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -685,6 +685,28 @@
         "review_count": 2,
         "perf_summary": "\u2014",
         "coverage_summary": "1642 tests, 0 skipped; cov line 86.33% -> 86.48% (+0.15), branch 71.60% -> 71.83% (+0.23)"
+      },
+      {
+        "pr_number": 467,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/467",
+        "title": "test(core): cover prefetch, EOF, and buffer bounds in GcsFooterOptimizer",
+        "state": "OPEN_READY",
+        "change_type": "test",
+        "task_class": "benchmark_or_test_infra",
+        "loc": 95,
+        "additions": 95,
+        "deletions": 0,
+        "iter": "20261104-060235-footer-optimizer-branch-bounds",
+        "created_at": "2026-11-04T06:08:01Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "\u2014",
+        "coverage_summary": "1638 tests, 0 skipped; cov line 86.33% -> 86.35% (+0.02), branch 71.60% -> 71.88% (+0.28)"
       }
     ]
   },
@@ -1348,6 +1370,28 @@
       "review_count": 2,
       "perf_summary": "\u2014",
       "coverage_summary": "1642 tests, 0 skipped; cov line 86.33% -> 86.48% (+0.15), branch 71.60% -> 71.83% (+0.23)"
+    },
+    {
+      "pr_number": 467,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/467",
+      "title": "test(core): cover prefetch, EOF, and buffer bounds in GcsFooterOptimizer",
+      "state": "OPEN_READY",
+      "change_type": "test",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 95,
+      "additions": 95,
+      "deletions": 0,
+      "iter": "20261104-060235-footer-optimizer-branch-bounds",
+      "created_at": "2026-11-04T06:08:01Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "\u2014",
+      "coverage_summary": "1638 tests, 0 skipped; cov line 86.33% -> 86.35% (+0.02), branch 71.60% -> 71.88% (+0.28)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1796,19 +1840,19 @@
       "net_saved_swe_days_p50": 22.78
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 4,
-      "raw_counterfactual_hours_p25": 20.0,
-      "raw_counterfactual_hours_p50": 29.34,
+      "open_draft_pr_count": 5,
+      "raw_counterfactual_hours_p25": 24.67,
+      "raw_counterfactual_hours_p50": 36.01,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.867,
-      "risk_adjusted_hours_p25": 18.95,
-      "risk_adjusted_hours_p50": 28.04
+      "empirical_promoted_merge_rate": 0.839,
+      "risk_adjusted_hours_p25": 22.22,
+      "risk_adjusted_hours_p50": 32.71
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 143.16,
-      "net_saved_hours_p50": 210.3,
-      "net_saved_swe_days_p25": 17.89,
-      "net_saved_swe_days_p50": 26.29
+      "net_saved_hours_p25": 146.43,
+      "net_saved_hours_p50": 214.97,
+      "net_saved_swe_days_p25": 18.3,
+      "net_saved_swe_days_p50": 26.87
     }
   }
 }
