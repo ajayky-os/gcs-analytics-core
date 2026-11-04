@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-04T07:26:37Z",
+  "checked_at": "2026-11-04T07:29:23Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "64dc873a57e475a8547e6a56bd28b1b64902627e",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 5,
-  "actionable_count": 2,
+  "actionable_count": 1,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -70,36 +70,24 @@
       ],
       "iter_id": "20261029-035829-readfully-random-access-pattern",
       "branch": "sil/readfully-random-access-pattern",
-      "head_oid": "d716bc7fe4daa9e6887fb2a7ba56c977cdf575f7",
-      "head_commit_ts": "2026-11-03T09:44:07Z",
+      "head_oid": "7e43736d89c55ff029b021c9c4199379a5eb9dec",
+      "head_commit_ts": "2026-11-04T07:13:51Z",
       "main_sha": "64dc873a57e475a8547e6a56bd28b1b64902627e",
-      "commits_behind_main": 5,
+      "commits_behind_main": 0,
       "mergeable": "MERGEABLE",
-      "merge_state_status": "BEHIND",
+      "merge_state_status": "BLOCKED",
       "review_decision": "PENDING",
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.4,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
-      "needs_comment_fix": true,
+      "needs_comment_fix": false,
       "needs_check_fix": false,
-      "action_required": true,
-      "unaddressed_comments": [
-        {
-          "id": "issue_comment:6624772340",
-          "comment_id": 6624772340,
-          "type": "issue_comment",
-          "author": "ajayky-os",
-          "path": null,
-          "line": null,
-          "body": "What is the performance impact of this change on TPCDS benchmark, not just micro benchmark ?",
-          "created_at": "2026-11-04T07:01:15Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/439#issuecomment-6624772340"
-        }
-      ],
+      "action_required": false,
+      "unaddressed_comments": [],
       "failing_checks": [],
       "transient_checks": []
     },
@@ -122,28 +110,30 @@
       "mergeable": "MERGEABLE",
       "merge_state_status": "BLOCKED",
       "review_decision": "APPROVED",
-      "ready_to_merge": false,
+      "ready_to_merge": true,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.2,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
       "needs_comment_fix": false,
-      "needs_check_fix": true,
+      "needs_check_fix": false,
       "action_required": true,
       "unaddressed_comments": [],
-      "failing_checks": [
+      "failing_checks": [],
+      "transient_checks": [
         {
           "name": "presubmits / integration-tests",
           "state": "ERROR",
           "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/e53febe1-34a4-49f2-b31b-074ef6031301",
           "build_id": "e53febe1-34a4-49f2-b31b-074ef6031301",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "[23:13:22 PST] The build script log will appear here once it starts executing. The Kokoro infrastructure log is available at https://fusion2.corp.google.com/invocations/e53febe1-34a4-49f2-b31b-074ef6031301/log"
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": null,
+          "already_rebuilt": true,
+          "log_excerpt": "cutor.lambda$start$0(PipelineBuildExecutor.java:67)\n\tat java.base/java.util.concurrent.FutureTask.run(Unknown Source)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)\n\tat java.base/java.lang.Thread.run(Unknown Source)\n\n[23:14:40 PST] Updating SpongeV2 invocation.\n[23:14:45 PST] Build does not log to ResultStore. Skipping ResultStore update. Note that Bazel may still log to ResultStore."
         }
-      ],
-      "transient_checks": []
+      ]
     },
     {
       "pr_number": 466,
@@ -167,7 +157,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 1.7,
+      "hours_since_update": 1.8,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
