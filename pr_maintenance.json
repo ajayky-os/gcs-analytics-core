@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-04T02:54:13Z",
+  "checked_at": "2026-11-04T03:09:13Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "64dc873a57e475a8547e6a56bd28b1b64902627e",
   "onduty": {
@@ -9,7 +9,7 @@
     "primary_email": "singhaniash@google.com",
     "primary_ldap": "singhaniash",
     "github_user": "shrutisinghania",
-    "error": null
+    "error": "[Errno 126] Required key not available: '/google/bin/releases/gemini-agents-rotations/rotations_cli'"
   },
   "robot_push_status": {
     "push_remote": "robot",
@@ -47,7 +47,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 11.8,
+      "hours_since_update": 12.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -80,7 +80,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 16.8,
+      "hours_since_update": 17.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -113,7 +113,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 13.8,
+      "hours_since_update": 14.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
