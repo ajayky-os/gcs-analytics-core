@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-04T05:09:16Z",
+  "generated_at": "2026-11-04T05:24:22Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 38,
@@ -16,7 +16,7 @@
     "total_gate_cpu_hours": 1.64
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-04T05:09:16Z",
+    "updated_at": "2026-11-04T05:24:22Z",
     "total_prs_raised": 30,
     "merged_count": 26,
     "open_ready_count": 4,
@@ -681,8 +681,8 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 1,
-        "review_count": 0,
+        "comment_count": 3,
+        "review_count": 1,
         "perf_summary": "\u2014",
         "coverage_summary": "1642 tests, 0 skipped; cov line 86.33% -> 86.48% (+0.15), branch 71.60% -> 71.83% (+0.23)"
       }
@@ -1344,8 +1344,8 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 1,
-      "review_count": 0,
+      "comment_count": 3,
+      "review_count": 1,
       "perf_summary": "\u2014",
       "coverage_summary": "1642 tests, 0 skipped; cov line 86.33% -> 86.48% (+0.15), branch 71.60% -> 71.83% (+0.23)"
     }
