@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-04T09:41:46Z",
+  "updated_at": "2026-11-04T09:50:59Z",
   "total_prs_raised": 31,
   "merged_count": 27,
   "open_ready_count": 4,
@@ -665,9 +665,9 @@
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 3,
+      "review_count": 6,
       "perf_summary": "\u2014",
-      "coverage_summary": "1653 tests, 0 skipped; cov line 86.96% / branch 72.67% (no baseline; run `sil.py baseline`)"
+      "coverage_summary": "1653 tests, 0 skipped; cov line 86.96% / branch 72.71% (no baseline; run `sil.py baseline`)"
     },
     {
       "pr_number": 467,

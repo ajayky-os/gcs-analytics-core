@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-04T09:41:46Z",
+  "generated_at": "2026-11-04T09:50:59Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 39,
@@ -11,12 +11,12 @@
     "merged_upstream_prs": 27,
     "open_vetted_draft_prs": 4,
     "closed_unmerged_prs": 0,
-    "critic_major_catches": 23,
-    "total_agent_wall_hours": 27.0,
-    "total_gate_cpu_hours": 1.65
+    "critic_major_catches": 24,
+    "total_agent_wall_hours": 28.48,
+    "total_gate_cpu_hours": 1.64
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-04T09:41:46Z",
+    "updated_at": "2026-11-04T09:50:59Z",
     "total_prs_raised": 31,
     "merged_count": 27,
     "open_ready_count": 4,
@@ -682,9 +682,9 @@
         "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 3,
+        "review_count": 6,
         "perf_summary": "\u2014",
-        "coverage_summary": "1653 tests, 0 skipped; cov line 86.96% / branch 72.67% (no baseline; run `sil.py baseline`)"
+        "coverage_summary": "1653 tests, 0 skipped; cov line 86.96% / branch 72.71% (no baseline; run `sil.py baseline`)"
       },
       {
         "pr_number": 467,
@@ -1367,9 +1367,9 @@
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 3,
+      "review_count": 6,
       "perf_summary": "\u2014",
-      "coverage_summary": "1653 tests, 0 skipped; cov line 86.96% / branch 72.67% (no baseline; run `sil.py baseline`)"
+      "coverage_summary": "1653 tests, 0 skipped; cov line 86.96% / branch 72.71% (no baseline; run `sil.py baseline`)"
     },
     {
       "pr_number": 467,
@@ -1545,7 +1545,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 23,
+    "major_or_blocker_count": 24,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -1602,6 +1602,22 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261104-050123-bidi-read-channel-strategy-bounds-coverage",
+        "pr": "#466",
+        "severity": "major",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsBidiReadChannelTest.java:55",
+        "finding": "The test `read_emptyByteStringFromSession_returnsZeroWithoutAdvancingPosition` is missing the TODO characterization documenting the current behavior pending a fix in production `readBytesFromSession`, as explicitly requested in the previous review.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261104-050123-bidi-read-channel-strategy-bounds-coverage",
+        "pr": "#466",
+        "severity": "minor",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsBidiReadChannelTest.java:62",
+        "finding": "The call `seekableReader.position(5L)` and `ByteBuffer.allocate(10)` still use numeric literals instead of descriptive constants, not fully addressing the prior feedback about `position(10L)` using numeric literals.",
+        "source": "critic_history"
       },
       {
         "iter": "20261029-035829-readfully-random-access-pattern",
@@ -1845,14 +1861,14 @@
       "raw_counterfactual_hours_p50": 29.34,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.871,
-      "risk_adjusted_hours_p25": 18.62,
-      "risk_adjusted_hours_p50": 27.54
+      "risk_adjusted_hours_p25": 18.95,
+      "risk_adjusted_hours_p50": 28.04
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 147.83,
-      "net_saved_hours_p50": 216.97,
-      "net_saved_swe_days_p25": 18.48,
-      "net_saved_swe_days_p50": 27.12
+      "net_saved_hours_p25": 148.16,
+      "net_saved_hours_p50": 217.47,
+      "net_saved_swe_days_p25": 18.52,
+      "net_saved_swe_days_p50": 27.18
     }
   }
 }
