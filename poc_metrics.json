@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-04T09:50:59Z",
+  "generated_at": "2026-11-04T09:54:34Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 39,
@@ -16,7 +16,7 @@
     "total_gate_cpu_hours": 1.64
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-04T09:50:59Z",
+    "updated_at": "2026-11-04T09:54:34Z",
     "total_prs_raised": 31,
     "merged_count": 27,
     "open_ready_count": 4,
@@ -671,9 +671,9 @@
         "state": "OPEN_READY",
         "change_type": "test",
         "task_class": "benchmark_or_test_infra",
-        "loc": 130,
-        "additions": 130,
-        "deletions": 0,
+        "loc": 135,
+        "additions": 134,
+        "deletions": 1,
         "iter": "20261104-050123-bidi-read-channel-strategy-bounds-coverage",
         "created_at": "2026-11-04T05:08:40Z",
         "merged_at": null,
@@ -682,7 +682,7 @@
         "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 6,
+        "review_count": 8,
         "perf_summary": "\u2014",
         "coverage_summary": "1653 tests, 0 skipped; cov line 86.96% / branch 72.71% (no baseline; run `sil.py baseline`)"
       },
@@ -1356,9 +1356,9 @@
       "state": "OPEN_READY",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
-      "loc": 130,
-      "additions": 130,
-      "deletions": 0,
+      "loc": 135,
+      "additions": 134,
+      "deletions": 1,
       "iter": "20261104-050123-bidi-read-channel-strategy-bounds-coverage",
       "created_at": "2026-11-04T05:08:40Z",
       "merged_at": null,
@@ -1367,7 +1367,7 @@
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 6,
+      "review_count": 8,
       "perf_summary": "\u2014",
       "coverage_summary": "1653 tests, 0 skipped; cov line 86.96% / branch 72.71% (no baseline; run `sil.py baseline`)"
     },
