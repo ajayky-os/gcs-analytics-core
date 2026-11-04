@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-04T11:24:40Z",
+  "updated_at": "2026-11-04T11:37:37Z",
   "total_prs_raised": 32,
   "merged_count": 27,
   "open_ready_count": 5,
@@ -662,10 +662,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "CHANGES_REQUESTED",
+      "review_decision": "PENDING",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 8,
+      "review_count": 9,
       "perf_summary": "\u2014",
       "coverage_summary": "1653 tests, 0 skipped; cov line 86.96% / branch 72.71% (no baseline; run `sil.py baseline`)"
     },
@@ -698,8 +698,8 @@
       "state": "OPEN_READY",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
-      "loc": 293,
-      "additions": 293,
+      "loc": 77,
+      "additions": 77,
       "deletions": 0,
       "iter": "20261104-100443-object-range-models-coverage",
       "created_at": "2026-11-04T10:11:41Z",
@@ -709,9 +709,9 @@
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 2,
+      "review_count": 4,
       "perf_summary": "\u2014",
-      "coverage_summary": "1661 tests, 0 skipped; cov line 87.56% / branch 74.01% (no baseline; run `sil.py baseline`)"
+      "coverage_summary": "1647 tests, 0 skipped; cov line 86.81% / branch 72.48% (no baseline; run `sil.py baseline`)"
     }
   ]
 }

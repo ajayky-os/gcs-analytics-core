@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-04T11:24:40Z",
+  "generated_at": "2026-11-04T11:37:37Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 40,
@@ -12,11 +12,11 @@
     "open_vetted_draft_prs": 5,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 24,
-    "total_agent_wall_hours": 28.6,
-    "total_gate_cpu_hours": 1.66
+    "total_agent_wall_hours": 29.92,
+    "total_gate_cpu_hours": 1.67
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-04T11:24:40Z",
+    "updated_at": "2026-11-04T11:37:37Z",
     "total_prs_raised": 32,
     "merged_count": 27,
     "open_ready_count": 5,
@@ -679,10 +679,10 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "CHANGES_REQUESTED",
+        "review_decision": "PENDING",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 8,
+        "review_count": 9,
         "perf_summary": "\u2014",
         "coverage_summary": "1653 tests, 0 skipped; cov line 86.96% / branch 72.71% (no baseline; run `sil.py baseline`)"
       },
@@ -715,8 +715,8 @@
         "state": "OPEN_READY",
         "change_type": "test",
         "task_class": "benchmark_or_test_infra",
-        "loc": 293,
-        "additions": 293,
+        "loc": 77,
+        "additions": 77,
         "deletions": 0,
         "iter": "20261104-100443-object-range-models-coverage",
         "created_at": "2026-11-04T10:11:41Z",
@@ -726,9 +726,9 @@
         "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 2,
+        "review_count": 4,
         "perf_summary": "\u2014",
-        "coverage_summary": "1661 tests, 0 skipped; cov line 87.56% / branch 74.01% (no baseline; run `sil.py baseline`)"
+        "coverage_summary": "1647 tests, 0 skipped; cov line 86.81% / branch 72.48% (no baseline; run `sil.py baseline`)"
       }
     ]
   },
@@ -1386,10 +1386,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "CHANGES_REQUESTED",
+      "review_decision": "PENDING",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 8,
+      "review_count": 9,
       "perf_summary": "\u2014",
       "coverage_summary": "1653 tests, 0 skipped; cov line 86.96% / branch 72.71% (no baseline; run `sil.py baseline`)"
     },
@@ -1422,8 +1422,8 @@
       "state": "OPEN_READY",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
-      "loc": 293,
-      "additions": 293,
+      "loc": 77,
+      "additions": 77,
       "deletions": 0,
       "iter": "20261104-100443-object-range-models-coverage",
       "created_at": "2026-11-04T10:11:41Z",
@@ -1433,9 +1433,9 @@
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 2,
+      "review_count": 4,
       "perf_summary": "\u2014",
-      "coverage_summary": "1661 tests, 0 skipped; cov line 87.56% / branch 74.01% (no baseline; run `sil.py baseline`)"
+      "coverage_summary": "1647 tests, 0 skipped; cov line 86.81% / branch 72.48% (no baseline; run `sil.py baseline`)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1646,6 +1646,14 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261104-100443-object-range-models-coverage",
+        "pr": "#468",
+        "severity": "nit",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsCombinedObjectRangeTest.java:20",
+        "finding": "The test class name 'GcsCombinedObjectRangeTest' does not perfectly align with the tested class 'GcsObjectCombinedRange'. Consider renaming the file and class to 'GcsObjectCombinedRangeTest' for consistency.",
+        "source": "critic_history"
       },
       {
         "iter": "20261104-050123-bidi-read-channel-strategy-bounds-coverage",
