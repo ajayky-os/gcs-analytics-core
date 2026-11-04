@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-04T09:31:26Z",
+  "generated_at": "2026-11-04T09:41:46Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 39,
@@ -13,10 +13,10 @@
     "closed_unmerged_prs": 0,
     "critic_major_catches": 23,
     "total_agent_wall_hours": 27.0,
-    "total_gate_cpu_hours": 1.64
+    "total_gate_cpu_hours": 1.65
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-04T09:31:26Z",
+    "updated_at": "2026-11-04T09:41:46Z",
     "total_prs_raised": 31,
     "merged_count": 27,
     "open_ready_count": 4,
@@ -684,7 +684,7 @@
         "comment_count": 3,
         "review_count": 3,
         "perf_summary": "\u2014",
-        "coverage_summary": "1642 tests, 0 skipped; cov line 86.33% -> 86.48% (+0.15), branch 71.60% -> 71.83% (+0.23)"
+        "coverage_summary": "1653 tests, 0 skipped; cov line 86.96% / branch 72.67% (no baseline; run `sil.py baseline`)"
       },
       {
         "pr_number": 467,
@@ -1369,7 +1369,7 @@
       "comment_count": 3,
       "review_count": 3,
       "perf_summary": "\u2014",
-      "coverage_summary": "1642 tests, 0 skipped; cov line 86.33% -> 86.48% (+0.15), branch 71.60% -> 71.83% (+0.23)"
+      "coverage_summary": "1653 tests, 0 skipped; cov line 86.96% / branch 72.67% (no baseline; run `sil.py baseline`)"
     },
     {
       "pr_number": 467,
