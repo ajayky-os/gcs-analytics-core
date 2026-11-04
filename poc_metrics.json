@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-04T07:24:38Z",
+  "generated_at": "2026-11-04T07:27:09Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 39,
@@ -13,10 +13,10 @@
     "closed_unmerged_prs": 0,
     "critic_major_catches": 23,
     "total_agent_wall_hours": 27.0,
-    "total_gate_cpu_hours": 1.65
+    "total_gate_cpu_hours": 1.64
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-04T07:24:38Z",
+    "updated_at": "2026-11-04T07:27:09Z",
     "total_prs_raised": 31,
     "merged_count": 26,
     "open_ready_count": 5,
@@ -329,10 +329,10 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 7,
+        "comment_count": 8,
         "review_count": 7,
         "perf_summary": "7/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -23.6% lat, -1.9% alloc)",
-        "coverage_summary": "1550 tests, 0 skipped"
+        "coverage_summary": "1644 tests, 0 skipped"
       },
       {
         "pr_number": 440,
@@ -1014,10 +1014,10 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 7,
+      "comment_count": 8,
       "review_count": 7,
       "perf_summary": "7/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -23.6% lat, -1.9% alloc)",
-      "coverage_summary": "1550 tests, 0 skipped"
+      "coverage_summary": "1644 tests, 0 skipped"
     },
     {
       "pr_number": 440,
@@ -1604,38 +1604,6 @@
         "source": "pilot_backfill"
       },
       {
-        "iter": "20261103-100531-common-telemetry-operation-coverage",
-        "pr": "#463",
-        "severity": "nit",
-        "category": "common/src/test/java/com/google/cloud/gcs/analyticscore/common/telemetry/OperationTest.java",
-        "finding": "Using `assertThat(operations).doesNotContain(\"READ\")` to test equals against a different type is indirect. Prefer `assertThat(base).isNotEqualTo(\"READ\")`.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261103-100531-common-telemetry-operation-coverage",
-        "pr": "#463",
-        "severity": "blocker",
-        "category": "common/src/test/java/com/google/cloud/gcs/analyticscore/common/telemetry/OperationTest.java:152",
-        "finding": "The coder failed to implement the explicit review request to add an aliased reflexivity assertion `assertThat(first.equals(sameInstance)).isTrue();`. Because of this omission, JaCoCo reports a missed branch (1/12) and missed instructions (2) in the auto-generated `AutoValue_Operation.equals(Object)` method for the `if (o == this)` check.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261103-100531-common-telemetry-operation-coverage",
-        "pr": "#463",
-        "severity": "minor",
-        "category": "common/src/test/java/com/google/cloud/gcs/analyticscore/common/telemetry/OperationTest.java:152",
-        "finding": "The reviewer specifically requested testing hash collections via `new HashSet<>(Set.of(first))`. The current implementation uses a multi-line HashSet initialization which is functionally equivalent but ignores the reviewer's request for a more concise structure.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261102-101544-vectored-channel-and-read-strategy-defaults",
-        "pr": "#458",
-        "severity": "nit",
-        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/ReadStrategyTest.java:35",
-        "finding": "Using `assertDoesNotThrow` is redundant when testing that a method completes normally. The Google testing style guide recommends simply calling the method. If it throws, the test will naturally fail.",
-        "source": "critic_history"
-      },
-      {
         "iter": "20261029-035829-readfully-random-access-pattern",
         "pr": "#439",
         "severity": "major",
@@ -1729,6 +1697,38 @@
         "severity": "blocker",
         "category": "gates.json:80",
         "finding": "The change is labelled as a 'perf' optimization, but gates.json indicates there is no perf baseline ('candidate JMH ran but no baseline (run `sil.py baseline`)'). Without a baseline, the hypothesis that this change prevents skipInPlace discards and improves performance is unproven. You must run `sil.py baseline` and generate a valid gates.json that proves the expected JMH benchmark actually improved.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261103-100531-common-telemetry-operation-coverage",
+        "pr": "#463",
+        "severity": "nit",
+        "category": "common/src/test/java/com/google/cloud/gcs/analyticscore/common/telemetry/OperationTest.java",
+        "finding": "Using `assertThat(operations).doesNotContain(\"READ\")` to test equals against a different type is indirect. Prefer `assertThat(base).isNotEqualTo(\"READ\")`.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261103-100531-common-telemetry-operation-coverage",
+        "pr": "#463",
+        "severity": "blocker",
+        "category": "common/src/test/java/com/google/cloud/gcs/analyticscore/common/telemetry/OperationTest.java:152",
+        "finding": "The coder failed to implement the explicit review request to add an aliased reflexivity assertion `assertThat(first.equals(sameInstance)).isTrue();`. Because of this omission, JaCoCo reports a missed branch (1/12) and missed instructions (2) in the auto-generated `AutoValue_Operation.equals(Object)` method for the `if (o == this)` check.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261103-100531-common-telemetry-operation-coverage",
+        "pr": "#463",
+        "severity": "minor",
+        "category": "common/src/test/java/com/google/cloud/gcs/analyticscore/common/telemetry/OperationTest.java:152",
+        "finding": "The reviewer specifically requested testing hash collections via `new HashSet<>(Set.of(first))`. The current implementation uses a multi-line HashSet initialization which is functionally equivalent but ignores the reviewer's request for a more concise structure.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261102-101544-vectored-channel-and-read-strategy-defaults",
+        "pr": "#458",
+        "severity": "nit",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/ReadStrategyTest.java:35",
+        "finding": "Using `assertDoesNotThrow` is redundant when testing that a method completes normally. The Google testing style guide recommends simply calling the method. If it throws, the test will naturally fail.",
         "source": "critic_history"
       },
       {
