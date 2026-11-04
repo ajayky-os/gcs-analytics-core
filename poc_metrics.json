@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-04T11:45:03Z",
+  "generated_at": "2026-11-04T11:54:35Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 40,
@@ -8,22 +8,22 @@
     "error_or_quota_halted_iterations": 1,
     "substantive_iterations": 38,
     "unique_upstream_prs": 32,
-    "merged_upstream_prs": 27,
-    "open_vetted_draft_prs": 5,
+    "merged_upstream_prs": 28,
+    "open_vetted_draft_prs": 4,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 24,
     "total_agent_wall_hours": 30.09,
     "total_gate_cpu_hours": 1.67
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-04T11:45:03Z",
+    "updated_at": "2026-11-04T11:54:35Z",
     "total_prs_raised": 32,
-    "merged_count": 27,
-    "open_ready_count": 5,
+    "merged_count": 28,
+    "open_ready_count": 4,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.844,
+    "overall_merge_rate_to_date": 0.875,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -690,7 +690,7 @@
         "pr_number": 467,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/467",
         "title": "test(core): cover prefetch, EOF, and buffer bounds in GcsFooterOptimizer",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "test",
         "task_class": "benchmark_or_test_infra",
         "loc": 100,
@@ -698,9 +698,9 @@
         "deletions": 0,
         "iter": "20261104-060235-footer-optimizer-branch-bounds",
         "created_at": "2026-11-04T06:08:01Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
+        "merged_at": "2026-11-04T11:54:10Z",
+        "closed_at": "2026-11-04T11:54:10Z",
+        "hours_to_merge": 5.77,
         "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
@@ -1397,7 +1397,7 @@
       "pr_number": 467,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/467",
       "title": "test(core): cover prefetch, EOF, and buffer bounds in GcsFooterOptimizer",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
       "loc": 100,
@@ -1405,9 +1405,9 @@
       "deletions": 0,
       "iter": "20261104-060235-footer-optimizer-branch-bounds",
       "created_at": "2026-11-04T06:08:01Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
+      "merged_at": "2026-11-04T11:54:10Z",
+      "closed_at": "2026-11-04T11:54:10Z",
+      "hours_to_merge": 5.77,
       "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
@@ -1894,33 +1894,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 27,
+      "merged_pr_count": 28,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 133.01,
-      "gross_counterfactual_hours_p50": 193.23,
-      "net_saved_hours_p25": 129.21,
-      "net_saved_hours_p50": 189.43,
-      "net_saved_swe_days_p25": 16.15,
-      "net_saved_swe_days_p50": 23.68
+      "gross_counterfactual_hours_p25": 137.68,
+      "gross_counterfactual_hours_p50": 199.9,
+      "net_saved_hours_p25": 133.88,
+      "net_saved_hours_p50": 196.1,
+      "net_saved_swe_days_p25": 16.73,
+      "net_saved_swe_days_p50": 24.51
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 5,
-      "raw_counterfactual_hours_p25": 24.67,
-      "raw_counterfactual_hours_p50": 36.01,
+      "open_draft_pr_count": 4,
+      "raw_counterfactual_hours_p25": 20.0,
+      "raw_counterfactual_hours_p50": 29.34,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.844,
-      "risk_adjusted_hours_p25": 22.22,
-      "risk_adjusted_hours_p50": 32.71
+      "empirical_promoted_merge_rate": 0.875,
+      "risk_adjusted_hours_p25": 18.95,
+      "risk_adjusted_hours_p50": 28.04
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 151.43,
-      "net_saved_hours_p50": 222.14,
-      "net_saved_swe_days_p25": 18.93,
-      "net_saved_swe_days_p50": 27.77
+      "net_saved_hours_p25": 152.83,
+      "net_saved_hours_p50": 224.14,
+      "net_saved_swe_days_p25": 19.1,
+      "net_saved_swe_days_p50": 28.02
     }
   }
 }
