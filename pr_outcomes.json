@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-04T10:09:36Z",
-  "total_prs_raised": 31,
+  "updated_at": "2026-11-04T10:12:36Z",
+  "total_prs_raised": 32,
   "merged_count": 27,
-  "open_ready_count": 4,
+  "open_ready_count": 5,
   "open_draft_count": 0,
   "closed_unmerged_count": 0,
   "acceptance_rate_closed_prs": 1.0,
-  "overall_merge_rate_to_date": 0.871,
+  "overall_merge_rate_to_date": 0.844,
   "median_hours_to_merge": 16.9,
   "prs": [
     {
@@ -690,6 +690,28 @@
       "review_count": 6,
       "perf_summary": "\u2014",
       "coverage_summary": "1638 tests, 0 skipped; cov line 86.33% -> 86.35% (+0.02), branch 71.60% -> 71.88% (+0.28)"
+    },
+    {
+      "pr_number": 468,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/468",
+      "title": "test(client): cover GcsObjectRange and GcsObjectCombinedRange models",
+      "state": "OPEN_READY",
+      "change_type": "test",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 293,
+      "additions": 293,
+      "deletions": 0,
+      "iter": "20261104-100443-object-range-models-coverage",
+      "created_at": "2026-11-04T10:11:41Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "\u2014",
+      "coverage_summary": "1661 tests, 0 skipped; cov line 87.56% / branch 74.01% (no baseline; run `sil.py baseline`)"
     }
   ]
 }
