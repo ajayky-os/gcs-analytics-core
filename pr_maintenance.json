@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-04T07:29:23Z",
+  "checked_at": "2026-11-04T07:39:17Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "64dc873a57e475a8547e6a56bd28b1b64902627e",
   "onduty": {
@@ -47,7 +47,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 16.3,
+      "hours_since_update": 16.5,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -80,7 +80,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.0,
+      "hours_since_update": 0.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -113,7 +113,7 @@
       "ready_to_merge": true,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.0,
+      "hours_since_update": 0.2,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -122,18 +122,7 @@
       "action_required": true,
       "unaddressed_comments": [],
       "failing_checks": [],
-      "transient_checks": [
-        {
-          "name": "presubmits / integration-tests",
-          "state": "ERROR",
-          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/e53febe1-34a4-49f2-b31b-074ef6031301",
-          "build_id": "e53febe1-34a4-49f2-b31b-074ef6031301",
-          "classification": "TRANSIENT_INFRA",
-          "rebuilt_as": null,
-          "already_rebuilt": true,
-          "log_excerpt": "cutor.lambda$start$0(PipelineBuildExecutor.java:67)\n\tat java.base/java.util.concurrent.FutureTask.run(Unknown Source)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)\n\tat java.base/java.lang.Thread.run(Unknown Source)\n\n[23:14:40 PST] Updating SpongeV2 invocation.\n[23:14:45 PST] Build does not log to ResultStore. Skipping ResultStore update. Note that Bazel may still log to ResultStore."
-        }
-      ]
+      "transient_checks": []
     },
     {
       "pr_number": 466,
@@ -157,7 +146,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 1.8,
+      "hours_since_update": 1.9,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -190,7 +179,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.6,
+      "hours_since_update": 0.8,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
