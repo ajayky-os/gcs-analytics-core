@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-04T05:30:53Z",
+  "generated_at": "2026-11-04T05:34:41Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 38,
@@ -12,11 +12,11 @@
     "open_vetted_draft_prs": 4,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 23,
-    "total_agent_wall_hours": 26.01,
+    "total_agent_wall_hours": 26.4,
     "total_gate_cpu_hours": 1.64
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-04T05:30:53Z",
+    "updated_at": "2026-11-04T05:34:41Z",
     "total_prs_raised": 30,
     "merged_count": 26,
     "open_ready_count": 4,
@@ -671,8 +671,8 @@
         "state": "OPEN_READY",
         "change_type": "test",
         "task_class": "benchmark_or_test_infra",
-        "loc": 131,
-        "additions": 131,
+        "loc": 130,
+        "additions": 130,
         "deletions": 0,
         "iter": "20261104-050123-bidi-read-channel-strategy-bounds-coverage",
         "created_at": "2026-11-04T05:08:40Z",
@@ -682,9 +682,9 @@
         "review_decision": "PENDING",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
+        "review_count": 2,
         "perf_summary": "\u2014",
-        "coverage_summary": "1642 tests, 0 skipped; cov line 86.33% -> 86.48% (+0.15), branch 71.60% -> 71.83% (+0.23)"
+        "coverage_summary": "1642 tests, 0 skipped; cov line 86.33% -> 86.48% (+0.15), branch 71.60% -> 71.88% (+0.28)"
       }
     ]
   },
@@ -1334,8 +1334,8 @@
       "state": "OPEN_READY",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
-      "loc": 131,
-      "additions": 131,
+      "loc": 130,
+      "additions": 130,
       "deletions": 0,
       "iter": "20261104-050123-bidi-read-channel-strategy-bounds-coverage",
       "created_at": "2026-11-04T05:08:40Z",
@@ -1345,9 +1345,9 @@
       "review_decision": "PENDING",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
+      "review_count": 2,
       "perf_summary": "\u2014",
-      "coverage_summary": "1642 tests, 0 skipped; cov line 86.33% -> 86.48% (+0.15), branch 71.60% -> 71.83% (+0.23)"
+      "coverage_summary": "1642 tests, 0 skipped; cov line 86.33% -> 86.48% (+0.15), branch 71.60% -> 71.88% (+0.28)"
     }
   ],
   "perf_and_bug_ledger": {

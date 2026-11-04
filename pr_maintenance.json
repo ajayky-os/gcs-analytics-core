@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-04T05:30:44Z",
+  "checked_at": "2026-11-04T05:34:08Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "64dc873a57e475a8547e6a56bd28b1b64902627e",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 4,
-  "actionable_count": 1,
+  "actionable_count": 0,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -80,7 +80,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 19.4,
+      "hours_since_update": 19.5,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -113,7 +113,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 16.4,
+      "hours_since_update": 16.5,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -146,29 +146,14 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.2,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
-      "needs_comment_fix": true,
+      "needs_comment_fix": false,
       "needs_check_fix": false,
-      "action_required": true,
-      "unaddressed_comments": [
-        {
-          "id": "pull_comment:4463831488",
-          "comment_id": 4463831488,
-          "root_comment_id": 4463831488,
-          "thread_id": "PRRT_kwDOPmMU8s6zdIL4",
-          "type": "inline_review_comment",
-          "author": "gemini-code-assist[bot]",
-          "path": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsBidiReadChannelTest.java",
-          "line": 1049,
-          "diff_hunk": "void read_nonNotFoundStorageExceptionDuringRead_rethrowsStorageException() throws Exception {\n+    GcsItemInfo itemInfo = GcsItemInfo.builder().setItemId(itemId).setSize(KB).build();\n+    ApiFuture<DisposableByteString> failedFuture = mock(ApiFuture.class);\n+    when(failedFuture.get(anyLong(), any()))\n+        .thenThrow(new ExecutionException(new StorageException(500, \"Internal Server Error\")));",
-          "body": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nInstead of mocking `ApiFuture` and stubbing its `get` method (which involves raw types and unchecked warnings), you can use `ApiFutures.immediateFailedFuture` to create a completed future that naturally throws an `ExecutionException` wrapping the target exception when `get()` is called. This is more idiomatic and avoids unnecessary mocking.\n\n```java\n    ApiFuture<DisposableByteString> failedFuture =\n        ApiFutures.immediateFailedFuture(new StorageException(500, \"Internal Server Error\"));\n```",
-          "created_at": "2026-11-04T05:09:54Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/466#discussion_r4463831488"
-        }
-      ],
+      "action_required": false,
+      "unaddressed_comments": [],
       "failing_checks": [],
       "transient_checks": []
     }
