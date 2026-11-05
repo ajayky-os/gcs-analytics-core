@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T06:09:59Z",
+  "updated_at": "2026-11-05T06:24:29Z",
   "total_prs_raised": 34,
   "merged_count": 29,
   "open_ready_count": 5,
@@ -752,8 +752,8 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 1,
-      "review_count": 0,
+      "comment_count": 2,
+      "review_count": 1,
       "perf_summary": "4/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -19.3% lat, -4.8% alloc)",
       "coverage_summary": "1665 tests, 0 skipped; cov line 86.98% -> 86.98% (+0.00), branch 72.99% -> 72.99% (+0.00)"
     }
