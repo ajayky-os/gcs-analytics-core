@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-05T07:09:35Z",
+  "generated_at": "2026-11-05T07:24:40Z",
   "project": "gcs-analytics-core",
   "funnel": {
     "total_iterations_logged": 42,
@@ -16,7 +16,7 @@
     "total_gate_cpu_hours": 1.94
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-05T07:09:35Z",
+    "updated_at": "2026-11-05T07:24:40Z",
     "total_prs_raised": 34,
     "merged_count": 29,
     "open_ready_count": 5,
