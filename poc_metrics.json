@@ -1,29 +1,29 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-05T03:54:20Z",
+  "generated_at": "2026-11-05T04:00:24Z",
   "project": "gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 40,
+    "total_iterations_logged": 41,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 38,
-    "unique_upstream_prs": 32,
+    "substantive_iterations": 39,
+    "unique_upstream_prs": 33,
     "merged_upstream_prs": 29,
-    "open_vetted_draft_prs": 3,
+    "open_vetted_draft_prs": 4,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 24,
-    "total_agent_wall_hours": 30.09,
-    "total_gate_cpu_hours": 1.78
+    "total_agent_wall_hours": 30.17,
+    "total_gate_cpu_hours": 1.8
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-05T03:54:20Z",
-    "total_prs_raised": 32,
+    "updated_at": "2026-11-05T04:00:24Z",
+    "total_prs_raised": 33,
     "merged_count": 29,
-    "open_ready_count": 3,
+    "open_ready_count": 4,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.906,
+    "overall_merge_rate_to_date": 0.879,
     "median_hours_to_merge": 14.61,
     "prs": [
       {
@@ -729,6 +729,28 @@
         "review_count": 4,
         "perf_summary": "\u2014",
         "coverage_summary": "1647 tests, 0 skipped; cov line 86.81% / branch 72.48% (no baseline; run `sil.py baseline`)"
+      },
+      {
+        "pr_number": 469,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/469",
+        "title": "test(test-lib): add unit tests for TrackingReadStrategy",
+        "state": "OPEN_READY",
+        "change_type": "test",
+        "task_class": "benchmark_or_test_infra",
+        "loc": 154,
+        "additions": 154,
+        "deletions": 0,
+        "iter": "20261105-035456-tracking-read-strategy-tests",
+        "created_at": "2026-11-05T03:59:41Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "\u2014",
+        "coverage_summary": "1668 tests, 0 skipped; cov line 86.98% -> 86.98% (+0.00), branch 72.99% -> 72.95% (-0.05)"
       }
     ]
   },
@@ -1436,6 +1458,28 @@
       "review_count": 4,
       "perf_summary": "\u2014",
       "coverage_summary": "1647 tests, 0 skipped; cov line 86.81% / branch 72.48% (no baseline; run `sil.py baseline`)"
+    },
+    {
+      "pr_number": 469,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/469",
+      "title": "test(test-lib): add unit tests for TrackingReadStrategy",
+      "state": "OPEN_READY",
+      "change_type": "test",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 154,
+      "additions": 154,
+      "deletions": 0,
+      "iter": "20261105-035456-tracking-read-strategy-tests",
+      "created_at": "2026-11-05T03:59:41Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "\u2014",
+      "coverage_summary": "1668 tests, 0 skipped; cov line 86.98% -> 86.98% (+0.00), branch 72.99% -> 72.95% (-0.05)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1908,19 +1952,19 @@
       "net_saved_swe_days_p50": 25.41
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 3,
-      "raw_counterfactual_hours_p25": 15.33,
-      "raw_counterfactual_hours_p50": 22.67,
+      "open_draft_pr_count": 4,
+      "raw_counterfactual_hours_p25": 20.0,
+      "raw_counterfactual_hours_p50": 29.34,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.906,
-      "risk_adjusted_hours_p25": 15.35,
-      "risk_adjusted_hours_p50": 22.87
+      "empirical_promoted_merge_rate": 0.879,
+      "risk_adjusted_hours_p25": 18.62,
+      "risk_adjusted_hours_p50": 27.54
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 154.23,
-      "net_saved_hours_p50": 226.14,
-      "net_saved_swe_days_p25": 19.28,
-      "net_saved_swe_days_p50": 28.27
+      "net_saved_hours_p25": 157.5,
+      "net_saved_hours_p50": 230.81,
+      "net_saved_swe_days_p25": 19.69,
+      "net_saved_swe_days_p50": 28.85
     }
   }
 }
