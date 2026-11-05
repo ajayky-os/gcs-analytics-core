@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-05T11:47:40Z",
+  "updated_at": "2026-11-05T11:59:54Z",
   "total_prs_raised": 34,
   "merged_count": 29,
-  "open_ready_count": 5,
+  "open_ready_count": 4,
   "open_draft_count": 0,
-  "closed_unmerged_count": 0,
-  "acceptance_rate_closed_prs": 1.0,
+  "closed_unmerged_count": 1,
+  "acceptance_rate_closed_prs": 0.967,
   "overall_merge_rate_to_date": 0.853,
   "median_hours_to_merge": 14.61,
   "prs": [
@@ -29,7 +29,7 @@
       "comment_count": 2,
       "review_count": 10,
       "perf_summary": "\u2014",
-      "coverage_summary": "1068 tests, 0 skipped; cov line 84.41% -> 84.41% (+0.00), branch 66.07% -> 66.07% (+0.00)"
+      "coverage_summary": "1068 tests, 0 skipped; cov line 84.41% -> 84.41% (+0.00), branch 66.07% -> 66.07% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 408,
@@ -51,7 +51,7 @@
       "comment_count": 2,
       "review_count": 9,
       "perf_summary": "\u2014",
-      "coverage_summary": "1090 tests, 0 skipped; cov line 84.41% -> 84.41% (+0.00), branch 66.07% -> 66.07% (+0.00)"
+      "coverage_summary": "1090 tests, 0 skipped; cov line 84.41% -> 84.41% (+0.00), branch 66.07% -> 66.07% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 409,
@@ -73,7 +73,7 @@
       "comment_count": 2,
       "review_count": 5,
       "perf_summary": "\u2014",
-      "coverage_summary": "1092 tests, 0 skipped; cov line 84.41% -> 84.41% (+0.00), branch 66.07% -> 66.07% (+0.00)"
+      "coverage_summary": "1092 tests, 0 skipped; cov line 84.41% -> 84.41% (+0.00), branch 66.07% -> 66.07% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 410,
@@ -95,7 +95,7 @@
       "comment_count": 2,
       "review_count": 11,
       "perf_summary": "\u2014",
-      "coverage_summary": "1092 tests, 0 skipped; cov line 84.41% -> 84.41% (+0.00), branch 66.07% -> 66.07% (+0.00)"
+      "coverage_summary": "1092 tests, 0 skipped; cov line 84.41% -> 84.41% (+0.00), branch 66.07% -> 66.07% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 411,
@@ -117,7 +117,7 @@
       "comment_count": 2,
       "review_count": 10,
       "perf_summary": "\u2014",
-      "coverage_summary": "1096 tests, 0 skipped; cov line 84.41% -> 84.41% (+0.00), branch 66.07% -> 66.07% (+0.00)"
+      "coverage_summary": "1096 tests, 0 skipped; cov line 84.41% -> 84.41% (+0.00), branch 66.07% -> 66.07% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 412,
@@ -139,7 +139,7 @@
       "comment_count": 2,
       "review_count": 14,
       "perf_summary": "\u2014",
-      "coverage_summary": "1097 tests, 0 skipped; cov line 84.41% -> 84.41% (+0.00), branch 66.07% -> 66.07% (+0.00)"
+      "coverage_summary": "1097 tests, 0 skipped; cov line 84.41% -> 84.41% (+0.00), branch 66.07% -> 66.07% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 414,
@@ -161,7 +161,7 @@
       "comment_count": 3,
       "review_count": 4,
       "perf_summary": "\u2014",
-      "coverage_summary": "1308 tests, 0 skipped; cov line 85.11% -> 85.11% (+0.00), branch 67.34% -> 67.34% (+0.00)"
+      "coverage_summary": "1308 tests, 0 skipped; cov line 85.11% -> 85.11% (+0.00), branch 67.34% -> 67.34% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 422,
@@ -183,7 +183,7 @@
       "comment_count": 3,
       "review_count": 2,
       "perf_summary": "9/45 IMPROVED (top: `ReadStrategyBenchmark.seekAndRead{forwardGapBytes=4096,strategy=RANDOM}` -73.3% lat, -93.3% alloc)",
-      "coverage_summary": "1310 tests, 0 skipped; cov line 85.11% -> 85.13% (+0.02), branch 67.34% -> 67.37% (+0.03)"
+      "coverage_summary": "1310 tests, 0 skipped; cov line 85.11% -> 85.13% (+0.02), branch 67.34% -> 67.37% (+0.03); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 428,
@@ -249,7 +249,7 @@
       "comment_count": 3,
       "review_count": 8,
       "perf_summary": "1/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -3.1% lat, -0.0% alloc)",
-      "coverage_summary": "1664 tests, 0 skipped; cov line 86.96% / branch 73.26% (no baseline; run `sil.py baseline`)"
+      "coverage_summary": "1664 tests, 0 skipped; cov line 86.96% / branch 73.26% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 431,
@@ -293,7 +293,7 @@
       "comment_count": 3,
       "review_count": 2,
       "perf_summary": "23/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=false}` -77.8% lat, -62.2% alloc)",
-      "coverage_summary": "1311 tests, 0 skipped; cov line 85.11% -> 85.23% (+0.12), branch 67.34% -> 67.41% (+0.07)"
+      "coverage_summary": "1311 tests, 0 skipped; cov line 85.11% -> 85.23% (+0.12), branch 67.34% -> 67.41% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 439,
@@ -403,7 +403,7 @@
       "comment_count": 3,
       "review_count": 2,
       "perf_summary": "\u2014",
-      "coverage_summary": "1361 tests, 0 skipped; cov line 85.60% -> 85.69% (+0.09), branch 68.19% -> 68.34% (+0.16)"
+      "coverage_summary": "1361 tests, 0 skipped; cov line 85.60% -> 85.69% (+0.09), branch 68.19% -> 68.34% (+0.16); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 446,
@@ -447,7 +447,7 @@
       "comment_count": 3,
       "review_count": 2,
       "perf_summary": "\u2014",
-      "coverage_summary": "1490 tests, 0 skipped; cov line 85.76% -> 85.78% (+0.02), branch 69.53% -> 69.62% (+0.10)"
+      "coverage_summary": "1490 tests, 0 skipped; cov line 85.76% -> 85.78% (+0.02), branch 69.53% -> 69.62% (+0.10); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 450,
@@ -513,7 +513,7 @@
       "comment_count": 3,
       "review_count": 4,
       "perf_summary": "28/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -76.8% lat, -72.4% alloc)",
-      "coverage_summary": "1531 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.08% (-0.05)"
+      "coverage_summary": "1531 tests, 0 skipped; cov line 85.96% -> 85.96% (+0.00), branch 71.12% -> 71.08% (-0.05); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 453,
@@ -695,7 +695,7 @@
       "pr_number": 468,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/468",
       "title": "test(client): cover GcsObjectRange and GcsObjectCombinedRange models",
-      "state": "OPEN_READY",
+      "state": "CLOSED_UNMERGED",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
       "loc": 77,
@@ -704,14 +704,14 @@
       "iter": "20261104-100443-object-range-models-coverage",
       "created_at": "2026-11-04T10:11:41Z",
       "merged_at": null,
-      "closed_at": null,
+      "closed_at": "2026-11-05T11:57:50Z",
       "hours_to_merge": null,
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
-      "comment_count": 5,
+      "comment_count": 6,
       "review_count": 4,
       "perf_summary": "\u2014",
-      "coverage_summary": "1647 tests, 0 skipped; cov line 86.81% / branch 72.48% (no baseline; run `sil.py baseline`)"
+      "coverage_summary": "1647 tests, 0 skipped; cov line 86.81% / branch 72.48% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 469,
@@ -733,7 +733,7 @@
       "comment_count": 3,
       "review_count": 2,
       "perf_summary": "\u2014",
-      "coverage_summary": "1668 tests, 0 skipped; cov line 86.98% -> 86.98% (+0.00), branch 72.99% -> 72.95% (-0.05)"
+      "coverage_summary": "1668 tests, 0 skipped; cov line 86.98% -> 86.98% (+0.00), branch 72.99% -> 72.95% (-0.05); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 471,
@@ -755,7 +755,7 @@
       "comment_count": 3,
       "review_count": 1,
       "perf_summary": "4/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -19.3% lat, -4.8% alloc)",
-      "coverage_summary": "1665 tests, 0 skipped; cov line 86.98% -> 86.98% (+0.00), branch 72.99% -> 72.99% (+0.00)"
+      "coverage_summary": "1665 tests, 0 skipped; cov line 86.98% -> 86.98% (+0.00), branch 72.99% -> 72.99% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ]
 }
