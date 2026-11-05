@@ -1,29 +1,29 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-05T06:09:26Z",
+  "generated_at": "2026-11-05T06:09:59Z",
   "project": "gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 41,
+    "total_iterations_logged": 42,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 39,
-    "unique_upstream_prs": 33,
+    "substantive_iterations": 40,
+    "unique_upstream_prs": 34,
     "merged_upstream_prs": 29,
-    "open_vetted_draft_prs": 4,
+    "open_vetted_draft_prs": 5,
     "closed_unmerged_prs": 0,
     "critic_major_catches": 24,
-    "total_agent_wall_hours": 30.59,
-    "total_gate_cpu_hours": 1.8
+    "total_agent_wall_hours": 30.86,
+    "total_gate_cpu_hours": 1.94
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-05T06:09:26Z",
-    "total_prs_raised": 33,
+    "updated_at": "2026-11-05T06:09:59Z",
+    "total_prs_raised": 34,
     "merged_count": 29,
-    "open_ready_count": 4,
+    "open_ready_count": 5,
     "open_draft_count": 0,
     "closed_unmerged_count": 0,
     "acceptance_rate_closed_prs": 1.0,
-    "overall_merge_rate_to_date": 0.879,
+    "overall_merge_rate_to_date": 0.853,
     "median_hours_to_merge": 14.61,
     "prs": [
       {
@@ -751,6 +751,28 @@
         "review_count": 2,
         "perf_summary": "\u2014",
         "coverage_summary": "1668 tests, 0 skipped; cov line 86.98% -> 86.98% (+0.00), branch 72.99% -> 72.95% (-0.05)"
+      },
+      {
+        "pr_number": 471,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/471",
+        "title": "fix(client): parse chunk-size, thread-count, and merge options via safeParseInteger",
+        "state": "OPEN_READY",
+        "change_type": "fix",
+        "task_class": "correctness_fix",
+        "loc": 67,
+        "additions": 63,
+        "deletions": 4,
+        "iter": "20261105-055311-safe-parse-client-options-integers",
+        "created_at": "2026-11-05T06:09:24Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "4/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -19.3% lat, -4.8% alloc)",
+        "coverage_summary": "1665 tests, 0 skipped; cov line 86.98% -> 86.98% (+0.00), branch 72.99% -> 72.99% (+0.00)"
       }
     ]
   },
@@ -1480,6 +1502,28 @@
       "review_count": 2,
       "perf_summary": "\u2014",
       "coverage_summary": "1668 tests, 0 skipped; cov line 86.98% -> 86.98% (+0.00), branch 72.99% -> 72.95% (-0.05)"
+    },
+    {
+      "pr_number": 471,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/471",
+      "title": "fix(client): parse chunk-size, thread-count, and merge options via safeParseInteger",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 67,
+      "additions": 63,
+      "deletions": 4,
+      "iter": "20261105-055311-safe-parse-client-options-integers",
+      "created_at": "2026-11-05T06:09:24Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "4/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -19.3% lat, -4.8% alloc)",
+      "coverage_summary": "1665 tests, 0 skipped; cov line 86.98% -> 86.98% (+0.00), branch 72.99% -> 72.99% (+0.00)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -1952,19 +1996,19 @@
       "net_saved_swe_days_p50": 25.41
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 4,
-      "raw_counterfactual_hours_p25": 20.0,
-      "raw_counterfactual_hours_p50": 29.34,
+      "open_draft_pr_count": 5,
+      "raw_counterfactual_hours_p25": 24.0,
+      "raw_counterfactual_hours_p50": 35.34,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.879,
-      "risk_adjusted_hours_p25": 18.62,
-      "risk_adjusted_hours_p50": 27.54
+      "empirical_promoted_merge_rate": 0.853,
+      "risk_adjusted_hours_p25": 21.42,
+      "risk_adjusted_hours_p50": 31.74
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 157.5,
-      "net_saved_hours_p50": 230.81,
-      "net_saved_swe_days_p25": 19.69,
-      "net_saved_swe_days_p50": 28.85
+      "net_saved_hours_p25": 160.3,
+      "net_saved_hours_p50": 235.01,
+      "net_saved_swe_days_p25": 20.04,
+      "net_saved_swe_days_p50": 29.38
     }
   }
 }
