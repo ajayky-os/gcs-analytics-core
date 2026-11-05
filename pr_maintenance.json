@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-05T04:24:47Z",
+  "checked_at": "2026-11-05T04:25:42Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "2df6971942cf625640333d305ff9ee540aab1afb",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 4,
-  "actionable_count": 1,
+  "actionable_count": 0,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
   "prs": [
@@ -80,7 +80,7 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 20.6,
+      "hours_since_update": 20.7,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -146,29 +146,14 @@
       "ready_to_merge": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.1,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
-      "needs_comment_fix": true,
+      "needs_comment_fix": false,
       "needs_check_fix": false,
-      "action_required": true,
-      "unaddressed_comments": [
-        {
-          "id": "pull_comment:4476456539",
-          "comment_id": 4476456539,
-          "root_comment_id": 4476456539,
-          "thread_id": "PRRT_kwDOPmMU8s6z6wHy",
-          "type": "inline_review_comment",
-          "author": "gemini-code-assist[bot]",
-          "path": "test-lib/src/test/java/com/google/cloud/gcs/analyticscore/client/TrackingReadStrategyTest.java",
-          "line": 102,
-          "diff_hunk": "   throws IOException {\n+    ReadChannel mockChannel = mock(ReadChannel.class);\n+    when(delegate.getReadChannel(0L, 10)).thenReturn(mockChannel);\n+    trackingReadStrategy.setEofAtCall(1);\n+\n+    ReadChannel channel = trackingReadStrategy.getReadChannel(0L, 10);\n+    ByteBuffer dst = ByteBuffer.allocate(10);\n+    int bytesRead = channel.read(dst);\n+\n+    assertThat(bytesRead).isEqualTo(-1);\n+  }",
-          "body": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nIn unit tests involving mock sources or simulated reads, it is a best practice to assert that the read operation was actually attempted and tracked (e.g., by verifying the read counter is incremented). This prevents false positives and ensures the correct code paths are executed.\n\n```suggestion\n  void getReadChannel_withEofAtCallConfigured_propagatesEofThresholdToWrappedChannel()\n      throws IOException {\n    ReadChannel mockChannel = mock(ReadChannel.class);\n    when(delegate.getReadChannel(0L, 10)).thenReturn(mockChannel);\n    trackingReadStrategy.setEofAtCall(1);\n\n    ReadChannel channel = trackingReadStrategy.getReadChannel(0L, 10);\n    ByteBuffer dst = ByteBuffer.allocate(10);\n    int bytesRead = channel.read(dst);\n\n    assertThat(bytesRead).isEqualTo(-1);\n    assertThat(trackingReadStrategy.getCurrentChannel().getReadCalls()).isEqualTo(1);\n  }\n```\n\n<details>\n<summary>References</summary>\n\n1. In unit tests involving mock sources or speculative reads, assert that the read operation was actually attempted (e.g., by verifying a readAttempted flag or checking that a read counter is incremented). This prevents false positives from unstubbed methods returning default values and ensures the correct code paths are executed.\n</details>",
-          "created_at": "2026-11-05T04:00:37Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/469#discussion_r4476456539"
-        }
-      ],
+      "action_required": false,
+      "unaddressed_comments": [],
       "failing_checks": [],
       "transient_checks": []
     }
