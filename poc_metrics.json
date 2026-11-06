@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-06T09:29:09Z",
+  "generated_at": "2026-11-06T09:32:14Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -13,11 +13,11 @@
     "open_vetted_draft_prs": 4,
     "closed_unmerged_prs": 3,
     "critic_major_catches": 24,
-    "total_agent_wall_hours": 36.53,
-    "total_gate_cpu_hours": 2.37
+    "total_agent_wall_hours": 39.77,
+    "total_gate_cpu_hours": 2.26
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-06T09:29:09Z",
+    "updated_at": "2026-11-06T09:32:14Z",
     "total_prs_raised": 36,
     "merged_count": 29,
     "open_ready_count": 4,
@@ -768,12 +768,12 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 2,
+        "review_count": 4,
         "perf_summary": "4/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -19.3% lat, -4.8% alloc)",
-        "coverage_summary": "1665 tests, 0 skipped; cov line 86.98% -> 86.98% (+0.00), branch 72.99% -> 72.99% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "coverage_summary": "1661 tests, 0 skipped; cov line 87.03% / branch 73.50% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
       {
         "pr_number": 478,
@@ -793,7 +793,7 @@
         "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 3,
+        "review_count": 4,
         "perf_summary": "\u2014",
         "coverage_summary": "1703 tests, 0 skipped; cov line 87.03% / branch 73.50% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
@@ -1563,12 +1563,12 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 2,
+      "review_count": 4,
       "perf_summary": "4/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -19.3% lat, -4.8% alloc)",
-      "coverage_summary": "1665 tests, 0 skipped; cov line 86.98% -> 86.98% (+0.00), branch 72.99% -> 72.99% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "1661 tests, 0 skipped; cov line 87.03% / branch 73.50% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 478,
@@ -1588,7 +1588,7 @@
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 3,
+      "review_count": 4,
       "perf_summary": "\u2014",
       "coverage_summary": "1703 tests, 0 skipped; cov line 87.03% / branch 73.50% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },

@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-06T09:29:08Z",
+  "checked_at": "2026-11-06T09:32:04Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "710caa95deab432a81f990955f0ba8f1606eabf3",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 4,
-  "actionable_count": 2,
+  "actionable_count": 0,
   "auto_rebased_count": 0,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
@@ -49,7 +49,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 20.0,
+      "hours_since_update": 20.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -117,43 +117,14 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.3,
+      "hours_since_update": 0.4,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
-      "needs_comment_fix": true,
+      "needs_comment_fix": false,
       "needs_check_fix": false,
-      "action_required": true,
-      "unaddressed_comments": [
-        {
-          "id": "pull_comment:4490780919",
-          "comment_id": 4490780919,
-          "root_comment_id": 4490780919,
-          "thread_id": "PRRT_kwDOPmMU8s60cYD9",
-          "type": "inline_review_comment",
-          "author": "shrutisinghania",
-          "path": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptionsTest.java",
-          "line": 116,
-          "diff_hunk": "old-bytes\",\n         \"gcs.analytics-core.large-file.footer.prefetch.size-bytes\",\n         \"gcs.analytics-core.read.inplace-seek-limit-bytes\",\n         \"gcs.analytics-core.adaptive-read.sequential-read-threshold\",\n         \"gcs.analytics-core.random-read.min-request-size\",\n         \"gcs.analytics-core.read.bidi.timeout-seconds\",\n+        \"gcs.analytics-core.read.vectored.range.merge-gap.max-bytes\",",
-          "body": "nit: These two vectored keys are already tested directly in `GcsVectoredReadOptionsTest`. Let's drop them here to avoid duplicating test cases (`GcsReadOptions` delegation to `GcsVectoredReadOptions` is already covered above).",
-          "created_at": "2026-11-06T09:09:24Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/471#discussion_r4490780919"
-        },
-        {
-          "id": "pull_comment:4490786101",
-          "comment_id": 4490786101,
-          "root_comment_id": 4490786101,
-          "thread_id": "PRRT_kwDOPmMU8s60cY4s",
-          "type": "inline_review_comment",
-          "author": "shrutisinghania",
-          "path": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptionsTest.java",
-          "line": 138,
-          "diff_hunk": "@@ -132,6 +135,14 @@ void createFromOptions_integerValuesGreaterThanIntegerMax_throwsIllegalArgumentE\n                 propertyKey, outOfBoundValue, Integer.MAX_VALUE));\n   }\n \n+  @Test",
-          "body": "nit: `createFromOptions_withZeroChunkSize_allowsZeroChunkSize` is unrelated to the `safeParseInteger` migration \u2014 please drop it to keep the PR atomic.",
-          "created_at": "2026-11-06T09:09:53Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/471#discussion_r4490786101"
-        }
-      ],
+      "action_required": false,
+      "unaddressed_comments": [],
       "failing_checks": [],
       "transient_checks": []
     },
@@ -184,25 +155,10 @@
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
-      "needs_comment_fix": true,
+      "needs_comment_fix": false,
       "needs_check_fix": false,
-      "action_required": true,
-      "unaddressed_comments": [
-        {
-          "id": "pull_comment:4490750392",
-          "comment_id": 4490750392,
-          "root_comment_id": 4490750392,
-          "thread_id": "PRRT_kwDOPmMU8s60cTW5",
-          "type": "inline_review_comment",
-          "author": "shrutisinghania",
-          "path": "test-lib/src/test/java/com/google/cloud/gcs/analyticscore/client/InMemoryStorageContractTest.java",
-          "line": 275,
-          "diff_hunk": "torage = inMemory();\n+\n+    try (ReadChannel ch = storage.storage().reader(BLOB)) {\n+      IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> ch.seek(-1));\n+      assertThat(e).hasMessageThat().contains(\"-1\");\n+      assertThat(storage.readerOpens()).isEqualTo(0);\n+    }\n+  }\n+\n+  @Test\n+  void close_storageAndChannel_updatesOpenStateAndAllowsReads() throws Exception {",
-          "body": "Asserting that `reader(BLOB)` and `readAll(ch)` succeed *after* `storage.storage().close()` locks in a fake quirk rather than a real `Storage` contract (`Storage.close()` is only a no-op here for convenience, and pinning post-close reads would block making the fake stricter later). Please drop the `storage.storage().close()` + post-close read assertion and just test `ch.isOpen()` / `ch.close()` on the channel.",
-          "created_at": "2026-11-06T09:05:44Z",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/478#discussion_r4490750392"
-        }
-      ],
+      "action_required": false,
+      "unaddressed_comments": [],
       "failing_checks": [],
       "transient_checks": []
     }
