@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-06T09:32:14Z",
+  "updated_at": "2026-11-06T09:33:59Z",
   "total_prs_raised": 36,
   "merged_count": 29,
   "open_ready_count": 4,
@@ -772,10 +772,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "CHANGES_REQUESTED",
+      "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 4,
+      "review_count": 5,
       "perf_summary": "\u2014",
       "coverage_summary": "1703 tests, 0 skipped; cov line 87.03% / branch 73.50% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
