@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-06T09:27:16Z",
+  "updated_at": "2026-11-06T09:29:09Z",
   "total_prs_raised": 36,
   "merged_count": 29,
   "open_ready_count": 4,
@@ -764,8 +764,8 @@
       "state": "OPEN_READY",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
-      "loc": 102,
-      "additions": 100,
+      "loc": 100,
+      "additions": 98,
       "deletions": 2,
       "iter": "20261106-035314-inmemory-storage-unit-and-contract-tests",
       "created_at": "2026-11-06T04:01:43Z",
