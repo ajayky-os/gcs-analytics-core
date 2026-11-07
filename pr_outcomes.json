@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T04:30:59Z",
+  "updated_at": "2026-11-07T04:39:24Z",
   "total_prs_raised": 38,
   "merged_count": 30,
   "open_ready_count": 5,
@@ -842,8 +842,8 @@
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 1,
-      "perf_summary": "36/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -65.1% lat, -0.1% alloc)",
-      "coverage_summary": "1707 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.50% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "perf_summary": "40/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.1% lat, -0.1% alloc)",
+      "coverage_summary": "1707 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.54% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ]
 }
