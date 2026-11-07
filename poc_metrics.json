@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-07T04:39:24Z",
+  "generated_at": "2026-11-07T04:44:29Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -13,11 +13,11 @@
     "open_vetted_draft_prs": 5,
     "closed_unmerged_prs": 3,
     "critic_major_catches": 24,
-    "total_agent_wall_hours": 40.32,
-    "total_gate_cpu_hours": 2.47
+    "total_agent_wall_hours": 40.99,
+    "total_gate_cpu_hours": 2.41
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-07T04:39:24Z",
+    "updated_at": "2026-11-07T04:44:29Z",
     "total_prs_raised": 38,
     "merged_count": 30,
     "open_ready_count": 5,
@@ -848,9 +848,9 @@
         "state": "OPEN_READY",
         "change_type": "fix",
         "task_class": "correctness_fix",
-        "loc": 42,
-        "additions": 40,
-        "deletions": 2,
+        "loc": 54,
+        "additions": 50,
+        "deletions": 4,
         "iter": "20261107-034451-fix-client-options-enum-parsing",
         "created_at": "2026-11-07T04:00:53Z",
         "merged_at": null,
@@ -859,8 +859,8 @@
         "review_decision": "PENDING",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
-        "perf_summary": "40/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.1% lat, -0.1% alloc)",
+        "review_count": 4,
+        "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.1% lat, -0.1% alloc)",
         "coverage_summary": "1707 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.54% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
@@ -1687,9 +1687,9 @@
       "state": "OPEN_READY",
       "change_type": "fix",
       "task_class": "correctness_fix",
-      "loc": 42,
-      "additions": 40,
-      "deletions": 2,
+      "loc": 54,
+      "additions": 50,
+      "deletions": 4,
       "iter": "20261107-034451-fix-client-options-enum-parsing",
       "created_at": "2026-11-07T04:00:53Z",
       "merged_at": null,
@@ -1698,8 +1698,8 @@
       "review_decision": "PENDING",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
-      "perf_summary": "40/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.1% lat, -0.1% alloc)",
+      "review_count": 4,
+      "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.1% lat, -0.1% alloc)",
       "coverage_summary": "1707 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.54% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
@@ -1911,6 +1911,22 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "minor",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptions.java:198",
+        "finding": "The Protocol enum parsing relies on Optional.ofNullable and .trim(), which will crash with an IllegalArgumentException if a blank (whitespace-only) string is provided. It should use ConfigurationUtil.getTrimmedValue for consistency with UploadType.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "minor",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:163",
+        "finding": "FileAccessPattern enum parsing calls .toUpperCase() without a Locale, which is prone to the Turkish locale bug. It also does not handle blank values gracefully.",
+        "source": "critic_history"
       },
       {
         "iter": "20261104-100443-object-range-models-coverage",
