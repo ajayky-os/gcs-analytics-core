@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-08T10:09:33Z",
+  "generated_at": "2026-11-08T10:11:52Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 51,
+    "total_iterations_logged": 52,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 49,
-    "unique_upstream_prs": 42,
+    "substantive_iterations": 50,
+    "unique_upstream_prs": 43,
     "merged_upstream_prs": 30,
-    "open_vetted_draft_prs": 9,
+    "open_vetted_draft_prs": 10,
     "closed_unmerged_prs": 3,
     "critic_major_catches": 24,
-    "total_agent_wall_hours": 41.88,
-    "total_gate_cpu_hours": 3.03
+    "total_agent_wall_hours": 42.33,
+    "total_gate_cpu_hours": 3.16
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-08T10:09:33Z",
-    "total_prs_raised": 42,
+    "updated_at": "2026-11-08T10:11:52Z",
+    "total_prs_raised": 43,
     "merged_count": 30,
-    "open_ready_count": 9,
+    "open_ready_count": 10,
     "open_draft_count": 0,
     "closed_unmerged_count": 3,
     "acceptance_rate_closed_prs": 0.909,
-    "overall_merge_rate_to_date": 0.714,
+    "overall_merge_rate_to_date": 0.698,
     "median_hours_to_merge": 14.61,
     "prs": [
       {
@@ -950,6 +950,28 @@
         "review_count": 1,
         "perf_summary": "40/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.4% lat, -0.1% alloc)",
         "coverage_summary": "1716 tests, 0 skipped; cov line 87.03% -> 87.04% (+0.01), branch 73.50% -> 73.52% (+0.02); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 486,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/486",
+        "title": "fix(client): guard Duration.toMillis overflow in GcsHttpTransportFactory",
+        "state": "OPEN_READY",
+        "change_type": "fix",
+        "task_class": "correctness_fix",
+        "loc": 58,
+        "additions": 52,
+        "deletions": 6,
+        "iter": "20261108-094452-transport-factory-timeout-overflow-guard",
+        "created_at": "2026-11-08T10:11:14Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.1% lat, -0.1% alloc)",
+        "coverage_summary": "1706 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.50% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -1877,6 +1899,28 @@
       "review_count": 1,
       "perf_summary": "40/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.4% lat, -0.1% alloc)",
       "coverage_summary": "1716 tests, 0 skipped; cov line 87.03% -> 87.04% (+0.01), branch 73.50% -> 73.52% (+0.02); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 486,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/486",
+      "title": "fix(client): guard Duration.toMillis overflow in GcsHttpTransportFactory",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 58,
+      "additions": 52,
+      "deletions": 6,
+      "iter": "20261108-094452-transport-factory-timeout-overflow-guard",
+      "created_at": "2026-11-08T10:11:14Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.1% lat, -0.1% alloc)",
+      "coverage_summary": "1706 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.50% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2397,19 +2441,19 @@
       "net_saved_swe_days_p50": 26.24
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 9,
-      "raw_counterfactual_hours_p25": 39.33,
-      "raw_counterfactual_hours_p50": 58.67,
+      "open_draft_pr_count": 10,
+      "raw_counterfactual_hours_p25": 43.33,
+      "raw_counterfactual_hours_p50": 64.67,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.714,
-      "risk_adjusted_hours_p25": 32.15,
-      "risk_adjusted_hours_p50": 48.07
+      "empirical_promoted_merge_rate": 0.698,
+      "risk_adjusted_hours_p25": 34.95,
+      "risk_adjusted_hours_p50": 52.27
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 175.7,
-      "net_saved_hours_p50": 258.01,
-      "net_saved_swe_days_p25": 21.96,
-      "net_saved_swe_days_p50": 32.25
+      "net_saved_hours_p25": 178.5,
+      "net_saved_hours_p50": 262.21,
+      "net_saved_swe_days_p25": 22.31,
+      "net_saved_swe_days_p50": 32.78
     }
   }
 }

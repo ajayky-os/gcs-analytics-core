@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-08T10:09:33Z",
-  "total_prs_raised": 42,
+  "updated_at": "2026-11-08T10:11:52Z",
+  "total_prs_raised": 43,
   "merged_count": 30,
-  "open_ready_count": 9,
+  "open_ready_count": 10,
   "open_draft_count": 0,
   "closed_unmerged_count": 3,
   "acceptance_rate_closed_prs": 0.909,
-  "overall_merge_rate_to_date": 0.714,
+  "overall_merge_rate_to_date": 0.698,
   "median_hours_to_merge": 14.61,
   "prs": [
     {
@@ -932,6 +932,28 @@
       "review_count": 1,
       "perf_summary": "40/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.4% lat, -0.1% alloc)",
       "coverage_summary": "1716 tests, 0 skipped; cov line 87.03% -> 87.04% (+0.01), branch 73.50% -> 73.52% (+0.02); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 486,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/486",
+      "title": "fix(client): guard Duration.toMillis overflow in GcsHttpTransportFactory",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 58,
+      "additions": 52,
+      "deletions": 6,
+      "iter": "20261108-094452-transport-factory-timeout-overflow-guard",
+      "created_at": "2026-11-08T10:11:14Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.1% lat, -0.1% alloc)",
+      "coverage_summary": "1706 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.50% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ]
 }
