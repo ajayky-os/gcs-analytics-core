@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-08T06:01:02Z",
-  "total_prs_raised": 41,
+  "updated_at": "2026-11-08T06:02:03Z",
+  "total_prs_raised": 42,
   "merged_count": 30,
-  "open_ready_count": 8,
+  "open_ready_count": 9,
   "open_draft_count": 0,
   "closed_unmerged_count": 3,
   "acceptance_rate_closed_prs": 0.909,
-  "overall_merge_rate_to_date": 0.732,
+  "overall_merge_rate_to_date": 0.714,
   "median_hours_to_merge": 14.61,
   "prs": [
     {
@@ -910,6 +910,28 @@
       "review_count": 1,
       "perf_summary": "40/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.4% lat, -0.1% alloc)",
       "coverage_summary": "1711 tests, 0 skipped; cov line 87.03% -> 87.05% (+0.02), branch 73.50% -> 73.52% (+0.02); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 485,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/485",
+      "title": "fix(client): validate timeout does not overflow int in GcsAuthOptions",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 128,
+      "additions": 117,
+      "deletions": 11,
+      "iter": "20261108-054917-auth-options-timeout-overflow-validation",
+      "created_at": "2026-11-08T06:01:33Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "40/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.4% lat, -0.1% alloc)",
+      "coverage_summary": "1716 tests, 0 skipped; cov line 87.03% -> 87.04% (+0.01), branch 73.50% -> 73.52% (+0.02); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ]
 }
