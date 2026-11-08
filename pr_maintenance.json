@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-08T06:09:45Z",
+  "checked_at": "2026-11-08T06:15:51Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "33b015ce0b03fb857cdf8cec7939e728250f2555",
   "onduty": {
@@ -49,7 +49,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 40.4,
+      "hours_since_update": 40.5,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -83,7 +83,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 21.2,
+      "hours_since_update": 21.3,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -117,7 +117,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 19.8,
+      "hours_since_update": 20.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -151,7 +151,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 43.8,
+      "hours_since_update": 43.9,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -185,7 +185,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 24.9,
+      "hours_since_update": 25.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -219,7 +219,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 24.0,
+      "hours_since_update": 24.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -253,7 +253,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 19.8,
+      "hours_since_update": 19.9,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -287,7 +287,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 1.9,
+      "hours_since_update": 2.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -321,7 +321,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.1,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -330,18 +330,7 @@
       "action_required": false,
       "unaddressed_comments": [],
       "failing_checks": [],
-      "transient_checks": [
-        {
-          "name": "presubmits / integration-tests",
-          "state": "ERROR",
-          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/aa6d20ff-3ee8-4119-83c2-c4f73fb91ae9",
-          "build_id": "aa6d20ff-3ee8-4119-83c2-c4f73fb91ae9",
-          "classification": "TRANSIENT_INFRA",
-          "rebuilt_as": "3ee54895-aaff-420e-aa5e-e608a2b3e2a0",
-          "already_rebuilt": true,
-          "log_excerpt": "cutor.lambda$start$0(PipelineBuildExecutor.java:67)\n\tat java.base/java.util.concurrent.FutureTask.run(Unknown Source)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)\n\tat java.base/java.lang.Thread.run(Unknown Source)\n\n[22:03:18 PST] Updating SpongeV2 invocation.\n[22:03:23 PST] Build does not log to ResultStore. Skipping ResultStore update. Note that Bazel may still log to ResultStore."
-        }
-      ]
+      "transient_checks": []
     }
   ]
 }
