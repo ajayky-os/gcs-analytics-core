@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-09T03:54:36Z",
-  "total_prs_raised": 43,
+  "updated_at": "2026-11-09T03:59:04Z",
+  "total_prs_raised": 44,
   "merged_count": 30,
-  "open_ready_count": 10,
+  "open_ready_count": 11,
   "open_draft_count": 0,
   "closed_unmerged_count": 3,
   "acceptance_rate_closed_prs": 0.909,
-  "overall_merge_rate_to_date": 0.698,
+  "overall_merge_rate_to_date": 0.682,
   "median_hours_to_merge": 14.61,
   "prs": [
     {
@@ -954,6 +954,28 @@
       "review_count": 1,
       "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.1% lat, -0.1% alloc)",
       "coverage_summary": "1706 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.50% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 487,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/487",
+      "title": "fix(client): ignore blank endpoint and universe in GcsTransportOptionsFactory",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 40,
+      "additions": 31,
+      "deletions": 9,
+      "iter": "20261109-034724-transport-options-factory-blank-endpoint",
+      "created_at": "2026-11-09T03:58:29Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.7% lat, -0.1% alloc)",
+      "coverage_summary": "1709 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.50% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ]
 }
