@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-10T06:12:47Z",
+  "generated_at": "2026-11-10T06:16:29Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 56,
+    "total_iterations_logged": 57,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 54,
-    "unique_upstream_prs": 47,
+    "substantive_iterations": 55,
+    "unique_upstream_prs": 48,
     "merged_upstream_prs": 31,
-    "open_vetted_draft_prs": 13,
+    "open_vetted_draft_prs": 14,
     "closed_unmerged_prs": 3,
     "critic_major_catches": 24,
-    "total_agent_wall_hours": 44.62,
-    "total_gate_cpu_hours": 3.73
+    "total_agent_wall_hours": 45.08,
+    "total_gate_cpu_hours": 3.92
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-10T06:12:47Z",
-    "total_prs_raised": 47,
+    "updated_at": "2026-11-10T06:16:29Z",
+    "total_prs_raised": 48,
     "merged_count": 31,
-    "open_ready_count": 13,
+    "open_ready_count": 14,
     "open_draft_count": 0,
     "closed_unmerged_count": 3,
     "acceptance_rate_closed_prs": 0.912,
-    "overall_merge_rate_to_date": 0.66,
+    "overall_merge_rate_to_date": 0.646,
     "median_hours_to_merge": 14.61,
     "prs": [
       {
@@ -1060,6 +1060,28 @@
         "review_count": 1,
         "perf_summary": "18/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -12.4% lat, -0.0% alloc)",
         "coverage_summary": "1779 tests, 0 skipped; cov line 86.65% -> 86.66% (+0.02), branch 72.89% -> 72.94% (+0.05); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 491,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/491",
+        "title": "fix(client): normalize GcsVectoredReadOptions parsing via getTrimmedValue",
+        "state": "OPEN_READY",
+        "change_type": "fix",
+        "task_class": "correctness_fix",
+        "loc": 189,
+        "additions": 181,
+        "deletions": 8,
+        "iter": "20261110-054849-normalize-vectored-read-options-parsing",
+        "created_at": "2026-11-10T06:15:53Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "10/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -11.6% lat, -0.0% alloc)",
+        "coverage_summary": "1787 tests, 0 skipped; cov line 86.65% -> 86.68% (+0.03), branch 72.89% -> 72.94% (+0.05); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2097,6 +2119,28 @@
       "review_count": 1,
       "perf_summary": "18/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -12.4% lat, -0.0% alloc)",
       "coverage_summary": "1779 tests, 0 skipped; cov line 86.65% -> 86.66% (+0.02), branch 72.89% -> 72.94% (+0.05); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 491,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/491",
+      "title": "fix(client): normalize GcsVectoredReadOptions parsing via getTrimmedValue",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 189,
+      "additions": 181,
+      "deletions": 8,
+      "iter": "20261110-054849-normalize-vectored-read-options-parsing",
+      "created_at": "2026-11-10T06:15:53Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "10/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -11.6% lat, -0.0% alloc)",
+      "coverage_summary": "1787 tests, 0 skipped; cov line 86.65% -> 86.68% (+0.03), branch 72.89% -> 72.94% (+0.05); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2617,19 +2661,19 @@
       "net_saved_swe_days_p50": 26.99
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 13,
-      "raw_counterfactual_hours_p25": 55.33,
-      "raw_counterfactual_hours_p50": 82.67,
+      "open_draft_pr_count": 14,
+      "raw_counterfactual_hours_p25": 59.33,
+      "raw_counterfactual_hours_p50": 88.67,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.66,
-      "risk_adjusted_hours_p25": 43.35,
-      "risk_adjusted_hours_p50": 64.87
+      "empirical_promoted_merge_rate": 0.646,
+      "risk_adjusted_hours_p25": 46.15,
+      "risk_adjusted_hours_p50": 69.07
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 190.9,
-      "net_saved_hours_p50": 280.81,
-      "net_saved_swe_days_p25": 23.86,
-      "net_saved_swe_days_p50": 35.1
+      "net_saved_hours_p25": 193.7,
+      "net_saved_hours_p50": 285.01,
+      "net_saved_swe_days_p25": 24.21,
+      "net_saved_swe_days_p50": 35.63
     }
   }
 }
