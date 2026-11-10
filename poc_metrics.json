@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-10T06:31:20Z",
+  "generated_at": "2026-11-10T06:39:53Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -17,7 +17,7 @@
     "total_gate_cpu_hours": 3.92
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-10T06:31:20Z",
+    "updated_at": "2026-11-10T06:39:53Z",
     "total_prs_raised": 48,
     "merged_count": 31,
     "open_ready_count": 14,
@@ -1078,7 +1078,7 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 2,
+        "comment_count": 3,
         "review_count": 1,
         "perf_summary": "10/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -11.6% lat, -0.0% alloc)",
         "coverage_summary": "1787 tests, 0 skipped; cov line 86.65% -> 86.68% (+0.03), branch 72.89% -> 72.94% (+0.05); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
@@ -2137,7 +2137,7 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 2,
+      "comment_count": 3,
       "review_count": 1,
       "perf_summary": "10/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -11.6% lat, -0.0% alloc)",
       "coverage_summary": "1787 tests, 0 skipped; cov line 86.65% -> 86.68% (+0.03), branch 72.89% -> 72.94% (+0.05); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
