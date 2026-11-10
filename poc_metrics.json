@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-10T10:09:53Z",
+  "generated_at": "2026-11-10T10:14:28Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 57,
+    "total_iterations_logged": 58,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 55,
-    "unique_upstream_prs": 48,
+    "substantive_iterations": 56,
+    "unique_upstream_prs": 49,
     "merged_upstream_prs": 31,
-    "open_vetted_draft_prs": 14,
+    "open_vetted_draft_prs": 15,
     "closed_unmerged_prs": 3,
-    "critic_major_catches": 24,
-    "total_agent_wall_hours": 45.82,
-    "total_gate_cpu_hours": 3.81
+    "critic_major_catches": 26,
+    "total_agent_wall_hours": 46.27,
+    "total_gate_cpu_hours": 4.0
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-10T10:09:53Z",
-    "total_prs_raised": 48,
+    "updated_at": "2026-11-10T10:14:28Z",
+    "total_prs_raised": 49,
     "merged_count": 31,
-    "open_ready_count": 14,
+    "open_ready_count": 15,
     "open_draft_count": 0,
     "closed_unmerged_count": 3,
     "acceptance_rate_closed_prs": 0.912,
-    "overall_merge_rate_to_date": 0.646,
+    "overall_merge_rate_to_date": 0.633,
     "median_hours_to_merge": 14.61,
     "prs": [
       {
@@ -1082,6 +1082,28 @@
         "review_count": 2,
         "perf_summary": "4/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -8.7% lat, -0.0% alloc)",
         "coverage_summary": "1787 tests, 0 skipped; cov line 86.65% -> 86.68% (+0.03), branch 72.89% -> 72.98% (+0.09); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 492,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/492",
+        "title": "fix(core): make GcsAnalyticsCoreOptions immutable and null-safe",
+        "state": "OPEN_READY",
+        "change_type": "fix",
+        "task_class": "correctness_fix",
+        "loc": 92,
+        "additions": 88,
+        "deletions": 4,
+        "iter": "20261110-094714-analytics-core-options-null-safety",
+        "created_at": "2026-11-10T10:13:56Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "13/45 IMPROVED (top: `FooterPrefetchBenchmark.readFooterUnknownSize{prefetchEnabled=true}` -13.8% lat, +0.0% alloc)",
+        "coverage_summary": "1778 tests, 0 skipped; cov line 86.65% -> 86.65% (+0.00), branch 72.89% -> 72.89% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2141,6 +2163,28 @@
       "review_count": 2,
       "perf_summary": "4/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -8.7% lat, -0.0% alloc)",
       "coverage_summary": "1787 tests, 0 skipped; cov line 86.65% -> 86.68% (+0.03), branch 72.89% -> 72.98% (+0.09); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 492,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/492",
+      "title": "fix(core): make GcsAnalyticsCoreOptions immutable and null-safe",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 92,
+      "additions": 88,
+      "deletions": 4,
+      "iter": "20261110-094714-analytics-core-options-null-safety",
+      "created_at": "2026-11-10T10:13:56Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "13/45 IMPROVED (top: `FooterPrefetchBenchmark.readFooterUnknownSize{prefetchEnabled=true}` -13.8% lat, +0.0% alloc)",
+      "coverage_summary": "1778 tests, 0 skipped; cov line 86.65% -> 86.65% (+0.00), branch 72.89% -> 72.89% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2294,7 +2338,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 24,
+    "major_or_blocker_count": 26,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -2351,6 +2395,22 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261110-094714-analytics-core-options-null-safety",
+        "pr": "#492",
+        "severity": "blocker",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GcsAnalyticsCoreOptions.java:49",
+        "finding": "Silently skipping map entries with null keys or values violates the project's \"Fail-Fast\" guideline. The previous code (ImmutableMap.copyOf) threw an immediate NPE on null entries, which was correct behavior for an invalid configuration state. By catching and ignoring them instead, this change introduces a silent misconfiguration (dropped properties) rather than preventing one. The hypothesis claims this \"prevents deferred NPEs\", but the original NPEs were already immediate.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261110-094714-analytics-core-options-null-safety",
+        "pr": "#492",
+        "severity": "major",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/GcsAnalyticsCoreOptionsTest.java:137",
+        "finding": "The test getFileSystemOptions_withNullKeysAndValues_ignoresNullEntries asserts behavior that violates fail-fast principles (silently dropping invalid configuration entries).",
+        "source": "critic_history"
       },
       {
         "iter": "20261107-034451-fix-client-options-enum-parsing",
@@ -2661,19 +2721,19 @@
       "net_saved_swe_days_p50": 26.99
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 14,
-      "raw_counterfactual_hours_p25": 59.33,
-      "raw_counterfactual_hours_p50": 88.67,
+      "open_draft_pr_count": 15,
+      "raw_counterfactual_hours_p25": 63.33,
+      "raw_counterfactual_hours_p50": 94.67,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.646,
-      "risk_adjusted_hours_p25": 46.15,
-      "risk_adjusted_hours_p50": 69.07
+      "empirical_promoted_merge_rate": 0.633,
+      "risk_adjusted_hours_p25": 49.61,
+      "risk_adjusted_hours_p50": 74.27
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 193.7,
-      "net_saved_hours_p50": 285.01,
-      "net_saved_swe_days_p25": 24.21,
-      "net_saved_swe_days_p50": 35.63
+      "net_saved_hours_p25": 197.16,
+      "net_saved_hours_p50": 290.21,
+      "net_saved_swe_days_p25": 24.65,
+      "net_saved_swe_days_p50": 36.28
     }
   }
 }

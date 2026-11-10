@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-10T10:09:53Z",
-  "total_prs_raised": 48,
+  "updated_at": "2026-11-10T10:14:28Z",
+  "total_prs_raised": 49,
   "merged_count": 31,
-  "open_ready_count": 14,
+  "open_ready_count": 15,
   "open_draft_count": 0,
   "closed_unmerged_count": 3,
   "acceptance_rate_closed_prs": 0.912,
-  "overall_merge_rate_to_date": 0.646,
+  "overall_merge_rate_to_date": 0.633,
   "median_hours_to_merge": 14.61,
   "prs": [
     {
@@ -1064,6 +1064,28 @@
       "review_count": 2,
       "perf_summary": "4/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -8.7% lat, -0.0% alloc)",
       "coverage_summary": "1787 tests, 0 skipped; cov line 86.65% -> 86.68% (+0.03), branch 72.89% -> 72.98% (+0.09); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 492,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/492",
+      "title": "fix(core): make GcsAnalyticsCoreOptions immutable and null-safe",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 92,
+      "additions": 88,
+      "deletions": 4,
+      "iter": "20261110-094714-analytics-core-options-null-safety",
+      "created_at": "2026-11-10T10:13:56Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "13/45 IMPROVED (top: `FooterPrefetchBenchmark.readFooterUnknownSize{prefetchEnabled=true}` -13.8% lat, +0.0% alloc)",
+      "coverage_summary": "1778 tests, 0 skipped; cov line 86.65% -> 86.65% (+0.00), branch 72.89% -> 72.89% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ]
 }
