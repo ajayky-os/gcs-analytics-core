@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-11T06:18:41Z",
+  "generated_at": "2026-11-11T06:24:57Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -17,7 +17,7 @@
     "total_gate_cpu_hours": 4.22
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-11T06:18:41Z",
+    "updated_at": "2026-11-11T06:24:57Z",
     "total_prs_raised": 51,
     "merged_count": 31,
     "open_ready_count": 17,
@@ -1144,8 +1144,8 @@
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 1,
-        "review_count": 0,
+        "comment_count": 2,
+        "review_count": 1,
         "perf_summary": "\u2014",
         "coverage_summary": "1813 tests, 0 skipped; cov line 86.76% -> 86.76% (+0.00), branch 73.39% -> 73.43% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
@@ -2269,8 +2269,8 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 1,
-      "review_count": 0,
+      "comment_count": 2,
+      "review_count": 1,
       "perf_summary": "\u2014",
       "coverage_summary": "1813 tests, 0 skipped; cov line 86.76% -> 86.76% (+0.00), branch 73.39% -> 73.43% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
