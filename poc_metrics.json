@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-11T06:16:28Z",
+  "generated_at": "2026-11-11T06:18:41Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 59,
+    "total_iterations_logged": 60,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 57,
-    "unique_upstream_prs": 50,
+    "substantive_iterations": 58,
+    "unique_upstream_prs": 51,
     "merged_upstream_prs": 31,
-    "open_vetted_draft_prs": 16,
+    "open_vetted_draft_prs": 17,
     "closed_unmerged_prs": 3,
     "critic_major_catches": 26,
-    "total_agent_wall_hours": 46.9,
-    "total_gate_cpu_hours": 4.2
+    "total_agent_wall_hours": 46.96,
+    "total_gate_cpu_hours": 4.22
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-11T06:16:28Z",
-    "total_prs_raised": 50,
+    "updated_at": "2026-11-11T06:18:41Z",
+    "total_prs_raised": 51,
     "merged_count": 31,
-    "open_ready_count": 16,
+    "open_ready_count": 17,
     "open_draft_count": 0,
     "closed_unmerged_count": 3,
     "acceptance_rate_closed_prs": 0.912,
-    "overall_merge_rate_to_date": 0.62,
+    "overall_merge_rate_to_date": 0.608,
     "median_hours_to_merge": 14.61,
     "prs": [
       {
@@ -1126,6 +1126,28 @@
         "review_count": 1,
         "perf_summary": "8/45 IMPROVED (top: `SmallObjectCacheBenchmark.coldRead` -12.5% lat, +0.0% alloc)",
         "coverage_summary": "1816 tests, 0 skipped; cov line 86.76% -> 86.76% (+0.00), branch 73.39% -> 73.39% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 495,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/495",
+        "title": "test(core): cover unset group child count and type length in schema fingerprint",
+        "state": "OPEN_READY",
+        "change_type": "test",
+        "task_class": "benchmark_or_test_infra",
+        "loc": 41,
+        "additions": 41,
+        "deletions": 0,
+        "iter": "20261111-061417-parquet-schema-fingerprint-unset-fields-coverage",
+        "created_at": "2026-11-11T06:18:10Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "\u2014",
+        "coverage_summary": "1813 tests, 0 skipped; cov line 86.76% -> 86.76% (+0.00), branch 73.39% -> 73.43% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2229,6 +2251,28 @@
       "review_count": 1,
       "perf_summary": "8/45 IMPROVED (top: `SmallObjectCacheBenchmark.coldRead` -12.5% lat, +0.0% alloc)",
       "coverage_summary": "1816 tests, 0 skipped; cov line 86.76% -> 86.76% (+0.00), branch 73.39% -> 73.39% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 495,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/495",
+      "title": "test(core): cover unset group child count and type length in schema fingerprint",
+      "state": "OPEN_READY",
+      "change_type": "test",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 41,
+      "additions": 41,
+      "deletions": 0,
+      "iter": "20261111-061417-parquet-schema-fingerprint-unset-fields-coverage",
+      "created_at": "2026-11-11T06:18:10Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "\u2014",
+      "coverage_summary": "1813 tests, 0 skipped; cov line 86.76% -> 86.76% (+0.00), branch 73.39% -> 73.43% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2765,19 +2809,19 @@
       "net_saved_swe_days_p50": 26.99
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 16,
-      "raw_counterfactual_hours_p25": 68.0,
-      "raw_counterfactual_hours_p50": 101.34,
+      "open_draft_pr_count": 17,
+      "raw_counterfactual_hours_p25": 72.67,
+      "raw_counterfactual_hours_p50": 108.01,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.62,
-      "risk_adjusted_hours_p25": 52.88,
-      "risk_adjusted_hours_p50": 78.94
+      "empirical_promoted_merge_rate": 0.608,
+      "risk_adjusted_hours_p25": 56.15,
+      "risk_adjusted_hours_p50": 83.61
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 200.43,
-      "net_saved_hours_p50": 294.88,
-      "net_saved_swe_days_p25": 25.05,
-      "net_saved_swe_days_p50": 36.86
+      "net_saved_hours_p25": 203.7,
+      "net_saved_hours_p50": 299.55,
+      "net_saved_swe_days_p25": 25.46,
+      "net_saved_swe_days_p50": 37.44
     }
   }
 }
