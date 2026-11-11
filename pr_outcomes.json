@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-11T11:10:39Z",
-  "total_prs_raised": 51,
+  "updated_at": "2026-11-11T11:11:55Z",
+  "total_prs_raised": 52,
   "merged_count": 32,
-  "open_ready_count": 16,
+  "open_ready_count": 17,
   "open_draft_count": 0,
   "closed_unmerged_count": 3,
   "acceptance_rate_closed_prs": 0.914,
-  "overall_merge_rate_to_date": 0.627,
+  "overall_merge_rate_to_date": 0.615,
   "median_hours_to_merge": 16.9,
   "prs": [
     {
@@ -1130,6 +1130,28 @@
       "review_count": 1,
       "perf_summary": "\u2014",
       "coverage_summary": "1813 tests, 0 skipped; cov line 86.76% -> 86.76% (+0.00), branch 73.39% -> 73.43% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 496,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/496",
+      "title": "refactor(client): normalize blank continuation tokens in GcsListPage and GcsListOptions",
+      "state": "OPEN_READY",
+      "change_type": "refactor",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 84,
+      "additions": 75,
+      "deletions": 9,
+      "iter": "20261111-095635-normalize-blank-continuation-tokens",
+      "created_at": "2026-11-11T11:11:18Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "18/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=16777216}` -20.0% lat, -0.1% alloc)",
+      "coverage_summary": "1830 tests, 0 skipped; cov line 86.81% -> 86.81% (+0.00), branch 73.52% -> 73.56% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ]
 }
