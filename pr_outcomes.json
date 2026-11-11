@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-11T04:31:25Z",
+  "updated_at": "2026-11-11T04:42:27Z",
   "total_prs_raised": 50,
   "merged_count": 31,
   "open_ready_count": 16,
@@ -1104,7 +1104,7 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 2,
+      "comment_count": 3,
       "review_count": 1,
       "perf_summary": "8/45 IMPROVED (top: `SmallObjectCacheBenchmark.coldRead` -12.5% lat, +0.0% alloc)",
       "coverage_summary": "1816 tests, 0 skipped; cov line 86.76% -> 86.76% (+0.00), branch 73.39% -> 73.39% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
