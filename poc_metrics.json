@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-11T06:46:29Z",
+  "generated_at": "2026-11-11T06:55:06Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -9,23 +9,23 @@
     "error_or_quota_halted_iterations": 1,
     "substantive_iterations": 58,
     "unique_upstream_prs": 51,
-    "merged_upstream_prs": 31,
-    "open_vetted_draft_prs": 17,
+    "merged_upstream_prs": 32,
+    "open_vetted_draft_prs": 16,
     "closed_unmerged_prs": 3,
     "critic_major_catches": 26,
     "total_agent_wall_hours": 46.96,
     "total_gate_cpu_hours": 4.22
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-11T06:46:29Z",
+    "updated_at": "2026-11-11T06:55:06Z",
     "total_prs_raised": 51,
-    "merged_count": 31,
-    "open_ready_count": 17,
+    "merged_count": 32,
+    "open_ready_count": 16,
     "open_draft_count": 0,
     "closed_unmerged_count": 3,
-    "acceptance_rate_closed_prs": 0.912,
-    "overall_merge_rate_to_date": 0.608,
-    "median_hours_to_merge": 14.61,
+    "acceptance_rate_closed_prs": 0.914,
+    "overall_merge_rate_to_date": 0.627,
+    "median_hours_to_merge": 16.9,
     "prs": [
       {
         "pr_number": 407,
@@ -823,7 +823,7 @@
         "pr_number": 480,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/480",
         "title": "test(client): cover null task and error precedence in BatchExecutor",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "test",
         "task_class": "benchmark_or_test_infra",
         "loc": 69,
@@ -831,9 +831,9 @@
         "deletions": 0,
         "iter": "20261106-095818-batch-executor-null-task-and-error-precedence",
         "created_at": "2026-11-06T10:14:38Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
+        "merged_at": "2026-11-11T06:54:12Z",
+        "closed_at": "2026-11-11T06:54:12Z",
+        "hours_to_merge": 116.66,
         "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
@@ -1948,7 +1948,7 @@
       "pr_number": 480,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/480",
       "title": "test(client): cover null task and error precedence in BatchExecutor",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "test",
       "task_class": "benchmark_or_test_infra",
       "loc": 69,
@@ -1956,9 +1956,9 @@
       "deletions": 0,
       "iter": "20261106-095818-batch-executor-null-task-and-error-precedence",
       "created_at": "2026-11-06T10:14:38Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
+      "merged_at": "2026-11-11T06:54:12Z",
+      "closed_at": "2026-11-11T06:54:12Z",
+      "hours_to_merge": 116.66,
       "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
@@ -2795,33 +2795,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 31,
+      "merged_pr_count": 32,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 151.35,
-      "gross_counterfactual_hours_p50": 219.74,
-      "net_saved_hours_p25": 147.55,
-      "net_saved_hours_p50": 215.94,
-      "net_saved_swe_days_p25": 18.44,
-      "net_saved_swe_days_p50": 26.99
+      "gross_counterfactual_hours_p25": 156.02,
+      "gross_counterfactual_hours_p50": 226.41,
+      "net_saved_hours_p25": 152.22,
+      "net_saved_hours_p50": 222.61,
+      "net_saved_swe_days_p25": 19.03,
+      "net_saved_swe_days_p50": 27.83
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 17,
-      "raw_counterfactual_hours_p25": 72.67,
-      "raw_counterfactual_hours_p50": 108.01,
+      "open_draft_pr_count": 16,
+      "raw_counterfactual_hours_p25": 68.0,
+      "raw_counterfactual_hours_p50": 101.34,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.608,
-      "risk_adjusted_hours_p25": 56.15,
-      "risk_adjusted_hours_p50": 83.61
+      "empirical_promoted_merge_rate": 0.627,
+      "risk_adjusted_hours_p25": 52.88,
+      "risk_adjusted_hours_p50": 78.94
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 203.7,
-      "net_saved_hours_p50": 299.55,
-      "net_saved_swe_days_p25": 25.46,
-      "net_saved_swe_days_p50": 37.44
+      "net_saved_hours_p25": 205.1,
+      "net_saved_hours_p50": 301.55,
+      "net_saved_swe_days_p25": 25.64,
+      "net_saved_swe_days_p50": 37.69
     }
   }
 }
