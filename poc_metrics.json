@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-11T04:24:53Z",
+  "generated_at": "2026-11-11T04:25:43Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 58,
+    "total_iterations_logged": 59,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 56,
-    "unique_upstream_prs": 49,
+    "substantive_iterations": 57,
+    "unique_upstream_prs": 50,
     "merged_upstream_prs": 31,
-    "open_vetted_draft_prs": 15,
+    "open_vetted_draft_prs": 16,
     "closed_unmerged_prs": 3,
     "critic_major_catches": 26,
-    "total_agent_wall_hours": 46.38,
-    "total_gate_cpu_hours": 4.0
+    "total_agent_wall_hours": 46.9,
+    "total_gate_cpu_hours": 4.2
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-11T04:24:53Z",
-    "total_prs_raised": 49,
+    "updated_at": "2026-11-11T04:25:43Z",
+    "total_prs_raised": 50,
     "merged_count": 31,
-    "open_ready_count": 15,
+    "open_ready_count": 16,
     "open_draft_count": 0,
     "closed_unmerged_count": 3,
     "acceptance_rate_closed_prs": 0.912,
-    "overall_merge_rate_to_date": 0.633,
+    "overall_merge_rate_to_date": 0.62,
     "median_hours_to_merge": 14.61,
     "prs": [
       {
@@ -1104,6 +1104,28 @@
         "review_count": 2,
         "perf_summary": "13/45 IMPROVED (top: `FooterPrefetchBenchmark.readFooterUnknownSize{prefetchEnabled=true}` -13.8% lat, +0.0% alloc)",
         "coverage_summary": "1778 tests, 0 skipped; cov line 86.65% -> 86.65% (+0.00), branch 72.89% -> 72.89% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 494,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/494",
+        "title": "refactor(common): use String.isBlank in RedactedString instead of trim",
+        "state": "OPEN_READY",
+        "change_type": "refactor",
+        "task_class": "benchmark_or_test_infra",
+        "loc": 19,
+        "additions": 16,
+        "deletions": 3,
+        "iter": "20261111-035436-use-is-blank-in-redacted-string",
+        "created_at": "2026-11-11T04:25:09Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "8/45 IMPROVED (top: `SmallObjectCacheBenchmark.coldRead` -12.5% lat, +0.0% alloc)",
+        "coverage_summary": "1816 tests, 0 skipped; cov line 86.76% -> 86.76% (+0.00), branch 73.39% -> 73.39% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2185,6 +2207,28 @@
       "review_count": 2,
       "perf_summary": "13/45 IMPROVED (top: `FooterPrefetchBenchmark.readFooterUnknownSize{prefetchEnabled=true}` -13.8% lat, +0.0% alloc)",
       "coverage_summary": "1778 tests, 0 skipped; cov line 86.65% -> 86.65% (+0.00), branch 72.89% -> 72.89% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 494,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/494",
+      "title": "refactor(common): use String.isBlank in RedactedString instead of trim",
+      "state": "OPEN_READY",
+      "change_type": "refactor",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 19,
+      "additions": 16,
+      "deletions": 3,
+      "iter": "20261111-035436-use-is-blank-in-redacted-string",
+      "created_at": "2026-11-11T04:25:09Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "8/45 IMPROVED (top: `SmallObjectCacheBenchmark.coldRead` -12.5% lat, +0.0% alloc)",
+      "coverage_summary": "1816 tests, 0 skipped; cov line 86.76% -> 86.76% (+0.00), branch 73.39% -> 73.39% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2721,19 +2765,19 @@
       "net_saved_swe_days_p50": 26.99
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 15,
-      "raw_counterfactual_hours_p25": 63.33,
-      "raw_counterfactual_hours_p50": 94.67,
+      "open_draft_pr_count": 16,
+      "raw_counterfactual_hours_p25": 68.0,
+      "raw_counterfactual_hours_p50": 101.34,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.633,
-      "risk_adjusted_hours_p25": 49.61,
-      "risk_adjusted_hours_p50": 74.27
+      "empirical_promoted_merge_rate": 0.62,
+      "risk_adjusted_hours_p25": 52.88,
+      "risk_adjusted_hours_p50": 78.94
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 197.16,
-      "net_saved_hours_p50": 290.21,
-      "net_saved_swe_days_p25": 24.65,
-      "net_saved_swe_days_p50": 36.28
+      "net_saved_hours_p25": 200.43,
+      "net_saved_hours_p50": 294.88,
+      "net_saved_swe_days_p25": 25.05,
+      "net_saved_swe_days_p50": 36.86
     }
   }
 }
