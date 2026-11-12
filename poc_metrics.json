@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T16:40:05Z",
+  "generated_at": "2026-11-12T16:47:01Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -9,23 +9,23 @@
     "error_or_quota_halted_iterations": 1,
     "substantive_iterations": 62,
     "unique_upstream_prs": 55,
-    "merged_upstream_prs": 33,
-    "open_vetted_draft_prs": 16,
+    "merged_upstream_prs": 34,
+    "open_vetted_draft_prs": 15,
     "closed_unmerged_prs": 6,
     "critic_major_catches": 41,
     "total_agent_wall_hours": 66.09,
     "total_gate_cpu_hours": 4.44
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T16:40:05Z",
+    "updated_at": "2026-11-12T16:47:01Z",
     "total_prs_raised": 55,
-    "merged_count": 33,
-    "open_ready_count": 16,
+    "merged_count": 34,
+    "open_ready_count": 15,
     "open_draft_count": 0,
     "closed_unmerged_count": 6,
-    "acceptance_rate_closed_prs": 0.846,
-    "overall_merge_rate_to_date": 0.6,
-    "median_hours_to_merge": 16.9,
+    "acceptance_rate_closed_prs": 0.85,
+    "overall_merge_rate_to_date": 0.618,
+    "median_hours_to_merge": 21.35,
     "prs": [
       {
         "pr_number": 407,
@@ -1087,7 +1087,7 @@
         "pr_number": 492,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/492",
         "title": "fix(core): make GcsAnalyticsCoreOptions immutable and null-safe",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "fix",
         "task_class": "correctness_fix",
         "loc": 77,
@@ -1095,13 +1095,13 @@
         "deletions": 3,
         "iter": "20261110-094714-analytics-core-options-null-safety",
         "created_at": "2026-11-10T10:13:56Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
-        "review_decision": "CHANGES_REQUESTED",
+        "merged_at": "2026-11-12T16:46:03Z",
+        "closed_at": "2026-11-12T16:46:03Z",
+        "hours_to_merge": 54.54,
+        "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 5,
-        "review_count": 3,
+        "review_count": 4,
         "perf_summary": "13/45 IMPROVED (top: `FooterPrefetchBenchmark.readFooterUnknownSize{prefetchEnabled=true}` -13.8% lat, +0.0% alloc)",
         "coverage_summary": "1883 tests, 0 skipped; cov line 87.10% / branch 74.23% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
@@ -2300,7 +2300,7 @@
       "pr_number": 492,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/492",
       "title": "fix(core): make GcsAnalyticsCoreOptions immutable and null-safe",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "fix",
       "task_class": "correctness_fix",
       "loc": 77,
@@ -2308,13 +2308,13 @@
       "deletions": 3,
       "iter": "20261110-094714-analytics-core-options-null-safety",
       "created_at": "2026-11-10T10:13:56Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
-      "review_decision": "CHANGES_REQUESTED",
+      "merged_at": "2026-11-12T16:46:03Z",
+      "closed_at": "2026-11-12T16:46:03Z",
+      "hours_to_merge": 54.54,
+      "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 5,
-      "review_count": 3,
+      "review_count": 4,
       "perf_summary": "13/45 IMPROVED (top: `FooterPrefetchBenchmark.readFooterUnknownSize{prefetchEnabled=true}` -13.8% lat, +0.0% alloc)",
       "coverage_summary": "1883 tests, 0 skipped; cov line 87.10% / branch 74.23% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
@@ -3131,33 +3131,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 33,
+      "merged_pr_count": 34,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 160.02,
-      "gross_counterfactual_hours_p50": 232.41,
-      "net_saved_hours_p25": 156.22,
-      "net_saved_hours_p50": 228.61,
-      "net_saved_swe_days_p25": 19.53,
-      "net_saved_swe_days_p50": 28.58
+      "gross_counterfactual_hours_p25": 164.68,
+      "gross_counterfactual_hours_p50": 239.41,
+      "net_saved_hours_p25": 160.88,
+      "net_saved_hours_p50": 235.61,
+      "net_saved_swe_days_p25": 20.11,
+      "net_saved_swe_days_p50": 29.45
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 16,
-      "raw_counterfactual_hours_p25": 69.34,
-      "raw_counterfactual_hours_p50": 102.68,
+      "open_draft_pr_count": 15,
+      "raw_counterfactual_hours_p25": 65.34,
+      "raw_counterfactual_hours_p50": 96.68,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.6,
-      "risk_adjusted_hours_p25": 58.77,
-      "risk_adjusted_hours_p50": 87.38
+      "empirical_promoted_merge_rate": 0.618,
+      "risk_adjusted_hours_p25": 55.31,
+      "risk_adjusted_hours_p50": 82.18
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 214.99,
-      "net_saved_hours_p50": 315.99,
-      "net_saved_swe_days_p25": 26.87,
-      "net_saved_swe_days_p50": 39.5
+      "net_saved_hours_p25": 216.19,
+      "net_saved_hours_p50": 317.79,
+      "net_saved_swe_days_p25": 27.02,
+      "net_saved_swe_days_p50": 39.72
     }
   }
 }
