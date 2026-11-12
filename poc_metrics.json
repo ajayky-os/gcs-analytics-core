@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T13:40:03Z",
+  "generated_at": "2026-11-12T13:40:18Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -13,11 +13,11 @@
     "open_vetted_draft_prs": 16,
     "closed_unmerged_prs": 6,
     "critic_major_catches": 39,
-    "total_agent_wall_hours": 64.65,
-    "total_gate_cpu_hours": 4.17
+    "total_agent_wall_hours": 66.09,
+    "total_gate_cpu_hours": 4.3
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T13:40:03Z",
+    "updated_at": "2026-11-12T13:40:18Z",
     "total_prs_raised": 55,
     "merged_count": 33,
     "open_ready_count": 16,
@@ -1081,7 +1081,7 @@
         "comment_count": 3,
         "review_count": 5,
         "perf_summary": "4/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -8.7% lat, -0.0% alloc)",
-        "coverage_summary": "1889 tests, 0 skipped; cov line 87.11% / branch 74.28% (no baseline; run `sil.py baseline`); integ skipped by request"
+        "coverage_summary": "exit 1; 67 failures, 471 errors of 1166 tests"
       },
       {
         "pr_number": 492,
@@ -1090,9 +1090,9 @@
         "state": "OPEN_READY",
         "change_type": "fix",
         "task_class": "correctness_fix",
-        "loc": 92,
-        "additions": 88,
-        "deletions": 4,
+        "loc": 80,
+        "additions": 77,
+        "deletions": 3,
         "iter": "20261110-094714-analytics-core-options-null-safety",
         "created_at": "2026-11-10T10:13:56Z",
         "merged_at": null,
@@ -1103,7 +1103,7 @@
         "comment_count": 4,
         "review_count": 3,
         "perf_summary": "13/45 IMPROVED (top: `FooterPrefetchBenchmark.readFooterUnknownSize{prefetchEnabled=true}` -13.8% lat, +0.0% alloc)",
-        "coverage_summary": "1883 tests, 0 skipped; cov line 87.10% / branch 74.28% (no baseline; run `sil.py baseline`); integ skipped by request"
+        "coverage_summary": "1883 tests, 0 skipped; cov line 87.10% / branch 74.23% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
       {
         "pr_number": 494,
@@ -2294,7 +2294,7 @@
       "comment_count": 3,
       "review_count": 5,
       "perf_summary": "4/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -8.7% lat, -0.0% alloc)",
-      "coverage_summary": "1889 tests, 0 skipped; cov line 87.11% / branch 74.28% (no baseline; run `sil.py baseline`); integ skipped by request"
+      "coverage_summary": "exit 1; 67 failures, 471 errors of 1166 tests"
     },
     {
       "pr_number": 492,
@@ -2303,9 +2303,9 @@
       "state": "OPEN_READY",
       "change_type": "fix",
       "task_class": "correctness_fix",
-      "loc": 92,
-      "additions": 88,
-      "deletions": 4,
+      "loc": 80,
+      "additions": 77,
+      "deletions": 3,
       "iter": "20261110-094714-analytics-core-options-null-safety",
       "created_at": "2026-11-10T10:13:56Z",
       "merged_at": null,
@@ -2316,7 +2316,7 @@
       "comment_count": 4,
       "review_count": 3,
       "perf_summary": "13/45 IMPROVED (top: `FooterPrefetchBenchmark.readFooterUnknownSize{prefetchEnabled=true}` -13.8% lat, +0.0% alloc)",
-      "coverage_summary": "1883 tests, 0 skipped; cov line 87.10% / branch 74.28% (no baseline; run `sil.py baseline`); integ skipped by request"
+      "coverage_summary": "1883 tests, 0 skipped; cov line 87.10% / branch 74.23% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 494,
@@ -2661,6 +2661,22 @@
         "source": "pilot_backfill"
       },
       {
+        "iter": "20261110-094714-analytics-core-options-null-safety",
+        "pr": "#492",
+        "severity": "blocker",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GcsAnalyticsCoreOptions.java:49",
+        "finding": "Silently skipping map entries with null keys or values violates the project's \"Fail-Fast\" guideline. The previous code (ImmutableMap.copyOf) threw an immediate NPE on null entries, which was correct behavior for an invalid configuration state. By catching and ignoring them instead, this change introduces a silent misconfiguration (dropped properties) rather than preventing one. The hypothesis claims this \"prevents deferred NPEs\", but the original NPEs were already immediate.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261110-094714-analytics-core-options-null-safety",
+        "pr": "#492",
+        "severity": "major",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/GcsAnalyticsCoreOptionsTest.java:137",
+        "finding": "The test getFileSystemOptions_withNullKeysAndValues_ignoresNullEntries asserts behavior that violates fail-fast principles (silently dropping invalid configuration entries).",
+        "source": "critic_history"
+      },
+      {
         "iter": "20261110-054849-normalize-vectored-read-options-parsing",
         "pr": "#491",
         "severity": "blocker",
@@ -2810,22 +2826,6 @@
         "severity": "blocker",
         "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/prefetch/ParquetFileLayout.java",
         "finding": "The PR context claims that 'Coder removed the redundant checkNotNull and unused import from ParquetFileLayout, and updated ParquetFileLayoutTest' in response to review feedback. However, the worktree diff shows that `checkNotNull(rowGroups, \"rowGroups cannot be null\");` is still present, the import remains, and the test still checks for the exact exception message. The coder hallucinated addressing the review feedback.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261110-094714-analytics-core-options-null-safety",
-        "pr": "#492",
-        "severity": "blocker",
-        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GcsAnalyticsCoreOptions.java:49",
-        "finding": "Silently skipping map entries with null keys or values violates the project's \"Fail-Fast\" guideline. The previous code (ImmutableMap.copyOf) threw an immediate NPE on null entries, which was correct behavior for an invalid configuration state. By catching and ignoring them instead, this change introduces a silent misconfiguration (dropped properties) rather than preventing one. The hypothesis claims this \"prevents deferred NPEs\", but the original NPEs were already immediate.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261110-094714-analytics-core-options-null-safety",
-        "pr": "#492",
-        "severity": "major",
-        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/GcsAnalyticsCoreOptionsTest.java:137",
-        "finding": "The test getFileSystemOptions_withNullKeysAndValues_ignoresNullEntries asserts behavior that violates fail-fast principles (silently dropping invalid configuration entries).",
         "source": "critic_history"
       },
       {
