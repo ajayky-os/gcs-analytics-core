@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T04:01:52Z",
+  "generated_at": "2026-11-12T04:02:16Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 61,
+    "total_iterations_logged": 62,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 59,
-    "unique_upstream_prs": 52,
+    "substantive_iterations": 60,
+    "unique_upstream_prs": 53,
     "merged_upstream_prs": 32,
-    "open_vetted_draft_prs": 17,
+    "open_vetted_draft_prs": 18,
     "closed_unmerged_prs": 3,
     "critic_major_catches": 26,
-    "total_agent_wall_hours": 48.21,
-    "total_gate_cpu_hours": 4.36
+    "total_agent_wall_hours": 48.43,
+    "total_gate_cpu_hours": 4.49
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T04:01:52Z",
-    "total_prs_raised": 52,
+    "updated_at": "2026-11-12T04:02:16Z",
+    "total_prs_raised": 53,
     "merged_count": 32,
-    "open_ready_count": 17,
+    "open_ready_count": 18,
     "open_draft_count": 0,
     "closed_unmerged_count": 3,
     "acceptance_rate_closed_prs": 0.914,
-    "overall_merge_rate_to_date": 0.615,
+    "overall_merge_rate_to_date": 0.604,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -1170,6 +1170,28 @@
         "review_count": 1,
         "perf_summary": "18/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=16777216}` -20.0% lat, -0.1% alloc)",
         "coverage_summary": "1830 tests, 0 skipped; cov line 86.81% -> 86.81% (+0.00), branch 73.52% -> 73.56% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 498,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/498",
+        "title": "fix(client): reject null prefix in GcsRetryOptions.createFromOptions",
+        "state": "OPEN_READY",
+        "change_type": "fix",
+        "task_class": "correctness_fix",
+        "loc": 23,
+        "additions": 23,
+        "deletions": 0,
+        "iter": "20261112-034904-reject-null-prefix-in-gcs-retry-options",
+        "created_at": "2026-11-12T04:01:24Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 0,
+        "review_count": 0,
+        "perf_summary": "37/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -18.0% lat, +0.0% alloc)",
+        "coverage_summary": "1876 tests, 0 skipped; cov line 86.99% -> 86.99% (+0.00), branch 74.07% -> 74.11% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2317,6 +2339,28 @@
       "review_count": 1,
       "perf_summary": "18/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=16777216}` -20.0% lat, -0.1% alloc)",
       "coverage_summary": "1830 tests, 0 skipped; cov line 86.81% -> 86.81% (+0.00), branch 73.52% -> 73.56% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 498,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/498",
+      "title": "fix(client): reject null prefix in GcsRetryOptions.createFromOptions",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 23,
+      "additions": 23,
+      "deletions": 0,
+      "iter": "20261112-034904-reject-null-prefix-in-gcs-retry-options",
+      "created_at": "2026-11-12T04:01:24Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 0,
+      "review_count": 0,
+      "perf_summary": "37/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -18.0% lat, +0.0% alloc)",
+      "coverage_summary": "1876 tests, 0 skipped; cov line 86.99% -> 86.99% (+0.00), branch 74.07% -> 74.11% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2853,19 +2897,19 @@
       "net_saved_swe_days_p50": 27.83
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 17,
-      "raw_counterfactual_hours_p25": 72.67,
-      "raw_counterfactual_hours_p50": 108.01,
+      "open_draft_pr_count": 18,
+      "raw_counterfactual_hours_p25": 76.67,
+      "raw_counterfactual_hours_p50": 114.01,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.615,
-      "risk_adjusted_hours_p25": 56.15,
-      "risk_adjusted_hours_p50": 83.61
+      "empirical_promoted_merge_rate": 0.604,
+      "risk_adjusted_hours_p25": 58.95,
+      "risk_adjusted_hours_p50": 87.81
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 208.37,
-      "net_saved_hours_p50": 306.22,
-      "net_saved_swe_days_p25": 26.05,
-      "net_saved_swe_days_p50": 38.28
+      "net_saved_hours_p25": 211.17,
+      "net_saved_hours_p50": 310.42,
+      "net_saved_swe_days_p25": 26.4,
+      "net_saved_swe_days_p50": 38.8
     }
   }
 }
