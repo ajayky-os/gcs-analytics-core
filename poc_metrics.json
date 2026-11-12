@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T13:27:55Z",
+  "generated_at": "2026-11-12T13:30:18Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -12,12 +12,12 @@
     "merged_upstream_prs": 33,
     "open_vetted_draft_prs": 16,
     "closed_unmerged_prs": 6,
-    "critic_major_catches": 37,
-    "total_agent_wall_hours": 63.85,
-    "total_gate_cpu_hours": 4.52
+    "critic_major_catches": 39,
+    "total_agent_wall_hours": 64.65,
+    "total_gate_cpu_hours": 4.45
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T13:27:55Z",
+    "updated_at": "2026-11-12T13:30:18Z",
     "total_prs_raised": 55,
     "merged_count": 33,
     "open_ready_count": 16,
@@ -1079,9 +1079,9 @@
         "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 3,
+        "review_count": 5,
         "perf_summary": "4/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -8.7% lat, -0.0% alloc)",
-        "coverage_summary": "1888 tests, 0 skipped; cov line 87.11% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "coverage_summary": "1889 tests, 0 skipped; cov line 87.11% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
       {
         "pr_number": 492,
@@ -2292,9 +2292,9 @@
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 3,
+      "review_count": 5,
       "perf_summary": "4/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -8.7% lat, -0.0% alloc)",
-      "coverage_summary": "1888 tests, 0 skipped; cov line 87.11% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "1889 tests, 0 skipped; cov line 87.11% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 492,
@@ -2602,7 +2602,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 37,
+    "major_or_blocker_count": 39,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -2659,6 +2659,22 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261110-054849-normalize-vectored-read-options-parsing",
+        "pr": "#491",
+        "severity": "blocker",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsVectoredReadOptions.java:16",
+        "finding": "Review comment not addressed: The requested removal of @NonNull and checker-qual is not done. The import and annotations are still present in the diff.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261110-054849-normalize-vectored-read-options-parsing",
+        "pr": "#491",
+        "severity": "blocker",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsVectoredReadOptions.java:66",
+        "finding": "Review comment not addressed: The requested removal of `>= 0` checks in Builder.build is not done. The checks are still present in the diff.",
+        "source": "critic_history"
       },
       {
         "iter": "20261110-034955-output-stream-idempotent-close-and-guard",
@@ -3110,14 +3126,14 @@
       "raw_counterfactual_hours_p50": 102.68,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.6,
-      "risk_adjusted_hours_p25": 57.45,
-      "risk_adjusted_hours_p50": 85.38
+      "risk_adjusted_hours_p25": 58.11,
+      "risk_adjusted_hours_p50": 86.38
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 213.67,
-      "net_saved_hours_p50": 313.99,
-      "net_saved_swe_days_p25": 26.71,
-      "net_saved_swe_days_p50": 39.25
+      "net_saved_hours_p25": 214.33,
+      "net_saved_hours_p50": 314.99,
+      "net_saved_swe_days_p25": 26.79,
+      "net_saved_swe_days_p50": 39.37
     }
   }
 }
