@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T10:55:09Z",
+  "generated_at": "2026-11-12T11:02:07Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -17,7 +17,7 @@
     "total_gate_cpu_hours": 4.59
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T10:55:09Z",
+    "updated_at": "2026-11-12T11:02:07Z",
     "total_prs_raised": 55,
     "merged_count": 33,
     "open_ready_count": 19,
@@ -944,10 +944,10 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
+        "review_count": 2,
         "perf_summary": "40/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.4% lat, -0.1% alloc)",
         "coverage_summary": "1716 tests, 0 skipped; cov line 87.03% -> 87.04% (+0.01), branch 73.50% -> 73.52% (+0.02); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
@@ -988,10 +988,10 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 2,
+        "review_count": 3,
         "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.7% lat, -0.1% alloc)",
         "coverage_summary": "1709 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.55% (+0.05); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
@@ -1010,10 +1010,10 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
+        "review_count": 2,
         "perf_summary": "36/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.7% lat, -0.1% alloc)",
         "coverage_summary": "1709 tests, 0 skipped; cov line 87.03% -> 87.04% (+0.01), branch 73.50% -> 73.57% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
@@ -1032,10 +1032,10 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
+        "review_count": 2,
         "perf_summary": "5/45 IMPROVED (top: `TelemetryOverheadBenchmark.caffeineCacheHit` -7.4% lat, -100.0% alloc)",
         "coverage_summary": "1712 tests, 0 skipped; cov line 87.03% -> 87.05% (+0.02), branch 73.50% -> 73.54% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
@@ -1234,7 +1234,7 @@
         "commit_count": 1,
         "comment_count": 3,
         "review_count": 1,
-        "perf_summary": "35/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=16777216}` -13.8% lat, -0.0% alloc)",
+        "perf_summary": "10/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -8.0% lat, -8.0% alloc)",
         "coverage_summary": "1880 tests, 0 skipped; cov line 86.99% -> 87.00% (+0.01), branch 74.07% -> 74.11% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
@@ -2157,10 +2157,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
+      "review_count": 2,
       "perf_summary": "40/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.4% lat, -0.1% alloc)",
       "coverage_summary": "1716 tests, 0 skipped; cov line 87.03% -> 87.04% (+0.01), branch 73.50% -> 73.52% (+0.02); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
@@ -2201,10 +2201,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 2,
+      "review_count": 3,
       "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.7% lat, -0.1% alloc)",
       "coverage_summary": "1709 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.55% (+0.05); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
@@ -2223,10 +2223,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
+      "review_count": 2,
       "perf_summary": "36/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.7% lat, -0.1% alloc)",
       "coverage_summary": "1709 tests, 0 skipped; cov line 87.03% -> 87.04% (+0.01), branch 73.50% -> 73.57% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
@@ -2245,10 +2245,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
+      "review_count": 2,
       "perf_summary": "5/45 IMPROVED (top: `TelemetryOverheadBenchmark.caffeineCacheHit` -7.4% lat, -100.0% alloc)",
       "coverage_summary": "1712 tests, 0 skipped; cov line 87.03% -> 87.05% (+0.02), branch 73.50% -> 73.54% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
@@ -2447,7 +2447,7 @@
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 1,
-      "perf_summary": "35/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=16777216}` -13.8% lat, -0.0% alloc)",
+      "perf_summary": "10/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -8.0% lat, -8.0% alloc)",
       "coverage_summary": "1880 tests, 0 skipped; cov line 86.99% -> 87.00% (+0.01), branch 74.07% -> 74.11% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
@@ -2666,7 +2666,7 @@
         "severity": "blocker",
         "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/prefetch/ParquetFileLayout.java",
         "finding": "The PR context claims that 'Coder removed the redundant checkNotNull and unused import from ParquetFileLayout, and updated ParquetFileLayoutTest' in response to review feedback. However, the worktree diff shows that `checkNotNull(rowGroups, \"rowGroups cannot be null\");` is still present, the import remains, and the test still checks for the exact exception message. The coder hallucinated addressing the review feedback.",
-        "source": "critic_json"
+        "source": "critic_history"
       },
       {
         "iter": "20261110-094714-analytics-core-options-null-safety",
