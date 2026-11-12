@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12T13:56:23Z",
+  "updated_at": "2026-11-12T14:01:48Z",
   "total_prs_raised": 55,
   "merged_count": 33,
   "open_ready_count": 16,
@@ -1028,9 +1028,9 @@
       "state": "OPEN_READY",
       "change_type": "fix",
       "task_class": "correctness_fix",
-      "loc": 170,
-      "additions": 170,
-      "deletions": 0,
+      "loc": 206,
+      "additions": 196,
+      "deletions": 10,
       "iter": "20261110-034955-output-stream-idempotent-close-and-guard",
       "created_at": "2026-11-10T04:23:02Z",
       "merged_at": null,
@@ -1041,7 +1041,7 @@
       "comment_count": 3,
       "review_count": 6,
       "perf_summary": "18/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -12.4% lat, -0.0% alloc)",
-      "coverage_summary": "1885 tests, 0 skipped; cov line 87.11% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "1885 tests, 0 skipped; cov line 87.13% / branch 74.32% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 491,
@@ -1063,7 +1063,7 @@
       "comment_count": 3,
       "review_count": 5,
       "perf_summary": "4/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -8.7% lat, -0.0% alloc)",
-      "coverage_summary": "1891 tests, 0 skipped; cov line 87.11% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "1891 tests, 0 skipped; cov line 87.11% / branch 74.32% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 492,
