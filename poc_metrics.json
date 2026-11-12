@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T13:16:50Z",
+  "generated_at": "2026-11-12T13:25:06Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -12,12 +12,12 @@
     "merged_upstream_prs": 33,
     "open_vetted_draft_prs": 16,
     "closed_unmerged_prs": 6,
-    "critic_major_catches": 35,
+    "critic_major_catches": 37,
     "total_agent_wall_hours": 63.85,
-    "total_gate_cpu_hours": 4.33
+    "total_gate_cpu_hours": 4.49
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T13:16:50Z",
+    "updated_at": "2026-11-12T13:25:06Z",
     "total_prs_raised": 55,
     "merged_count": 33,
     "open_ready_count": 16,
@@ -1059,7 +1059,7 @@
         "comment_count": 3,
         "review_count": 6,
         "perf_summary": "18/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -12.4% lat, -0.0% alloc)",
-        "coverage_summary": "1885 tests, 0 skipped; cov line 87.11% / branch 74.36% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "coverage_summary": "1885 tests, 0 skipped; cov line 87.11% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
       {
         "pr_number": 491,
@@ -1081,7 +1081,7 @@
         "comment_count": 3,
         "review_count": 3,
         "perf_summary": "4/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -8.7% lat, -0.0% alloc)",
-        "coverage_summary": "1888 tests, 0 skipped"
+        "coverage_summary": "1889 tests, 0 skipped; cov line 87.11% / branch 74.23% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
       {
         "pr_number": 492,
@@ -2272,7 +2272,7 @@
       "comment_count": 3,
       "review_count": 6,
       "perf_summary": "18/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -12.4% lat, -0.0% alloc)",
-      "coverage_summary": "1885 tests, 0 skipped; cov line 87.11% / branch 74.36% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "1885 tests, 0 skipped; cov line 87.11% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 491,
@@ -2294,7 +2294,7 @@
       "comment_count": 3,
       "review_count": 3,
       "perf_summary": "4/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -8.7% lat, -0.0% alloc)",
-      "coverage_summary": "1888 tests, 0 skipped"
+      "coverage_summary": "1889 tests, 0 skipped; cov line 87.11% / branch 74.23% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 492,
@@ -2602,7 +2602,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 35,
+    "major_or_blocker_count": 37,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -2659,6 +2659,22 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261110-034955-output-stream-idempotent-close-and-guard",
+        "pr": "#490",
+        "severity": "blocker",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageOutputStream.java:214",
+        "finding": "The candidate incorrectly addressed the review feedback. The reviewer requested: 'Setting closed = true after channel.close() succeeds, so throwing close() allows retrying'. However, the candidate placed `closed = true;` inside a `finally` block, ensuring it is set even when `channel.close()` throws. Furthermore, instead of adding the requested test `close_whenChannelThrows_allowsRetry`, the candidate added a test named `close_whenChannelCloseThrows_propagatesExceptionAndMarksClosed` which explicitly verifies that retries are prevented.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261110-034955-output-stream-idempotent-close-and-guard",
+        "pr": "#490",
+        "severity": "blocker",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageOutputStream.java:208",
+        "finding": "The PR hypothesis claims `closed = true` is set in a `finally` block, but it is simply placed at the end of the `close()` method. If `channel.close()` throws an IOException, `closed` remains `false`. This violates the standard idempotent `Closeable` contract, allows writes to continue after a failed close, and contradicts the stated fix. The test `close_whenChannelThrows_allowsRetry` was added to validate this incorrect behavior.",
+        "source": "critic_json"
       },
       {
         "iter": "20261108-034649-normalize-telemetry-options-parsing",
@@ -3094,14 +3110,14 @@
       "raw_counterfactual_hours_p50": 102.68,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.6,
-      "risk_adjusted_hours_p25": 56.79,
-      "risk_adjusted_hours_p50": 84.38
+      "risk_adjusted_hours_p25": 57.45,
+      "risk_adjusted_hours_p50": 85.38
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 213.01,
-      "net_saved_hours_p50": 312.99,
-      "net_saved_swe_days_p25": 26.63,
-      "net_saved_swe_days_p50": 39.12
+      "net_saved_hours_p25": 213.67,
+      "net_saved_hours_p50": 313.99,
+      "net_saved_swe_days_p25": 26.71,
+      "net_saved_swe_days_p50": 39.25
     }
   }
 }

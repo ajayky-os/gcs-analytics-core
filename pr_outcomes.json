@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12T13:16:50Z",
+  "updated_at": "2026-11-12T13:25:06Z",
   "total_prs_raised": 55,
   "merged_count": 33,
   "open_ready_count": 16,
@@ -1041,7 +1041,7 @@
       "comment_count": 3,
       "review_count": 6,
       "perf_summary": "18/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -12.4% lat, -0.0% alloc)",
-      "coverage_summary": "1885 tests, 0 skipped; cov line 87.11% / branch 74.36% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "1885 tests, 0 skipped; cov line 87.11% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 491,
@@ -1063,7 +1063,7 @@
       "comment_count": 3,
       "review_count": 3,
       "perf_summary": "4/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -8.7% lat, -0.0% alloc)",
-      "coverage_summary": "1888 tests, 0 skipped"
+      "coverage_summary": "1889 tests, 0 skipped; cov line 87.11% / branch 74.23% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 492,
