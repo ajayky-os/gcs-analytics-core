@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T12:01:48Z",
+  "generated_at": "2026-11-12T12:10:00Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -12,12 +12,12 @@
     "merged_upstream_prs": 33,
     "open_vetted_draft_prs": 16,
     "closed_unmerged_prs": 6,
-    "critic_major_catches": 32,
-    "total_agent_wall_hours": 56.25,
-    "total_gate_cpu_hours": 4.59
+    "critic_major_catches": 33,
+    "total_agent_wall_hours": 58.03,
+    "total_gate_cpu_hours": 4.53
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T12:01:48Z",
+    "updated_at": "2026-11-12T12:10:00Z",
     "total_prs_raised": 55,
     "merged_count": 33,
     "open_ready_count": 16,
@@ -892,9 +892,9 @@
         "state": "OPEN_READY",
         "change_type": "fix",
         "task_class": "correctness_fix",
-        "loc": 71,
-        "additions": 63,
-        "deletions": 8,
+        "loc": 112,
+        "additions": 100,
+        "deletions": 12,
         "iter": "20261107-095043-normalize-write-options-parsing",
         "created_at": "2026-11-07T10:03:57Z",
         "merged_at": null,
@@ -903,9 +903,9 @@
         "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 2,
+        "review_count": 3,
         "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -61.9% lat, -0.1% alloc)",
-        "coverage_summary": "1882 tests, 0 skipped; cov line 87.10% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "coverage_summary": "1884 tests, 0 skipped; cov line 87.10% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
       {
         "pr_number": 484,
@@ -2105,9 +2105,9 @@
       "state": "OPEN_READY",
       "change_type": "fix",
       "task_class": "correctness_fix",
-      "loc": 71,
-      "additions": 63,
-      "deletions": 8,
+      "loc": 112,
+      "additions": 100,
+      "deletions": 12,
       "iter": "20261107-095043-normalize-write-options-parsing",
       "created_at": "2026-11-07T10:03:57Z",
       "merged_at": null,
@@ -2116,9 +2116,9 @@
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 2,
+      "review_count": 3,
       "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -61.9% lat, -0.1% alloc)",
-      "coverage_summary": "1882 tests, 0 skipped; cov line 87.10% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "1884 tests, 0 skipped; cov line 87.10% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 484,
@@ -2602,7 +2602,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 32,
+    "major_or_blocker_count": 33,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -2659,6 +2659,38 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261107-095043-normalize-write-options-parsing",
+        "pr": "#483",
+        "severity": "blocker",
+        "category": "gates.json:1",
+        "finding": "The provided gates.json is stale and does not reflect the current HEAD. The gates were run on an earlier commit that modified only 2 files (GcsWriteOptions), while the current worktree has been amended to include changes to 4 files (adding GcsReadOptions modifications). The code must be re-tested with `sil.py gates`.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-095043-normalize-write-options-parsing",
+        "pr": "#483",
+        "severity": "nit",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:123",
+        "finding": "The updated logic in GcsReadOptions uses `if (optional.isPresent()) { builder.set... }`. To match the more idiomatic approach used in GcsWriteOptions, you can use `.ifPresent(...)`.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-095043-normalize-write-options-parsing",
+        "pr": "#483",
+        "severity": "nit",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:123",
+        "finding": "The Optional `isPresent` and `get()` check for decryptionKey and userProject can be simplified by using `ifPresent` with a method reference, mirroring the code in GcsWriteOptions.java.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-095043-normalize-write-options-parsing",
+        "pr": "#483",
+        "severity": "nit",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptionsTest.java:172",
+        "finding": "The private static final constant TEST_DECRYPTION_KEY is placed in the middle of the class. The Google Java Style Guide suggests placing static fields at the top of the class.",
+        "source": "critic_history"
       },
       {
         "iter": "20261107-034451-fix-client-options-enum-parsing",
@@ -3046,14 +3078,14 @@
       "raw_counterfactual_hours_p50": 102.68,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.6,
-      "risk_adjusted_hours_p25": 55.8,
-      "risk_adjusted_hours_p50": 82.88
+      "risk_adjusted_hours_p25": 56.13,
+      "risk_adjusted_hours_p50": 83.38
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 212.02,
-      "net_saved_hours_p50": 311.49,
-      "net_saved_swe_days_p25": 26.5,
-      "net_saved_swe_days_p50": 38.94
+      "net_saved_hours_p25": 212.35,
+      "net_saved_hours_p50": 311.99,
+      "net_saved_swe_days_p25": 26.54,
+      "net_saved_swe_days_p50": 39.0
     }
   }
 }
