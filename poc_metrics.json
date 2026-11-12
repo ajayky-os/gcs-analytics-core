@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T13:30:30Z",
+  "generated_at": "2026-11-12T13:32:06Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -14,10 +14,10 @@
     "closed_unmerged_prs": 6,
     "critic_major_catches": 39,
     "total_agent_wall_hours": 64.65,
-    "total_gate_cpu_hours": 4.45
+    "total_gate_cpu_hours": 4.47
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T13:30:30Z",
+    "updated_at": "2026-11-12T13:32:06Z",
     "total_prs_raised": 55,
     "merged_count": 33,
     "open_ready_count": 16,
@@ -2690,7 +2690,7 @@
         "severity": "blocker",
         "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageOutputStream.java:208",
         "finding": "The PR hypothesis claims `closed = true` is set in a `finally` block, but it is simply placed at the end of the `close()` method. If `channel.close()` throws an IOException, `closed` remains `false`. This violates the standard idempotent `Closeable` contract, allows writes to continue after a failed close, and contradicts the stated fix. The test `close_whenChannelThrows_allowsRetry` was added to validate this incorrect behavior.",
-        "source": "critic_json"
+        "source": "critic_history"
       },
       {
         "iter": "20261108-034649-normalize-telemetry-options-parsing",
