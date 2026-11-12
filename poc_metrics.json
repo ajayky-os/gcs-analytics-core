@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T14:22:04Z",
+  "generated_at": "2026-11-12T14:26:22Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -17,7 +17,7 @@
     "total_gate_cpu_hours": 4.44
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T14:22:04Z",
+    "updated_at": "2026-11-12T14:26:22Z",
     "total_prs_raised": 55,
     "merged_count": 33,
     "open_ready_count": 16,
@@ -1081,7 +1081,7 @@
         "comment_count": 3,
         "review_count": 5,
         "perf_summary": "4/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -8.7% lat, -0.0% alloc)",
-        "coverage_summary": "1891 tests, 0 skipped; cov line 87.11% / branch 74.32% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "coverage_summary": "1888 tests, 0 skipped; cov line 87.11% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
       {
         "pr_number": 492,
@@ -2294,7 +2294,7 @@
       "comment_count": 3,
       "review_count": 5,
       "perf_summary": "4/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -8.7% lat, -0.0% alloc)",
-      "coverage_summary": "1891 tests, 0 skipped; cov line 87.11% / branch 74.32% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "1888 tests, 0 skipped; cov line 87.11% / branch 74.28% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 492,
