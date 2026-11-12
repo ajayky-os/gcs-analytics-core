@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T13:44:10Z",
+  "generated_at": "2026-11-12T13:47:07Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -12,12 +12,12 @@
     "merged_upstream_prs": 33,
     "open_vetted_draft_prs": 16,
     "closed_unmerged_prs": 6,
-    "critic_major_catches": 39,
+    "critic_major_catches": 41,
     "total_agent_wall_hours": 66.09,
-    "total_gate_cpu_hours": 4.3
+    "total_gate_cpu_hours": 4.19
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T13:44:10Z",
+    "updated_at": "2026-11-12T13:47:07Z",
     "total_prs_raised": 55,
     "merged_count": 33,
     "open_ready_count": 16,
@@ -1103,7 +1103,7 @@
         "comment_count": 4,
         "review_count": 3,
         "perf_summary": "13/45 IMPROVED (top: `FooterPrefetchBenchmark.readFooterUnknownSize{prefetchEnabled=true}` -13.8% lat, +0.0% alloc)",
-        "coverage_summary": "1883 tests, 0 skipped; cov line 87.10% / branch 74.23% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "coverage_summary": "\u2014"
       },
       {
         "pr_number": 494,
@@ -2316,7 +2316,7 @@
       "comment_count": 4,
       "review_count": 3,
       "perf_summary": "13/45 IMPROVED (top: `FooterPrefetchBenchmark.readFooterUnknownSize{prefetchEnabled=true}` -13.8% lat, +0.0% alloc)",
-      "coverage_summary": "1883 tests, 0 skipped; cov line 87.10% / branch 74.23% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "\u2014"
     },
     {
       "pr_number": 494,
@@ -2602,7 +2602,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 39,
+    "major_or_blocker_count": 41,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -2707,6 +2707,22 @@
         "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageOutputStream.java:208",
         "finding": "The PR hypothesis claims `closed = true` is set in a `finally` block, but it is simply placed at the end of the `close()` method. If `channel.close()` throws an IOException, `closed` remains `false`. This violates the standard idempotent `Closeable` contract, allows writes to continue after a failed close, and contradicts the stated fix. The test `close_whenChannelThrows_allowsRetry` was added to validate this incorrect behavior.",
         "source": "critic_history"
+      },
+      {
+        "iter": "20261110-034955-output-stream-idempotent-close-and-guard",
+        "pr": "#490",
+        "severity": "blocker",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageOutputStream.java:229",
+        "finding": "The stream is not marked as `closed` if `channel.close()` (via `telemetry.measure()`) throws an `IOException`. According to the general contract of `java.io.OutputStream`, a stream should be considered closed (and cannot be written to) once `close()` is called, regardless of whether an exception occurs while releasing resources. By leaving `closed = false` on failure, subsequent `write()` calls will incorrectly attempt to write to a partially-closed or failed underlying channel, leading to undefined behavior or delayed errors. Furthermore, retrying `close()` is not a standard pattern for `OutputStream`.",
+        "source": "critic_json"
+      },
+      {
+        "iter": "20261110-034955-output-stream-idempotent-close-and-guard",
+        "pr": "#490",
+        "severity": "major",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageOutputStreamTest.java:184",
+        "finding": "The test `close_afterFailedClose_delegatesToChannelAgain` explicitly asserts that a failed `close()` leaves the stream open and allows retrying the underlying channel close. This violates standard `OutputStream` lifecycle expectations.",
+        "source": "critic_json"
       },
       {
         "iter": "20261108-034649-normalize-telemetry-options-parsing",
@@ -3126,14 +3142,14 @@
       "raw_counterfactual_hours_p50": 102.68,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.6,
-      "risk_adjusted_hours_p25": 58.11,
-      "risk_adjusted_hours_p50": 86.38
+      "risk_adjusted_hours_p25": 58.77,
+      "risk_adjusted_hours_p50": 87.38
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 214.33,
-      "net_saved_hours_p50": 314.99,
-      "net_saved_swe_days_p25": 26.79,
-      "net_saved_swe_days_p50": 39.37
+      "net_saved_hours_p25": 214.99,
+      "net_saved_hours_p50": 315.99,
+      "net_saved_swe_days_p25": 26.87,
+      "net_saved_swe_days_p50": 39.5
     }
   }
 }
