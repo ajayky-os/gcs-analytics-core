@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-12T14:32:14Z",
+  "checked_at": "2026-11-12T14:41:23Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "0acf259aafe99097a97ddab595d993341525cde9",
   "onduty": {
@@ -49,7 +49,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 4.7,
+      "hours_since_update": 4.8,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -83,7 +83,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 4.6,
+      "hours_since_update": 4.8,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -117,7 +117,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 2.5,
+      "hours_since_update": 2.6,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -151,7 +151,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 2.1,
+      "hours_since_update": 2.2,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -185,7 +185,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 1.7,
+      "hours_since_update": 1.8,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -219,7 +219,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 1.4,
+      "hours_since_update": 1.5,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -253,7 +253,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 1.8,
+      "hours_since_update": 2.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -296,7 +296,38 @@
       "action_required": false,
       "unaddressed_comments": [],
       "failing_checks": [],
-      "transient_checks": []
+      "transient_checks": [
+        {
+          "name": "presubmits / compilation",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fcompilation/activity/5ca6627a-72c1-42f0-9c71-d108dcc6ab3a",
+          "build_id": "5ca6627a-72c1-42f0-9c71-d108dcc6ab3a",
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": "f56fd60b-5e62-43ef-84cf-cd0a7e393aa3",
+          "already_rebuilt": true,
+          "log_excerpt": "Building all modules and packaging JARs to catch compilation issues...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+        },
+        {
+          "name": "presubmits / hermetic-benchmarks",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fmicrobenchmarks/activity/98d3b870-6fb4-4598-a69c-4368803fe824",
+          "build_id": "98d3b870-6fb4-4598-a69c-4368803fe824",
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": "2e10f0bd-3476-4885-b1b4-827d856c9696",
+          "already_rebuilt": true,
+          "log_excerpt": "hing latest main baseline results from gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json...\nCopying gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json to file:///b/f/w/src/results/master_results.json\n  \n.\nRunning hermetic benchmarks on PR (#490, commit 516a67f6e7a829d9675f189a657358ec7ca788a9)...\nBuilding the JMH benchmark JAR...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+        },
+        {
+          "name": "presubmits / integration-tests",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/c4541df9-3d5a-4184-9e83-76995af75703",
+          "build_id": "c4541df9-3d5a-4184-9e83-76995af75703",
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": "e55ed88a-881e-407a-a3da-f74c73ba9ceb",
+          "already_rebuilt": true,
+          "log_excerpt": "wget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+        }
+      ]
     },
     {
       "pr_number": 491,
@@ -321,7 +352,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.0,
+      "hours_since_update": 0.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -330,7 +361,28 @@
       "action_required": false,
       "unaddressed_comments": [],
       "failing_checks": [],
-      "transient_checks": []
+      "transient_checks": [
+        {
+          "name": "presubmits / compilation",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fcompilation/activity/c43e8498-a3f7-4f73-8f6d-b9a733d3b188",
+          "build_id": "c43e8498-a3f7-4f73-8f6d-b9a733d3b188",
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": null,
+          "already_rebuilt": false,
+          "log_excerpt": "Building all modules and packaging JARs to catch compilation issues...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+        },
+        {
+          "name": "presubmits / hermetic-benchmarks",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fmicrobenchmarks/activity/7e5cfe35-0753-4c2a-bf35-801964424bfd",
+          "build_id": "7e5cfe35-0753-4c2a-bf35-801964424bfd",
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": null,
+          "already_rebuilt": false,
+          "log_excerpt": "ching latest main baseline results from gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json...\nCopying gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json to file:///b/f/w/src/results/master_results.json\n  \n\nRunning hermetic benchmarks on PR (#491, commit 75bfd3bbcb572c75e84b0964a242951d8651ab9f)...\nBuilding the JMH benchmark JAR...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+        }
+      ]
     },
     {
       "pr_number": 492,
@@ -366,14 +418,24 @@
       "failing_checks": [],
       "transient_checks": [
         {
-          "name": "presubmits / hermetic-benchmarks",
+          "name": "presubmits / compilation",
           "state": "FAILURE",
-          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fmicrobenchmarks/activity/517ae15a-2d92-42dc-b67f-b047f01bd7f6",
-          "build_id": "517ae15a-2d92-42dc-b67f-b047f01bd7f6",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fcompilation/activity/81638282-e0f7-4a74-b15a-800b19e23902",
+          "build_id": "81638282-e0f7-4a74-b15a-800b19e23902",
           "classification": "TRANSIENT_INFRA",
-          "rebuilt_as": "14494c2a-5658-459a-b415-32eb1f832bc9",
-          "already_rebuilt": true,
-          "log_excerpt": "ching latest main baseline results from gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json...\nCopying gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json to file:///b/f/w/src/results/master_results.json\n  \n\nRunning hermetic benchmarks on PR (#492, commit f70e8d346fea40ba0741a397e908a215fade57c7)...\nBuilding the JMH benchmark JAR...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+          "rebuilt_as": null,
+          "already_rebuilt": false,
+          "log_excerpt": "Building all modules and packaging JARs to catch compilation issues...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+        },
+        {
+          "name": "presubmits / integration-tests",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/53175adc-6dd9-478b-9952-87f82f273dbc",
+          "build_id": "53175adc-6dd9-478b-9952-87f82f273dbc",
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": null,
+          "already_rebuilt": false,
+          "log_excerpt": "wget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
         }
       ]
     },
@@ -400,7 +462,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 9.5,
+      "hours_since_update": 9.6,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -434,7 +496,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 7.7,
+      "hours_since_update": 7.8,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -468,7 +530,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 2.0,
+      "hours_since_update": 2.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -502,7 +564,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 10.2,
+      "hours_since_update": 10.3,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -536,7 +598,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 8.0,
+      "hours_since_update": 8.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -570,7 +632,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 3.2,
+      "hours_since_update": 3.3,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,

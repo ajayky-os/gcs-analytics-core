@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T14:32:23Z",
+  "generated_at": "2026-11-12T14:40:47Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -17,7 +17,7 @@
     "total_gate_cpu_hours": 4.44
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T14:32:23Z",
+    "updated_at": "2026-11-12T14:40:47Z",
     "total_prs_raised": 55,
     "merged_count": 33,
     "open_ready_count": 16,
@@ -2675,6 +2675,14 @@
         "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/GcsAnalyticsCoreOptionsTest.java:137",
         "finding": "The test getFileSystemOptions_withNullKeysAndValues_ignoresNullEntries asserts behavior that violates fail-fast principles (silently dropping invalid configuration entries).",
         "source": "critic_history"
+      },
+      {
+        "iter": "20261110-094714-analytics-core-options-null-safety",
+        "pr": "#492",
+        "severity": "minor",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/GcsAnalyticsCoreOptions.java:40",
+        "finding": "The style guide states: 'Strictly annotate methods and parameters with @Nullable or @NonNull.' Although the constructor correctly handles and documents nulls, the parameters `prefix` and `analyticsCoreOptions` should be annotated with @NonNull.",
+        "source": "critic_json"
       },
       {
         "iter": "20261110-054849-normalize-vectored-read-options-parsing",
