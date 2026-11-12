@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-12T13:41:25Z",
+  "checked_at": "2026-11-12T13:43:06Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "0acf259aafe99097a97ddab595d993341525cde9",
   "onduty": {
@@ -151,7 +151,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 1.2,
+      "hours_since_update": 1.3,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -185,7 +185,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.8,
+      "hours_since_update": 0.9,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -287,7 +287,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.1,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -296,7 +296,28 @@
       "action_required": false,
       "unaddressed_comments": [],
       "failing_checks": [],
-      "transient_checks": []
+      "transient_checks": [
+        {
+          "name": "presubmits / hermetic-benchmarks",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fmicrobenchmarks/activity/02322c1c-960f-40c4-b9e9-53cee837904c",
+          "build_id": "02322c1c-960f-40c4-b9e9-53cee837904c",
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": "68e5cd51-0063-4a63-9a2c-eb24c94fb5bf",
+          "already_rebuilt": true,
+          "log_excerpt": "hing latest main baseline results from gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json...\nCopying gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json to file:///b/f/w/src/results/master_results.json\n  \n.\nRunning hermetic benchmarks on PR (#490, commit c77cd55e53fa8b5ecbfba38722912d8ef62c465a)...\nBuilding the JMH benchmark JAR...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+        },
+        {
+          "name": "presubmits / integration-tests",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/0afef085-2598-4c73-9e23-62a2becf1a3b",
+          "build_id": "0afef085-2598-4c73-9e23-62a2becf1a3b",
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": "01d6a958-e8c5-45d0-995d-a43428cc93f7",
+          "already_rebuilt": true,
+          "log_excerpt": "wget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+        }
+      ]
     },
     {
       "pr_number": 491,
@@ -423,7 +444,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 6.8,
+      "hours_since_update": 6.9,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -457,7 +478,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 1.1,
+      "hours_since_update": 1.2,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -525,7 +546,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 7.1,
+      "hours_since_update": 7.2,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -559,7 +580,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 2.3,
+      "hours_since_update": 2.4,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
