@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T10:49:43Z",
+  "generated_at": "2026-11-12T10:55:09Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -12,12 +12,12 @@
     "merged_upstream_prs": 33,
     "open_vetted_draft_prs": 19,
     "closed_unmerged_prs": 3,
-    "critic_major_catches": 26,
+    "critic_major_catches": 27,
     "total_agent_wall_hours": 49.19,
     "total_gate_cpu_hours": 4.59
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T10:49:43Z",
+    "updated_at": "2026-11-12T10:55:09Z",
     "total_prs_raised": 55,
     "merged_count": 33,
     "open_ready_count": 19,
@@ -922,10 +922,10 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
+        "review_count": 2,
         "perf_summary": "40/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.4% lat, -0.1% alloc)",
         "coverage_summary": "1711 tests, 0 skipped; cov line 87.03% -> 87.05% (+0.02), branch 73.50% -> 73.52% (+0.02); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
@@ -966,10 +966,10 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
+        "review_count": 2,
         "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.1% lat, -0.1% alloc)",
         "coverage_summary": "1706 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.50% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
@@ -2135,10 +2135,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
+      "review_count": 2,
       "perf_summary": "40/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.4% lat, -0.1% alloc)",
       "coverage_summary": "1711 tests, 0 skipped; cov line 87.03% -> 87.05% (+0.02), branch 73.50% -> 73.52% (+0.02); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
@@ -2179,10 +2179,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
+      "review_count": 2,
       "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.1% lat, -0.1% alloc)",
       "coverage_summary": "1706 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.50% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
@@ -2602,7 +2602,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 26,
+    "major_or_blocker_count": 27,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -2659,6 +2659,14 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261112-095542-parquet-layout-null-defense",
+        "pr": "#500",
+        "severity": "blocker",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/prefetch/ParquetFileLayout.java",
+        "finding": "The PR context claims that 'Coder removed the redundant checkNotNull and unused import from ParquetFileLayout, and updated ParquetFileLayoutTest' in response to review feedback. However, the worktree diff shows that `checkNotNull(rowGroups, \"rowGroups cannot be null\");` is still present, the import remains, and the test still checks for the exact exception message. The coder hallucinated addressing the review feedback.",
+        "source": "critic_json"
       },
       {
         "iter": "20261110-094714-analytics-core-options-null-safety",
@@ -2990,14 +2998,14 @@
       "raw_counterfactual_hours_p50": 120.68,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.6,
-      "risk_adjusted_hours_p25": 62.22,
-      "risk_adjusted_hours_p50": 92.48
+      "risk_adjusted_hours_p25": 62.55,
+      "risk_adjusted_hours_p50": 92.98
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 218.44,
-      "net_saved_hours_p50": 321.09,
-      "net_saved_swe_days_p25": 27.3,
-      "net_saved_swe_days_p50": 40.14
+      "net_saved_hours_p25": 218.77,
+      "net_saved_hours_p50": 321.59,
+      "net_saved_swe_days_p25": 27.35,
+      "net_saved_swe_days_p50": 40.2
     }
   }
 }
