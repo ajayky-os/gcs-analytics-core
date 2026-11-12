@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T12:25:04Z",
+  "generated_at": "2026-11-12T12:31:51Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -12,12 +12,12 @@
     "merged_upstream_prs": 33,
     "open_vetted_draft_prs": 16,
     "closed_unmerged_prs": 6,
-    "critic_major_catches": 33,
-    "total_agent_wall_hours": 58.85,
-    "total_gate_cpu_hours": 4.23
+    "critic_major_catches": 35,
+    "total_agent_wall_hours": 60.61,
+    "total_gate_cpu_hours": 4.28
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T12:25:04Z",
+    "updated_at": "2026-11-12T12:31:51Z",
     "total_prs_raised": 55,
     "merged_count": 33,
     "open_ready_count": 16,
@@ -914,8 +914,8 @@
         "state": "OPEN_READY",
         "change_type": "fix",
         "task_class": "correctness_fix",
-        "loc": 185,
-        "additions": 160,
+        "loc": 230,
+        "additions": 205,
         "deletions": 25,
         "iter": "20261108-034649-normalize-telemetry-options-parsing",
         "created_at": "2026-11-08T04:01:16Z",
@@ -925,9 +925,9 @@
         "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 2,
+        "review_count": 4,
         "perf_summary": "40/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.4% lat, -0.1% alloc)",
-        "coverage_summary": "1886 tests, 0 skipped; cov line 87.12% / branch 74.25% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "coverage_summary": "1888 tests, 0 skipped; cov line 87.11% / branch 74.25% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
       {
         "pr_number": 485,
@@ -2127,8 +2127,8 @@
       "state": "OPEN_READY",
       "change_type": "fix",
       "task_class": "correctness_fix",
-      "loc": 185,
-      "additions": 160,
+      "loc": 230,
+      "additions": 205,
       "deletions": 25,
       "iter": "20261108-034649-normalize-telemetry-options-parsing",
       "created_at": "2026-11-08T04:01:16Z",
@@ -2138,9 +2138,9 @@
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 2,
+      "review_count": 4,
       "perf_summary": "40/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.4% lat, -0.1% alloc)",
-      "coverage_summary": "1886 tests, 0 skipped; cov line 87.12% / branch 74.25% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "1888 tests, 0 skipped; cov line 87.11% / branch 74.25% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 485,
@@ -2602,7 +2602,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 33,
+    "major_or_blocker_count": 35,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -2659,6 +2659,22 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261108-034649-normalize-telemetry-options-parsing",
+        "pr": "#484",
+        "severity": "blocker",
+        "category": "gates.json",
+        "finding": "The perf gate failed with 'JMH run failed (rc=1)' due to a crash ('Properties init: Could not determine current working directory.'). A PR cannot be approved if required gates fail.",
+        "source": "critic_json"
+      },
+      {
+        "iter": "20261108-034649-normalize-telemetry-options-parsing",
+        "pr": "#484",
+        "severity": "major",
+        "category": "coder_report",
+        "finding": "The coder report falsely states that it removed an unnecessary .replace('-', '_') from LoggingTelemetryOptions. The code diff shows no such removal; instead, it ADDED .replace('-', '_') to OpenTelemetryOptions to support the cloud-monitoring enum. The commit description should accurately reflect the changes.",
+        "source": "critic_json"
       },
       {
         "iter": "20261107-095043-normalize-write-options-parsing",
@@ -3078,14 +3094,14 @@
       "raw_counterfactual_hours_p50": 102.68,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.6,
-      "risk_adjusted_hours_p25": 56.13,
-      "risk_adjusted_hours_p50": 83.38
+      "risk_adjusted_hours_p25": 56.79,
+      "risk_adjusted_hours_p50": 84.38
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 212.35,
-      "net_saved_hours_p50": 311.99,
-      "net_saved_swe_days_p25": 26.54,
-      "net_saved_swe_days_p50": 39.0
+      "net_saved_hours_p25": 213.01,
+      "net_saved_hours_p50": 312.99,
+      "net_saved_swe_days_p25": 26.63,
+      "net_saved_swe_days_p50": 39.12
     }
   }
 }
