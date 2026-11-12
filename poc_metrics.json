@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T10:10:06Z",
+  "generated_at": "2026-11-12T10:11:48Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 63,
+    "total_iterations_logged": 64,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 61,
-    "unique_upstream_prs": 54,
+    "substantive_iterations": 62,
+    "unique_upstream_prs": 55,
     "merged_upstream_prs": 32,
-    "open_vetted_draft_prs": 19,
+    "open_vetted_draft_prs": 20,
     "closed_unmerged_prs": 3,
     "critic_major_catches": 26,
-    "total_agent_wall_hours": 48.93,
-    "total_gate_cpu_hours": 4.45
+    "total_agent_wall_hours": 49.19,
+    "total_gate_cpu_hours": 4.59
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T10:10:06Z",
-    "total_prs_raised": 54,
+    "updated_at": "2026-11-12T10:11:48Z",
+    "total_prs_raised": 55,
     "merged_count": 32,
-    "open_ready_count": 19,
+    "open_ready_count": 20,
     "open_draft_count": 0,
     "closed_unmerged_count": 3,
     "acceptance_rate_closed_prs": 0.914,
-    "overall_merge_rate_to_date": 0.593,
+    "overall_merge_rate_to_date": 0.582,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -1214,6 +1214,28 @@
         "review_count": 2,
         "perf_summary": "\u2014",
         "coverage_summary": "1875 tests, 0 skipped; cov line 86.99% -> 87.02% (+0.03), branch 74.07% -> 74.07% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 500,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/500",
+        "title": "fix(core): fail fast on null inputs in Parquet layout models",
+        "state": "OPEN_READY",
+        "change_type": "fix",
+        "task_class": "correctness_fix",
+        "loc": 83,
+        "additions": 79,
+        "deletions": 4,
+        "iter": "20261112-095542-parquet-layout-null-defense",
+        "created_at": "2026-11-12T10:11:15Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "30/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=256}` -13.9% lat, -0.0% alloc)",
+        "coverage_summary": "1880 tests, 0 skipped; cov line 86.99% -> 87.00% (+0.01), branch 74.07% -> 74.07% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2405,6 +2427,28 @@
       "review_count": 2,
       "perf_summary": "\u2014",
       "coverage_summary": "1875 tests, 0 skipped; cov line 86.99% -> 87.02% (+0.03), branch 74.07% -> 74.07% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 500,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/500",
+      "title": "fix(core): fail fast on null inputs in Parquet layout models",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 83,
+      "additions": 79,
+      "deletions": 4,
+      "iter": "20261112-095542-parquet-layout-null-defense",
+      "created_at": "2026-11-12T10:11:15Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "30/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=256}` -13.9% lat, -0.0% alloc)",
+      "coverage_summary": "1880 tests, 0 skipped; cov line 86.99% -> 87.00% (+0.01), branch 74.07% -> 74.07% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2941,19 +2985,19 @@
       "net_saved_swe_days_p50": 27.83
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 19,
-      "raw_counterfactual_hours_p25": 81.34,
-      "raw_counterfactual_hours_p50": 120.68,
+      "open_draft_pr_count": 20,
+      "raw_counterfactual_hours_p25": 85.34,
+      "raw_counterfactual_hours_p50": 126.68,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.593,
-      "risk_adjusted_hours_p25": 62.22,
-      "risk_adjusted_hours_p50": 92.48
+      "empirical_promoted_merge_rate": 0.582,
+      "risk_adjusted_hours_p25": 65.02,
+      "risk_adjusted_hours_p50": 96.68
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 214.44,
-      "net_saved_hours_p50": 315.09,
-      "net_saved_swe_days_p25": 26.8,
-      "net_saved_swe_days_p50": 39.39
+      "net_saved_hours_p25": 217.24,
+      "net_saved_hours_p50": 319.29,
+      "net_saved_swe_days_p25": 27.16,
+      "net_saved_swe_days_p50": 39.91
     }
   }
 }
