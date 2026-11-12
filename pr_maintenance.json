@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-12T13:55:20Z",
+  "checked_at": "2026-11-12T13:56:06Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "0acf259aafe99097a97ddab595d993341525cde9",
   "onduty": {
@@ -296,18 +296,7 @@
       "action_required": false,
       "unaddressed_comments": [],
       "failing_checks": [],
-      "transient_checks": [
-        {
-          "name": "presubmits / hermetic-benchmarks",
-          "state": "FAILURE",
-          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fmicrobenchmarks/activity/68e5cd51-0063-4a63-9a2c-eb24c94fb5bf",
-          "build_id": "68e5cd51-0063-4a63-9a2c-eb24c94fb5bf",
-          "classification": "TRANSIENT_INFRA",
-          "rebuilt_as": "18e8c5b3-9541-4d91-a542-9cd5fd689957",
-          "already_rebuilt": true,
-          "log_excerpt": "ching latest main baseline results from gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json...\nCopying gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json to file:///b/f/w/src/results/master_results.json\n  \n\nRunning hermetic benchmarks on PR (#490, commit c77cd55e53fa8b5ecbfba38722912d8ef62c465a)...\nBuilding the JMH benchmark JAR...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
-        }
-      ]
+      "transient_checks": []
     },
     {
       "pr_number": 491,
