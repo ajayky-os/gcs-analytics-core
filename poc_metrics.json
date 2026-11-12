@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T10:40:11Z",
+  "generated_at": "2026-11-12T10:49:43Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -9,22 +9,22 @@
     "error_or_quota_halted_iterations": 1,
     "substantive_iterations": 62,
     "unique_upstream_prs": 55,
-    "merged_upstream_prs": 32,
-    "open_vetted_draft_prs": 20,
+    "merged_upstream_prs": 33,
+    "open_vetted_draft_prs": 19,
     "closed_unmerged_prs": 3,
     "critic_major_catches": 26,
     "total_agent_wall_hours": 49.19,
     "total_gate_cpu_hours": 4.59
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T10:40:11Z",
+    "updated_at": "2026-11-12T10:49:43Z",
     "total_prs_raised": 55,
-    "merged_count": 32,
-    "open_ready_count": 20,
+    "merged_count": 33,
+    "open_ready_count": 19,
     "open_draft_count": 0,
     "closed_unmerged_count": 3,
-    "acceptance_rate_closed_prs": 0.914,
-    "overall_merge_rate_to_date": 0.582,
+    "acceptance_rate_closed_prs": 0.917,
+    "overall_merge_rate_to_date": 0.6,
     "median_hours_to_merge": 16.9,
     "prs": [
       {
@@ -856,10 +856,10 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 4,
+        "review_count": 5,
         "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.8% lat, -0.1% alloc)",
         "coverage_summary": "1707 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.54% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
@@ -867,7 +867,7 @@
         "pr_number": 482,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/482",
         "title": "fix(client): normalize cache option parsing via getTrimmedValue",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "fix",
         "task_class": "correctness_fix",
         "loc": 81,
@@ -875,13 +875,13 @@
         "deletions": 16,
         "iter": "20261107-054521-normalize-cache-options-parsing",
         "created_at": "2026-11-07T05:58:01Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "merged_at": "2026-11-12T10:48:36Z",
+        "closed_at": "2026-11-12T10:48:36Z",
+        "hours_to_merge": 124.84,
+        "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
+        "review_count": 2,
         "perf_summary": "20/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.5% lat, -0.1% alloc)",
         "coverage_summary": "1707 tests, 0 skipped; cov line 87.03% -> 87.14% (+0.12), branch 73.50% -> 73.67% (+0.17); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
@@ -900,10 +900,10 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
+        "review_count": 2,
         "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -61.9% lat, -0.1% alloc)",
         "coverage_summary": "1705 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.50% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
@@ -1234,8 +1234,8 @@
         "commit_count": 1,
         "comment_count": 3,
         "review_count": 1,
-        "perf_summary": "30/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=256}` -13.9% lat, -0.0% alloc)",
-        "coverage_summary": "1880 tests, 0 skipped; cov line 86.99% -> 87.00% (+0.01), branch 74.07% -> 74.07% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "perf_summary": "35/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=16777216}` -13.8% lat, -0.0% alloc)",
+        "coverage_summary": "1880 tests, 0 skipped; cov line 86.99% -> 87.00% (+0.01), branch 74.07% -> 74.11% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2069,10 +2069,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 4,
+      "review_count": 5,
       "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.8% lat, -0.1% alloc)",
       "coverage_summary": "1707 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.54% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
@@ -2080,7 +2080,7 @@
       "pr_number": 482,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/482",
       "title": "fix(client): normalize cache option parsing via getTrimmedValue",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "fix",
       "task_class": "correctness_fix",
       "loc": 81,
@@ -2088,13 +2088,13 @@
       "deletions": 16,
       "iter": "20261107-054521-normalize-cache-options-parsing",
       "created_at": "2026-11-07T05:58:01Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "merged_at": "2026-11-12T10:48:36Z",
+      "closed_at": "2026-11-12T10:48:36Z",
+      "hours_to_merge": 124.84,
+      "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
+      "review_count": 2,
       "perf_summary": "20/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.5% lat, -0.1% alloc)",
       "coverage_summary": "1707 tests, 0 skipped; cov line 87.03% -> 87.14% (+0.12), branch 73.50% -> 73.67% (+0.17); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
@@ -2113,10 +2113,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
+      "review_count": 2,
       "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -61.9% lat, -0.1% alloc)",
       "coverage_summary": "1705 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.50% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
@@ -2447,8 +2447,8 @@
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 1,
-      "perf_summary": "30/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=256}` -13.9% lat, -0.0% alloc)",
-      "coverage_summary": "1880 tests, 0 skipped; cov line 86.99% -> 87.00% (+0.01), branch 74.07% -> 74.07% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "perf_summary": "35/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=16777216}` -13.8% lat, -0.0% alloc)",
+      "coverage_summary": "1880 tests, 0 skipped; cov line 86.99% -> 87.00% (+0.01), branch 74.07% -> 74.11% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2971,33 +2971,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 32,
+      "merged_pr_count": 33,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 156.02,
-      "gross_counterfactual_hours_p50": 226.41,
-      "net_saved_hours_p25": 152.22,
-      "net_saved_hours_p50": 222.61,
-      "net_saved_swe_days_p25": 19.03,
-      "net_saved_swe_days_p50": 27.83
+      "gross_counterfactual_hours_p25": 160.02,
+      "gross_counterfactual_hours_p50": 232.41,
+      "net_saved_hours_p25": 156.22,
+      "net_saved_hours_p50": 228.61,
+      "net_saved_swe_days_p25": 19.53,
+      "net_saved_swe_days_p50": 28.58
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 20,
-      "raw_counterfactual_hours_p25": 85.34,
-      "raw_counterfactual_hours_p50": 126.68,
+      "open_draft_pr_count": 19,
+      "raw_counterfactual_hours_p25": 81.34,
+      "raw_counterfactual_hours_p50": 120.68,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.582,
-      "risk_adjusted_hours_p25": 65.02,
-      "risk_adjusted_hours_p50": 96.68
+      "empirical_promoted_merge_rate": 0.6,
+      "risk_adjusted_hours_p25": 62.22,
+      "risk_adjusted_hours_p50": 92.48
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 217.24,
-      "net_saved_hours_p50": 319.29,
-      "net_saved_swe_days_p25": 27.16,
-      "net_saved_swe_days_p50": 39.91
+      "net_saved_hours_p25": 218.44,
+      "net_saved_hours_p50": 321.09,
+      "net_saved_swe_days_p25": 27.3,
+      "net_saved_swe_days_p50": 40.14
     }
   }
 }
