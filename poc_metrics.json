@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T11:16:45Z",
+  "generated_at": "2026-11-12T11:24:57Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -12,12 +12,12 @@
     "merged_upstream_prs": 33,
     "open_vetted_draft_prs": 16,
     "closed_unmerged_prs": 6,
-    "critic_major_catches": 27,
+    "critic_major_catches": 29,
     "total_agent_wall_hours": 55.2,
     "total_gate_cpu_hours": 4.59
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T11:16:45Z",
+    "updated_at": "2026-11-12T11:24:57Z",
     "total_prs_raised": 55,
     "merged_count": 33,
     "open_ready_count": 16,
@@ -861,7 +861,7 @@
         "comment_count": 3,
         "review_count": 5,
         "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.8% lat, -0.1% alloc)",
-        "coverage_summary": "1707 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.54% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "coverage_summary": "1886 tests, 0 skipped; cov line 87.10% / branch 74.23% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
       {
         "pr_number": 482,
@@ -2074,7 +2074,7 @@
       "comment_count": 3,
       "review_count": 5,
       "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.8% lat, -0.1% alloc)",
-      "coverage_summary": "1707 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.54% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "1886 tests, 0 skipped; cov line 87.10% / branch 74.23% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 482,
@@ -2602,7 +2602,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 27,
+    "major_or_blocker_count": 29,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -2699,6 +2699,30 @@
         "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:163",
         "finding": "FileAccessPattern enum parsing calls .toUpperCase() without a Locale, which is prone to the Turkish locale bug. It also does not handle blank values gracefully.",
         "source": "critic_history"
+      },
+      {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "major",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptionsTest.java:391",
+        "finding": "The commit message claims to fix an issue with Turkic locales (tr-TR) when parsing UploadType, but no test is included to verify this. A regression here would go unnoticed. There is an uncommitted test in the worktree (`createFromOptions_underTurkishLocale_parsesEnumsCorrectly`) that covers this exact scenario and should be committed.",
+        "source": "critic_json"
+      },
+      {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "major",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptions.java:198",
+        "finding": "The PR fixes blank-string and whitespace parsing for `upload-type` and `pcu-cleanup-type` by using `ConfigurationUtil.getTrimmedValue()`. However, other properties like `CLIENT_PROTOCOL_KEY` and numeric properties (e.g., `UPLOAD_CHUNK_SIZE_KEY`) still use `Optional.ofNullable`. As a result, they will still throw `IllegalArgumentException` or `NumberFormatException` if provided with blank strings or surrounding whitespace. The uncommitted changes in the worktree already fix this and should be committed for consistency.",
+        "source": "critic_json"
+      },
+      {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "nit",
+        "category": "COMMIT_MSG",
+        "finding": "The commit message says 'Normalize both enum strings with trim().replace('-', '_').toUpperCase(Locale.ROOT)', but the implementation uses `ConfigurationUtil.getTrimmedValue()` which performs the trim earlier.",
+        "source": "critic_json"
       },
       {
         "iter": "20261104-100443-object-range-models-coverage",
@@ -2998,14 +3022,14 @@
       "raw_counterfactual_hours_p50": 102.68,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.6,
-      "risk_adjusted_hours_p25": 54.15,
-      "risk_adjusted_hours_p50": 80.38
+      "risk_adjusted_hours_p25": 54.81,
+      "risk_adjusted_hours_p50": 81.38
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 210.37,
-      "net_saved_hours_p50": 308.99,
-      "net_saved_swe_days_p25": 26.3,
-      "net_saved_swe_days_p50": 38.62
+      "net_saved_hours_p25": 211.03,
+      "net_saved_hours_p50": 309.99,
+      "net_saved_swe_days_p25": 26.38,
+      "net_saved_swe_days_p50": 38.75
     }
   }
 }
