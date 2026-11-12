@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T11:02:07Z",
+  "generated_at": "2026-11-12T11:10:05Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -10,20 +10,20 @@
     "substantive_iterations": 62,
     "unique_upstream_prs": 55,
     "merged_upstream_prs": 33,
-    "open_vetted_draft_prs": 19,
-    "closed_unmerged_prs": 3,
+    "open_vetted_draft_prs": 16,
+    "closed_unmerged_prs": 6,
     "critic_major_catches": 27,
-    "total_agent_wall_hours": 49.19,
+    "total_agent_wall_hours": 54.19,
     "total_gate_cpu_hours": 4.59
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T11:02:07Z",
+    "updated_at": "2026-11-12T11:10:05Z",
     "total_prs_raised": 55,
     "merged_count": 33,
-    "open_ready_count": 19,
+    "open_ready_count": 16,
     "open_draft_count": 0,
-    "closed_unmerged_count": 3,
-    "acceptance_rate_closed_prs": 0.917,
+    "closed_unmerged_count": 6,
+    "acceptance_rate_closed_prs": 0.846,
     "overall_merge_rate_to_date": 0.6,
     "median_hours_to_merge": 16.9,
     "prs": [
@@ -955,7 +955,7 @@
         "pr_number": 486,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/486",
         "title": "fix(client): guard Duration.toMillis overflow in GcsHttpTransportFactory",
-        "state": "OPEN_READY",
+        "state": "CLOSED_UNMERGED",
         "change_type": "fix",
         "task_class": "correctness_fix",
         "loc": 58,
@@ -964,11 +964,11 @@
         "iter": "20261108-094452-transport-factory-timeout-overflow-guard",
         "created_at": "2026-11-08T10:11:14Z",
         "merged_at": null,
-        "closed_at": null,
+        "closed_at": "2026-11-12T11:06:11Z",
         "hours_to_merge": null,
         "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
-        "comment_count": 3,
+        "comment_count": 4,
         "review_count": 2,
         "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.1% lat, -0.1% alloc)",
         "coverage_summary": "1706 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.50% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
@@ -977,7 +977,7 @@
         "pr_number": 487,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/487",
         "title": "fix(client): ignore blank endpoint and universe in GcsTransportOptionsFactory",
-        "state": "OPEN_READY",
+        "state": "CLOSED_UNMERGED",
         "change_type": "fix",
         "task_class": "correctness_fix",
         "loc": 36,
@@ -986,11 +986,11 @@
         "iter": "20261109-034724-transport-options-factory-blank-endpoint",
         "created_at": "2026-11-09T03:58:29Z",
         "merged_at": null,
-        "closed_at": null,
+        "closed_at": "2026-11-12T11:07:32Z",
         "hours_to_merge": null,
         "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
-        "comment_count": 3,
+        "comment_count": 4,
         "review_count": 3,
         "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.7% lat, -0.1% alloc)",
         "coverage_summary": "1709 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.55% (+0.05); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
@@ -999,7 +999,7 @@
         "pr_number": 488,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/488",
         "title": "fix(client): validate TTL upper bound in GcsCreateBucketOptions",
-        "state": "OPEN_READY",
+        "state": "CLOSED_UNMERGED",
         "change_type": "fix",
         "task_class": "correctness_fix",
         "loc": 80,
@@ -1008,11 +1008,11 @@
         "iter": "20261109-054358-create-bucket-options-ttl-upper-bound",
         "created_at": "2026-11-09T05:56:22Z",
         "merged_at": null,
-        "closed_at": null,
+        "closed_at": "2026-11-12T11:08:49Z",
         "hours_to_merge": null,
         "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
-        "comment_count": 3,
+        "comment_count": 4,
         "review_count": 2,
         "perf_summary": "36/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.7% lat, -0.1% alloc)",
         "coverage_summary": "1709 tests, 0 skipped; cov line 87.03% -> 87.04% (+0.01), branch 73.50% -> 73.57% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
@@ -1054,10 +1054,10 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "PENDING",
+        "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
+        "review_count": 2,
         "perf_summary": "18/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -12.4% lat, -0.0% alloc)",
         "coverage_summary": "1779 tests, 0 skipped; cov line 86.65% -> 86.66% (+0.02), branch 72.89% -> 72.94% (+0.05); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
@@ -1234,8 +1234,8 @@
         "commit_count": 1,
         "comment_count": 3,
         "review_count": 1,
-        "perf_summary": "10/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -8.0% lat, -8.0% alloc)",
-        "coverage_summary": "1880 tests, 0 skipped; cov line 86.99% -> 87.00% (+0.01), branch 74.07% -> 74.11% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "perf_summary": "32/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -17.2% lat, +0.0% alloc)",
+        "coverage_summary": "1880 tests, 0 skipped; cov line 86.99% -> 87.00% (+0.01), branch 74.07% -> 74.16% (+0.08); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2168,7 +2168,7 @@
       "pr_number": 486,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/486",
       "title": "fix(client): guard Duration.toMillis overflow in GcsHttpTransportFactory",
-      "state": "OPEN_READY",
+      "state": "CLOSED_UNMERGED",
       "change_type": "fix",
       "task_class": "correctness_fix",
       "loc": 58,
@@ -2177,11 +2177,11 @@
       "iter": "20261108-094452-transport-factory-timeout-overflow-guard",
       "created_at": "2026-11-08T10:11:14Z",
       "merged_at": null,
-      "closed_at": null,
+      "closed_at": "2026-11-12T11:06:11Z",
       "hours_to_merge": null,
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
-      "comment_count": 3,
+      "comment_count": 4,
       "review_count": 2,
       "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -66.1% lat, -0.1% alloc)",
       "coverage_summary": "1706 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.50% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
@@ -2190,7 +2190,7 @@
       "pr_number": 487,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/487",
       "title": "fix(client): ignore blank endpoint and universe in GcsTransportOptionsFactory",
-      "state": "OPEN_READY",
+      "state": "CLOSED_UNMERGED",
       "change_type": "fix",
       "task_class": "correctness_fix",
       "loc": 36,
@@ -2199,11 +2199,11 @@
       "iter": "20261109-034724-transport-options-factory-blank-endpoint",
       "created_at": "2026-11-09T03:58:29Z",
       "merged_at": null,
-      "closed_at": null,
+      "closed_at": "2026-11-12T11:07:32Z",
       "hours_to_merge": null,
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
-      "comment_count": 3,
+      "comment_count": 4,
       "review_count": 3,
       "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.7% lat, -0.1% alloc)",
       "coverage_summary": "1709 tests, 0 skipped; cov line 87.03% -> 87.03% (+0.00), branch 73.50% -> 73.55% (+0.05); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
@@ -2212,7 +2212,7 @@
       "pr_number": 488,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/488",
       "title": "fix(client): validate TTL upper bound in GcsCreateBucketOptions",
-      "state": "OPEN_READY",
+      "state": "CLOSED_UNMERGED",
       "change_type": "fix",
       "task_class": "correctness_fix",
       "loc": 80,
@@ -2221,11 +2221,11 @@
       "iter": "20261109-054358-create-bucket-options-ttl-upper-bound",
       "created_at": "2026-11-09T05:56:22Z",
       "merged_at": null,
-      "closed_at": null,
+      "closed_at": "2026-11-12T11:08:49Z",
       "hours_to_merge": null,
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
-      "comment_count": 3,
+      "comment_count": 4,
       "review_count": 2,
       "perf_summary": "36/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.7% lat, -0.1% alloc)",
       "coverage_summary": "1709 tests, 0 skipped; cov line 87.03% -> 87.04% (+0.01), branch 73.50% -> 73.57% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
@@ -2267,10 +2267,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "PENDING",
+      "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
+      "review_count": 2,
       "perf_summary": "18/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -12.4% lat, -0.0% alloc)",
       "coverage_summary": "1779 tests, 0 skipped; cov line 86.65% -> 86.66% (+0.02), branch 72.89% -> 72.94% (+0.05); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
@@ -2447,8 +2447,8 @@
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 1,
-      "perf_summary": "10/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -8.0% lat, -8.0% alloc)",
-      "coverage_summary": "1880 tests, 0 skipped; cov line 86.99% -> 87.00% (+0.01), branch 74.07% -> 74.11% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "perf_summary": "32/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -17.2% lat, +0.0% alloc)",
+      "coverage_summary": "1880 tests, 0 skipped; cov line 86.99% -> 87.00% (+0.01), branch 74.07% -> 74.16% (+0.08); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2993,19 +2993,19 @@
       "net_saved_swe_days_p50": 28.58
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 19,
-      "raw_counterfactual_hours_p25": 81.34,
-      "raw_counterfactual_hours_p50": 120.68,
+      "open_draft_pr_count": 16,
+      "raw_counterfactual_hours_p25": 69.34,
+      "raw_counterfactual_hours_p50": 102.68,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.6,
-      "risk_adjusted_hours_p25": 62.55,
-      "risk_adjusted_hours_p50": 92.98
+      "risk_adjusted_hours_p25": 54.15,
+      "risk_adjusted_hours_p50": 80.38
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 218.77,
-      "net_saved_hours_p50": 321.59,
-      "net_saved_swe_days_p25": 27.35,
-      "net_saved_swe_days_p50": 40.2
+      "net_saved_hours_p25": 210.37,
+      "net_saved_hours_p50": 308.99,
+      "net_saved_swe_days_p25": 26.3,
+      "net_saved_swe_days_p50": 38.62
     }
   }
 }
