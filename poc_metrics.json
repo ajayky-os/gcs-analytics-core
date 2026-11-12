@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-12T14:26:22Z",
+  "generated_at": "2026-11-12T14:32:23Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -17,7 +17,7 @@
     "total_gate_cpu_hours": 4.44
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-12T14:26:22Z",
+    "updated_at": "2026-11-12T14:32:23Z",
     "total_prs_raised": 55,
     "merged_count": 33,
     "open_ready_count": 16,
@@ -1068,8 +1068,8 @@
         "state": "OPEN_READY",
         "change_type": "fix",
         "task_class": "correctness_fix",
-        "loc": 128,
-        "additions": 123,
+        "loc": 116,
+        "additions": 111,
         "deletions": 5,
         "iter": "20261110-054849-normalize-vectored-read-options-parsing",
         "created_at": "2026-11-10T06:15:53Z",
@@ -2281,8 +2281,8 @@
       "state": "OPEN_READY",
       "change_type": "fix",
       "task_class": "correctness_fix",
-      "loc": 128,
-      "additions": 123,
+      "loc": 116,
+      "additions": 111,
       "deletions": 5,
       "iter": "20261110-054849-normalize-vectored-read-options-parsing",
       "created_at": "2026-11-10T06:15:53Z",
