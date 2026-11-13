@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13T13:31:46Z",
+  "updated_at": "2026-11-13T13:32:20Z",
   "total_prs_raised": 58,
   "merged_count": 37,
   "open_ready_count": 15,
@@ -870,7 +870,7 @@
     {
       "pr_number": 483,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/483",
-      "title": "fix(client): normalize read and write options parsing via getTrimmedValue",
+      "title": "fix(client): normalize read and write option parsing via getTrimmedValue",
       "state": "OPEN_READY",
       "change_type": "fix",
       "task_class": "correctness_fix",

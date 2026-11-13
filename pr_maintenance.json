@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-13T13:31:38Z",
+  "checked_at": "2026-11-13T13:32:56Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "1adcf8069587140d297c4de440a2463e4e502086",
   "onduty": {
@@ -185,7 +185,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.5,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -194,7 +194,38 @@
       "action_required": false,
       "unaddressed_comments": [],
       "failing_checks": [],
-      "transient_checks": []
+      "transient_checks": [
+        {
+          "name": "presubmits / compilation",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fcompilation/activity/d01b5692-fe18-49f3-84fa-2c81e052a35a",
+          "build_id": "d01b5692-fe18-49f3-84fa-2c81e052a35a",
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": "7a67d154-9523-4805-bc42-ce14078a0eda",
+          "already_rebuilt": true,
+          "log_excerpt": "Building all modules and packaging JARs to catch compilation issues...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+        },
+        {
+          "name": "presubmits / hermetic-benchmarks",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fmicrobenchmarks/activity/1483d69d-6dae-4f6e-8a68-efe54a1dcdee",
+          "build_id": "1483d69d-6dae-4f6e-8a68-efe54a1dcdee",
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": "b1d41e65-ef3e-46d7-a374-bd45d289e4b0",
+          "already_rebuilt": true,
+          "log_excerpt": "ching latest main baseline results from gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json...\nCopying gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json to file:///b/f/w/src/results/master_results.json\n  \n\nRunning hermetic benchmarks on PR (#490, commit a9244a190ecdf2fd1d1e8d9924dca425ed5d48a1)...\nBuilding the JMH benchmark JAR...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+        },
+        {
+          "name": "presubmits / integration-tests",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/9f9dfc66-15c4-4f93-8776-36315fcd0a79",
+          "build_id": "9f9dfc66-15c4-4f93-8776-36315fcd0a79",
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": "185d9d2a-d849-402d-a599-5ba0ca83354e",
+          "already_rebuilt": true,
+          "log_excerpt": "wget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+        }
+      ]
     },
     {
       "pr_number": 491,
