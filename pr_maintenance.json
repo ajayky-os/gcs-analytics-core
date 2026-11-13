@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-13T13:32:56Z",
+  "checked_at": "2026-11-13T13:33:49Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "1adcf8069587140d297c4de440a2463e4e502086",
   "onduty": {
@@ -130,7 +130,7 @@
     },
     {
       "pr_number": 483,
-      "title": "fix(client): normalize read and write options parsing via getTrimmedValue",
+      "title": "fix(client): normalize read and write option parsing via getTrimmedValue",
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/483",
       "is_draft": false,
       "pr_author": "gcs-analytics-core-robot",
@@ -140,8 +140,8 @@
       ],
       "iter_id": "20261107-095043-normalize-write-options-parsing",
       "branch": "sil/normalize-write-options-parsing",
-      "head_oid": "7828ea2f2d01841478c08f837a6a60240c82821d",
-      "head_commit_ts": "2026-11-13T13:27:39Z",
+      "head_oid": "6ca464710aabf507fa1c416bba462773c1945bab",
+      "head_commit_ts": "2026-11-13T13:16:14Z",
       "main_sha": "1adcf8069587140d297c4de440a2463e4e502086",
       "commits_behind_main": 0,
       "mergeable": "MERGEABLE",
@@ -221,8 +221,8 @@
           "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/9f9dfc66-15c4-4f93-8776-36315fcd0a79",
           "build_id": "9f9dfc66-15c4-4f93-8776-36315fcd0a79",
           "classification": "TRANSIENT_INFRA",
-          "rebuilt_as": "185d9d2a-d849-402d-a599-5ba0ca83354e",
-          "already_rebuilt": true,
+          "rebuilt_as": null,
+          "already_rebuilt": false,
           "log_excerpt": "wget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
         }
       ]
@@ -259,7 +259,18 @@
       "action_required": true,
       "unaddressed_comments": [],
       "failing_checks": [],
-      "transient_checks": []
+      "transient_checks": [
+        {
+          "name": "presubmits / hermetic-benchmarks",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fmicrobenchmarks/activity/2b759f39-2e66-480d-a45b-675cd92788f5",
+          "build_id": "2b759f39-2e66-480d-a45b-675cd92788f5",
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": "9beec16a-81aa-4da4-a8de-1e013e57323b",
+          "already_rebuilt": true,
+          "log_excerpt": "ching latest main baseline results from gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json...\nCopying gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json to file:///b/f/w/src/results/master_results.json\n  \n\nRunning hermetic benchmarks on PR (#491, commit 067ee9abad32935ee2d3e7a6b6a5891cb6953af8)...\nBuilding the JMH benchmark JAR...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+        }
+      ]
     },
     {
       "pr_number": 494,
