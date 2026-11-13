@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-13T16:32:26Z",
+  "generated_at": "2026-11-13T16:40:09Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -9,23 +9,23 @@
     "error_or_quota_halted_iterations": 1,
     "substantive_iterations": 66,
     "unique_upstream_prs": 58,
-    "merged_upstream_prs": 37,
-    "open_vetted_draft_prs": 15,
+    "merged_upstream_prs": 38,
+    "open_vetted_draft_prs": 14,
     "closed_unmerged_prs": 6,
     "critic_major_catches": 47,
     "total_agent_wall_hours": 68.13,
     "total_gate_cpu_hours": 5.0
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-13T16:32:26Z",
+    "updated_at": "2026-11-13T16:40:09Z",
     "total_prs_raised": 58,
-    "merged_count": 37,
-    "open_ready_count": 15,
+    "merged_count": 38,
+    "open_ready_count": 14,
     "open_draft_count": 0,
     "closed_unmerged_count": 6,
-    "acceptance_rate_closed_prs": 0.86,
-    "overall_merge_rate_to_date": 0.638,
-    "median_hours_to_merge": 21.56,
+    "acceptance_rate_closed_prs": 0.864,
+    "overall_merge_rate_to_date": 0.655,
+    "median_hours_to_merge": 21.67,
     "prs": [
       {
         "pr_number": 407,
@@ -1065,7 +1065,7 @@
         "pr_number": 491,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/491",
         "title": "fix(client): normalize GcsVectoredReadOptions parsing via getTrimmedValue",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "fix",
         "task_class": "correctness_fix",
         "loc": 116,
@@ -1073,9 +1073,9 @@
         "deletions": 5,
         "iter": "20261110-054849-normalize-vectored-read-options-parsing",
         "created_at": "2026-11-10T06:15:53Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
+        "merged_at": "2026-11-13T16:39:14Z",
+        "closed_at": "2026-11-13T16:39:14Z",
+        "hours_to_merge": 82.39,
         "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 3,
@@ -2344,7 +2344,7 @@
       "pr_number": 491,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/491",
       "title": "fix(client): normalize GcsVectoredReadOptions parsing via getTrimmedValue",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "fix",
       "task_class": "correctness_fix",
       "loc": 116,
@@ -2352,9 +2352,9 @@
       "deletions": 5,
       "iter": "20261110-054849-normalize-vectored-read-options-parsing",
       "created_at": "2026-11-10T06:15:53Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
+      "merged_at": "2026-11-13T16:39:14Z",
+      "closed_at": "2026-11-13T16:39:14Z",
+      "hours_to_merge": 82.39,
       "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 3,
@@ -3311,33 +3311,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 37,
+      "merged_pr_count": 38,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 177.34,
-      "gross_counterfactual_hours_p50": 258.41,
-      "net_saved_hours_p25": 173.54,
-      "net_saved_hours_p50": 254.61,
-      "net_saved_swe_days_p25": 21.69,
-      "net_saved_swe_days_p50": 31.83
+      "gross_counterfactual_hours_p25": 182.0,
+      "gross_counterfactual_hours_p50": 265.41,
+      "net_saved_hours_p25": 178.2,
+      "net_saved_hours_p50": 261.61,
+      "net_saved_swe_days_p25": 22.27,
+      "net_saved_swe_days_p50": 32.7
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 15,
-      "raw_counterfactual_hours_p25": 66.68,
-      "raw_counterfactual_hours_p50": 98.02,
+      "open_draft_pr_count": 14,
+      "raw_counterfactual_hours_p25": 62.68,
+      "raw_counterfactual_hours_p50": 92.02,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.638,
-      "risk_adjusted_hours_p25": 57.57,
-      "risk_adjusted_hours_p50": 85.11
+      "empirical_promoted_merge_rate": 0.655,
+      "risk_adjusted_hours_p25": 54.11,
+      "risk_adjusted_hours_p50": 79.91
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 231.11,
-      "net_saved_hours_p50": 339.72,
-      "net_saved_swe_days_p25": 28.89,
-      "net_saved_swe_days_p50": 42.47
+      "net_saved_hours_p25": 232.31,
+      "net_saved_hours_p50": 341.52,
+      "net_saved_swe_days_p25": 29.04,
+      "net_saved_swe_days_p50": 42.69
     }
   }
 }
