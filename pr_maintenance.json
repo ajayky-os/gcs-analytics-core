@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-13T13:41:05Z",
+  "checked_at": "2026-11-13T13:42:41Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "1adcf8069587140d297c4de440a2463e4e502086",
   "onduty": {
@@ -345,22 +345,12 @@
       "failing_checks": [],
       "transient_checks": [
         {
-          "name": "presubmits / compilation",
-          "state": "FAILURE",
-          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fcompilation/activity/a92ec7f6-8b59-4c12-9e39-ec3a6a604d68",
-          "build_id": "a92ec7f6-8b59-4c12-9e39-ec3a6a604d68",
-          "classification": "TRANSIENT_INFRA",
-          "rebuilt_as": "58abd4b8-4fc6-4ecb-845f-4f3ac95fc9c0",
-          "already_rebuilt": true,
-          "log_excerpt": "Building all modules and packaging JARs to catch compilation issues...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
-        },
-        {
           "name": "presubmits / integration-tests",
           "state": "FAILURE",
           "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/c037eefd-3370-47f1-a252-5ab108d07689",
           "build_id": "c037eefd-3370-47f1-a252-5ab108d07689",
           "classification": "TRANSIENT_INFRA",
-          "rebuilt_as": "48ef9bb5-13d1-4913-8f13-ce0270990bcc",
+          "rebuilt_as": null,
           "already_rebuilt": true,
           "log_excerpt": "wget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
         }
@@ -491,7 +481,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 9.0,
+      "hours_since_update": 9.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -593,7 +583,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 9.1,
+      "hours_since_update": 9.2,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -627,7 +617,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 7.0,
+      "hours_since_update": 7.1,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
