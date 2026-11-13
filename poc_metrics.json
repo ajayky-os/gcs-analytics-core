@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-13T13:01:37Z",
+  "generated_at": "2026-11-13T13:09:57Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -14,10 +14,10 @@
     "closed_unmerged_prs": 6,
     "critic_major_catches": 42,
     "total_agent_wall_hours": 68.13,
-    "total_gate_cpu_hours": 5.09
+    "total_gate_cpu_hours": 5.08
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-13T13:01:37Z",
+    "updated_at": "2026-11-13T13:09:57Z",
     "total_prs_raised": 58,
     "merged_count": 37,
     "open_ready_count": 15,
@@ -905,7 +905,7 @@
         "comment_count": 3,
         "review_count": 4,
         "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -61.9% lat, -0.1% alloc)",
-        "coverage_summary": "exit 1"
+        "coverage_summary": "\u2014"
       },
       {
         "pr_number": 484,
@@ -2184,7 +2184,7 @@
       "comment_count": 3,
       "review_count": 4,
       "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -61.9% lat, -0.1% alloc)",
-      "coverage_summary": "exit 1"
+      "coverage_summary": "\u2014"
     },
     {
       "pr_number": 484,
