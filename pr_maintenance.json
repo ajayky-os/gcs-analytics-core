@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-13T13:52:57Z",
+  "checked_at": "2026-11-13T13:54:18Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "1adcf8069587140d297c4de440a2463e4e502086",
   "onduty": {
@@ -21,7 +21,7 @@
     "robot_ready": true
   },
   "total_open_prs": 15,
-  "actionable_count": 2,
+  "actionable_count": 1,
   "auto_rebased_count": 0,
   "auto_merged_count": 0,
   "newly_recorded_rejections": [],
@@ -140,8 +140,8 @@
       ],
       "iter_id": "20261107-095043-normalize-write-options-parsing",
       "branch": "sil/normalize-write-options-parsing",
-      "head_oid": "6ca464710aabf507fa1c416bba462773c1945bab",
-      "head_commit_ts": "2026-11-13T13:16:14Z",
+      "head_oid": "02627fbb91cfad7869d9a5dcc5b19c8bf91ac93e",
+      "head_commit_ts": "2026-11-13T13:47:53Z",
       "main_sha": "1adcf8069587140d297c4de440a2463e4e502086",
       "commits_behind_main": 0,
       "mergeable": "MERGEABLE",
@@ -151,130 +151,15 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.3,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
       "needs_comment_fix": false,
-      "needs_check_fix": true,
-      "action_required": true,
+      "needs_check_fix": false,
+      "action_required": false,
       "unaddressed_comments": [],
-      "failing_checks": [
-        {
-          "name": "Analyze (java)",
-          "state": "FAILURE",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/actions/runs/43434402497/job/131915675838",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "6-11-13T13:33:29.9113608Z Nov 13 13:31:46 runnervmccnms agentservice[2374]: 2026/11/13 13:31:46 INFO Linking completed module=armour\n2026-11-13T13:33:29.9114442Z Nov 13 13:31:46 runnervmccnms agentservice[2374]: 2026/11/13 13:31:46 INFO Armour engaged module=armour\n2026-11-13T13:33:29.9115290Z Nov 13 13:31:46 runnervmccnms agentservice[2374]: 2026/11/13 13:31:46 INFO RingBuffer created module=armour size=16384\n2026-11-13T13:33:29.9116164Z Nov 13 13:31:46 runnervmccnms agentservice[2374]: 2026/11/13 13:31:46 INFO Listening for events module=armour\n2026-11-13T13:33:29.9117086Z Nov 13 13:31:46 runnervmccnms agentservice[2374]: 2026/11/13 13:31:46 INFO [LOCKDOWN] Runner.Worker PID set module=armour pid=2232\n2026-11-13T13:33:29.9117686Z \n2026-11-13T13:33:30.3101067Z Cleaning up orphan processes"
-        },
-        {
-          "name": "Analyze (java)",
-          "state": "FAILURE",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/actions/runs/43434692790/job/131916651101",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "6-11-13T13:35:12.5656426Z Nov 13 13:33:44 runnervmwuk1x agentservice[2191]: 2026/11/13 13:33:44 INFO Linking completed module=armour\n2026-11-13T13:35:12.5656929Z Nov 13 13:33:44 runnervmwuk1x agentservice[2191]: 2026/11/13 13:33:44 INFO Armour engaged module=armour\n2026-11-13T13:35:12.5657750Z Nov 13 13:33:44 runnervmwuk1x agentservice[2191]: 2026/11/13 13:33:44 INFO RingBuffer created module=armour size=16384\n2026-11-13T13:35:12.5658296Z Nov 13 13:33:44 runnervmwuk1x agentservice[2191]: 2026/11/13 13:33:44 INFO Listening for events module=armour\n2026-11-13T13:35:12.5658856Z Nov 13 13:33:44 runnervmwuk1x agentservice[2191]: 2026/11/13 13:33:44 INFO [LOCKDOWN] Runner.Worker PID set module=armour pid=2052\n2026-11-13T13:35:12.5659195Z \n2026-11-13T13:35:12.6950415Z Cleaning up orphan processes"
-        },
-        {
-          "name": "unit-tests (JDK 11)",
-          "state": "FAILURE",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/actions/runs/43434402632/job/131915751732",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "6-11-13T13:32:29.0617946Z Nov 13 13:31:55 runnervmccnms agentservice[2190]: 2026/11/13 13:31:55 INFO Linking completed module=armour\n2026-11-13T13:32:29.0618721Z Nov 13 13:31:55 runnervmccnms agentservice[2190]: 2026/11/13 13:31:55 INFO Armour engaged module=armour\n2026-11-13T13:32:29.0619532Z Nov 13 13:31:55 runnervmccnms agentservice[2190]: 2026/11/13 13:31:55 INFO RingBuffer created module=armour size=16384\n2026-11-13T13:32:29.0620376Z Nov 13 13:31:55 runnervmccnms agentservice[2190]: 2026/11/13 13:31:55 INFO Listening for events module=armour\n2026-11-13T13:32:29.0621253Z Nov 13 13:31:55 runnervmccnms agentservice[2190]: 2026/11/13 13:31:55 INFO [LOCKDOWN] Runner.Worker PID set module=armour pid=2050\n2026-11-13T13:32:29.0621954Z \n2026-11-13T13:32:29.0689930Z Cleaning up orphan processes"
-        },
-        {
-          "name": "unit-tests (JDK 11)",
-          "state": "FAILURE",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/actions/runs/43434692903/job/131916906592",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "6-11-13T13:34:56.0282679Z Nov 13 13:34:17 runnervmccnms agentservice[2406]: 2026/11/13 13:34:17 INFO Linking completed module=armour\n2026-11-13T13:34:56.0283337Z Nov 13 13:34:17 runnervmccnms agentservice[2406]: 2026/11/13 13:34:17 INFO Armour engaged module=armour\n2026-11-13T13:34:56.0284016Z Nov 13 13:34:17 runnervmccnms agentservice[2406]: 2026/11/13 13:34:17 INFO RingBuffer created module=armour size=16384\n2026-11-13T13:34:56.0284709Z Nov 13 13:34:17 runnervmccnms agentservice[2406]: 2026/11/13 13:34:17 INFO Listening for events module=armour\n2026-11-13T13:34:56.0285437Z Nov 13 13:34:17 runnervmccnms agentservice[2406]: 2026/11/13 13:34:17 INFO [LOCKDOWN] Runner.Worker PID set module=armour pid=2271\n2026-11-13T13:34:56.0286054Z \n2026-11-13T13:34:56.0341611Z Cleaning up orphan processes"
-        },
-        {
-          "name": "unit-tests (JDK 17)",
-          "state": "FAILURE",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/actions/runs/43434402632/job/131915751686",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "6-11-13T13:32:28.4939096Z Nov 13 13:31:55 runnervmwuk1x agentservice[2191]: 2026/11/13 13:31:55 INFO Linking completed module=armour\n2026-11-13T13:32:28.4939926Z Nov 13 13:31:55 runnervmwuk1x agentservice[2191]: 2026/11/13 13:31:55 INFO Armour engaged module=armour\n2026-11-13T13:32:28.4940812Z Nov 13 13:31:55 runnervmwuk1x agentservice[2191]: 2026/11/13 13:31:55 INFO RingBuffer created module=armour size=16384\n2026-11-13T13:32:28.4941991Z Nov 13 13:31:55 runnervmwuk1x agentservice[2191]: 2026/11/13 13:31:55 INFO Listening for events module=armour\n2026-11-13T13:32:28.4942952Z Nov 13 13:31:55 runnervmwuk1x agentservice[2191]: 2026/11/13 13:31:55 INFO [LOCKDOWN] Runner.Worker PID set module=armour pid=2051\n2026-11-13T13:32:28.4943540Z \n2026-11-13T13:32:28.8005508Z Cleaning up orphan processes"
-        },
-        {
-          "name": "unit-tests (JDK 17)",
-          "state": "FAILURE",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/actions/runs/43434692903/job/131916906897",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "6-11-13T13:34:56.3360964Z Nov 13 13:34:15 runnervmccnms agentservice[2393]: 2026/11/13 13:34:15 INFO Linking completed module=armour\n2026-11-13T13:34:56.3361624Z Nov 13 13:34:15 runnervmccnms agentservice[2393]: 2026/11/13 13:34:15 INFO Armour engaged module=armour\n2026-11-13T13:34:56.3362329Z Nov 13 13:34:15 runnervmccnms agentservice[2393]: 2026/11/13 13:34:15 INFO RingBuffer created module=armour size=16384\n2026-11-13T13:34:56.3363031Z Nov 13 13:34:15 runnervmccnms agentservice[2393]: 2026/11/13 13:34:15 INFO Listening for events module=armour\n2026-11-13T13:34:56.3363785Z Nov 13 13:34:15 runnervmccnms agentservice[2393]: 2026/11/13 13:34:15 INFO [LOCKDOWN] Runner.Worker PID set module=armour pid=2256\n2026-11-13T13:34:56.3364266Z \n2026-11-13T13:34:56.3425206Z Cleaning up orphan processes"
-        },
-        {
-          "name": "unit-tests (JDK 21)",
-          "state": "FAILURE",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/actions/runs/43434402632/job/131915751691",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "6-11-13T13:32:31.0311281Z Nov 13 13:31:56 runnervmwuk1x agentservice[2202]: 2026/11/13 13:31:56 INFO Linking completed module=armour\n2026-11-13T13:32:31.0311784Z Nov 13 13:31:56 runnervmwuk1x agentservice[2202]: 2026/11/13 13:31:56 INFO Armour engaged module=armour\n2026-11-13T13:32:31.0312317Z Nov 13 13:31:56 runnervmwuk1x agentservice[2202]: 2026/11/13 13:31:56 INFO RingBuffer created module=armour size=16384\n2026-11-13T13:32:31.0312839Z Nov 13 13:31:56 runnervmwuk1x agentservice[2202]: 2026/11/13 13:31:56 INFO Listening for events module=armour\n2026-11-13T13:32:31.0313410Z Nov 13 13:31:56 runnervmwuk1x agentservice[2202]: 2026/11/13 13:31:56 INFO [LOCKDOWN] Runner.Worker PID set module=armour pid=2068\n2026-11-13T13:32:31.0313756Z \n2026-11-13T13:32:31.0401124Z Cleaning up orphan processes"
-        },
-        {
-          "name": "unit-tests (JDK 21)",
-          "state": "FAILURE",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/actions/runs/43434692903/job/131916906978",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "6-11-13T13:34:51.2605772Z Nov 13 13:34:14 runnervmccnms agentservice[2401]: 2026/11/13 13:34:14 INFO Linking completed module=armour\n2026-11-13T13:34:51.2606419Z Nov 13 13:34:14 runnervmccnms agentservice[2401]: 2026/11/13 13:34:14 INFO Armour engaged module=armour\n2026-11-13T13:34:51.2607094Z Nov 13 13:34:14 runnervmccnms agentservice[2401]: 2026/11/13 13:34:14 INFO RingBuffer created module=armour size=16384\n2026-11-13T13:34:51.2607790Z Nov 13 13:34:14 runnervmccnms agentservice[2401]: 2026/11/13 13:34:14 INFO Listening for events module=armour\n2026-11-13T13:34:51.2608519Z Nov 13 13:34:14 runnervmccnms agentservice[2401]: 2026/11/13 13:34:14 INFO [LOCKDOWN] Runner.Worker PID set module=armour pid=2262\n2026-11-13T13:34:51.2608971Z \n2026-11-13T13:34:51.5715489Z Cleaning up orphan processes"
-        },
-        {
-          "name": "compile-all-sources",
-          "state": "FAILURE",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/actions/runs/43434402632/job/131915751439",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "6-11-13T13:32:33.2229656Z Nov 13 13:31:55 runnervmwuk1x agentservice[2187]: 2026/11/13 13:31:55 INFO Linking completed module=armour\n2026-11-13T13:32:33.2230373Z Nov 13 13:31:55 runnervmwuk1x agentservice[2187]: 2026/11/13 13:31:55 INFO Armour engaged module=armour\n2026-11-13T13:32:33.2230899Z Nov 13 13:31:55 runnervmwuk1x agentservice[2187]: 2026/11/13 13:31:55 INFO RingBuffer created module=armour size=16384\n2026-11-13T13:32:33.2231436Z Nov 13 13:31:55 runnervmwuk1x agentservice[2187]: 2026/11/13 13:31:55 INFO Listening for events module=armour\n2026-11-13T13:32:33.2232006Z Nov 13 13:31:55 runnervmwuk1x agentservice[2187]: 2026/11/13 13:31:55 INFO [LOCKDOWN] Runner.Worker PID set module=armour pid=2049\n2026-11-13T13:32:33.2232351Z \n2026-11-13T13:32:33.2312276Z Cleaning up orphan processes"
-        },
-        {
-          "name": "compile-all-sources",
-          "state": "FAILURE",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/actions/runs/43434692903/job/131916906747",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "6-11-13T13:34:50.8122893Z Nov 13 13:34:14 runnervmccnms agentservice[2395]: 2026/11/13 13:34:14 INFO Linking completed module=armour\n2026-11-13T13:34:50.8124028Z Nov 13 13:34:14 runnervmccnms agentservice[2395]: 2026/11/13 13:34:14 INFO Armour engaged module=armour\n2026-11-13T13:34:50.8125286Z Nov 13 13:34:14 runnervmccnms agentservice[2395]: 2026/11/13 13:34:14 INFO RingBuffer created module=armour size=16384\n2026-11-13T13:34:50.8126791Z Nov 13 13:34:14 runnervmccnms agentservice[2395]: 2026/11/13 13:34:14 INFO Listening for events module=armour\n2026-11-13T13:34:50.8128193Z Nov 13 13:34:14 runnervmccnms agentservice[2395]: 2026/11/13 13:34:14 INFO [LOCKDOWN] Runner.Worker PID set module=armour pid=2258\n2026-11-13T13:34:50.8129074Z \n2026-11-13T13:34:50.8191673Z Cleaning up orphan processes"
-        },
-        {
-          "name": "coverage",
-          "state": "FAILURE",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/actions/runs/43434402632/job/131915751535",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "6-11-13T13:32:34.8183495Z Nov 13 13:31:55 runnervmwuk1x agentservice[2186]: 2026/11/13 13:31:55 INFO Linking completed module=armour\n2026-11-13T13:32:34.8184043Z Nov 13 13:31:55 runnervmwuk1x agentservice[2186]: 2026/11/13 13:31:55 INFO Armour engaged module=armour\n2026-11-13T13:32:34.8184462Z Nov 13 13:31:55 runnervmwuk1x agentservice[2186]: 2026/11/13 13:31:55 INFO RingBuffer created module=armour size=16384\n2026-11-13T13:32:34.8184880Z Nov 13 13:31:55 runnervmwuk1x agentservice[2186]: 2026/11/13 13:31:55 INFO Listening for events module=armour\n2026-11-13T13:32:34.8185308Z Nov 13 13:31:55 runnervmwuk1x agentservice[2186]: 2026/11/13 13:31:55 INFO [LOCKDOWN] Runner.Worker PID set module=armour pid=2041\n2026-11-13T13:32:34.8185566Z \n2026-11-13T13:32:34.8275783Z Cleaning up orphan processes"
-        },
-        {
-          "name": "coverage",
-          "state": "FAILURE",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/actions/runs/43434692903/job/131916906858",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "6-11-13T13:34:54.6976104Z Nov 13 13:34:15 runnervmwuk1x agentservice[2189]: 2026/11/13 13:34:15 INFO Linking completed module=armour\n2026-11-13T13:34:54.6976692Z Nov 13 13:34:15 runnervmwuk1x agentservice[2189]: 2026/11/13 13:34:15 INFO Armour engaged module=armour\n2026-11-13T13:34:54.6977311Z Nov 13 13:34:15 runnervmwuk1x agentservice[2189]: 2026/11/13 13:34:15 INFO RingBuffer created module=armour size=16384\n2026-11-13T13:34:54.6977981Z Nov 13 13:34:15 runnervmwuk1x agentservice[2189]: 2026/11/13 13:34:15 INFO Listening for events module=armour\n2026-11-13T13:34:54.6978730Z Nov 13 13:34:15 runnervmwuk1x agentservice[2189]: 2026/11/13 13:34:15 INFO [LOCKDOWN] Runner.Worker PID set module=armour pid=2046\n2026-11-13T13:34:54.6979131Z \n2026-11-13T13:34:54.7074875Z Cleaning up orphan processes"
-        },
-        {
-          "name": "unit-tests",
-          "state": "FAILURE",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/actions/runs/43434402632/job/131916127385",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "6-11-13T13:32:47.0966723Z Nov 13 13:32:45 runnervmwuk1x agentservice[2182]: 2026/11/13 13:32:45 INFO Linking completed module=armour\n2026-11-13T13:32:47.0967205Z Nov 13 13:32:45 runnervmwuk1x agentservice[2182]: 2026/11/13 13:32:45 INFO Armour engaged module=armour\n2026-11-13T13:32:47.0967709Z Nov 13 13:32:45 runnervmwuk1x agentservice[2182]: 2026/11/13 13:32:45 INFO RingBuffer created module=armour size=16384\n2026-11-13T13:32:47.0968220Z Nov 13 13:32:45 runnervmwuk1x agentservice[2182]: 2026/11/13 13:32:45 INFO Listening for events module=armour\n2026-11-13T13:32:47.0968950Z Nov 13 13:32:45 runnervmwuk1x agentservice[2182]: 2026/11/13 13:32:45 INFO [LOCKDOWN] Runner.Worker PID set module=armour pid=2045\n2026-11-13T13:32:47.0969288Z \n2026-11-13T13:32:47.1055670Z Cleaning up orphan processes"
-        },
-        {
-          "name": "unit-tests",
-          "state": "FAILURE",
-          "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/actions/runs/43434692903/job/131917336455",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": "6-11-13T13:35:07.6326686Z Nov 13 13:35:06 runnervmwuk1x agentservice[2397]: 2026/11/13 13:35:06 INFO Linking completed module=armour\n2026-11-13T13:35:07.6327494Z Nov 13 13:35:06 runnervmwuk1x agentservice[2397]: 2026/11/13 13:35:06 INFO Armour engaged module=armour\n2026-11-13T13:35:07.6328189Z Nov 13 13:35:06 runnervmwuk1x agentservice[2397]: 2026/11/13 13:35:06 INFO RingBuffer created module=armour size=16384\n2026-11-13T13:35:07.6328891Z Nov 13 13:35:06 runnervmwuk1x agentservice[2397]: 2026/11/13 13:35:06 INFO Listening for events module=armour\n2026-11-13T13:35:07.6329660Z Nov 13 13:35:06 runnervmwuk1x agentservice[2397]: 2026/11/13 13:35:06 INFO [LOCKDOWN] Runner.Worker PID set module=armour pid=2264\n2026-11-13T13:35:07.6330137Z \n2026-11-13T13:35:07.6409849Z Cleaning up orphan processes"
-        },
-        {
-          "name": "presubmits / hermetic-benchmarks",
-          "state": "ERROR",
-          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fmicrobenchmarks/activity/cc1f24dd-169f-45d5-bff6-635fa80b4172",
-          "build_id": "cc1f24dd-169f-45d5-bff6-635fa80b4172",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": ""
-        },
-        {
-          "name": "presubmits / integration-tests",
-          "state": "ERROR",
-          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/6b550e73-19a4-4426-966c-a9b25a10e36e",
-          "build_id": "6b550e73-19a4-4426-966c-a9b25a10e36e",
-          "classification": "CODE_FAILURE",
-          "log_excerpt": ""
-        }
-      ],
+      "failing_checks": [],
       "transient_checks": []
     },
     {
@@ -300,7 +185,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.1,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -311,14 +196,14 @@
       "failing_checks": [],
       "transient_checks": [
         {
-          "name": "presubmits / hermetic-benchmarks",
+          "name": "presubmits / compilation",
           "state": "FAILURE",
-          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fmicrobenchmarks/activity/e686e0bb-5139-4dc2-9570-9c908b42b12c",
-          "build_id": "e686e0bb-5139-4dc2-9570-9c908b42b12c",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fcompilation/activity/8d0c9419-b65a-4824-8508-4ae2b7f4f98e",
+          "build_id": "8d0c9419-b65a-4824-8508-4ae2b7f4f98e",
           "classification": "TRANSIENT_INFRA",
-          "rebuilt_as": "308405e1-42a4-4ba5-8941-6c436a18d074",
+          "rebuilt_as": "02d38b18-e3ee-4a4d-8e84-71d78a8a6ae2",
           "already_rebuilt": true,
-          "log_excerpt": "ching latest main baseline results from gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json...\nCopying gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json to file:///b/f/w/src/results/master_results.json\n  \n\nRunning hermetic benchmarks on PR (#490, commit f8f36e50664afd305da7ba060395e1f700ccad55)...\nBuilding the JMH benchmark JAR...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+          "log_excerpt": "Building all modules and packaging JARs to catch compilation issues...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
         }
       ]
     },
@@ -345,7 +230,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 0.1,
+      "hours_since_update": 0.0,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -356,14 +241,24 @@
       "failing_checks": [],
       "transient_checks": [
         {
-          "name": "presubmits / hermetic-benchmarks",
+          "name": "presubmits / compilation",
           "state": "FAILURE",
-          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fmicrobenchmarks/activity/9beec16a-81aa-4da4-a8de-1e013e57323b",
-          "build_id": "9beec16a-81aa-4da4-a8de-1e013e57323b",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fcompilation/activity/58abd4b8-4fc6-4ecb-845f-4f3ac95fc9c0",
+          "build_id": "58abd4b8-4fc6-4ecb-845f-4f3ac95fc9c0",
           "classification": "TRANSIENT_INFRA",
-          "rebuilt_as": "4d8312c2-4111-4813-9c06-bacc4de518a0",
+          "rebuilt_as": "dca01f0e-0dbc-46b4-952d-8100795ab6e3",
           "already_rebuilt": true,
-          "log_excerpt": "ching latest main baseline results from gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json...\nCopying gs://gcs-analytics-core-microbenchmark-bucket/latest/master_results.json to file:///b/f/w/src/results/master_results.json\n  \n\nRunning hermetic benchmarks on PR (#491, commit 067ee9abad32935ee2d3e7a6b6a5891cb6953af8)...\nBuilding the JMH benchmark JAR...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+          "log_excerpt": "Building all modules and packaging JARs to catch compilation issues...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
+        },
+        {
+          "name": "presubmits / integration-tests",
+          "state": "FAILURE",
+          "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/48ef9bb5-13d1-4913-8f13-ce0270990bcc",
+          "build_id": "48ef9bb5-13d1-4913-8f13-ce0270990bcc",
+          "classification": "TRANSIENT_INFRA",
+          "rebuilt_as": "c45d9e6b-6598-403e-af25-5b13476d1310",
+          "already_rebuilt": true,
+          "log_excerpt": "wget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
         }
       ]
     },
@@ -492,7 +387,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 9.2,
+      "hours_since_update": 9.3,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -594,7 +489,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 9.3,
+      "hours_since_update": 9.4,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -628,7 +523,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 7.2,
+      "hours_since_update": 7.3,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
