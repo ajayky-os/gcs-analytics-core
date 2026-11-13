@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13T12:25:17Z",
+  "updated_at": "2026-11-13T12:37:23Z",
   "total_prs_raised": 58,
   "merged_count": 36,
   "open_ready_count": 16,
@@ -826,7 +826,7 @@
     {
       "pr_number": 481,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/481",
-      "title": "fix(client): normalize upload-type and pcu-cleanup-type via trim and Locale.ROOT",
+      "title": "fix(client): normalize GcsClientOptions via getTrimmedValue and Locale.ROOT",
       "state": "OPEN_READY",
       "change_type": "fix",
       "task_class": "correctness_fix",
@@ -840,8 +840,8 @@
       "hours_to_merge": null,
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
-      "comment_count": 3,
-      "review_count": 8,
+      "comment_count": 4,
+      "review_count": 9,
       "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.8% lat, -0.1% alloc)",
       "coverage_summary": "1901 tests, 0 skipped; cov line 87.99% / branch 76.38% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },

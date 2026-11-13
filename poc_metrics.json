@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-13T12:25:17Z",
+  "generated_at": "2026-11-13T12:37:23Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -14,10 +14,10 @@
     "closed_unmerged_prs": 6,
     "critic_major_catches": 42,
     "total_agent_wall_hours": 68.13,
-    "total_gate_cpu_hours": 5.15
+    "total_gate_cpu_hours": 5.14
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-13T12:25:17Z",
+    "updated_at": "2026-11-13T12:37:23Z",
     "total_prs_raised": 58,
     "merged_count": 36,
     "open_ready_count": 16,
@@ -844,7 +844,7 @@
       {
         "pr_number": 481,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/481",
-        "title": "fix(client): normalize upload-type and pcu-cleanup-type via trim and Locale.ROOT",
+        "title": "fix(client): normalize GcsClientOptions via getTrimmedValue and Locale.ROOT",
         "state": "OPEN_READY",
         "change_type": "fix",
         "task_class": "correctness_fix",
@@ -858,8 +858,8 @@
         "hours_to_merge": null,
         "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
-        "comment_count": 3,
-        "review_count": 8,
+        "comment_count": 4,
+        "review_count": 9,
         "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.8% lat, -0.1% alloc)",
         "coverage_summary": "1901 tests, 0 skipped; cov line 87.99% / branch 76.38% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
@@ -2123,7 +2123,7 @@
     {
       "pr_number": 481,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/481",
-      "title": "fix(client): normalize upload-type and pcu-cleanup-type via trim and Locale.ROOT",
+      "title": "fix(client): normalize GcsClientOptions via getTrimmedValue and Locale.ROOT",
       "state": "OPEN_READY",
       "change_type": "fix",
       "task_class": "correctness_fix",
@@ -2137,8 +2137,8 @@
       "hours_to_merge": null,
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
-      "comment_count": 3,
-      "review_count": 8,
+      "comment_count": 4,
+      "review_count": 9,
       "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.8% lat, -0.1% alloc)",
       "coverage_summary": "1901 tests, 0 skipped; cov line 87.99% / branch 76.38% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
@@ -2793,6 +2793,78 @@
         "source": "pilot_backfill"
       },
       {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "minor",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptions.java:198",
+        "finding": "The Protocol enum parsing relies on Optional.ofNullable and .trim(), which will crash with an IllegalArgumentException if a blank (whitespace-only) string is provided. It should use ConfigurationUtil.getTrimmedValue for consistency with UploadType.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "minor",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:163",
+        "finding": "FileAccessPattern enum parsing calls .toUpperCase() without a Locale, which is prone to the Turkish locale bug. It also does not handle blank values gracefully.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "major",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptionsTest.java:391",
+        "finding": "The commit message claims to fix an issue with Turkic locales (tr-TR) when parsing UploadType, but no test is included to verify this. A regression here would go unnoticed. There is an uncommitted test in the worktree (`createFromOptions_underTurkishLocale_parsesEnumsCorrectly`) that covers this exact scenario and should be committed.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "major",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptions.java:198",
+        "finding": "The PR fixes blank-string and whitespace parsing for `upload-type` and `pcu-cleanup-type` by using `ConfigurationUtil.getTrimmedValue()`. However, other properties like `CLIENT_PROTOCOL_KEY` and numeric properties (e.g., `UPLOAD_CHUNK_SIZE_KEY`) still use `Optional.ofNullable`. As a result, they will still throw `IllegalArgumentException` or `NumberFormatException` if provided with blank strings or surrounding whitespace. The uncommitted changes in the worktree already fix this and should be committed for consistency.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "nit",
+        "category": "COMMIT_MSG",
+        "finding": "The commit message says 'Normalize both enum strings with trim().replace('-', '_').toUpperCase(Locale.ROOT)', but the implementation uses `ConfigurationUtil.getTrimmedValue()` which performs the trim earlier.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "blocker",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptions.java:198",
+        "finding": "Hypothesis claims to normalize client-protocol via getTrimmedValue, but this field was left unmodified, still using manual .trim() and Optional.ofNullable().",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "blocker",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptions.java:202",
+        "finding": "Hypothesis claims to normalize numeric options via getTrimmedValue, but UPLOAD_CHUNK_SIZE_KEY, PCU_BUFFER_COUNT_KEY, and PCU_BUFFER_CAPACITY_KEY still use Optional.ofNullable, leaving them vulnerable to NumberFormatException on trailing spaces.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "blocker",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptionsTest.java:391",
+        "finding": "Hypothesis explicitly states 'add Turkish locale tests', but no such tests were added to the test suite.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "blocker",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptionsTest.java:442",
+        "finding": "The test modifies the global `Locale.getDefault()` but is missing the `@ResourceLock(Resources.LOCALE)` annotation that was explicitly requested in reviewer feedback. This can cause flaky tests when run in parallel.",
+        "source": "critic_history"
+      },
+      {
         "iter": "20261110-094714-analytics-core-options-null-safety",
         "pr": "#492",
         "severity": "blocker",
@@ -2911,78 +2983,6 @@
         "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptionsTest.java:172",
         "finding": "The private static final constant TEST_DECRYPTION_KEY is placed in the middle of the class. The Google Java Style Guide suggests placing static fields at the top of the class.",
         "source": "critic_history"
-      },
-      {
-        "iter": "20261107-034451-fix-client-options-enum-parsing",
-        "pr": "#481",
-        "severity": "minor",
-        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptions.java:198",
-        "finding": "The Protocol enum parsing relies on Optional.ofNullable and .trim(), which will crash with an IllegalArgumentException if a blank (whitespace-only) string is provided. It should use ConfigurationUtil.getTrimmedValue for consistency with UploadType.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261107-034451-fix-client-options-enum-parsing",
-        "pr": "#481",
-        "severity": "minor",
-        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:163",
-        "finding": "FileAccessPattern enum parsing calls .toUpperCase() without a Locale, which is prone to the Turkish locale bug. It also does not handle blank values gracefully.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261107-034451-fix-client-options-enum-parsing",
-        "pr": "#481",
-        "severity": "major",
-        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptionsTest.java:391",
-        "finding": "The commit message claims to fix an issue with Turkic locales (tr-TR) when parsing UploadType, but no test is included to verify this. A regression here would go unnoticed. There is an uncommitted test in the worktree (`createFromOptions_underTurkishLocale_parsesEnumsCorrectly`) that covers this exact scenario and should be committed.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261107-034451-fix-client-options-enum-parsing",
-        "pr": "#481",
-        "severity": "major",
-        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptions.java:198",
-        "finding": "The PR fixes blank-string and whitespace parsing for `upload-type` and `pcu-cleanup-type` by using `ConfigurationUtil.getTrimmedValue()`. However, other properties like `CLIENT_PROTOCOL_KEY` and numeric properties (e.g., `UPLOAD_CHUNK_SIZE_KEY`) still use `Optional.ofNullable`. As a result, they will still throw `IllegalArgumentException` or `NumberFormatException` if provided with blank strings or surrounding whitespace. The uncommitted changes in the worktree already fix this and should be committed for consistency.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261107-034451-fix-client-options-enum-parsing",
-        "pr": "#481",
-        "severity": "nit",
-        "category": "COMMIT_MSG",
-        "finding": "The commit message says 'Normalize both enum strings with trim().replace('-', '_').toUpperCase(Locale.ROOT)', but the implementation uses `ConfigurationUtil.getTrimmedValue()` which performs the trim earlier.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261107-034451-fix-client-options-enum-parsing",
-        "pr": "#481",
-        "severity": "blocker",
-        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptions.java:198",
-        "finding": "Hypothesis claims to normalize client-protocol via getTrimmedValue, but this field was left unmodified, still using manual .trim() and Optional.ofNullable().",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261107-034451-fix-client-options-enum-parsing",
-        "pr": "#481",
-        "severity": "blocker",
-        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptions.java:202",
-        "finding": "Hypothesis claims to normalize numeric options via getTrimmedValue, but UPLOAD_CHUNK_SIZE_KEY, PCU_BUFFER_COUNT_KEY, and PCU_BUFFER_CAPACITY_KEY still use Optional.ofNullable, leaving them vulnerable to NumberFormatException on trailing spaces.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261107-034451-fix-client-options-enum-parsing",
-        "pr": "#481",
-        "severity": "blocker",
-        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptionsTest.java:391",
-        "finding": "Hypothesis explicitly states 'add Turkish locale tests', but no such tests were added to the test suite.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261107-034451-fix-client-options-enum-parsing",
-        "pr": "#481",
-        "severity": "blocker",
-        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptionsTest.java:442",
-        "finding": "The test modifies the global `Locale.getDefault()` but is missing the `@ResourceLock(Resources.LOCALE)` annotation that was explicitly requested in reviewer feedback. This can cause flaky tests when run in parallel.",
-        "source": "critic_json"
       },
       {
         "iter": "20261112-095542-parquet-layout-null-defense",
