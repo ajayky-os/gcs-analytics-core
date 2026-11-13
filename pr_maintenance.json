@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-13T13:55:20Z",
+  "checked_at": "2026-11-13T13:55:32Z",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "main_sha": "1adcf8069587140d297c4de440a2463e4e502086",
   "onduty": {
@@ -49,7 +49,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 3.6,
+      "hours_since_update": 3.7,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -83,7 +83,7 @@
       "auto_rebased": false,
       "auto_merged": false,
       "merge_error": null,
-      "hours_since_update": 3.6,
+      "hours_since_update": 3.7,
       "has_conflict": false,
       "is_stale": false,
       "needs_rebase": false,
@@ -201,7 +201,7 @@
           "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fcompilation/activity/8d0c9419-b65a-4824-8508-4ae2b7f4f98e",
           "build_id": "8d0c9419-b65a-4824-8508-4ae2b7f4f98e",
           "classification": "TRANSIENT_INFRA",
-          "rebuilt_as": "02d38b18-e3ee-4a4d-8e84-71d78a8a6ae2",
+          "rebuilt_as": null,
           "already_rebuilt": true,
           "log_excerpt": "Building all modules and packaging JARs to catch compilation issues...\nwget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
         }
@@ -246,7 +246,7 @@
           "url": "http://fusion2/ci/kokoro/prod%3Agcs-analytics-core%2Fpresubmits%2Fintegration-test/activity/48ef9bb5-13d1-4913-8f13-ce0270990bcc",
           "build_id": "48ef9bb5-13d1-4913-8f13-ce0270990bcc",
           "classification": "TRANSIENT_INFRA",
-          "rebuilt_as": "c45d9e6b-6598-403e-af25-5b13476d1310",
+          "rebuilt_as": null,
           "already_rebuilt": true,
           "log_excerpt": "wget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip"
         }
