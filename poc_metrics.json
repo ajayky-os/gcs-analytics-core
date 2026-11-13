@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-13T12:16:57Z",
+  "generated_at": "2026-11-13T12:25:17Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -9,23 +9,23 @@
     "error_or_quota_halted_iterations": 1,
     "substantive_iterations": 66,
     "unique_upstream_prs": 58,
-    "merged_upstream_prs": 35,
-    "open_vetted_draft_prs": 17,
+    "merged_upstream_prs": 36,
+    "open_vetted_draft_prs": 16,
     "closed_unmerged_prs": 6,
     "critic_major_catches": 42,
     "total_agent_wall_hours": 68.13,
     "total_gate_cpu_hours": 5.15
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-13T12:16:57Z",
+    "updated_at": "2026-11-13T12:25:17Z",
     "total_prs_raised": 58,
-    "merged_count": 35,
-    "open_ready_count": 17,
+    "merged_count": 36,
+    "open_ready_count": 16,
     "open_draft_count": 0,
     "closed_unmerged_count": 6,
-    "acceptance_rate_closed_prs": 0.854,
-    "overall_merge_rate_to_date": 0.603,
-    "median_hours_to_merge": 21.35,
+    "acceptance_rate_closed_prs": 0.857,
+    "overall_merge_rate_to_date": 0.621,
+    "median_hours_to_merge": 21.56,
     "prs": [
       {
         "pr_number": 407,
@@ -933,7 +933,7 @@
         "pr_number": 485,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/485",
         "title": "fix(client): validate timeout does not overflow int in GcsAuthOptions",
-        "state": "OPEN_READY",
+        "state": "MERGED",
         "change_type": "fix",
         "task_class": "correctness_fix",
         "loc": 242,
@@ -941,9 +941,9 @@
         "deletions": 16,
         "iter": "20261108-054917-auth-options-timeout-overflow-validation",
         "created_at": "2026-11-08T06:01:33Z",
-        "merged_at": null,
-        "closed_at": null,
-        "hours_to_merge": null,
+        "merged_at": "2026-11-13T12:24:14Z",
+        "closed_at": "2026-11-13T12:24:14Z",
+        "hours_to_merge": 126.38,
         "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 4,
@@ -2212,7 +2212,7 @@
       "pr_number": 485,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/485",
       "title": "fix(client): validate timeout does not overflow int in GcsAuthOptions",
-      "state": "OPEN_READY",
+      "state": "MERGED",
       "change_type": "fix",
       "task_class": "correctness_fix",
       "loc": 242,
@@ -2220,9 +2220,9 @@
       "deletions": 16,
       "iter": "20261108-054917-auth-options-timeout-overflow-validation",
       "created_at": "2026-11-08T06:01:33Z",
-      "merged_at": null,
-      "closed_at": null,
-      "hours_to_merge": null,
+      "merged_at": "2026-11-13T12:24:14Z",
+      "closed_at": "2026-11-13T12:24:14Z",
+      "hours_to_merge": 126.38,
       "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 4,
@@ -3271,33 +3271,33 @@
     "human_touch_hours_all_iters": 3.8,
     "human_touch_source": "pilot_reconstructed_all_iters (3.8h)",
     "headline_realized_merged_only": {
-      "merged_pr_count": 35,
+      "merged_pr_count": 36,
       "weights": {
         "w_merged": 1.0,
         "w_draft": 0.0,
         "w_rejected_or_smoke": 0.0
       },
-      "gross_counterfactual_hours_p25": 169.34,
-      "gross_counterfactual_hours_p50": 246.41,
-      "net_saved_hours_p25": 165.54,
-      "net_saved_hours_p50": 242.61,
-      "net_saved_swe_days_p25": 20.69,
-      "net_saved_swe_days_p50": 30.33
+      "gross_counterfactual_hours_p25": 173.34,
+      "gross_counterfactual_hours_p50": 252.41,
+      "net_saved_hours_p25": 169.54,
+      "net_saved_hours_p50": 248.61,
+      "net_saved_swe_days_p25": 21.19,
+      "net_saved_swe_days_p50": 31.08
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 17,
-      "raw_counterfactual_hours_p25": 74.68,
-      "raw_counterfactual_hours_p50": 110.02,
+      "open_draft_pr_count": 16,
+      "raw_counterfactual_hours_p25": 70.68,
+      "raw_counterfactual_hours_p50": 104.02,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.603,
-      "risk_adjusted_hours_p25": 61.52,
-      "risk_adjusted_hours_p50": 91.01
+      "empirical_promoted_merge_rate": 0.621,
+      "risk_adjusted_hours_p25": 58.72,
+      "risk_adjusted_hours_p50": 86.81
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 227.06,
-      "net_saved_hours_p50": 333.62,
-      "net_saved_swe_days_p25": 28.38,
-      "net_saved_swe_days_p50": 41.7
+      "net_saved_hours_p25": 228.26,
+      "net_saved_hours_p50": 335.42,
+      "net_saved_swe_days_p25": 28.53,
+      "net_saved_swe_days_p50": 41.93
     }
   }
 }
