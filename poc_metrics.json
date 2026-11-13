@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-13T12:12:32Z",
+  "generated_at": "2026-11-13T12:16:57Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -12,12 +12,12 @@
     "merged_upstream_prs": 35,
     "open_vetted_draft_prs": 17,
     "closed_unmerged_prs": 6,
-    "critic_major_catches": 41,
+    "critic_major_catches": 42,
     "total_agent_wall_hours": 68.13,
-    "total_gate_cpu_hours": 5.13
+    "total_gate_cpu_hours": 5.15
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-13T12:12:32Z",
+    "updated_at": "2026-11-13T12:16:57Z",
     "total_prs_raised": 58,
     "merged_count": 35,
     "open_ready_count": 17,
@@ -861,7 +861,7 @@
         "comment_count": 3,
         "review_count": 8,
         "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.8% lat, -0.1% alloc)",
-        "coverage_summary": "1886 tests, 0 skipped; cov line 87.97% / branch 76.40% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "coverage_summary": "1901 tests, 0 skipped; cov line 87.99% / branch 76.38% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
       {
         "pr_number": 482,
@@ -2140,7 +2140,7 @@
       "comment_count": 3,
       "review_count": 8,
       "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.8% lat, -0.1% alloc)",
-      "coverage_summary": "1886 tests, 0 skipped; cov line 87.97% / branch 76.40% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "1901 tests, 0 skipped; cov line 87.99% / branch 76.38% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 482,
@@ -2734,7 +2734,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 41,
+    "major_or_blocker_count": 42,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -2975,6 +2975,14 @@
         "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptionsTest.java:391",
         "finding": "Hypothesis explicitly states 'add Turkish locale tests', but no such tests were added to the test suite.",
         "source": "critic_history"
+      },
+      {
+        "iter": "20261107-034451-fix-client-options-enum-parsing",
+        "pr": "#481",
+        "severity": "blocker",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsClientOptionsTest.java:442",
+        "finding": "The test modifies the global `Locale.getDefault()` but is missing the `@ResourceLock(Resources.LOCALE)` annotation that was explicitly requested in reviewer feedback. This can cause flaky tests when run in parallel.",
+        "source": "critic_json"
       },
       {
         "iter": "20261112-095542-parquet-layout-null-defense",
@@ -3282,14 +3290,14 @@
       "raw_counterfactual_hours_p50": 110.02,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.603,
-      "risk_adjusted_hours_p25": 61.19,
-      "risk_adjusted_hours_p50": 90.51
+      "risk_adjusted_hours_p25": 61.52,
+      "risk_adjusted_hours_p50": 91.01
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 226.73,
-      "net_saved_hours_p50": 333.12,
-      "net_saved_swe_days_p25": 28.34,
-      "net_saved_swe_days_p50": 41.64
+      "net_saved_hours_p25": 227.06,
+      "net_saved_hours_p50": 333.62,
+      "net_saved_swe_days_p25": 28.38,
+      "net_saved_swe_days_p50": 41.7
     }
   }
 }
