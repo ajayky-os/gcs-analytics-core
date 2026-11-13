@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-13T13:24:59Z",
+  "generated_at": "2026-11-13T13:31:07Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -12,12 +12,12 @@
     "merged_upstream_prs": 37,
     "open_vetted_draft_prs": 15,
     "closed_unmerged_prs": 6,
-    "critic_major_catches": 42,
+    "critic_major_catches": 48,
     "total_agent_wall_hours": 68.13,
-    "total_gate_cpu_hours": 5.08
+    "total_gate_cpu_hours": 5.17
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-13T13:24:59Z",
+    "updated_at": "2026-11-13T13:31:07Z",
     "total_prs_raised": 58,
     "merged_count": 37,
     "open_ready_count": 15,
@@ -888,7 +888,7 @@
       {
         "pr_number": 483,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/483",
-        "title": "fix(client): normalize write options parsing via getTrimmedValue",
+        "title": "fix(client): normalize read and write options parsing via getTrimmedValue",
         "state": "OPEN_READY",
         "change_type": "fix",
         "task_class": "correctness_fix",
@@ -903,9 +903,9 @@
         "review_decision": "CHANGES_REQUESTED",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 4,
+        "review_count": 7,
         "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -61.9% lat, -0.1% alloc)",
-        "coverage_summary": "\u2014"
+        "coverage_summary": "1930 tests, 0 skipped; cov line 87.21% / branch 74.32% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
       {
         "pr_number": 484,
@@ -2167,7 +2167,7 @@
     {
       "pr_number": 483,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/483",
-      "title": "fix(client): normalize write options parsing via getTrimmedValue",
+      "title": "fix(client): normalize read and write options parsing via getTrimmedValue",
       "state": "OPEN_READY",
       "change_type": "fix",
       "task_class": "correctness_fix",
@@ -2182,9 +2182,9 @@
       "review_decision": "CHANGES_REQUESTED",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 4,
+      "review_count": 7,
       "perf_summary": "38/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -61.9% lat, -0.1% alloc)",
-      "coverage_summary": "\u2014"
+      "coverage_summary": "1930 tests, 0 skipped; cov line 87.21% / branch 74.32% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 484,
@@ -2734,7 +2734,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 42,
+    "major_or_blocker_count": 48,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -2791,6 +2791,86 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261107-095043-normalize-write-options-parsing",
+        "pr": "#483",
+        "severity": "blocker",
+        "category": "gates.json:1",
+        "finding": "The provided gates.json is stale and does not reflect the current HEAD. The gates were run on an earlier commit that modified only 2 files (GcsWriteOptions), while the current worktree has been amended to include changes to 4 files (adding GcsReadOptions modifications). The code must be re-tested with `sil.py gates`.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-095043-normalize-write-options-parsing",
+        "pr": "#483",
+        "severity": "nit",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:123",
+        "finding": "The updated logic in GcsReadOptions uses `if (optional.isPresent()) { builder.set... }`. To match the more idiomatic approach used in GcsWriteOptions, you can use `.ifPresent(...)`.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-095043-normalize-write-options-parsing",
+        "pr": "#483",
+        "severity": "nit",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:123",
+        "finding": "The Optional `isPresent` and `get()` check for decryptionKey and userProject can be simplified by using `ifPresent` with a method reference, mirroring the code in GcsWriteOptions.java.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-095043-normalize-write-options-parsing",
+        "pr": "#483",
+        "severity": "nit",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptionsTest.java:172",
+        "finding": "The private static final constant TEST_DECRYPTION_KEY is placed in the middle of the class. The Google Java Style Guide suggests placing static fields at the top of the class.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-095043-normalize-write-options-parsing",
+        "pr": "#483",
+        "severity": "blocker",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:166",
+        "finding": "The hypothesis claims to fix the Turkic default locale bug by using `.toUpperCase(Locale.ROOT)` on `FILE_ACCESS_PATTERN_KEY`, but the code still uses `.toUpperCase()`. This will crash with IllegalArgumentException in Turkish locales when parsing 'sequential'.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-095043-normalize-write-options-parsing",
+        "pr": "#483",
+        "severity": "blocker",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:134",
+        "finding": "The hypothesis claims to handle `FOOTER_PREFETCH_ENABLED_KEY` and `BIDI_READ_ENABLED_KEY` via `ConfigurationUtil.getTrimmedValue` to prevent blank options from silently disabling default-true booleans. The code still uses `analyticsCoreOptions.containsKey(...)` and `Boolean.parseBoolean(...)` directly without trimming or blank filtering.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-095043-normalize-write-options-parsing",
+        "pr": "#483",
+        "severity": "blocker",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:118",
+        "finding": "The hypothesis claims to fix NumberFormatException on blank/whitespace integer properties. The code still uses `containsKey` and `safeParseInteger(Map, String)` which will throw NumberFormatException when `Long.parseLong` is called on a blank string.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-095043-normalize-write-options-parsing",
+        "pr": "#483",
+        "severity": "blocker",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptionsTest.java:1",
+        "finding": "The coder report hallucinates adding comprehensive unit tests for Turkish locale parsing (@ResourceLock(Resources.LOCALE)) and blank integer properties. These tests are missing, which allowed the incomplete implementation in GcsReadOptions to pass the unit gate.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261107-095043-normalize-write-options-parsing",
+        "pr": "#483",
+        "severity": "blocker",
+        "category": "gates.json:80",
+        "finding": "The perf gate failed with a JMH error: 'java.lang.Error: Properties init: Could not determine current working directory.'",
+        "source": "critic_json"
+      },
+      {
+        "iter": "20261107-095043-normalize-write-options-parsing",
+        "pr": "#483",
+        "severity": "blocker",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:129",
+        "finding": "The commit message claims to prevent silent inversion of default-true boolean options for read and write paths. However, GcsReadOptions still parses boolean options (like FOOTER_PREFETCH_ENABLED_KEY and BIDI_READ_ENABLED_KEY) via raw `Boolean.parseBoolean(analyticsCoreOptions.get(...))`, leaving the bug intact for the read path.",
+        "source": "critic_json"
       },
       {
         "iter": "20261110-034955-output-stream-idempotent-close-and-guard",
@@ -2950,38 +3030,6 @@
         "severity": "major",
         "category": "coder_report",
         "finding": "The coder report falsely states that it removed an unnecessary .replace('-', '_') from LoggingTelemetryOptions. The code diff shows no such removal; instead, it ADDED .replace('-', '_') to OpenTelemetryOptions to support the cloud-monitoring enum. The commit description should accurately reflect the changes.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261107-095043-normalize-write-options-parsing",
-        "pr": "#483",
-        "severity": "blocker",
-        "category": "gates.json:1",
-        "finding": "The provided gates.json is stale and does not reflect the current HEAD. The gates were run on an earlier commit that modified only 2 files (GcsWriteOptions), while the current worktree has been amended to include changes to 4 files (adding GcsReadOptions modifications). The code must be re-tested with `sil.py gates`.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261107-095043-normalize-write-options-parsing",
-        "pr": "#483",
-        "severity": "nit",
-        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:123",
-        "finding": "The updated logic in GcsReadOptions uses `if (optional.isPresent()) { builder.set... }`. To match the more idiomatic approach used in GcsWriteOptions, you can use `.ifPresent(...)`.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261107-095043-normalize-write-options-parsing",
-        "pr": "#483",
-        "severity": "nit",
-        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:123",
-        "finding": "The Optional `isPresent` and `get()` check for decryptionKey and userProject can be simplified by using `ifPresent` with a method reference, mirroring the code in GcsWriteOptions.java.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261107-095043-normalize-write-options-parsing",
-        "pr": "#483",
-        "severity": "nit",
-        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptionsTest.java:172",
-        "finding": "The private static final constant TEST_DECRYPTION_KEY is placed in the middle of the class. The Google Java Style Guide suggests placing static fields at the top of the class.",
         "source": "critic_history"
       },
       {
@@ -3290,14 +3338,14 @@
       "raw_counterfactual_hours_p50": 98.02,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.638,
-      "risk_adjusted_hours_p25": 55.92,
-      "risk_adjusted_hours_p50": 82.61
+      "risk_adjusted_hours_p25": 57.9,
+      "risk_adjusted_hours_p50": 85.61
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 229.46,
-      "net_saved_hours_p50": 337.22,
-      "net_saved_swe_days_p25": 28.68,
-      "net_saved_swe_days_p50": 42.15
+      "net_saved_hours_p25": 231.44,
+      "net_saved_hours_p50": 340.22,
+      "net_saved_swe_days_p25": 28.93,
+      "net_saved_swe_days_p50": 42.53
     }
   }
 }
