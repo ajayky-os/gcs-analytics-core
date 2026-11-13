@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13T13:32:57Z",
+  "updated_at": "2026-11-13T13:33:48Z",
   "total_prs_raised": 58,
   "merged_count": 37,
   "open_ready_count": 15,
@@ -1041,7 +1041,7 @@
       "comment_count": 3,
       "review_count": 9,
       "perf_summary": "18/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=1024,ranges=4096}` -12.4% lat, -0.0% alloc)",
-      "coverage_summary": "1923 tests, 0 skipped; cov line 87.16% / branch 74.42% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "1930 tests, 0 skipped"
     },
     {
       "pr_number": 491,
