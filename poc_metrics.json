@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-13T06:16:40Z",
+  "generated_at": "2026-11-13T06:20:19Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 65,
+    "total_iterations_logged": 66,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 63,
-    "unique_upstream_prs": 56,
+    "substantive_iterations": 64,
+    "unique_upstream_prs": 57,
     "merged_upstream_prs": 34,
-    "open_vetted_draft_prs": 16,
+    "open_vetted_draft_prs": 17,
     "closed_unmerged_prs": 6,
     "critic_major_catches": 41,
-    "total_agent_wall_hours": 66.59,
-    "total_gate_cpu_hours": 4.7
+    "total_agent_wall_hours": 67.13,
+    "total_gate_cpu_hours": 4.96
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-13T06:16:40Z",
-    "total_prs_raised": 56,
+    "updated_at": "2026-11-13T06:20:19Z",
+    "total_prs_raised": 57,
     "merged_count": 34,
-    "open_ready_count": 16,
+    "open_ready_count": 17,
     "open_draft_count": 0,
     "closed_unmerged_count": 6,
     "acceptance_rate_closed_prs": 0.85,
-    "overall_merge_rate_to_date": 0.607,
+    "overall_merge_rate_to_date": 0.596,
     "median_hours_to_merge": 21.35,
     "prs": [
       {
@@ -1258,6 +1258,28 @@
         "review_count": 1,
         "perf_summary": "11/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=256}` -12.6% lat, -0.0% alloc)",
         "coverage_summary": "1885 tests, 0 skipped; cov line 87.10% -> 87.11% (+0.01), branch 74.23% -> 74.28% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 502,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/502",
+        "title": "refactor(client): remove Checker Framework @NonNull annotations",
+        "state": "OPEN_READY",
+        "change_type": "refactor",
+        "task_class": "benchmark_or_test_infra",
+        "loc": 24,
+        "additions": 11,
+        "deletions": 13,
+        "iter": "20261113-054703-remove-checkerframework-nonnull-annotations",
+        "created_at": "2026-11-13T06:19:38Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "13/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -12.4% lat, -12.2% alloc)",
+        "coverage_summary": "1883 tests, 0 skipped; cov line 87.10% -> 87.10% (+0.00), branch 74.23% -> 74.28% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2493,6 +2515,28 @@
       "review_count": 1,
       "perf_summary": "11/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=256}` -12.6% lat, -0.0% alloc)",
       "coverage_summary": "1885 tests, 0 skipped; cov line 87.10% -> 87.11% (+0.01), branch 74.23% -> 74.28% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 502,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/502",
+      "title": "refactor(client): remove Checker Framework @NonNull annotations",
+      "state": "OPEN_READY",
+      "change_type": "refactor",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 24,
+      "additions": 11,
+      "deletions": 13,
+      "iter": "20261113-054703-remove-checkerframework-nonnull-annotations",
+      "created_at": "2026-11-13T06:19:38Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "13/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -12.4% lat, -12.2% alloc)",
+      "coverage_summary": "1883 tests, 0 skipped; cov line 87.10% -> 87.10% (+0.00), branch 74.23% -> 74.28% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -3189,19 +3233,19 @@
       "net_saved_swe_days_p50": 29.45
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 16,
-      "raw_counterfactual_hours_p25": 69.34,
-      "raw_counterfactual_hours_p50": 102.68,
+      "open_draft_pr_count": 17,
+      "raw_counterfactual_hours_p25": 74.01,
+      "raw_counterfactual_hours_p50": 109.35,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.607,
-      "risk_adjusted_hours_p25": 58.11,
-      "risk_adjusted_hours_p50": 86.38
+      "empirical_promoted_merge_rate": 0.596,
+      "risk_adjusted_hours_p25": 61.38,
+      "risk_adjusted_hours_p50": 91.04
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 218.99,
-      "net_saved_hours_p50": 321.99,
-      "net_saved_swe_days_p25": 27.37,
-      "net_saved_swe_days_p50": 40.25
+      "net_saved_hours_p25": 222.26,
+      "net_saved_hours_p50": 326.65,
+      "net_saved_swe_days_p25": 27.78,
+      "net_saved_swe_days_p50": 40.83
     }
   }
 }

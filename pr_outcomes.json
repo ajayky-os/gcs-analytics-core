@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-13T06:16:40Z",
-  "total_prs_raised": 56,
+  "updated_at": "2026-11-13T06:20:19Z",
+  "total_prs_raised": 57,
   "merged_count": 34,
-  "open_ready_count": 16,
+  "open_ready_count": 17,
   "open_draft_count": 0,
   "closed_unmerged_count": 6,
   "acceptance_rate_closed_prs": 0.85,
-  "overall_merge_rate_to_date": 0.607,
+  "overall_merge_rate_to_date": 0.596,
   "median_hours_to_merge": 21.35,
   "prs": [
     {
@@ -1240,6 +1240,28 @@
       "review_count": 1,
       "perf_summary": "11/45 IMPROVED (top: `VectoredRangeCoalescingBenchmark.mergeRanges{gapBytes=0,ranges=256}` -12.6% lat, -0.0% alloc)",
       "coverage_summary": "1885 tests, 0 skipped; cov line 87.10% -> 87.11% (+0.01), branch 74.23% -> 74.28% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 502,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/502",
+      "title": "refactor(client): remove Checker Framework @NonNull annotations",
+      "state": "OPEN_READY",
+      "change_type": "refactor",
+      "task_class": "benchmark_or_test_infra",
+      "loc": 24,
+      "additions": 11,
+      "deletions": 13,
+      "iter": "20261113-054703-remove-checkerframework-nonnull-annotations",
+      "created_at": "2026-11-13T06:19:38Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "13/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -12.4% lat, -12.2% alloc)",
+      "coverage_summary": "1883 tests, 0 skipped; cov line 87.10% -> 87.10% (+0.00), branch 74.23% -> 74.28% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ]
 }
