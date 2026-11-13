@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-13T13:33:48Z",
+  "generated_at": "2026-11-13T13:35:37Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -12,12 +12,12 @@
     "merged_upstream_prs": 37,
     "open_vetted_draft_prs": 15,
     "closed_unmerged_prs": 6,
-    "critic_major_catches": 48,
+    "critic_major_catches": 47,
     "total_agent_wall_hours": 68.13,
     "total_gate_cpu_hours": 5.05
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-13T13:33:48Z",
+    "updated_at": "2026-11-13T13:35:37Z",
     "total_prs_raised": 58,
     "merged_count": 37,
     "open_ready_count": 15,
@@ -2734,7 +2734,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 48,
+    "major_or_blocker_count": 47,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -2861,15 +2861,7 @@
         "pr": "#483",
         "severity": "blocker",
         "category": "gates.json:80",
-        "finding": "The perf gate failed with a JMH error: 'java.lang.Error: Properties init: Could not determine current working directory.'",
-        "source": "critic_json"
-      },
-      {
-        "iter": "20261107-095043-normalize-write-options-parsing",
-        "pr": "#483",
-        "severity": "blocker",
-        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadOptions.java:129",
-        "finding": "The commit message claims to prevent silent inversion of default-true boolean options for read and write paths. However, GcsReadOptions still parses boolean options (like FOOTER_PREFETCH_ENABLED_KEY and BIDI_READ_ENABLED_KEY) via raw `Boolean.parseBoolean(analyticsCoreOptions.get(...))`, leaving the bug intact for the read path.",
+        "finding": "The perf gate failed with an ERROR status because the JMH run crashed (java.lang.Error: Properties init: Could not determine current working directory). Gates are law, and this breaks the evidence chain.",
         "source": "critic_json"
       },
       {
@@ -3338,14 +3330,14 @@
       "raw_counterfactual_hours_p50": 98.02,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.638,
-      "risk_adjusted_hours_p25": 57.9,
-      "risk_adjusted_hours_p50": 85.61
+      "risk_adjusted_hours_p25": 57.57,
+      "risk_adjusted_hours_p50": 85.11
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 231.44,
-      "net_saved_hours_p50": 340.22,
-      "net_saved_swe_days_p25": 28.93,
-      "net_saved_swe_days_p50": 42.53
+      "net_saved_hours_p25": 231.11,
+      "net_saved_hours_p50": 339.72,
+      "net_saved_swe_days_p25": 28.89,
+      "net_saved_swe_days_p50": 42.47
     }
   }
 }
