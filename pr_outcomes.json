@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-14T04:24:53Z",
+  "updated_at": "2026-11-14T04:33:50Z",
   "total_prs_raised": 59,
   "merged_count": 38,
   "open_ready_count": 15,
@@ -1302,7 +1302,7 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 1,
+      "comment_count": 3,
       "review_count": 1,
       "perf_summary": "14/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -14.6% lat, -0.0% alloc)",
       "coverage_summary": "1934 tests, 0 skipped; cov line 87.16% -> 87.16% (+0.00), branch 74.28% -> 74.28% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
