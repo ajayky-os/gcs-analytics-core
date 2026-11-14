@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-14T04:16:46Z",
+  "generated_at": "2026-11-14T04:24:07Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 68,
+    "total_iterations_logged": 69,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 66,
-    "unique_upstream_prs": 58,
+    "substantive_iterations": 67,
+    "unique_upstream_prs": 59,
     "merged_upstream_prs": 38,
-    "open_vetted_draft_prs": 14,
+    "open_vetted_draft_prs": 15,
     "closed_unmerged_prs": 6,
-    "critic_major_catches": 47,
-    "total_agent_wall_hours": 68.13,
-    "total_gate_cpu_hours": 5.0
+    "critic_major_catches": 48,
+    "total_agent_wall_hours": 68.74,
+    "total_gate_cpu_hours": 5.14
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-14T04:16:46Z",
-    "total_prs_raised": 58,
+    "updated_at": "2026-11-14T04:24:07Z",
+    "total_prs_raised": 59,
     "merged_count": 38,
-    "open_ready_count": 14,
+    "open_ready_count": 15,
     "open_draft_count": 0,
     "closed_unmerged_count": 6,
     "acceptance_rate_closed_prs": 0.864,
-    "overall_merge_rate_to_date": 0.655,
+    "overall_merge_rate_to_date": 0.644,
     "median_hours_to_merge": 21.67,
     "prs": [
       {
@@ -1302,6 +1302,28 @@
         "review_count": 1,
         "perf_summary": "\u2014",
         "coverage_summary": "1883 tests, 0 skipped; cov line 87.10% -> 87.10% (+0.00), branch 74.23% -> 74.23% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 505,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/505",
+        "title": "fix(client): reject null prefix in GcsCacheOptions.createFromOptions",
+        "state": "OPEN_READY",
+        "change_type": "fix",
+        "task_class": "correctness_fix",
+        "loc": 33,
+        "additions": 32,
+        "deletions": 1,
+        "iter": "20261114-034651-reject-null-prefix-in-gcs-cache-options",
+        "created_at": "2026-11-14T04:23:29Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "14/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -14.6% lat, -0.0% alloc)",
+        "coverage_summary": "1934 tests, 0 skipped; cov line 87.16% -> 87.16% (+0.00), branch 74.28% -> 74.28% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2581,6 +2603,28 @@
       "review_count": 1,
       "perf_summary": "\u2014",
       "coverage_summary": "1883 tests, 0 skipped; cov line 87.10% -> 87.10% (+0.00), branch 74.23% -> 74.23% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 505,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/505",
+      "title": "fix(client): reject null prefix in GcsCacheOptions.createFromOptions",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 33,
+      "additions": 32,
+      "deletions": 1,
+      "iter": "20261114-034651-reject-null-prefix-in-gcs-cache-options",
+      "created_at": "2026-11-14T04:23:29Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "14/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -14.6% lat, -0.0% alloc)",
+      "coverage_summary": "1934 tests, 0 skipped; cov line 87.16% -> 87.16% (+0.00), branch 74.28% -> 74.28% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2734,7 +2778,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 47,
+    "major_or_blocker_count": 48,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -2791,6 +2835,30 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261114-034651-reject-null-prefix-in-gcs-cache-options",
+        "pr": "#505",
+        "severity": "major",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsRetryOptions.java:125",
+        "finding": "The hypothesis claims to establish contract parity with GcsRetryOptions, but GcsRetryOptions.createFromOptions lacks the checkNotNull(prefix) validation. Passing a null prefix to GcsRetryOptions will still result in string concatenation (\"null\" + key) and silent failure to load properties. GcsRetryOptions must also be updated to ensure true parity and fix the underlying issue uniformly.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261114-034651-reject-null-prefix-in-gcs-cache-options",
+        "pr": "#505",
+        "severity": "minor",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsFileSystemOptions.java:23",
+        "finding": "GcsFileSystemOptions.createFromOptions also suffers from the same null prefix concatenation bug. If the goal is systemic correctness, it should be fixed there too.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261114-034651-reject-null-prefix-in-gcs-cache-options",
+        "pr": "#505",
+        "severity": "minor",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsFileSystemOptions.java:23",
+        "finding": "GcsFileSystemOptions.createFromOptions (and GcsClientOptions) also suffers from the same null prefix concatenation vulnerability. If the goal is systemic correctness across all option parsers, they should be addressed in future iterations.",
+        "source": "critic_json"
       },
       {
         "iter": "20261107-095043-normalize-write-options-parsing",
@@ -3325,19 +3393,19 @@
       "net_saved_swe_days_p50": 32.7
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 14,
-      "raw_counterfactual_hours_p25": 62.68,
-      "raw_counterfactual_hours_p50": 92.02,
+      "open_draft_pr_count": 15,
+      "raw_counterfactual_hours_p25": 66.68,
+      "raw_counterfactual_hours_p50": 98.02,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.655,
-      "risk_adjusted_hours_p25": 54.11,
-      "risk_adjusted_hours_p50": 79.91
+      "empirical_promoted_merge_rate": 0.644,
+      "risk_adjusted_hours_p25": 57.24,
+      "risk_adjusted_hours_p50": 84.61
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 232.31,
-      "net_saved_hours_p50": 341.52,
-      "net_saved_swe_days_p25": 29.04,
-      "net_saved_swe_days_p50": 42.69
+      "net_saved_hours_p25": 235.44,
+      "net_saved_hours_p50": 346.22,
+      "net_saved_swe_days_p25": 29.43,
+      "net_saved_swe_days_p50": 43.28
     }
   }
 }
