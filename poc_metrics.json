@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-14T05:33:36Z",
+  "generated_at": "2026-11-17T06:08:41Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -17,7 +17,7 @@
     "total_gate_cpu_hours": 5.14
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-14T05:33:36Z",
+    "updated_at": "2026-11-17T06:08:41Z",
     "total_prs_raised": 59,
     "merged_count": 38,
     "open_ready_count": 15,
@@ -856,10 +856,10 @@
         "merged_at": null,
         "closed_at": null,
         "hours_to_merge": null,
-        "review_decision": "CHANGES_REQUESTED",
+        "review_decision": "APPROVED",
         "commit_count": 1,
         "comment_count": 4,
-        "review_count": 9,
+        "review_count": 10,
         "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.8% lat, -0.1% alloc)",
         "coverage_summary": "1923 tests, 0 skipped; cov line 88.00% / branch 76.44% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
@@ -2157,10 +2157,10 @@
       "merged_at": null,
       "closed_at": null,
       "hours_to_merge": null,
-      "review_decision": "CHANGES_REQUESTED",
+      "review_decision": "APPROVED",
       "commit_count": 1,
       "comment_count": 4,
-      "review_count": 9,
+      "review_count": 10,
       "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -64.8% lat, -0.1% alloc)",
       "coverage_summary": "1923 tests, 0 skipped; cov line 88.00% / branch 76.44% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
@@ -2837,6 +2837,14 @@
         "source": "pilot_backfill"
       },
       {
+        "iter": "20261104-100443-object-range-models-coverage",
+        "pr": "#468",
+        "severity": "nit",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsCombinedObjectRangeTest.java:20",
+        "finding": "The test class name 'GcsCombinedObjectRangeTest' does not perfectly align with the tested class 'GcsObjectCombinedRange'. Consider renaming the file and class to 'GcsObjectCombinedRangeTest' for consistency.",
+        "source": "critic_history"
+      },
+      {
         "iter": "20261114-034651-reject-null-prefix-in-gcs-cache-options",
         "pr": "#505",
         "severity": "major",
@@ -3098,14 +3106,6 @@
         "severity": "blocker",
         "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/prefetch/ParquetFileLayout.java",
         "finding": "The PR context claims that 'Coder removed the redundant checkNotNull and unused import from ParquetFileLayout, and updated ParquetFileLayoutTest' in response to review feedback. However, the worktree diff shows that `checkNotNull(rowGroups, \"rowGroups cannot be null\");` is still present, the import remains, and the test still checks for the exact exception message. The coder hallucinated addressing the review feedback.",
-        "source": "critic_history"
-      },
-      {
-        "iter": "20261104-100443-object-range-models-coverage",
-        "pr": "#468",
-        "severity": "nit",
-        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/GcsCombinedObjectRangeTest.java:20",
-        "finding": "The test class name 'GcsCombinedObjectRangeTest' does not perfectly align with the tested class 'GcsObjectCombinedRange'. Consider renaming the file and class to 'GcsObjectCombinedRangeTest' for consistency.",
         "source": "critic_history"
       },
       {
