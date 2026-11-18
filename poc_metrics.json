@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-18T11:39:38Z",
+  "generated_at": "2026-11-18T11:54:35Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -12,12 +12,12 @@
     "merged_upstream_prs": 39,
     "open_vetted_draft_prs": 15,
     "closed_unmerged_prs": 6,
-    "critic_major_catches": 48,
+    "critic_major_catches": 50,
     "total_agent_wall_hours": 69.27,
-    "total_gate_cpu_hours": 5.35
+    "total_gate_cpu_hours": 5.32
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-18T11:39:38Z",
+    "updated_at": "2026-11-18T11:54:35Z",
     "total_prs_raised": 60,
     "merged_count": 39,
     "open_ready_count": 15,
@@ -1344,8 +1344,8 @@
         "commit_count": 1,
         "comment_count": 3,
         "review_count": 1,
-        "perf_summary": "6/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -25.5% lat, -4.3% alloc)",
-        "coverage_summary": "2130 tests, 0 skipped; cov line 88.40% -> 88.46% (+0.05), branch 77.29% -> 77.41% (+0.12); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "perf_summary": "12/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -21.6% lat, -0.0% alloc)",
+        "coverage_summary": "2130 tests, 0 skipped; cov line 88.40% -> 88.46% (+0.06), branch 77.29% -> 77.41% (+0.12); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2667,8 +2667,8 @@
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 1,
-      "perf_summary": "6/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -25.5% lat, -4.3% alloc)",
-      "coverage_summary": "2130 tests, 0 skipped; cov line 88.40% -> 88.46% (+0.05), branch 77.29% -> 77.41% (+0.12); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "perf_summary": "12/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -21.6% lat, -0.0% alloc)",
+      "coverage_summary": "2130 tests, 0 skipped; cov line 88.40% -> 88.46% (+0.06), branch 77.29% -> 77.41% (+0.12); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2822,7 +2822,7 @@
     ]
   },
   "critic_catches_ledger": {
-    "major_or_blocker_count": 48,
+    "major_or_blocker_count": 50,
     "items": [
       {
         "iter": "20261019-121048-footer-vectored-tail-v2",
@@ -2895,6 +2895,30 @@
         "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizer.java:143",
         "finding": "Checking checkNotNull(range, \"range cannot be null\") inside the populate loop means a malformed list such as [validRange, null] on a warm cache allocates and completes validRange before readVectored throws NullPointerException synchronously.",
         "source": "critic_history"
+      },
+      {
+        "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
+        "pr": "#507",
+        "severity": "blocker",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizer.java:120",
+        "finding": "Worktree HEAD is currently b8e5d23a251de0a70f76d7050fb8f0f46eecb3c7 (the original pre-review commit on robot/sil/small-object-optimizer-vectored-ranges, 335 diff lines) and contains NONE of the fixes for inline review comments 4612504942 and 4612504953: SmallObjectOptimizer.readVectored still checks ranges.isEmpty() / fileSize / threshold and cache lookup before element non-nullness, still checks checkNotNull(range, \"range cannot be null\") lazily inside enhanced-for at line 143, and SmallObjectOptimizerTest.java lacks both new null-element fail-fast tests. git reflog --date=iso shows that commit 78e8360f692923ee523d5aaede9a9cb027297c0c (11:20:14Z, containing the hoisted rangeCount indexed loop and new unit tests) and a competing */15 cron run's commit f800cc27 (11:36:35Z) were overwritten at 11:26:31Z and 11:41:40Z when an overlapping */15 PR-maintenance cron ran sil.py pr-rebase --pr 507 and reset HEAD back to b8e5d23a. Pushing HEAD now would be a remote no-op while posting replies claiming the review comments were fixed.",
+        "source": "critic_json"
+      },
+      {
+        "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
+        "pr": "#507",
+        "severity": "blocker",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizerTest.java:532",
+        "finding": "gates.json (round 8, ran_at 2026-11-18T11:46:27Z) has a torn evidence chain across multiple commits: build, lint, unit (2,130 tests), coverage, and perf prepare ran against f800cc27f2fa03954f8ac3aa068c4b396fa1551e (an enhanced-for variant from an overlapping run, not 78e8360f), and at 11:41:40Z mid-perf HEAD was reset to b8e5d23a, so hygiene measured 335 lines on b8e5d23a and iteration.json recorded last_gates.head = b8e5d23a251de0a70f76d7050fb8f0f46eecb3c7. In addition, a concurrent org.openjdk.jmh.Main process was observed writing to runs/20261118-100349-small-object-optimizer-vectored-ranges/perf/jmh.json.",
+        "source": "critic_json"
+      },
+      {
+        "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
+        "pr": "#507",
+        "severity": "nit",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizer.java:123",
+        "finding": "Direct inspection of reflog commit 78e8360f692923ee523d5aaede9a9cb027297c0c confirms the intended implementation itself (hoisted rangeCount, indexed checkNotNull(ranges.get(i), \"ranges[%s] cannot be null\", i) before rangeCount == 0 || fileSize == -1 || fileSize > threshold, indexed serving loop, and unopened/cold-cache/warm-cache [first, null, last] non-mutation tests at 391 total diff lines <= 400) is clean, style-compliant, and properly addresses comments 4612504942 and 4612504953; its commit message body merely omits mentioning fail-fast non-null range validation.",
+        "source": "critic_json"
       },
       {
         "iter": "20261104-100443-object-range-models-coverage",
@@ -3458,14 +3482,14 @@
       "raw_counterfactual_hours_p50": 98.02,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.65,
-      "risk_adjusted_hours_p25": 55.26,
-      "risk_adjusted_hours_p50": 81.61
+      "risk_adjusted_hours_p25": 55.92,
+      "risk_adjusted_hours_p50": 82.61
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 239.44,
-      "net_saved_hours_p50": 352.22,
-      "net_saved_swe_days_p25": 29.93,
-      "net_saved_swe_days_p50": 44.03
+      "net_saved_hours_p25": 240.1,
+      "net_saved_hours_p50": 353.22,
+      "net_saved_swe_days_p25": 30.01,
+      "net_saved_swe_days_p50": 44.15
     }
   }
 }
