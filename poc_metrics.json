@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-18T12:09:39Z",
+  "generated_at": "2026-11-18T12:17:17Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -13,11 +13,11 @@
     "open_vetted_draft_prs": 15,
     "closed_unmerged_prs": 6,
     "critic_major_catches": 50,
-    "total_agent_wall_hours": 69.27,
-    "total_gate_cpu_hours": 5.28
+    "total_agent_wall_hours": 70.74,
+    "total_gate_cpu_hours": 5.15
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-18T12:09:39Z",
+    "updated_at": "2026-11-18T12:17:17Z",
     "total_prs_raised": 60,
     "merged_count": 39,
     "open_ready_count": 15,
@@ -1332,8 +1332,8 @@
         "state": "OPEN_READY",
         "change_type": "fix",
         "task_class": "correctness_fix",
-        "loc": 335,
-        "additions": 311,
+        "loc": 388,
+        "additions": 364,
         "deletions": 24,
         "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
         "created_at": "2026-11-18T10:35:13Z",
@@ -1343,9 +1343,9 @@
         "review_decision": "PENDING",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
-        "perf_summary": "13/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -21.5% lat, -0.0% alloc)",
-        "coverage_summary": "2130 tests, 0 skipped; cov line 88.40% -> 88.46% (+0.06), branch 77.29% -> 77.41% (+0.12); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "review_count": 3,
+        "perf_summary": "15/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -24.3% lat, -0.0% alloc)",
+        "coverage_summary": "exit 1; 69 failures, 362 errors of 1292 tests"
       }
     ]
   },
@@ -2655,8 +2655,8 @@
       "state": "OPEN_READY",
       "change_type": "fix",
       "task_class": "correctness_fix",
-      "loc": 335,
-      "additions": 311,
+      "loc": 388,
+      "additions": 364,
       "deletions": 24,
       "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
       "created_at": "2026-11-18T10:35:13Z",
@@ -2666,9 +2666,9 @@
       "review_decision": "PENDING",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
-      "perf_summary": "13/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -21.5% lat, -0.0% alloc)",
-      "coverage_summary": "2130 tests, 0 skipped; cov line 88.40% -> 88.46% (+0.06), branch 77.29% -> 77.41% (+0.12); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "review_count": 3,
+      "perf_summary": "15/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -24.3% lat, -0.0% alloc)",
+      "coverage_summary": "exit 1; 69 failures, 362 errors of 1292 tests"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2918,6 +2918,22 @@
         "severity": "nit",
         "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizer.java:123",
         "finding": "Direct inspection of reflog commit 78e8360f692923ee523d5aaede9a9cb027297c0c confirms the intended implementation itself (hoisted rangeCount, indexed checkNotNull(ranges.get(i), \"ranges[%s] cannot be null\", i) before rangeCount == 0 || fileSize == -1 || fileSize > threshold, indexed serving loop, and unopened/cold-cache/warm-cache [first, null, last] non-mutation tests at 391 total diff lines <= 400) is clean, style-compliant, and properly addresses comments 4612504942 and 4612504953; its commit message body merely omits mentioning fail-fast non-null range validation.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
+        "pr": "#507",
+        "severity": "minor",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizerTest.java:801",
+        "finding": "telemetryRecordingCacheHits sums entry.getValue() into an AtomicLong without counting metric emissions. If 'if (servedCount > 0)' at SmallObjectOptimizer.java:150 were mutated to 'servedCount >= 0' (emitting SMALL_OBJECT_CACHE_HIT with value 0L), hitCount.get() would still equal 0L in zero-served tests.",
+        "source": "critic_history"
+      },
+      {
+        "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
+        "pr": "#507",
+        "severity": "nit",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizer.java:123",
+        "finding": "The commit message body summarizes degenerate-range, EOF-bound, and allocator validation in readVectored without explicitly noting the entry-level non-null range element check added for review comments 4612504942 and 4612504953 (also note .sil/PLAYBOOK.md line 10 still describes an earlier 'ranges[i]' indexed-loop draft rather than the shipped enhanced-for loop with 'range cannot be null').",
         "source": "critic_history"
       },
       {
