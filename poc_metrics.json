@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-18T12:22:32Z",
+  "generated_at": "2026-11-18T12:24:36Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -17,7 +17,7 @@
     "total_gate_cpu_hours": 5.15
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-18T12:22:32Z",
+    "updated_at": "2026-11-18T12:24:36Z",
     "total_prs_raised": 60,
     "merged_count": 39,
     "open_ready_count": 15,
@@ -2940,16 +2940,16 @@
         "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
         "pr": "#507",
         "severity": "minor",
-        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizerTest.java:795",
-        "finding": "telemetryRecordingCacheHits sums entry.getValue() into an AtomicLong without counting metric emissions. If 'if (servedCount > 0)' at SmallObjectOptimizer.java:150 were mutated to 'servedCount >= 0' (emitting SMALL_OBJECT_CACHE_HIT with value 0L), hitCount.get() would still equal 0L in readVectored_emptyRanges_returnsOriginalWithoutAllocOrMetric and readVectored_zeroLength_completesEmptyWithoutAllocOrMetric.",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizerTest.java:801",
+        "finding": "telemetryRecordingCacheHits accumulates entry.getValue() into hitCount without tracking metric emission count, so a hypothetical mutation emitting SMALL_OBJECT_CACHE_HIT with value 0L when servedCount == 0 would still leave hitCount.get() == 0L.",
         "source": "critic_json"
       },
       {
         "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
         "pr": "#507",
         "severity": "nit",
-        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizer.java:123",
-        "finding": "Commit 8be42f1e cleanly uses an enhanced-for loop with checkNotNull(range, \"range cannot be null\") (matching VectoredIoUtil.completeDegenerateRanges and review comment 4612504942), whereas .sil/PLAYBOOK.md line 10 still describes an earlier indexed-loop draft ('ranges[%s] cannot be null') and the commit body omits mentioning entry-level non-null element validation.",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizer.java:156",
+        "finding": "populateRangeFromCache is 61 lines, slightly above the 30-40 line soft guideline in GEMINI.md, though its structure is a flat, linear sequence of per-range validation guards.",
         "source": "critic_json"
       },
       {
