@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-18T12:17:11Z",
+  "generated_at": "2026-11-18T12:19:06Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -17,7 +17,7 @@
     "total_gate_cpu_hours": 5.15
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-18T12:17:11Z",
+    "updated_at": "2026-11-18T12:19:06Z",
     "total_prs_raised": 60,
     "merged_count": 39,
     "open_ready_count": 15,
@@ -2935,6 +2935,22 @@
         "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizer.java:123",
         "finding": "The commit message body summarizes degenerate-range, EOF-bound, and allocator validation in readVectored without explicitly noting the entry-level non-null range element check added for review comments 4612504942 and 4612504953 (also note .sil/PLAYBOOK.md line 10 still describes an earlier 'ranges[i]' indexed-loop draft rather than the shipped enhanced-for loop with 'range cannot be null').",
         "source": "critic_history"
+      },
+      {
+        "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
+        "pr": "#507",
+        "severity": "minor",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizerTest.java:795",
+        "finding": "telemetryRecordingCacheHits sums entry.getValue() into an AtomicLong without counting metric emissions. If 'if (servedCount > 0)' at SmallObjectOptimizer.java:150 were mutated to 'servedCount >= 0' (emitting SMALL_OBJECT_CACHE_HIT with value 0L), hitCount.get() would still equal 0L in readVectored_emptyRanges_returnsOriginalWithoutAllocOrMetric and readVectored_zeroLength_completesEmptyWithoutAllocOrMetric.",
+        "source": "critic_json"
+      },
+      {
+        "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
+        "pr": "#507",
+        "severity": "nit",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizer.java:123",
+        "finding": "Commit 8be42f1e cleanly uses an enhanced-for loop with checkNotNull(range, \"range cannot be null\") (matching VectoredIoUtil.completeDegenerateRanges and review comment 4612504942), whereas .sil/PLAYBOOK.md line 10 still describes an earlier indexed-loop draft ('ranges[%s] cannot be null') and the commit body omits mentioning entry-level non-null element validation.",
+        "source": "critic_json"
       },
       {
         "iter": "20261104-100443-object-range-models-coverage",
