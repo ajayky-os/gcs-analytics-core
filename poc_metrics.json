@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-18T10:30:14Z",
+  "generated_at": "2026-11-18T10:35:53Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 71,
+    "total_iterations_logged": 72,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 69,
-    "unique_upstream_prs": 59,
+    "substantive_iterations": 70,
+    "unique_upstream_prs": 60,
     "merged_upstream_prs": 39,
-    "open_vetted_draft_prs": 14,
+    "open_vetted_draft_prs": 15,
     "closed_unmerged_prs": 6,
     "critic_major_catches": 48,
-    "total_agent_wall_hours": 68.74,
-    "total_gate_cpu_hours": 5.14
+    "total_agent_wall_hours": 69.27,
+    "total_gate_cpu_hours": 5.3
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-18T10:30:14Z",
-    "total_prs_raised": 59,
+    "updated_at": "2026-11-18T10:35:53Z",
+    "total_prs_raised": 60,
     "merged_count": 39,
-    "open_ready_count": 14,
+    "open_ready_count": 15,
     "open_draft_count": 0,
     "closed_unmerged_count": 6,
     "acceptance_rate_closed_prs": 0.867,
-    "overall_merge_rate_to_date": 0.661,
+    "overall_merge_rate_to_date": 0.65,
     "median_hours_to_merge": 21.67,
     "prs": [
       {
@@ -1324,6 +1324,28 @@
         "review_count": 1,
         "perf_summary": "14/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -14.6% lat, -0.0% alloc)",
         "coverage_summary": "1934 tests, 0 skipped; cov line 87.16% -> 87.16% (+0.00), branch 74.28% -> 74.28% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 507,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/507",
+        "title": "fix(core): never strand vectored range futures in SmallObjectOptimizer",
+        "state": "OPEN_READY",
+        "change_type": "fix",
+        "task_class": "correctness_fix",
+        "loc": 335,
+        "additions": 311,
+        "deletions": 24,
+        "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
+        "created_at": "2026-11-18T10:35:13Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "12/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -18.8% lat, -0.0% alloc)",
+        "coverage_summary": "2129 tests, 0 skipped; cov line 88.40% -> 88.46% (+0.05), branch 77.29% -> 77.43% (+0.15); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2625,6 +2647,28 @@
       "review_count": 1,
       "perf_summary": "14/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -14.6% lat, -0.0% alloc)",
       "coverage_summary": "1934 tests, 0 skipped; cov line 87.16% -> 87.16% (+0.00), branch 74.28% -> 74.28% (+0.00); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 507,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/507",
+      "title": "fix(core): never strand vectored range futures in SmallObjectOptimizer",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 335,
+      "additions": 311,
+      "deletions": 24,
+      "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
+      "created_at": "2026-11-18T10:35:13Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "12/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -18.8% lat, -0.0% alloc)",
+      "coverage_summary": "2129 tests, 0 skipped; cov line 88.40% -> 88.46% (+0.05), branch 77.29% -> 77.43% (+0.15); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2835,6 +2879,22 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
+        "pr": "#507",
+        "severity": "minor",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizerTest.java:754",
+        "finding": "telemetryRecordingCacheHits sums entry.getValue() into an AtomicLong without counting metric emissions. If 'if (servedCount > 0)' at SmallObjectOptimizer.java:148 were removed or mutated to 'servedCount >= 0' (emitting SMALL_OBJECT_CACHE_HIT with value 0L), hitCount.get() would still equal 0L in readVectored_zeroLength_completesEmptyWithoutAllocOrMetric despite emitting a zero-valued metric event.",
+        "source": "critic_json"
+      },
+      {
+        "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
+        "pr": "#507",
+        "severity": "nit",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizer.java:143",
+        "finding": "Checking checkNotNull(range, \"range cannot be null\") inside the populate loop means a malformed list such as [validRange, null] on a warm cache allocates and completes validRange before readVectored throws NullPointerException synchronously.",
+        "source": "critic_json"
       },
       {
         "iter": "20261104-100443-object-range-models-coverage",
@@ -3393,19 +3453,19 @@
       "net_saved_swe_days_p50": 33.83
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 14,
-      "raw_counterfactual_hours_p25": 62.68,
-      "raw_counterfactual_hours_p50": 92.02,
+      "open_draft_pr_count": 15,
+      "raw_counterfactual_hours_p25": 66.68,
+      "raw_counterfactual_hours_p50": 98.02,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.661,
-      "risk_adjusted_hours_p25": 52.46,
-      "risk_adjusted_hours_p50": 77.41
+      "empirical_promoted_merge_rate": 0.65,
+      "risk_adjusted_hours_p25": 55.26,
+      "risk_adjusted_hours_p50": 81.61
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 236.64,
-      "net_saved_hours_p50": 348.02,
-      "net_saved_swe_days_p25": 29.58,
-      "net_saved_swe_days_p50": 43.5
+      "net_saved_hours_p25": 239.44,
+      "net_saved_hours_p50": 352.22,
+      "net_saved_swe_days_p25": 29.93,
+      "net_saved_swe_days_p50": 44.03
     }
   }
 }

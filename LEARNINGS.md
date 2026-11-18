@@ -6,6 +6,7 @@ iteration.** Newest first. Keep entries terse and actionable; promote durable fa
 
 | When | Iter | Type | Outcome | Title | Key learning |
 |---|---|---|---|---|---|
+| 2026-11-18T10:35 | `20261118-100349-small-object-optimizer-vectored-ranges` | fix | **landed** | fix(core): never strand vectored range futures in SmallObjectOptimizer | PR #507: settled degenerate ranges inline, validated pre-alloc EOF bounds & slab-safe buffer limits, and isolated per-range RuntimeExceptions in SmallObjectOptimizer.readVectored (100% class JaCoCo, +0.15% repo branch, 0 JMH regressions). |
 | 2026-11-17T06:26 | `20261109-054358-create-bucket-options-ttl-upper-bound` | fix | **rejected** | fix(client): validate TTL upper bound in GcsCreateBucketOptions (PR #488) | PR #488 closed/rejected without merge. Reviewer rationale: Closed without merging on GitHub (no reviewer comment text). |
 | 2026-11-17T06:26 | `20261109-034724-transport-options-factory-blank-endpoint` | fix | **rejected** | fix(client): ignore blank endpoint and universe in GcsTransportOptionsFactory (PR #487) | PR #487 closed/rejected without merge. Reviewer rationale: Closed without merging on GitHub (no reviewer comment text). |
 | 2026-11-17T06:26 | `20261108-094452-transport-factory-timeout-overflow-guard` | fix | **rejected** | fix(client): guard Duration.toMillis overflow in GcsHttpTransportFactory (PR #486) | PR #486 closed/rejected without merge. Reviewer rationale: Closed without merging on GitHub (no reviewer comment text). |
