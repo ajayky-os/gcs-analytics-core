@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-19T06:44:38Z",
+  "generated_at": "2026-11-19T06:54:37Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -17,7 +17,7 @@
     "total_gate_cpu_hours": 5.42
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-19T06:44:38Z",
+    "updated_at": "2026-11-19T06:54:37Z",
     "total_prs_raised": 61,
     "merged_count": 39,
     "open_ready_count": 16,
@@ -1366,8 +1366,8 @@
         "commit_count": 1,
         "comment_count": 3,
         "review_count": 1,
-        "perf_summary": "22/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -18.7% lat, -4.6% alloc)",
-        "coverage_summary": "2129 tests, 0 skipped; cov line 88.40% -> 88.43% (+0.03), branch 77.29% -> 77.38% (+0.09); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -19.3% lat, -0.0% alloc)",
+        "coverage_summary": "2130 tests, 0 skipped; cov line 88.40% -> 88.43% (+0.03), branch 77.29% -> 77.36% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2711,8 +2711,8 @@
       "commit_count": 1,
       "comment_count": 3,
       "review_count": 1,
-      "perf_summary": "22/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -18.7% lat, -4.6% alloc)",
-      "coverage_summary": "2129 tests, 0 skipped; cov line 88.40% -> 88.43% (+0.03), branch 77.29% -> 77.38% (+0.09); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -19.3% lat, -0.0% alloc)",
+      "coverage_summary": "2130 tests, 0 skipped; cov line 88.40% -> 88.43% (+0.03), branch 77.29% -> 77.36% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2930,7 +2930,7 @@
         "severity": "minor",
         "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStreamTest.java:941",
         "finding": "create_bothOptimizersApplicable_attachesBothOptimizers only reads 1 byte at offset 0 and asserts SMALL_OBJECT_CACHE_MISS. Because SmallObjectOptimizer intercepts all positive-length in-bounds reads when applicable, this test would still pass if openChannel had an 'else if (footerApplicable)' bug that omitted GcsFooterOptimizer when smallObjectApplicable is true.",
-        "source": "critic_json"
+        "source": "critic_history"
       },
       {
         "iter": "20261119-055825-skip-inapplicable-optimizers-on-open",
@@ -2938,7 +2938,7 @@
         "severity": "nit",
         "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizer.java:80",
         "finding": "The instance override SmallObjectOptimizer.isApplicable(GcsFileInfo) implements FormatOptimizer.isApplicable(GcsFileInfo) (which is non-@Nullable by default and throws NPE on null in FormatOptimizer's default method and previously in SmallObjectOptimizer when caching was enabled), but now silently returns false on null by delegating directly to isApplicable(@Nullable GcsFileInfo, ...).",
-        "source": "critic_json"
+        "source": "critic_history"
       },
       {
         "iter": "20261119-055825-skip-inapplicable-optimizers-on-open",
@@ -2946,7 +2946,7 @@
         "severity": "nit",
         "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStreamTest.java:856",
         "finding": "when(mockChannel.isOpen()).thenReturn(true) is dead setup when SmartReadChannel is bypassed, because GoogleCloudStorageInputStream tracks its own closed flag and invokes rawChannel.close() directly without calling rawChannel.isOpen().",
-        "source": "critic_json"
+        "source": "critic_history"
       },
       {
         "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
