@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-19T06:15:02Z",
+  "generated_at": "2026-11-19T06:17:56Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 73,
+    "total_iterations_logged": 74,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 71,
-    "unique_upstream_prs": 60,
+    "substantive_iterations": 72,
+    "unique_upstream_prs": 61,
     "merged_upstream_prs": 39,
-    "open_vetted_draft_prs": 15,
+    "open_vetted_draft_prs": 16,
     "closed_unmerged_prs": 6,
     "critic_major_catches": 50,
-    "total_agent_wall_hours": 71.17,
-    "total_gate_cpu_hours": 5.29
+    "total_agent_wall_hours": 71.49,
+    "total_gate_cpu_hours": 5.42
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-19T06:15:02Z",
-    "total_prs_raised": 60,
+    "updated_at": "2026-11-19T06:17:56Z",
+    "total_prs_raised": 61,
     "merged_count": 39,
-    "open_ready_count": 15,
+    "open_ready_count": 16,
     "open_draft_count": 0,
     "closed_unmerged_count": 6,
     "acceptance_rate_closed_prs": 0.867,
-    "overall_merge_rate_to_date": 0.65,
+    "overall_merge_rate_to_date": 0.639,
     "median_hours_to_merge": 21.67,
     "prs": [
       {
@@ -1346,6 +1346,28 @@
         "review_count": 3,
         "perf_summary": "15/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -24.3% lat, -0.0% alloc)",
         "coverage_summary": "exit 1; 69 failures, 362 errors of 1292 tests"
+      },
+      {
+        "pr_number": 508,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/508",
+        "title": "perf(core): skip SmartReadChannel and unused optimizers when inapplicable",
+        "state": "OPEN_READY",
+        "change_type": "perf",
+        "task_class": "perf_or_feature_change",
+        "loc": 302,
+        "additions": 276,
+        "deletions": 26,
+        "iter": "20261119-055825-skip-inapplicable-optimizers-on-open",
+        "created_at": "2026-11-19T06:17:19Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 0,
+        "review_count": 0,
+        "perf_summary": "22/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -18.7% lat, -4.6% alloc)",
+        "coverage_summary": "2129 tests, 0 skipped; cov line 88.40% -> 88.43% (+0.03), branch 77.29% -> 77.38% (+0.09); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2669,6 +2691,28 @@
       "review_count": 3,
       "perf_summary": "15/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -24.3% lat, -0.0% alloc)",
       "coverage_summary": "exit 1; 69 failures, 362 errors of 1292 tests"
+    },
+    {
+      "pr_number": 508,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/508",
+      "title": "perf(core): skip SmartReadChannel and unused optimizers when inapplicable",
+      "state": "OPEN_READY",
+      "change_type": "perf",
+      "task_class": "perf_or_feature_change",
+      "loc": 302,
+      "additions": 276,
+      "deletions": 26,
+      "iter": "20261119-055825-skip-inapplicable-optimizers-on-open",
+      "created_at": "2026-11-19T06:17:19Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 0,
+      "review_count": 0,
+      "perf_summary": "22/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -18.7% lat, -4.6% alloc)",
+      "coverage_summary": "2129 tests, 0 skipped; cov line 88.40% -> 88.43% (+0.03), branch 77.29% -> 77.38% (+0.09); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -2879,6 +2923,30 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261119-055825-skip-inapplicable-optimizers-on-open",
+        "pr": "#508",
+        "severity": "minor",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStreamTest.java:941",
+        "finding": "create_bothOptimizersApplicable_attachesBothOptimizers only reads 1 byte at offset 0 and asserts SMALL_OBJECT_CACHE_MISS. Because SmallObjectOptimizer intercepts all positive-length in-bounds reads when applicable, this test would still pass if openChannel had an 'else if (footerApplicable)' bug that omitted GcsFooterOptimizer when smallObjectApplicable is true.",
+        "source": "critic_json"
+      },
+      {
+        "iter": "20261119-055825-skip-inapplicable-optimizers-on-open",
+        "pr": "#508",
+        "severity": "nit",
+        "category": "core/src/main/java/com/google/cloud/gcs/analyticscore/core/optimizer/SmallObjectOptimizer.java:80",
+        "finding": "The instance override SmallObjectOptimizer.isApplicable(GcsFileInfo) implements FormatOptimizer.isApplicable(GcsFileInfo) (which is non-@Nullable by default and throws NPE on null in FormatOptimizer's default method and previously in SmallObjectOptimizer when caching was enabled), but now silently returns false on null by delegating directly to isApplicable(@Nullable GcsFileInfo, ...).",
+        "source": "critic_json"
+      },
+      {
+        "iter": "20261119-055825-skip-inapplicable-optimizers-on-open",
+        "pr": "#508",
+        "severity": "nit",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStreamTest.java:856",
+        "finding": "when(mockChannel.isOpen()).thenReturn(true) is dead setup when SmartReadChannel is bypassed, because GoogleCloudStorageInputStream tracks its own closed flag and invokes rawChannel.close() directly without calling rawChannel.isOpen().",
+        "source": "critic_json"
       },
       {
         "iter": "20261118-100349-small-object-optimizer-vectored-ranges",
@@ -3509,19 +3577,19 @@
       "net_saved_swe_days_p50": 33.83
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 15,
-      "raw_counterfactual_hours_p25": 66.68,
-      "raw_counterfactual_hours_p50": 98.02,
+      "open_draft_pr_count": 16,
+      "raw_counterfactual_hours_p25": 72.01,
+      "raw_counterfactual_hours_p50": 106.02,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.65,
-      "risk_adjusted_hours_p25": 55.92,
-      "risk_adjusted_hours_p50": 82.61
+      "empirical_promoted_merge_rate": 0.639,
+      "risk_adjusted_hours_p25": 59.65,
+      "risk_adjusted_hours_p50": 88.21
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 240.1,
-      "net_saved_hours_p50": 353.22,
-      "net_saved_swe_days_p25": 30.01,
-      "net_saved_swe_days_p50": 44.15
+      "net_saved_hours_p25": 243.83,
+      "net_saved_hours_p50": 358.82,
+      "net_saved_swe_days_p25": 30.48,
+      "net_saved_swe_days_p50": 44.85
     }
   }
 }

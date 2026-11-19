@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-19T06:15:02Z",
-  "total_prs_raised": 60,
+  "updated_at": "2026-11-19T06:17:56Z",
+  "total_prs_raised": 61,
   "merged_count": 39,
-  "open_ready_count": 15,
+  "open_ready_count": 16,
   "open_draft_count": 0,
   "closed_unmerged_count": 6,
   "acceptance_rate_closed_prs": 0.867,
-  "overall_merge_rate_to_date": 0.65,
+  "overall_merge_rate_to_date": 0.639,
   "median_hours_to_merge": 21.67,
   "prs": [
     {
@@ -1328,6 +1328,28 @@
       "review_count": 3,
       "perf_summary": "15/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -24.3% lat, -0.0% alloc)",
       "coverage_summary": "exit 1; 69 failures, 362 errors of 1292 tests"
+    },
+    {
+      "pr_number": 508,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/508",
+      "title": "perf(core): skip SmartReadChannel and unused optimizers when inapplicable",
+      "state": "OPEN_READY",
+      "change_type": "perf",
+      "task_class": "perf_or_feature_change",
+      "loc": 302,
+      "additions": 276,
+      "deletions": 26,
+      "iter": "20261119-055825-skip-inapplicable-optimizers-on-open",
+      "created_at": "2026-11-19T06:17:19Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 0,
+      "review_count": 0,
+      "perf_summary": "22/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -18.7% lat, -4.6% alloc)",
+      "coverage_summary": "2129 tests, 0 skipped; cov line 88.40% -> 88.43% (+0.03), branch 77.29% -> 77.38% (+0.09); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ]
 }
