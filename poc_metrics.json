@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-19T06:54:37Z",
+  "generated_at": "2026-11-19T06:56:52Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -13,11 +13,11 @@
     "open_vetted_draft_prs": 16,
     "closed_unmerged_prs": 6,
     "critic_major_catches": 50,
-    "total_agent_wall_hours": 71.49,
+    "total_agent_wall_hours": 72.14,
     "total_gate_cpu_hours": 5.42
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-19T06:54:37Z",
+    "updated_at": "2026-11-19T06:56:52Z",
     "total_prs_raised": 61,
     "merged_count": 39,
     "open_ready_count": 16,
@@ -1354,9 +1354,9 @@
         "state": "OPEN_READY",
         "change_type": "perf",
         "task_class": "perf_or_feature_change",
-        "loc": 302,
-        "additions": 276,
-        "deletions": 26,
+        "loc": 332,
+        "additions": 305,
+        "deletions": 27,
         "iter": "20261119-055825-skip-inapplicable-optimizers-on-open",
         "created_at": "2026-11-19T06:17:19Z",
         "merged_at": null,
@@ -1365,7 +1365,7 @@
         "review_decision": "PENDING",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
+        "review_count": 3,
         "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -19.3% lat, -0.0% alloc)",
         "coverage_summary": "2130 tests, 0 skipped; cov line 88.40% -> 88.43% (+0.03), branch 77.29% -> 77.36% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
@@ -2699,9 +2699,9 @@
       "state": "OPEN_READY",
       "change_type": "perf",
       "task_class": "perf_or_feature_change",
-      "loc": 302,
-      "additions": 276,
-      "deletions": 26,
+      "loc": 332,
+      "additions": 305,
+      "deletions": 27,
       "iter": "20261119-055825-skip-inapplicable-optimizers-on-open",
       "created_at": "2026-11-19T06:17:19Z",
       "merged_at": null,
@@ -2710,7 +2710,7 @@
       "review_decision": "PENDING",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
+      "review_count": 3,
       "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -19.3% lat, -0.0% alloc)",
       "coverage_summary": "2130 tests, 0 skipped; cov line 88.40% -> 88.43% (+0.03), branch 77.29% -> 77.36% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
@@ -2947,6 +2947,14 @@
         "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStreamTest.java:856",
         "finding": "when(mockChannel.isOpen()).thenReturn(true) is dead setup when SmartReadChannel is bypassed, because GoogleCloudStorageInputStream tracks its own closed flag and invokes rawChannel.close() directly without calling rawChannel.isOpen().",
         "source": "critic_history"
+      },
+      {
+        "iter": "20261119-055825-skip-inapplicable-optimizers-on-open",
+        "pr": "#508",
+        "severity": "nit",
+        "category": "core/src/test/java/com/google/cloud/gcs/analyticscore/core/GoogleCloudStorageInputStreamTest.java:976",
+        "finding": "Narrowing `stream.read()` via `(byte) footerByte` works at index 990 (`testData[990] == -34 != -1`), though comparing unsigned `int` values avoids collapsing EOF `-1` and `0xFF` if the test offset were ever changed.",
+        "source": "critic_json"
       },
       {
         "iter": "20261118-100349-small-object-optimizer-vectored-ranges",

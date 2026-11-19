@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-19T06:54:37Z",
+  "updated_at": "2026-11-19T06:56:52Z",
   "total_prs_raised": 61,
   "merged_count": 39,
   "open_ready_count": 16,
@@ -1336,9 +1336,9 @@
       "state": "OPEN_READY",
       "change_type": "perf",
       "task_class": "perf_or_feature_change",
-      "loc": 302,
-      "additions": 276,
-      "deletions": 26,
+      "loc": 332,
+      "additions": 305,
+      "deletions": 27,
       "iter": "20261119-055825-skip-inapplicable-optimizers-on-open",
       "created_at": "2026-11-19T06:17:19Z",
       "merged_at": null,
@@ -1347,7 +1347,7 @@
       "review_decision": "PENDING",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
+      "review_count": 3,
       "perf_summary": "24/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -19.3% lat, -0.0% alloc)",
       "coverage_summary": "2130 tests, 0 skipped; cov line 88.40% -> 88.43% (+0.03), branch 77.29% -> 77.36% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
