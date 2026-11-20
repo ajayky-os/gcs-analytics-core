@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-20T06:24:40Z",
-  "total_prs_raised": 62,
+  "updated_at": "2026-11-20T06:30:14Z",
+  "total_prs_raised": 63,
   "merged_count": 39,
-  "open_ready_count": 17,
+  "open_ready_count": 18,
   "open_draft_count": 0,
   "closed_unmerged_count": 6,
   "acceptance_rate_closed_prs": 0.867,
-  "overall_merge_rate_to_date": 0.629,
+  "overall_merge_rate_to_date": 0.619,
   "median_hours_to_merge": 21.67,
   "prs": [
     {
@@ -1372,6 +1372,28 @@
       "review_count": 2,
       "perf_summary": "16/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=16777216}` -12.4% lat, -0.3% alloc)",
       "coverage_summary": "2350 tests, 0 skipped; cov line 89.09% -> 89.09% (+0.01), branch 79.20% -> 79.18% (-0.02); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 511,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/511",
+      "title": "perf(common): use compact two-slot metric map in Telemetry.measure",
+      "state": "OPEN_READY",
+      "change_type": "perf",
+      "task_class": "perf_or_feature_change",
+      "loc": 394,
+      "additions": 385,
+      "deletions": 9,
+      "iter": "20261120-060013-telemetry-compact-metrics-map",
+      "created_at": "2026-11-20T06:29:36Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "11/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -16.7% lat, -0.0% alloc)",
+      "coverage_summary": "2356 tests, 0 skipped; cov line 89.09% -> 89.21% (+0.12), branch 79.20% -> 79.60% (+0.39); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ]
 }
