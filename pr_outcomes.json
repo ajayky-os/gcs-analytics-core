@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-20T10:32:34Z",
+  "updated_at": "2026-11-20T10:39:48Z",
   "total_prs_raised": 64,
   "merged_count": 39,
   "open_ready_count": 19,
@@ -1412,8 +1412,8 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 1,
-      "review_count": 0,
+      "comment_count": 2,
+      "review_count": 1,
       "perf_summary": "7/45 IMPROVED (top: `TelemetryOverheadBenchmark.measureOperation{listenerCount=0}` -20.7% lat, -20.7% alloc)",
       "coverage_summary": "2401 tests, 0 skipped; cov line 89.13% -> 89.14% (+0.01), branch 79.24% -> 79.28% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
