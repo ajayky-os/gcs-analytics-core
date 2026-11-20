@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-20T04:54:41Z",
+  "generated_at": "2026-11-20T04:56:12Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -13,11 +13,11 @@
     "open_vetted_draft_prs": 17,
     "closed_unmerged_prs": 6,
     "critic_major_catches": 50,
-    "total_agent_wall_hours": 73.73,
+    "total_agent_wall_hours": 74.15,
     "total_gate_cpu_hours": 5.86
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-20T04:54:41Z",
+    "updated_at": "2026-11-20T04:56:12Z",
     "total_prs_raised": 62,
     "merged_count": 39,
     "open_ready_count": 17,
@@ -1387,7 +1387,7 @@
         "review_decision": "PENDING",
         "commit_count": 1,
         "comment_count": 3,
-        "review_count": 1,
+        "review_count": 2,
         "perf_summary": "16/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=16777216}` -12.4% lat, -0.3% alloc)",
         "coverage_summary": "2350 tests, 0 skipped; cov line 89.09% -> 89.09% (+0.01), branch 79.20% -> 79.18% (-0.02); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
@@ -2754,7 +2754,7 @@
       "review_decision": "PENDING",
       "commit_count": 1,
       "comment_count": 3,
-      "review_count": 1,
+      "review_count": 2,
       "perf_summary": "16/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=16777216}` -12.4% lat, -0.3% alloc)",
       "coverage_summary": "2350 tests, 0 skipped; cov line 89.09% -> 89.09% (+0.01), branch 79.20% -> 79.18% (-0.02); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
