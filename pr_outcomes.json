@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25T15:54:58Z",
+  "updated_at": "2026-11-25T16:00:40Z",
   "total_prs_raised": 65,
   "merged_count": 39,
   "open_ready_count": 20,
@@ -1217,7 +1217,7 @@
       "comment_count": 3,
       "review_count": 3,
       "perf_summary": "32/45 IMPROVED (top: `FooterPrefetchBenchmark.readTail{prefetchEnabled=true}` -17.2% lat, +0.0% alloc)",
-      "coverage_summary": "1880 tests, 0 skipped; cov line 86.99% -> 87.00% (+0.01), branch 74.07% -> 74.16% (+0.08); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "2442 tests, 0 skipped"
     },
     {
       "pr_number": 501,
