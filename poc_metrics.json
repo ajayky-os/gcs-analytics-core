@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-25T10:14:53Z",
+  "generated_at": "2026-11-25T10:16:29Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 78,
+    "total_iterations_logged": 79,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 76,
-    "unique_upstream_prs": 64,
+    "substantive_iterations": 77,
+    "unique_upstream_prs": 65,
     "merged_upstream_prs": 39,
-    "open_vetted_draft_prs": 19,
+    "open_vetted_draft_prs": 20,
     "closed_unmerged_prs": 6,
     "critic_major_catches": 50,
-    "total_agent_wall_hours": 75.69,
-    "total_gate_cpu_hours": 6.37
+    "total_agent_wall_hours": 75.93,
+    "total_gate_cpu_hours": 6.51
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-25T10:14:53Z",
-    "total_prs_raised": 64,
+    "updated_at": "2026-11-25T10:16:29Z",
+    "total_prs_raised": 65,
     "merged_count": 39,
-    "open_ready_count": 19,
+    "open_ready_count": 20,
     "open_draft_count": 0,
     "closed_unmerged_count": 6,
     "acceptance_rate_closed_prs": 0.867,
-    "overall_merge_rate_to_date": 0.609,
+    "overall_merge_rate_to_date": 0.6,
     "median_hours_to_merge": 21.67,
     "prs": [
       {
@@ -1434,6 +1434,28 @@
         "review_count": 2,
         "perf_summary": "7/45 IMPROVED (top: `TelemetryOverheadBenchmark.measureOperation{listenerCount=0}` -20.7% lat, -20.7% alloc)",
         "coverage_summary": "2401 tests, 0 skipped; cov line 89.13% -> 89.14% (+0.01), branch 79.24% -> 79.28% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 516,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/516",
+        "title": "fix(client): reject out-of-range proxy ports in GcsAuthOptions",
+        "state": "OPEN_READY",
+        "change_type": "fix",
+        "task_class": "correctness_fix",
+        "loc": 37,
+        "additions": 35,
+        "deletions": 2,
+        "iter": "20261125-100157-gcs-auth-options-proxy-port-validation",
+        "created_at": "2026-11-25T10:15:49Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "10/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -22.3% lat, -22.3% alloc)",
+        "coverage_summary": "2411 tests, 0 skipped; cov line 89.13% -> 89.14% (+0.00), branch 79.28% -> 79.35% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2845,6 +2867,28 @@
       "review_count": 2,
       "perf_summary": "7/45 IMPROVED (top: `TelemetryOverheadBenchmark.measureOperation{listenerCount=0}` -20.7% lat, -20.7% alloc)",
       "coverage_summary": "2401 tests, 0 skipped; cov line 89.13% -> 89.14% (+0.01), branch 79.24% -> 79.28% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 516,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/516",
+      "title": "fix(client): reject out-of-range proxy ports in GcsAuthOptions",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 37,
+      "additions": 35,
+      "deletions": 2,
+      "iter": "20261125-100157-gcs-auth-options-proxy-port-validation",
+      "created_at": "2026-11-25T10:15:49Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "10/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -22.3% lat, -22.3% alloc)",
+      "coverage_summary": "2411 tests, 0 skipped; cov line 89.13% -> 89.14% (+0.00), branch 79.28% -> 79.35% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -3733,19 +3777,19 @@
       "net_saved_swe_days_p50": 33.83
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 19,
-      "raw_counterfactual_hours_p25": 86.67,
-      "raw_counterfactual_hours_p50": 128.02,
+      "open_draft_pr_count": 20,
+      "raw_counterfactual_hours_p25": 90.67,
+      "raw_counterfactual_hours_p50": 134.02,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.609,
-      "risk_adjusted_hours_p25": 69.91,
-      "risk_adjusted_hours_p50": 103.61
+      "empirical_promoted_merge_rate": 0.6,
+      "risk_adjusted_hours_p25": 72.71,
+      "risk_adjusted_hours_p50": 107.81
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 254.09,
-      "net_saved_hours_p50": 374.22,
-      "net_saved_swe_days_p25": 31.76,
-      "net_saved_swe_days_p50": 46.78
+      "net_saved_hours_p25": 256.89,
+      "net_saved_hours_p50": 378.42,
+      "net_saved_swe_days_p25": 32.11,
+      "net_saved_swe_days_p50": 47.3
     }
   }
 }
