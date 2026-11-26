@@ -1,23 +1,23 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-26T11:00:10Z",
+  "generated_at": "2026-11-26T11:01:09Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 81,
+    "total_iterations_logged": 82,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 79,
+    "substantive_iterations": 80,
     "unique_upstream_prs": 67,
     "merged_upstream_prs": 39,
     "open_vetted_draft_prs": 22,
     "closed_unmerged_prs": 6,
     "critic_major_catches": 50,
-    "total_agent_wall_hours": 77.39,
-    "total_gate_cpu_hours": 6.7
+    "total_agent_wall_hours": 78.42,
+    "total_gate_cpu_hours": 7.17
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-26T11:00:10Z",
+    "updated_at": "2026-11-26T11:01:09Z",
     "total_prs_raised": 67,
     "merged_count": 39,
     "open_ready_count": 22,
