@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-26T18:45:42Z",
+  "generated_at": "2026-11-26T18:55:26Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -10,20 +10,20 @@
     "substantive_iterations": 80,
     "unique_upstream_prs": 67,
     "merged_upstream_prs": 39,
-    "open_vetted_draft_prs": 22,
-    "closed_unmerged_prs": 6,
+    "open_vetted_draft_prs": 21,
+    "closed_unmerged_prs": 7,
     "critic_major_catches": 50,
-    "total_agent_wall_hours": 78.42,
+    "total_agent_wall_hours": 79.92,
     "total_gate_cpu_hours": 7.17
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-26T18:45:42Z",
+    "updated_at": "2026-11-26T18:55:26Z",
     "total_prs_raised": 67,
     "merged_count": 39,
-    "open_ready_count": 22,
+    "open_ready_count": 21,
     "open_draft_count": 0,
-    "closed_unmerged_count": 6,
-    "acceptance_rate_closed_prs": 0.867,
+    "closed_unmerged_count": 7,
+    "acceptance_rate_closed_prs": 0.848,
     "overall_merge_rate_to_date": 0.582,
     "median_hours_to_merge": 21.67,
     "prs": [
@@ -1395,7 +1395,7 @@
         "pr_number": 511,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/511",
         "title": "perf(common): use compact two-slot metric map in Telemetry.measure",
-        "state": "OPEN_READY",
+        "state": "CLOSED_UNMERGED",
         "change_type": "perf",
         "task_class": "perf_or_feature_change",
         "loc": 394,
@@ -1404,11 +1404,11 @@
         "iter": "20261120-060013-telemetry-compact-metrics-map",
         "created_at": "2026-11-20T06:29:36Z",
         "merged_at": null,
-        "closed_at": null,
+        "closed_at": "2026-11-26T18:51:14Z",
         "hours_to_merge": null,
         "review_decision": "PENDING",
         "commit_count": 1,
-        "comment_count": 3,
+        "comment_count": 4,
         "review_count": 1,
         "perf_summary": "11/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -16.7% lat, -0.0% alloc)",
         "coverage_summary": "2356 tests, 0 skipped; cov line 89.09% -> 89.21% (+0.12), branch 79.20% -> 79.60% (+0.39); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
@@ -2872,7 +2872,7 @@
       "pr_number": 511,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/511",
       "title": "perf(common): use compact two-slot metric map in Telemetry.measure",
-      "state": "OPEN_READY",
+      "state": "CLOSED_UNMERGED",
       "change_type": "perf",
       "task_class": "perf_or_feature_change",
       "loc": 394,
@@ -2881,11 +2881,11 @@
       "iter": "20261120-060013-telemetry-compact-metrics-map",
       "created_at": "2026-11-20T06:29:36Z",
       "merged_at": null,
-      "closed_at": null,
+      "closed_at": "2026-11-26T18:51:14Z",
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 3,
+      "comment_count": 4,
       "review_count": 1,
       "perf_summary": "11/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=16777216}` -16.7% lat, -0.0% alloc)",
       "coverage_summary": "2356 tests, 0 skipped; cov line 89.09% -> 89.21% (+0.12), branch 79.20% -> 79.60% (+0.39); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
@@ -3189,6 +3189,22 @@
         "source": "pilot_backfill"
       },
       {
+        "iter": "20261120-060013-telemetry-compact-metrics-map",
+        "pr": "#511",
+        "severity": "nit",
+        "category": "common/src/main/java/com/google/cloud/gcs/analyticscore/common/telemetry/CompactMetricsMap.java:2",
+        "finding": "New file created in 2026 uses 'Copyright 2025 Google LLC' in its Apache 2.0 header, whereas sibling 2026 files in the same package (LoggingTelemetryReporter, OpenTelemetryReporter) use 2026.",
+        "source": "critic_json"
+      },
+      {
+        "iter": "20261120-060013-telemetry-compact-metrics-map",
+        "pr": "#511",
+        "severity": "nit",
+        "category": "common/src/test/java/com/google/cloud/gcs/analyticscore/common/telemetry/TelemetryTest.java:279",
+        "finding": "Several new test methods bundle lookup, iterator exhaustion, and mutator UnsupportedOperationException assertions into a single @Test method rather than strict single-assertion tests, though this matches existing tests in TelemetryTest and keeps the diff at 394/400 lines.",
+        "source": "critic_json"
+      },
+      {
         "iter": "20261126-055809-metadata-extractor-method-handles",
         "pr": "#518",
         "severity": "nit",
@@ -3210,22 +3226,6 @@
         "severity": "nit",
         "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/PrefetchBufferCacheTest.java:1623",
         "finding": "The two serveVectoredFromCache_rangeCancelledDuringAllocation_* tests exercise the pre-existing range.getByteBufferFuture().complete(buffer) false branch in completeFromSlices (immediately wrapping copyToAllocated) rather than one of the four modified bounds/overflow guards, and are not noted in the commit body.",
-        "source": "critic_json"
-      },
-      {
-        "iter": "20261120-060013-telemetry-compact-metrics-map",
-        "pr": "#511",
-        "severity": "nit",
-        "category": "common/src/main/java/com/google/cloud/gcs/analyticscore/common/telemetry/CompactMetricsMap.java:2",
-        "finding": "New file created in 2026 uses 'Copyright 2025 Google LLC' in its Apache 2.0 header, whereas sibling 2026 files in the same package (LoggingTelemetryReporter, OpenTelemetryReporter) use 2026.",
-        "source": "critic_json"
-      },
-      {
-        "iter": "20261120-060013-telemetry-compact-metrics-map",
-        "pr": "#511",
-        "severity": "nit",
-        "category": "common/src/test/java/com/google/cloud/gcs/analyticscore/common/telemetry/TelemetryTest.java:279",
-        "finding": "Several new test methods bundle lookup, iterator exhaustion, and mutator UnsupportedOperationException assertions into a single @Test method rather than strict single-assertion tests, though this matches existing tests in TelemetryTest and keeps the diff at 394/400 lines.",
         "source": "critic_json"
       },
       {
@@ -3889,19 +3889,19 @@
       "net_saved_swe_days_p50": 33.83
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 22,
-      "raw_counterfactual_hours_p25": 100.0,
-      "raw_counterfactual_hours_p50": 148.02,
+      "open_draft_pr_count": 21,
+      "raw_counterfactual_hours_p25": 94.67,
+      "raw_counterfactual_hours_p50": 140.02,
       "prior_weight_w_draft": 0.7,
       "empirical_promoted_merge_rate": 0.582,
-      "risk_adjusted_hours_p25": 79.24,
-      "risk_adjusted_hours_p50": 117.61
+      "risk_adjusted_hours_p25": 75.51,
+      "risk_adjusted_hours_p50": 112.01
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 263.42,
-      "net_saved_hours_p50": 388.22,
-      "net_saved_swe_days_p25": 32.93,
-      "net_saved_swe_days_p50": 48.53
+      "net_saved_hours_p25": 259.69,
+      "net_saved_hours_p50": 382.62,
+      "net_saved_swe_days_p25": 32.46,
+      "net_saved_swe_days_p50": 47.83
     }
   }
 }
