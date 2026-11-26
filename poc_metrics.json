@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-26T06:15:06Z",
+  "generated_at": "2026-11-26T06:20:34Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 80,
+    "total_iterations_logged": 81,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 78,
-    "unique_upstream_prs": 66,
+    "substantive_iterations": 79,
+    "unique_upstream_prs": 67,
     "merged_upstream_prs": 39,
-    "open_vetted_draft_prs": 21,
+    "open_vetted_draft_prs": 22,
     "closed_unmerged_prs": 6,
     "critic_major_catches": 50,
-    "total_agent_wall_hours": 76.66,
-    "total_gate_cpu_hours": 6.54
+    "total_agent_wall_hours": 77.03,
+    "total_gate_cpu_hours": 6.7
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-26T06:15:06Z",
-    "total_prs_raised": 66,
+    "updated_at": "2026-11-26T06:20:34Z",
+    "total_prs_raised": 67,
     "merged_count": 39,
-    "open_ready_count": 21,
+    "open_ready_count": 22,
     "open_draft_count": 0,
     "closed_unmerged_count": 6,
     "acceptance_rate_closed_prs": 0.867,
-    "overall_merge_rate_to_date": 0.591,
+    "overall_merge_rate_to_date": 0.582,
     "median_hours_to_merge": 21.67,
     "prs": [
       {
@@ -1478,6 +1478,28 @@
         "review_count": 1,
         "perf_summary": "8/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -9.2% lat, +0.1% alloc)",
         "coverage_summary": "2450 tests, 0 skipped; cov line 89.25% -> 89.26% (+0.01), branch 79.51% -> 79.59% (+0.08); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 518,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/518",
+        "title": "perf(client): use MethodHandle in GcsReadChannelMetadataExtractor",
+        "state": "OPEN_READY",
+        "change_type": "perf",
+        "task_class": "perf_or_feature_change",
+        "loc": 205,
+        "additions": 161,
+        "deletions": 44,
+        "iter": "20261126-055809-metadata-extractor-method-handles",
+        "created_at": "2026-11-26T06:19:52Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "9/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -9.7% lat, -9.9% alloc)",
+        "coverage_summary": "2441 tests, 0 skipped; cov line 89.25% -> 89.26% (+0.01), branch 79.51% -> 79.53% (+0.01); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2933,6 +2955,28 @@
       "review_count": 1,
       "perf_summary": "8/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -9.2% lat, +0.1% alloc)",
       "coverage_summary": "2450 tests, 0 skipped; cov line 89.25% -> 89.26% (+0.01), branch 79.51% -> 79.59% (+0.08); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 518,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/518",
+      "title": "perf(client): use MethodHandle in GcsReadChannelMetadataExtractor",
+      "state": "OPEN_READY",
+      "change_type": "perf",
+      "task_class": "perf_or_feature_change",
+      "loc": 205,
+      "additions": 161,
+      "deletions": 44,
+      "iter": "20261126-055809-metadata-extractor-method-handles",
+      "created_at": "2026-11-26T06:19:52Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "9/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -9.7% lat, -9.9% alloc)",
+      "coverage_summary": "2441 tests, 0 skipped; cov line 89.25% -> 89.26% (+0.01), branch 79.51% -> 79.53% (+0.01); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -3143,6 +3187,22 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261126-055809-metadata-extractor-method-handles",
+        "pr": "#518",
+        "severity": "nit",
+        "category": "client/src/main/java/com/google/cloud/gcs/analyticscore/client/GcsReadChannelMetadataExtractor.java:173",
+        "finding": "addMatchingZeroArgMethods (and ChannelAccessors.forClass) does not explicitly filter Modifier.isStatic before calling LOOKUP.unreflect / LOOKUP.unreflectGetter + asType(OBJECT_GETTER_TYPE / LONG_GETTER_TYPE). A static zero-arg candidate method or field produces an arity-0 MethodHandle and throws WrongMethodTypeException in asType, which is safely caught by catch (ReflectiveOperationException | RuntimeException) and logged/ignored, so behavior is safe on all real SDK classes.",
+        "source": "critic_json"
+      },
+      {
+        "iter": "20261126-055809-metadata-extractor-method-handles",
+        "pr": "#518",
+        "severity": "nit",
+        "category": "benchmarks/src/main/java/com/google/cloud/gcs/analyticscore/benchmarks/GcsReadChannelOpenBenchmark.java:55",
+        "finding": "In gates.json, GcsReadChannelOpenBenchmark.openAndReadOneByte_withItemId itself landed at NO_CHANGE (1452.01 -> 1428.01 B/op [-24 B/op, p_sig=false] due to between-fork C2 scalar-replacement variance: base forks 1480/1424 B vs cand forks 1464/1392 B; latency +4.39%), while the predicted -84 to -96 B/op (-5.57% to -6.52%) allocation and latency improvements materialized cleanly on the multi-callsite unknown-size GcsItemId benchmarks (ReadStrategyBenchmark.seekAndRead and FooterPrefetchBenchmark.readFooterUnknownSize), and 5 of the 9 IMPROVED rows (withFileInfo, TelemetryOverheadBenchmark, VectoredRangeCoalescingBenchmark) do not invoke GcsReadChannelMetadataExtractor.",
+        "source": "critic_json"
       },
       {
         "iter": "20261126-040311-prefetch-buffer-cache-bounds-and-buffer-safety",
@@ -3829,19 +3889,19 @@
       "net_saved_swe_days_p50": 33.83
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 21,
-      "raw_counterfactual_hours_p25": 94.67,
-      "raw_counterfactual_hours_p50": 140.02,
+      "open_draft_pr_count": 22,
+      "raw_counterfactual_hours_p25": 100.0,
+      "raw_counterfactual_hours_p50": 148.02,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.591,
-      "risk_adjusted_hours_p25": 75.51,
-      "risk_adjusted_hours_p50": 112.01
+      "empirical_promoted_merge_rate": 0.582,
+      "risk_adjusted_hours_p25": 79.24,
+      "risk_adjusted_hours_p50": 117.61
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 259.69,
-      "net_saved_hours_p50": 382.62,
-      "net_saved_swe_days_p25": 32.46,
-      "net_saved_swe_days_p50": 47.83
+      "net_saved_hours_p25": 263.42,
+      "net_saved_hours_p50": 388.22,
+      "net_saved_swe_days_p25": 32.93,
+      "net_saved_swe_days_p50": 48.53
     }
   }
 }

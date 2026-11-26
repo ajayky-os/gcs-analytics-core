@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-26T06:15:06Z",
-  "total_prs_raised": 66,
+  "updated_at": "2026-11-26T06:20:34Z",
+  "total_prs_raised": 67,
   "merged_count": 39,
-  "open_ready_count": 21,
+  "open_ready_count": 22,
   "open_draft_count": 0,
   "closed_unmerged_count": 6,
   "acceptance_rate_closed_prs": 0.867,
-  "overall_merge_rate_to_date": 0.591,
+  "overall_merge_rate_to_date": 0.582,
   "median_hours_to_merge": 21.67,
   "prs": [
     {
@@ -1460,6 +1460,28 @@
       "review_count": 1,
       "perf_summary": "8/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -9.2% lat, +0.1% alloc)",
       "coverage_summary": "2450 tests, 0 skipped; cov line 89.25% -> 89.26% (+0.01), branch 79.51% -> 79.59% (+0.08); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 518,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/518",
+      "title": "perf(client): use MethodHandle in GcsReadChannelMetadataExtractor",
+      "state": "OPEN_READY",
+      "change_type": "perf",
+      "task_class": "perf_or_feature_change",
+      "loc": 205,
+      "additions": 161,
+      "deletions": 44,
+      "iter": "20261126-055809-metadata-extractor-method-handles",
+      "created_at": "2026-11-26T06:19:52Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "9/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -9.7% lat, -9.9% alloc)",
+      "coverage_summary": "2441 tests, 0 skipped; cov line 89.25% -> 89.26% (+0.01), branch 79.51% -> 79.53% (+0.01); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ]
 }
