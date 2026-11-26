@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-26T04:45:07Z",
-  "total_prs_raised": 65,
+  "updated_at": "2026-11-26T04:47:22Z",
+  "total_prs_raised": 66,
   "merged_count": 39,
-  "open_ready_count": 20,
+  "open_ready_count": 21,
   "open_draft_count": 0,
   "closed_unmerged_count": 6,
   "acceptance_rate_closed_prs": 0.867,
-  "overall_merge_rate_to_date": 0.6,
+  "overall_merge_rate_to_date": 0.591,
   "median_hours_to_merge": 21.67,
   "prs": [
     {
@@ -1438,6 +1438,28 @@
       "review_count": 1,
       "perf_summary": "10/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -22.3% lat, -22.3% alloc)",
       "coverage_summary": "2411 tests, 0 skipped; cov line 89.13% -> 89.14% (+0.00), branch 79.28% -> 79.35% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 517,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/517",
+      "title": "fix(client): harden buffer and offset bounds in PrefetchBufferCache",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 158,
+      "additions": 154,
+      "deletions": 4,
+      "iter": "20261126-040311-prefetch-buffer-cache-bounds-and-buffer-safety",
+      "created_at": "2026-11-26T04:46:38Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "8/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -9.2% lat, +0.1% alloc)",
+      "coverage_summary": "2450 tests, 0 skipped; cov line 89.25% -> 89.26% (+0.01), branch 79.51% -> 79.59% (+0.08); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ]
 }

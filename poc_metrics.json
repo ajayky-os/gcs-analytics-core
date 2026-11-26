@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-26T04:45:07Z",
+  "generated_at": "2026-11-26T04:47:22Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 79,
+    "total_iterations_logged": 80,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 77,
-    "unique_upstream_prs": 65,
+    "substantive_iterations": 78,
+    "unique_upstream_prs": 66,
     "merged_upstream_prs": 39,
-    "open_vetted_draft_prs": 20,
+    "open_vetted_draft_prs": 21,
     "closed_unmerged_prs": 6,
     "critic_major_catches": 50,
-    "total_agent_wall_hours": 75.93,
-    "total_gate_cpu_hours": 6.4
+    "total_agent_wall_hours": 76.66,
+    "total_gate_cpu_hours": 6.54
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-26T04:45:07Z",
-    "total_prs_raised": 65,
+    "updated_at": "2026-11-26T04:47:22Z",
+    "total_prs_raised": 66,
     "merged_count": 39,
-    "open_ready_count": 20,
+    "open_ready_count": 21,
     "open_draft_count": 0,
     "closed_unmerged_count": 6,
     "acceptance_rate_closed_prs": 0.867,
-    "overall_merge_rate_to_date": 0.6,
+    "overall_merge_rate_to_date": 0.591,
     "median_hours_to_merge": 21.67,
     "prs": [
       {
@@ -1456,6 +1456,28 @@
         "review_count": 1,
         "perf_summary": "10/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -22.3% lat, -22.3% alloc)",
         "coverage_summary": "2411 tests, 0 skipped; cov line 89.13% -> 89.14% (+0.00), branch 79.28% -> 79.35% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 517,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/517",
+        "title": "fix(client): harden buffer and offset bounds in PrefetchBufferCache",
+        "state": "OPEN_READY",
+        "change_type": "fix",
+        "task_class": "correctness_fix",
+        "loc": 158,
+        "additions": 154,
+        "deletions": 4,
+        "iter": "20261126-040311-prefetch-buffer-cache-bounds-and-buffer-safety",
+        "created_at": "2026-11-26T04:46:38Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "8/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -9.2% lat, +0.1% alloc)",
+        "coverage_summary": "2450 tests, 0 skipped; cov line 89.25% -> 89.26% (+0.01), branch 79.51% -> 79.59% (+0.08); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -2889,6 +2911,28 @@
       "review_count": 1,
       "perf_summary": "10/45 IMPROVED (top: `TelemetryOverheadBenchmark.recordMetric{listenerCount=0}` -22.3% lat, -22.3% alloc)",
       "coverage_summary": "2411 tests, 0 skipped; cov line 89.13% -> 89.14% (+0.00), branch 79.28% -> 79.35% (+0.07); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 517,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/517",
+      "title": "fix(client): harden buffer and offset bounds in PrefetchBufferCache",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 158,
+      "additions": 154,
+      "deletions": 4,
+      "iter": "20261126-040311-prefetch-buffer-cache-bounds-and-buffer-safety",
+      "created_at": "2026-11-26T04:46:38Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "8/45 IMPROVED (top: `HermeticInputStreamBenchmark.positionedReads{objectSize=1048576}` -9.2% lat, +0.1% alloc)",
+      "coverage_summary": "2450 tests, 0 skipped; cov line 89.25% -> 89.26% (+0.01), branch 79.51% -> 79.59% (+0.08); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -3099,6 +3143,14 @@
         "category": "benchmark_validity",
         "finding": "Empty OperationListener callbacks allowed C2 JIT scalar replacement of MetricKey and singletonMap; consuming into a volatile sink corrected recordMetric from 3.0 ns/op to 11.7 ns/op.",
         "source": "pilot_backfill"
+      },
+      {
+        "iter": "20261126-040311-prefetch-buffer-cache-bounds-and-buffer-safety",
+        "pr": "#517",
+        "severity": "nit",
+        "category": "client/src/test/java/com/google/cloud/gcs/analyticscore/client/PrefetchBufferCacheTest.java:1623",
+        "finding": "The two serveVectoredFromCache_rangeCancelledDuringAllocation_* tests exercise the pre-existing range.getByteBufferFuture().complete(buffer) false branch in completeFromSlices (immediately wrapping copyToAllocated) rather than one of the four modified bounds/overflow guards, and are not noted in the commit body.",
+        "source": "critic_json"
       },
       {
         "iter": "20261120-060013-telemetry-compact-metrics-map",
@@ -3777,19 +3829,19 @@
       "net_saved_swe_days_p50": 33.83
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 20,
-      "raw_counterfactual_hours_p25": 90.67,
-      "raw_counterfactual_hours_p50": 134.02,
+      "open_draft_pr_count": 21,
+      "raw_counterfactual_hours_p25": 94.67,
+      "raw_counterfactual_hours_p50": 140.02,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.6,
-      "risk_adjusted_hours_p25": 72.71,
-      "risk_adjusted_hours_p50": 107.81
+      "empirical_promoted_merge_rate": 0.591,
+      "risk_adjusted_hours_p25": 75.51,
+      "risk_adjusted_hours_p50": 112.01
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 256.89,
-      "net_saved_hours_p50": 378.42,
-      "net_saved_swe_days_p25": 32.11,
-      "net_saved_swe_days_p50": 47.3
+      "net_saved_hours_p25": 259.69,
+      "net_saved_hours_p50": 382.62,
+      "net_saved_swe_days_p25": 32.46,
+      "net_saved_swe_days_p50": 47.83
     }
   }
 }
