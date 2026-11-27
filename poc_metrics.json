@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-27T10:25:22Z",
+  "generated_at": "2026-11-27T10:28:58Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 84,
+    "total_iterations_logged": 85,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 82,
-    "unique_upstream_prs": 69,
+    "substantive_iterations": 83,
+    "unique_upstream_prs": 70,
     "merged_upstream_prs": 39,
-    "open_vetted_draft_prs": 23,
+    "open_vetted_draft_prs": 24,
     "closed_unmerged_prs": 7,
     "critic_major_catches": 50,
-    "total_agent_wall_hours": 80.92,
-    "total_gate_cpu_hours": 7.43
+    "total_agent_wall_hours": 81.22,
+    "total_gate_cpu_hours": 7.59
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-27T10:25:22Z",
-    "total_prs_raised": 69,
+    "updated_at": "2026-11-27T10:28:58Z",
+    "total_prs_raised": 70,
     "merged_count": 39,
-    "open_ready_count": 23,
+    "open_ready_count": 24,
     "open_draft_count": 0,
     "closed_unmerged_count": 7,
     "acceptance_rate_closed_prs": 0.848,
-    "overall_merge_rate_to_date": 0.565,
+    "overall_merge_rate_to_date": 0.557,
     "median_hours_to_merge": 21.67,
     "prs": [
       {
@@ -1544,6 +1544,28 @@
         "review_count": 1,
         "perf_summary": "10/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -14.3% lat, +3.7% alloc)",
         "coverage_summary": "2590 tests, 0 skipped; cov line 89.48% -> 89.49% (+0.00), branch 79.82% -> 79.85% (+0.03); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 523,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/523",
+        "title": "fix(client): reject non-object itemIds in create and createWriteChannel",
+        "state": "OPEN_READY",
+        "change_type": "fix",
+        "task_class": "correctness_fix",
+        "loc": 78,
+        "additions": 74,
+        "deletions": 4,
+        "iter": "20261127-101051-reject-non-object-item-ids-in-create-write-channel",
+        "created_at": "2026-11-27T10:28:23Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 0,
+        "review_count": 0,
+        "perf_summary": "8/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=1048576}` -8.4% lat, -0.2% alloc)",
+        "coverage_summary": "2797 tests, 0 skipped; cov line 89.68% -> 89.68% (+0.00), branch 80.35% -> 80.38% (+0.03); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -3065,6 +3087,28 @@
       "review_count": 1,
       "perf_summary": "10/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -14.3% lat, +3.7% alloc)",
       "coverage_summary": "2590 tests, 0 skipped; cov line 89.48% -> 89.49% (+0.00), branch 79.82% -> 79.85% (+0.03); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 523,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/523",
+      "title": "fix(client): reject non-object itemIds in create and createWriteChannel",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 78,
+      "additions": 74,
+      "deletions": 4,
+      "iter": "20261127-101051-reject-non-object-item-ids-in-create-write-channel",
+      "created_at": "2026-11-27T10:28:23Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 0,
+      "review_count": 0,
+      "perf_summary": "8/45 IMPROVED (top: `HermeticInputStreamBenchmark.sequentialRead{objectSize=1048576}` -8.4% lat, -0.2% alloc)",
+      "coverage_summary": "2797 tests, 0 skipped; cov line 89.68% -> 89.68% (+0.00), branch 80.35% -> 80.38% (+0.03); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -3985,19 +4029,19 @@
       "net_saved_swe_days_p50": 33.83
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 23,
-      "raw_counterfactual_hours_p25": 102.67,
-      "raw_counterfactual_hours_p50": 152.02,
+      "open_draft_pr_count": 24,
+      "raw_counterfactual_hours_p25": 106.67,
+      "raw_counterfactual_hours_p50": 158.02,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.565,
-      "risk_adjusted_hours_p25": 81.11,
-      "risk_adjusted_hours_p50": 120.41
+      "empirical_promoted_merge_rate": 0.557,
+      "risk_adjusted_hours_p25": 83.91,
+      "risk_adjusted_hours_p50": 124.61
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 265.29,
-      "net_saved_hours_p50": 391.02,
-      "net_saved_swe_days_p25": 33.16,
-      "net_saved_swe_days_p50": 48.88
+      "net_saved_hours_p25": 268.09,
+      "net_saved_hours_p50": 395.22,
+      "net_saved_swe_days_p25": 33.51,
+      "net_saved_swe_days_p50": 49.4
     }
   }
 }
