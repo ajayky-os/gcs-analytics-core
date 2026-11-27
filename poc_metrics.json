@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-27T08:45:45Z",
+  "generated_at": "2026-11-27T08:54:35Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
@@ -14,10 +14,10 @@
     "closed_unmerged_prs": 7,
     "critic_major_catches": 50,
     "total_agent_wall_hours": 80.92,
-    "total_gate_cpu_hours": 7.6
+    "total_gate_cpu_hours": 7.43
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-27T08:45:45Z",
+    "updated_at": "2026-11-27T08:54:35Z",
     "total_prs_raised": 69,
     "merged_count": 39,
     "open_ready_count": 23,
@@ -1504,13 +1504,13 @@
       {
         "pr_number": 521,
         "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/521",
-        "title": "fix(client): preserve spaces and empty segments in GcsClientImpl.getFolderInfo",
+        "title": "test(client): verify verbatim getFolderInfo itemInfo and FakeGcsClientImpl",
         "state": "OPEN_READY",
         "change_type": "fix",
         "task_class": "correctness_fix",
-        "loc": 82,
-        "additions": 74,
-        "deletions": 8,
+        "loc": 59,
+        "additions": 53,
+        "deletions": 6,
         "iter": "20261127-040438-gcs-client-get-folder-info-resource-name",
         "created_at": "2026-11-27T04:36:25Z",
         "merged_at": null,
@@ -1521,7 +1521,7 @@
         "comment_count": 3,
         "review_count": 1,
         "perf_summary": "6/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -7.8% lat, -2.2% alloc)",
-        "coverage_summary": "2605 tests, 0 skipped; cov line 89.48% -> 89.48% (+0.00), branch 79.82% -> 79.86% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+        "coverage_summary": "2799 tests, 0 skipped; cov line 89.68% / branch 80.32% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       },
       {
         "pr_number": 522,
@@ -3025,13 +3025,13 @@
     {
       "pr_number": 521,
       "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/521",
-      "title": "fix(client): preserve spaces and empty segments in GcsClientImpl.getFolderInfo",
+      "title": "test(client): verify verbatim getFolderInfo itemInfo and FakeGcsClientImpl",
       "state": "OPEN_READY",
       "change_type": "fix",
       "task_class": "correctness_fix",
-      "loc": 82,
-      "additions": 74,
-      "deletions": 8,
+      "loc": 59,
+      "additions": 53,
+      "deletions": 6,
       "iter": "20261127-040438-gcs-client-get-folder-info-resource-name",
       "created_at": "2026-11-27T04:36:25Z",
       "merged_at": null,
@@ -3042,7 +3042,7 @@
       "comment_count": 3,
       "review_count": 1,
       "perf_summary": "6/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -7.8% lat, -2.2% alloc)",
-      "coverage_summary": "2605 tests, 0 skipped; cov line 89.48% -> 89.48% (+0.00), branch 79.82% -> 79.86% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      "coverage_summary": "2799 tests, 0 skipped; cov line 89.68% / branch 80.32% (no baseline; run `sil.py baseline`); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     },
     {
       "pr_number": 522,
@@ -3282,7 +3282,7 @@
         "severity": "nit",
         "category": "test-lib/src/test/java/com/google/cloud/gcs/analyticscore/client/FakeGcsClientImplTest.java:648",
         "finding": "In getFolderInfo_emptySegmentFolder_returnsFolderInfo, creating x// with setRecursive(true) on the default clock gives parent x/ and child x// identical timestamps and metageneration (1L), while GcsClientImpl.getFolderInfo derives the returned GcsItemId from itemId.toDirectoryId() rather than folder.getName(). That makes this test pass on BASE_SHA if run in isolation (though paired with getFolderInfo_trailingDoubleSlash_doesNotMatchParentFolder it still kills unconditional-slash-append mutations).",
-        "source": "critic_json"
+        "source": "critic_history"
       },
       {
         "iter": "20261120-060013-telemetry-compact-metrics-map",
