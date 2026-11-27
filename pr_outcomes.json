@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T04:45:30Z",
+  "updated_at": "2026-11-27T04:55:21Z",
   "total_prs_raised": 68,
   "merged_count": 39,
   "open_ready_count": 22,
@@ -1500,7 +1500,7 @@
       "hours_to_merge": null,
       "review_decision": "PENDING",
       "commit_count": 1,
-      "comment_count": 2,
+      "comment_count": 3,
       "review_count": 1,
       "perf_summary": "6/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -7.8% lat, -2.2% alloc)",
       "coverage_summary": "2605 tests, 0 skipped; cov line 89.48% -> 89.48% (+0.00), branch 79.82% -> 79.86% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
