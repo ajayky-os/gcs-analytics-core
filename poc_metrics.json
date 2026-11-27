@@ -1,30 +1,30 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-11-27T06:15:37Z",
+  "generated_at": "2026-11-27T06:20:25Z",
   "project": "gcs-analytics-core",
   "upstream_repo": "GoogleCloudPlatform/gcs-analytics-core",
   "funnel": {
-    "total_iterations_logged": 83,
+    "total_iterations_logged": 84,
     "smoke_iterations_excluded": 2,
     "error_or_quota_halted_iterations": 1,
-    "substantive_iterations": 81,
-    "unique_upstream_prs": 68,
+    "substantive_iterations": 82,
+    "unique_upstream_prs": 69,
     "merged_upstream_prs": 39,
-    "open_vetted_draft_prs": 22,
+    "open_vetted_draft_prs": 23,
     "closed_unmerged_prs": 7,
     "critic_major_catches": 50,
-    "total_agent_wall_hours": 80.46,
-    "total_gate_cpu_hours": 7.37
+    "total_agent_wall_hours": 80.92,
+    "total_gate_cpu_hours": 7.6
   },
   "pr_outcomes": {
-    "updated_at": "2026-11-27T06:15:37Z",
-    "total_prs_raised": 68,
+    "updated_at": "2026-11-27T06:20:25Z",
+    "total_prs_raised": 69,
     "merged_count": 39,
-    "open_ready_count": 22,
+    "open_ready_count": 23,
     "open_draft_count": 0,
     "closed_unmerged_count": 7,
     "acceptance_rate_closed_prs": 0.848,
-    "overall_merge_rate_to_date": 0.574,
+    "overall_merge_rate_to_date": 0.565,
     "median_hours_to_merge": 21.67,
     "prs": [
       {
@@ -1522,6 +1522,28 @@
         "review_count": 1,
         "perf_summary": "6/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -7.8% lat, -2.2% alloc)",
         "coverage_summary": "2605 tests, 0 skipped; cov line 89.48% -> 89.48% (+0.00), branch 79.82% -> 79.86% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+      },
+      {
+        "pr_number": 522,
+        "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/522",
+        "title": "fix(client): fail fast on null buffer and Errors in GcsWriteChannel",
+        "state": "OPEN_READY",
+        "change_type": "fix",
+        "task_class": "correctness_fix",
+        "loc": 47,
+        "additions": 44,
+        "deletions": 3,
+        "iter": "20261127-055220-gcs-write-channel-null-and-error-guards",
+        "created_at": "2026-11-27T06:19:34Z",
+        "merged_at": null,
+        "closed_at": null,
+        "hours_to_merge": null,
+        "review_decision": "PENDING",
+        "commit_count": 1,
+        "comment_count": 1,
+        "review_count": 0,
+        "perf_summary": "10/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -14.3% lat, +3.7% alloc)",
+        "coverage_summary": "2590 tests, 0 skipped; cov line 89.48% -> 89.49% (+0.00), branch 79.82% -> 79.85% (+0.03); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
       }
     ]
   },
@@ -3021,6 +3043,28 @@
       "review_count": 1,
       "perf_summary": "6/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -7.8% lat, -2.2% alloc)",
       "coverage_summary": "2605 tests, 0 skipped; cov line 89.48% -> 89.48% (+0.00), branch 79.82% -> 79.86% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 522,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/522",
+      "title": "fix(client): fail fast on null buffer and Errors in GcsWriteChannel",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 47,
+      "additions": 44,
+      "deletions": 3,
+      "iter": "20261127-055220-gcs-write-channel-null-and-error-guards",
+      "created_at": "2026-11-27T06:19:34Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "10/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -14.3% lat, +3.7% alloc)",
+      "coverage_summary": "2590 tests, 0 skipped; cov line 89.48% -> 89.49% (+0.00), branch 79.82% -> 79.85% (+0.03); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ],
   "perf_and_bug_ledger": {
@@ -3941,19 +3985,19 @@
       "net_saved_swe_days_p50": 33.83
     },
     "pending_vetted_pipeline": {
-      "open_draft_pr_count": 22,
-      "raw_counterfactual_hours_p25": 98.67,
-      "raw_counterfactual_hours_p50": 146.02,
+      "open_draft_pr_count": 23,
+      "raw_counterfactual_hours_p25": 102.67,
+      "raw_counterfactual_hours_p50": 152.02,
       "prior_weight_w_draft": 0.7,
-      "empirical_promoted_merge_rate": 0.574,
-      "risk_adjusted_hours_p25": 78.31,
-      "risk_adjusted_hours_p50": 116.21
+      "empirical_promoted_merge_rate": 0.565,
+      "risk_adjusted_hours_p25": 81.11,
+      "risk_adjusted_hours_p50": 120.41
     },
     "combined_realized_plus_pipeline": {
-      "net_saved_hours_p25": 262.49,
-      "net_saved_hours_p50": 386.82,
-      "net_saved_swe_days_p25": 32.81,
-      "net_saved_swe_days_p50": 48.35
+      "net_saved_hours_p25": 265.29,
+      "net_saved_hours_p50": 391.02,
+      "net_saved_swe_days_p25": 33.16,
+      "net_saved_swe_days_p50": 48.88
     }
   }
 }

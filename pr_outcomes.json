@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-27T06:15:37Z",
-  "total_prs_raised": 68,
+  "updated_at": "2026-11-27T06:20:25Z",
+  "total_prs_raised": 69,
   "merged_count": 39,
-  "open_ready_count": 22,
+  "open_ready_count": 23,
   "open_draft_count": 0,
   "closed_unmerged_count": 7,
   "acceptance_rate_closed_prs": 0.848,
-  "overall_merge_rate_to_date": 0.574,
+  "overall_merge_rate_to_date": 0.565,
   "median_hours_to_merge": 21.67,
   "prs": [
     {
@@ -1504,6 +1504,28 @@
       "review_count": 1,
       "perf_summary": "6/45 IMPROVED (top: `GcsReadChannelOpenBenchmark.openAndReadOneByte_withFileInfo` -7.8% lat, -2.2% alloc)",
       "coverage_summary": "2605 tests, 0 skipped; cov line 89.48% -> 89.48% (+0.00), branch 79.82% -> 79.86% (+0.04); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
+    },
+    {
+      "pr_number": 522,
+      "url": "https://github.com/GoogleCloudPlatform/gcs-analytics-core/pull/522",
+      "title": "fix(client): fail fast on null buffer and Errors in GcsWriteChannel",
+      "state": "OPEN_READY",
+      "change_type": "fix",
+      "task_class": "correctness_fix",
+      "loc": 47,
+      "additions": 44,
+      "deletions": 3,
+      "iter": "20261127-055220-gcs-write-channel-null-and-error-guards",
+      "created_at": "2026-11-27T06:19:34Z",
+      "merged_at": null,
+      "closed_at": null,
+      "hours_to_merge": null,
+      "review_decision": "PENDING",
+      "commit_count": 1,
+      "comment_count": 1,
+      "review_count": 0,
+      "perf_summary": "10/45 IMPROVED (top: `HermeticInputStreamBenchmark.readVectored{objectSize=1048576}` -14.3% lat, +3.7% alloc)",
+      "coverage_summary": "2590 tests, 0 skipped; cov line 89.48% -> 89.49% (+0.00), branch 79.82% -> 79.85% (+0.03); integ missing env ['SIL_GCS_TEST_BUCKET'] (configure to enable this gate)"
     }
   ]
 }
